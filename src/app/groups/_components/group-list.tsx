@@ -1,13 +1,6 @@
 "use server";
 
-import {
-  Table,
-  TableHeader,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-} from "@/components/ui/table";
+import { Table, TableRow, TableCell, TableBody } from "@/components/ui/table";
 import { getGroups } from "@/server/queries";
 import Link from "next/link";
 
