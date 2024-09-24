@@ -13,30 +13,30 @@ import {
 } from "@/components/ui/form";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
+import { createGroup } from "@/lib/actions";
+import { useRouter } from "next/navigation";
 
 type FormData = {
   name: string;
 };
 
 export default function CreateGroupForm() {
+  const router = useRouter();
   const form = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    const response = await fetch("/api/groups", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    if (response.ok) {
-      form.reset();
+    try {
+      await createGroup(data);
       toast({
         title: "Group created",
         description: "Your new group has been successfully created.",
       });
-    } else {
+      router.back();
+      form.reset();
+    } catch (error: unknown) {
       toast({
         title: "Error",
-        description: "There was a problem creating your group.",
+        description: `There was a problem creating your group. ${error}.`,
         variant: "destructive",
       });
     }

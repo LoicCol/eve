@@ -1,20 +1,26 @@
 "use server";
 
-import { db } from "@/server/db";
-import { events } from "@/server/db/schema";
-import { CreateEventFormFields, createEventFormSchema } from "@/types";
+import { insertEvent, insertGroup } from "@/server/queries";
+import {
+  CreateEventFormFields,
+  createEventFormSchema,
+  CreateGroupFormFields,
+  createGroupFormSchema,
+} from "@/types";
 import { revalidatePath } from "next/cache";
 
 export async function createEvent(formData: CreateEventFormFields) {
   const { name, location, date } = createEventFormSchema.parse(formData);
 
-  await db.insert(events).values({
-    eventName: name,
-    location,
-    eventDate: new Date(date),
-    createdBy: "user-id",
-    createdAt: new Date(),
-  });
+  await insertEvent(name, location, date);
 
   revalidatePath("/events");
+}
+
+export async function createGroup(formData: CreateGroupFormFields) {
+  const { name } = createGroupFormSchema.parse(formData);
+
+  await insertGroup(name);
+
+  revalidatePath("/groups");
 }

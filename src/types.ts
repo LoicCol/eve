@@ -13,3 +13,9 @@ export const createEventFormSchema = z.object({
 });
 
 export type CreateEventFormFields = z.infer<typeof createEventFormSchema>;
+
+export const createGroupFormSchema = z.object({
+  name: z.string(),
+});
+
+export type CreateGroupFormFields = z.infer<typeof createGroupFormSchema>;

@@ -1,17 +1,10 @@
-"use client";
+"use server";
 
-import { useState, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Group } from "../../types";
+import { getGroups } from "@/server/queries";
 
-export default function GroupList() {
-  const [groups, setGroups] = useState<Group[]>([]);
-
-  useEffect(() => {
-    fetch("/api/groups")
-      .then((res) => res.json())
-      .then((data) => setGroups(data));
-  }, []);
+export default async function GroupList() {
+  const groups = await getGroups();
 
   return (
     <div className="mt-8">
@@ -21,9 +14,9 @@ export default function GroupList() {
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {groups.map((group) => (
-            <Card key={group.id}>
+            <Card key={group.groupId}>
               <CardHeader>
-                <CardTitle>{group.name}</CardTitle>
+                <CardTitle>{group.groupName}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">

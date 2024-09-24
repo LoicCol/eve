@@ -8,12 +8,10 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { db } from "@/server/db";
+import { getEvent } from "@/server/queries";
 
 export default async function EventDetails({ id }: { id: string }) {
-  const event = await db.query.events.findFirst({
-    where: (model, { eq }) => eq(model.eventId, id),
-  });
+  const event = await getEvent(id);
 
   if (!event) {
     return <p>Event not found</p>;
