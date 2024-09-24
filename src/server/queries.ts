@@ -15,10 +15,19 @@ export async function getEvent(eventId: string) {
   return event;
 }
 
+export async function getEventsForGroup(groupId: string) {
+  const events = await db.query.events.findMany({
+    where: (model, { eq }) => eq(model.groupId, groupId),
+  });
+
+  return events;
+}
+
 export async function insertEvent(
   eventName: string,
   location: string,
-  eventDate: string
+  eventDate: string,
+  groupId: string
 ) {
   await db.insert(events).values({
     eventName,
@@ -26,6 +35,7 @@ export async function insertEvent(
     eventDate: new Date(eventDate),
     createdBy: "user-id",
     createdAt: new Date(),
+    groupId,
   });
 }
 

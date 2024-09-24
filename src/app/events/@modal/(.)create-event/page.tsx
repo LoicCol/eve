@@ -1,10 +1,13 @@
 import Modal from "@/components/modal";
 import CreateEventForm from "../../_components/create-event-form";
+import { getGroups } from "@/server/queries";
 
-export default function Page() {
+export default async function Page() {
+  const groups = await getGroups();
+
   return (
     <Modal>
-      <CreateEventForm />
+      <CreateEventForm groups={groups} />
     </Modal>
   );
 }

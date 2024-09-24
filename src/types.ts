@@ -10,6 +10,7 @@ export const createEventFormSchema = z.object({
   name: z.string(),
   location: z.string(),
   date: z.string(),
+  group: z.string(),
 });
 
 export type CreateEventFormFields = z.infer<typeof createEventFormSchema>;

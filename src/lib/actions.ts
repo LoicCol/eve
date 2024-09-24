@@ -10,9 +10,11 @@ import {
 import { revalidatePath } from "next/cache";
 
 export async function createEvent(formData: CreateEventFormFields) {
-  const { name, location, date } = createEventFormSchema.parse(formData);
+  const { name, location, date, group } = createEventFormSchema.parse(formData);
 
-  await insertEvent(name, location, date);
+  console.log("Creating event", name, location, date, group);
+
+  await insertEvent(name, location, date, group);
 
   revalidatePath("/events");
 }

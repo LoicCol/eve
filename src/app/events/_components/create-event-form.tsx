@@ -17,8 +17,16 @@ import { createEvent } from "@/lib/actions";
 import { CreateEventFormFields, createEventFormSchema } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { Combobox } from "@/components/combobox";
 
-export default function CreateEventForm() {
+interface CreateEventFormProps {
+  groups: {
+    groupId: string;
+    groupName: string;
+  }[];
+}
+
+export default function CreateEventForm({ groups }: CreateEventFormProps) {
   const router = useRouter();
   const form = useForm<CreateEventFormFields>({
     resolver: zodResolver(createEventFormSchema),
@@ -26,6 +34,7 @@ export default function CreateEventForm() {
       name: "",
       location: "",
       date: "",
+      group: "",
     },
   });
 
@@ -90,6 +99,26 @@ export default function CreateEventForm() {
                   <FormLabel>Date and Time</FormLabel>
                   <FormControl>
                     <Input type="date" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="group"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel>Group</FormLabel>
+                  <FormControl>
+                    <Combobox
+                      objects={groups.map(({ groupId, groupName }) => ({
+                        value: groupId,
+                        label: groupName,
+                      }))}
+                      value={field.value}
+                      onSelect={(value) => form.setValue("group", value)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

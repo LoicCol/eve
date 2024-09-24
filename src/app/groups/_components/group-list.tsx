@@ -2,6 +2,7 @@
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { getGroups } from "@/server/queries";
+import Link from "next/link";
 
 export default async function GroupList() {
   const groups = await getGroups();
@@ -14,16 +15,18 @@ export default async function GroupList() {
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {groups.map((group) => (
-            <Card key={group.groupId}>
-              <CardHeader>
-                <CardTitle>{group.groupName}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Created by: {group.createdBy}
-                </p>
-              </CardContent>
-            </Card>
+            <Link href={`/groups/${group.groupId}`} key={group.groupId}>
+              <Card key={group.groupId}>
+                <CardHeader>
+                  <CardTitle>{group.groupName}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    Created by: {group.createdBy}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       )}
