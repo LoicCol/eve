@@ -1,6 +1,9 @@
 TODO
 
-- [] Change schema to have events that are linked to groups
+- [x] Change schema to have events that are linked to groups
+- [] Group Details UI with events linked
+- [] List events of all groups i'm in
+- [] User management / Authentication
 - [] Deployment on Vercel
-- [] Authentication
+- []
 -

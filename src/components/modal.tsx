@@ -12,7 +12,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
 
   return (
     <Dialog defaultOpen open onOpenChange={handleOpenChange}>
-      <DialogOverlay>
+      <DialogOverlay className="bg-white/5">
         <DialogContent>{children}</DialogContent>
       </DialogOverlay>
     </Dialog>

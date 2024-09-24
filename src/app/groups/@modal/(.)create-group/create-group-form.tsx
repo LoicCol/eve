@@ -11,7 +11,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { createGroup } from "@/lib/actions";
 import { useRouter } from "next/navigation";
@@ -43,7 +43,7 @@ export default function CreateGroupForm() {
   };
 
   return (
-    <Card>
+    <>
       <CardHeader>
         <CardTitle>Create New Group</CardTitle>
       </CardHeader>
@@ -67,6 +67,6 @@ export default function CreateGroupForm() {
           </form>
         </Form>
       </CardContent>
-    </Card>
+    </>
   );
 }
