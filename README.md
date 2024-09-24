@@ -5,5 +5,3 @@ TODO
 - [ ] List events of all groups i'm in
 - [ ] User management / Authentication
 - [ ] Deployment on Vercel
-- [ ]
--

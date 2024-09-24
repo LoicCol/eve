@@ -1,6 +1,13 @@
 "use server";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Table,
+  TableHeader,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@/components/ui/table";
 import { getGroups } from "@/server/queries";
 import Link from "next/link";
 
@@ -13,22 +20,24 @@ export default async function GroupList() {
       {groups.length === 0 ? (
         <p className="text-muted-foreground">No groups found.</p>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {groups.map((group) => (
-            <Link href={`/groups/${group.groupId}`} key={group.groupId}>
-              <Card key={group.groupId}>
-                <CardHeader>
-                  <CardTitle>{group.groupName}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Created by: {group.createdBy}
-                  </p>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+        <Table className="min-w-full divide-y divide-gray-200">
+          <TableBody>
+            {groups.map((group) => (
+              <Link
+                href={`/groups/${group.groupId}`}
+                key={group.groupId}
+                legacyBehavior
+              >
+                <TableRow className="h-14 hover:text-primary cursor-pointer">
+                  <TableCell>{group.groupName}</TableCell>
+                  <TableCell className="text-right">
+                    {group.createdAt.toLocaleDateString()}
+                  </TableCell>
+                </TableRow>
+              </Link>
+            ))}
+          </TableBody>
+        </Table>
       )}
     </div>
   );
