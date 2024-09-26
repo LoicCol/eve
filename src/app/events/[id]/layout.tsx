@@ -8,7 +8,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { twMerge } from "tailwind-merge";
 
 interface BreadcrumbProps {
   eventName: string;
