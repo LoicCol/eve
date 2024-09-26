@@ -52,7 +52,7 @@ export const userEvents = createTable(
     userId: text("user_id").references(() => users.userId),
     eventId: uuid("event_id").references(() => events.eventId),
     joinedAt: timestamp("joined_at").notNull(),
-    status: text("status").notNull(),
+    status: text("status", { enum: ["participate", "maybe"] }).notNull(),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.userId, table.eventId] }),

@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import {
   Card,
@@ -8,17 +8,50 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { getEvent, getUser } from "@/server/queries";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { joinEvent } from "@/lib/actions";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-export default async function EventDetails({ id }: { id: string }) {
-  const event = await getEvent(id);
+interface EventDetailsProps {
+  event: {
+    eventId: string;
+    eventName: string;
+    location: string;
+    eventDate: Date;
+    description: string | null;
+  };
+  user?: {
+    userId: string;
+    name: string;
+    image: string | null;
+  };
+  participants: {
+    userId?: string;
+    name?: string;
+    image?: string | null;
+    status: "participate" | "maybe";
+  }[];
+}
 
-  if (!event) {
-    return <p>Event not found</p>;
-  }
+export default function EventDetails({
+  event,
+  user,
+  participants,
+}: EventDetailsProps) {
+  const handleParticipate = async () => {
+    if (!user) return;
+    console.log(user.userId, event.eventId);
+    await joinEvent(event.eventId, "participate");
+  };
 
-  const user = await getUser(event.createdBy);
+  const handleMaybe = async () => {
+    if (!user) return;
+    await joinEvent(event.eventId, "maybe");
+  };
 
   return (
     <Card>
@@ -42,9 +75,41 @@ export default async function EventDetails({ id }: { id: string }) {
             <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
           </Avatar>
         </div>
+        <div className="flex flex-wrap gap-2 mt-4">
+          {participants.map((participant) => (
+            <Tooltip key={participant.userId}>
+              <TooltipTrigger>
+                <Avatar>
+                  <AvatarImage src={participant.image || ""} />
+                  <AvatarFallback>{participant.name?.charAt(0)}</AvatarFallback>
+                </Avatar>
+              </TooltipTrigger>
+              <TooltipContent
+                className={`bg-${
+                  participant.status === "participate"
+                    ? "green-500"
+                    : "orange-500"
+                }`}
+              >
+                <p>{participant.name}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
       </CardContent>
-      <CardFooter>
-        <Button>Join Event</Button>
+      <CardFooter className="gap-2">
+        <Button
+          className="bg-green-500 hover:bg-green-400"
+          onClick={handleParticipate}
+        >
+          Participate
+        </Button>
+        <Button
+          className="bg-orange-500 hover:bg-orange-400"
+          onClick={handleMaybe}
+        >
+          Maybe
+        </Button>
       </CardFooter>
     </Card>
   );
