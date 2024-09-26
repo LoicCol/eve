@@ -47,13 +47,21 @@ export async function insertUserEvent(
   eventId: string,
   status: "participate" | "maybe"
 ) {
-  console.log(userId, eventId, status);
-  await db.insert(userEvents).values({
-    userId,
-    eventId,
-    joinedAt: new Date(),
-    status,
-  });
+  await db
+    .insert(userEvents)
+    .values({
+      userId,
+      eventId,
+      joinedAt: new Date(),
+      status,
+    })
+    .onConflictDoUpdate({
+      target: [userEvents.userId, userEvents.eventId],
+      set: {
+        status,
+        joinedAt: new Date(),
+      },
+    });
 }
 
 export async function getParticipants(eventId: string) {

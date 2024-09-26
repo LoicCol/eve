@@ -12,10 +12,19 @@ export default async function EventPage({
     return <p>Event not found</p>;
   }
 
-  const user = await getUser(event.createdBy);
-  const participants = (await getParticipants(params.id)).map(
-    ({ user, status }) => ({ ...user, status })
-  );
+  const [user, participants] = await Promise.all([
+    getUser(event.createdBy),
+    getParticipants(params.id),
+  ]);
 
-  return <EventDetails event={event} user={user} participants={participants} />;
+  return (
+    <EventDetails
+      event={event}
+      user={user}
+      participants={participants.map(({ user, status }) => ({
+        ...user,
+        status,
+      }))}
+    />
+  );
 }

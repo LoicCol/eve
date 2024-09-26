@@ -30,7 +30,7 @@ export default function Home() {
           </CardContent>
           <CardFooter>
             <Button asChild>
-              <Link href="/events">View Events</Link>
+              <Link href="/events/all">View Events</Link>
             </Button>
           </CardFooter>
         </Card>

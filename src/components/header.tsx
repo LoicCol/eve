@@ -15,7 +15,7 @@ export default function Header() {
           </SignedOut>
           <SignedIn>
             <Button variant="ghost" asChild>
-              <Link href="/events">Events</Link>
+              <Link href="/events/all">Events</Link>
             </Button>
             <Button variant="ghost" asChild>
               <Link href="/groups">Groups</Link>
