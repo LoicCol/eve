@@ -1,8 +1,7 @@
-DROP TABLE IF EXISTS "eve_events";
-DROP TABLE IF EXISTS "eve_groups";
 DROP TABLE IF EXISTS "eve_user_events";
 DROP TABLE IF EXISTS "eve_user_groups";
 DROP TABLE IF EXISTS "eve_users";
+
 
 CREATE TABLE IF NOT EXISTS "eve_events" (
 	"event_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
@@ -24,7 +23,7 @@ CREATE TABLE IF NOT EXISTS "eve_groups" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "eve_user_events" (
-	"user_id" uuid,
+	"user_id" text,
 	"event_id" uuid,
 	"joined_at" timestamp NOT NULL,
 	"status" text NOT NULL,
@@ -32,17 +31,18 @@ CREATE TABLE IF NOT EXISTS "eve_user_events" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "eve_user_groups" (
-	"user_id" uuid,
+	"user_id" text,
 	"group_id" uuid,
 	"joined_at" timestamp NOT NULL,
 	CONSTRAINT "eve_user_groups_user_id_group_id_pk" PRIMARY KEY("user_id","group_id")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "eve_users" (
-	"user_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"user_id" text PRIMARY KEY NOT NULL,
 	"email" text NOT NULL,
 	"name" text NOT NULL,
-	"image" text
+	"image" text,
+	CONSTRAINT "eve_users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
 DO $$ BEGIN

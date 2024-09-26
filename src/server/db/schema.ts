@@ -9,8 +9,8 @@ import {
 export const createTable = pgTableCreator((name) => `eve_${name}`);
 
 export const users = createTable("users", {
-  userId: uuid("user_id").defaultRandom().primaryKey(),
-  email: text("email").notNull(),
+  userId: text("user_id").primaryKey(),
+  email: text("email").notNull().unique(),
   name: text("name").notNull(),
   image: text("image"),
 });
@@ -37,7 +37,7 @@ export const events = createTable("events", {
 export const userGroups = createTable(
   "user_groups",
   {
-    userId: uuid("user_id").references(() => users.userId),
+    userId: text("user_id").references(() => users.userId),
     groupId: uuid("group_id").references(() => groups.groupId),
     joinedAt: timestamp("joined_at").notNull(),
   },
@@ -49,7 +49,7 @@ export const userGroups = createTable(
 export const userEvents = createTable(
   "user_events",
   {
-    userId: uuid("user_id").references(() => users.userId),
+    userId: text("user_id").references(() => users.userId),
     eventId: uuid("event_id").references(() => events.eventId),
     joinedAt: timestamp("joined_at").notNull(),
     status: text("status").notNull(),

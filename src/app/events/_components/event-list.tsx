@@ -8,7 +8,6 @@ export default async function EventList() {
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl font-semibold mb-4">Upcoming Events</h2>
       {events.length === 0 ? (
         <p className="text-muted-foreground">No events found.</p>
       ) : (

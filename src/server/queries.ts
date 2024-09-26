@@ -1,5 +1,44 @@
+import { eq } from "drizzle-orm";
 import { db } from "./db";
-import { events, groups } from "./db/schema";
+import { events, groups, users } from "./db/schema";
+
+export async function getUser(userId: string) {
+  const user = await db.query.users.findFirst({
+    where: (model, { eq }) => eq(model.userId, userId),
+  });
+
+  return user;
+}
+
+export async function insertUser(
+  userId: string,
+  email: string,
+  name: string,
+  image: string
+) {
+  await db.insert(users).values({
+    userId,
+    email,
+    name,
+    image,
+  });
+}
+
+export async function updateUser(
+  userId: string,
+  email: string,
+  name: string,
+  image: string
+) {
+  await db
+    .update(users)
+    .set({
+      email,
+      name,
+      image,
+    })
+    .where(eq(users.userId, userId));
+}
 
 export async function getEvents() {
   const events = await db.query.events.findMany();
@@ -27,13 +66,14 @@ export async function insertEvent(
   eventName: string,
   location: string,
   eventDate: string,
-  groupId: string
+  groupId: string,
+  createdBy: string
 ) {
   await db.insert(events).values({
     eventName,
     location,
     eventDate: new Date(eventDate),
-    createdBy: "user-id",
+    createdBy,
     createdAt: new Date(),
     groupId,
   });
@@ -53,10 +93,10 @@ export async function getGroup(groupId: string) {
   return group;
 }
 
-export async function insertGroup(groupName: string) {
+export async function insertGroup(groupName: string, createdBy: string) {
   await db.insert(groups).values({
     groupName,
-    createdBy: "user-id",
+    createdBy,
     createdAt: new Date(),
   });
 }
