@@ -1,5 +1,5 @@
 import Modal from "@/components/modal";
-import CreateEventForm from "../../_components/create-event-form";
+import CreateEventForm from "../../../_components/create-event-form";
 import { getGroups } from "@/server/queries";
 
 export default async function Page() {
