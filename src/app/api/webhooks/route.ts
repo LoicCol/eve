@@ -4,7 +4,6 @@ import { WebhookEvent } from "@clerk/nextjs/server";
 import { insertUser, updateUser } from "@/server/queries";
 
 export async function POST(req: Request) {
-  console.log("Webhook received");
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
@@ -52,10 +51,7 @@ export async function POST(req: Request) {
 
   // Do something with the payload
   // For this guide, you simply log the payload to the console
-  const { id } = evt.data;
   const eventType = evt.type;
-  console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
-  console.log("Webhook body:", JSON.stringify(body));
 
   if (eventType !== "user.created" && eventType !== "user.updated") {
     return new Response("", { status: 200 });
@@ -68,15 +64,9 @@ export async function POST(req: Request) {
 
   switch (eventType) {
     case "user.created":
-      // Do something with the user created event
-      console.log("User created event");
-
       await insertUser(userId, email, username, image);
       break;
     case "user.updated":
-      // Do something with the user updated event
-      console.log("User updated event");
-
       await updateUser(userId, email, username, image);
       break;
     default:

@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { joinGroup, leaveGroup } from "@/lib/actions";
 import { useMutation } from "@tanstack/react-query";
 import { RotateCw, UserRoundCheck, Users } from "lucide-react";
+import { useResize, animated } from "@react-spring/web";
+import { useRef } from "react";
 
 interface JoinButtonProps {
   groupId: string;
@@ -11,6 +13,9 @@ interface JoinButtonProps {
 }
 
 export default function JoinButton({ groupId, asJoined }: JoinButtonProps) {
+  const container = useRef(null);
+  const { width } = useResize({ container });
+
   const { mutate, isPending } = useMutation({
     mutationFn: asJoined ? leaveGroup : joinGroup,
   });
@@ -26,9 +31,16 @@ export default function JoinButton({ groupId, asJoined }: JoinButtonProps) {
   );
 
   return (
-    <Button onClick={handleJoin} variant="link">
-      {isPending ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : icon}
-      {asJoined ? "Joined" : "Join"}
-    </Button>
+    <animated.div style={{ width, overflow: "hidden" }}>
+      <Button
+        className="p-0"
+        onClick={handleJoin}
+        variant="link"
+        ref={container}
+      >
+        {isPending ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : icon}
+        {asJoined ? "Joined" : "Join"}
+      </Button>
+    </animated.div>
   );
 }
