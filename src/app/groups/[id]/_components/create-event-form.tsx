@@ -16,25 +16,18 @@ import { toast } from "@/hooks/use-toast";
 import { createEvent } from "@/lib/actions";
 import { CreateEventFormFields, createEventFormSchema } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
-import { Combobox } from "@/components/combobox";
+import { useParams, useRouter } from "next/navigation";
 
-interface CreateEventFormProps {
-  groups: {
-    groupId: string;
-    groupName: string;
-  }[];
-}
-
-export default function CreateEventForm({ groups }: CreateEventFormProps) {
+export default function CreateEventForm() {
   const router = useRouter();
+  const { id } = useParams();
   const form = useForm<CreateEventFormFields>({
     resolver: zodResolver(createEventFormSchema),
     defaultValues: {
       name: "",
       location: "",
       date: "",
-      group: "",
+      group: id as string,
     },
   });
 
@@ -99,26 +92,6 @@ export default function CreateEventForm({ groups }: CreateEventFormProps) {
                   <FormLabel>Date and Time</FormLabel>
                   <FormControl>
                     <Input type="date" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="group"
-              render={({ field }) => (
-                <FormItem className="flex flex-col">
-                  <FormLabel>Group</FormLabel>
-                  <FormControl>
-                    <Combobox
-                      objects={groups.map(({ groupId, groupName }) => ({
-                        value: groupId,
-                        label: groupName,
-                      }))}
-                      value={field.value}
-                      onSelect={(value) => form.setValue("group", value)}
-                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

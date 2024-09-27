@@ -79,7 +79,7 @@ export default async function GroupDetails({ groupId }: { groupId: string }) {
               <Group className="mr-2 h-4 w-4" /> Link Events
             </Button>
             <Button asChild>
-              <Link href={`/events/create-event`}>
+              <Link href={`/groups/${groupId}/create-event`}>
                 <Calendar className="mr-2 h-4 w-4" />
                 Create Event
               </Link>
