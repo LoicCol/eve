@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { joinGroup, leaveGroup } from "@/lib/actions";
-import { UserRoundCheck, Users } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { RotateCw, UserRoundCheck, Users } from "lucide-react";
 
 interface JoinButtonProps {
   groupId: string;
@@ -10,22 +11,24 @@ interface JoinButtonProps {
 }
 
 export default function JoinButton({ groupId, asJoined }: JoinButtonProps) {
+  const { mutate, isPending } = useMutation({
+    mutationFn: asJoined ? leaveGroup : joinGroup,
+  });
+
   const handleJoin = async () => {
-    if (!asJoined) await joinGroup(groupId);
-    else await leaveGroup(groupId);
+    mutate(groupId);
   };
+
+  const icon = asJoined ? (
+    <UserRoundCheck className="mr-2 h-4 w-4" />
+  ) : (
+    <Users className="mr-2 h-4 w-4" />
+  );
 
   return (
     <Button onClick={handleJoin} variant="link">
-      {asJoined ? (
-        <>
-          <UserRoundCheck className="mr-2 h-4 w-4" /> Leave
-        </>
-      ) : (
-        <>
-          <Users className="mr-2 h-4 w-4" /> Join
-        </>
-      )}
+      {isPending ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : icon}
+      {asJoined ? "Joined" : "Join"}
     </Button>
   );
 }

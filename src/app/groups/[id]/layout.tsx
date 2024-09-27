@@ -8,6 +8,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 interface BreadcrumbProps {
   eventName: string;
@@ -37,15 +42,25 @@ const EventBreadcrumb: React.FC<BreadcrumbProps> = ({
 
 export default function Layout({
   children,
+  events,
   modal,
 }: {
   children: React.ReactNode;
+  events: React.ReactNode;
   modal: React.ReactNode;
 }) {
   return (
     <div className="container mx-auto px-4 flex flex-col">
       <EventBreadcrumb eventName="Group Name" className="pb-4 pl-4" />
-      {children}
+      <ResizablePanelGroup direction="horizontal" className="border rounded-lg">
+        <ResizablePanel className="p-4" defaultSize={30}>
+          {children}
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel className="p-4" defaultSize={70}>
+          {events}
+        </ResizablePanel>
+      </ResizablePanelGroup>
       {modal}
     </div>
   );

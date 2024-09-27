@@ -17,37 +17,47 @@ import { createEvent } from "@/lib/actions";
 import { CreateEventFormFields, createEventFormSchema } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import { RotateCw } from "lucide-react";
+import { decode } from "@/util/shorten-uuid";
 
 export default function CreateEventForm() {
   const router = useRouter();
   const { id } = useParams();
+
   const form = useForm<CreateEventFormFields>({
     resolver: zodResolver(createEventFormSchema),
     defaultValues: {
       name: "",
       location: "",
       date: "",
-      group: id as string,
+      group: decode(id as string),
     },
   });
 
-  const onSubmit = async (data: CreateEventFormFields) => {
-    try {
-      await createEvent(data);
-      toast({
-        title: "Event created",
-        description: "Your new event has been successfully created.",
-      });
-      router.back();
-      form.reset();
-    } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description: `There was a problem creating your event. ${error}.`,
-        variant: "destructive",
-      });
-      console.error(error);
-    }
+  const { mutate, isPending } = useMutation({
+    mutationFn: createEvent,
+  });
+
+  const onSubmit = (data: CreateEventFormFields) => {
+    mutate(data, {
+      onSuccess: () => {
+        toast({
+          title: "Event created",
+          description: "Your new event has been successfully created.",
+        });
+        router.back();
+        form.reset();
+      },
+      onError: (error: unknown) => {
+        toast({
+          title: "Error",
+          description: `There was a problem creating your event. ${error}.`,
+          variant: "destructive",
+        });
+        console.error(error);
+      },
+    });
   };
 
   return (
@@ -97,7 +107,10 @@ export default function CreateEventForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit">Create Event</Button>
+            <Button type="submit" disabled={isPending}>
+              {isPending && <RotateCw className="mr-2 h-4 w-4 animate-spin" />}
+              Create Event
+            </Button>
           </form>
         </Form>
       </CardContent>

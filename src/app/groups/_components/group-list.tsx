@@ -2,6 +2,7 @@
 
 import { Table, TableRow, TableCell, TableBody } from "@/components/ui/table";
 import { getGroups } from "@/server/queries";
+import { encode } from "@/util/shorten-uuid";
 import Link from "next/link";
 
 export default async function GroupList() {
@@ -16,7 +17,7 @@ export default async function GroupList() {
           <TableBody>
             {groups.map((group) => (
               <Link
-                href={`/groups/${group.groupId}`}
+                href={`/groups/${encode(group.groupId)}`}
                 key={group.groupId}
                 legacyBehavior
               >

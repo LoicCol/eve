@@ -13,6 +13,7 @@ import {
   CreateGroupFormFields,
   createGroupFormSchema,
 } from "@/types";
+import { encode } from "@/util/shorten-uuid";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -70,12 +71,12 @@ export async function joinGroup(groupId: string) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
   await insertUserGroup(user.userId, groupId);
-  revalidatePath(`/groups/${groupId}`);
+  revalidatePath(`/groups/${encode(groupId)}`);
 }
 
 export async function leaveGroup(groupId: string) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
   await removeUserGroup(user.userId, groupId);
-  revalidatePath(`/groups/${groupId}`);
+  revalidatePath(`/groups/${encode(groupId)}`);
 }
