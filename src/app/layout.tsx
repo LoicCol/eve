@@ -20,10 +20,12 @@ export default function RootLayout({
   return (
     <TooltipProvider>
       <ClerkProvider>
-        <html lang="en">
-          <body className={inter.className}>
+        <html lang="en" className="h-screen">
+          <body className={`${inter.className} h-screen`}>
             <Header />
-            <main className="container mx-auto px-4 py-8 flex justify-center">
+            <main
+              className={`container mx-auto px-4 py-4 flex justify-center h-[calc(100%-64px)]`}
+            >
               {children}
             </main>
             <Toaster />

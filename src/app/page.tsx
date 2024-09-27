@@ -46,7 +46,7 @@ export default function Home() {
           </CardContent>
           <CardFooter>
             <Button asChild>
-              <Link href="/groups">View Groups</Link>
+              <Link href="/groups/all">View Groups</Link>
             </Button>
           </CardFooter>
         </Card>

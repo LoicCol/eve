@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { db } from "../db";
-import { groups } from "../db/schema";
+import { groups, userGroups } from "../db/schema";
 
 export async function getGroups() {
   const groups = await db.query.groups.findMany();
@@ -16,10 +16,35 @@ export async function getGroup(groupId: string) {
   return group;
 }
 
+export async function getMembers(groupId: string) {
+  const members = await db.query.userGroups.findMany({
+    where: eq(groups.groupId, groupId),
+    with: {
+      user: true,
+    },
+  });
+
+  return members.map((member) => member.user);
+}
+
 export async function insertGroup(groupName: string, createdBy: string) {
   await db.insert(groups).values({
     groupName,
     createdBy,
     createdAt: new Date(),
   });
+}
+
+export async function insertUserGroup(userId: string, groupId: string) {
+  await db.insert(userGroups).values({
+    userId,
+    groupId,
+    joinedAt: new Date(),
+  });
+}
+
+export async function removeUserGroup(userId: string, groupId: string) {
+  await db
+    .delete(userGroups)
+    .where(and(eq(userGroups.userId, userId), eq(userGroups.groupId, groupId)));
 }

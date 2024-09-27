@@ -13,7 +13,7 @@ export default function Layout({
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold mb-8">Groups</h1>
         <Button asChild>
-          <Link href="/groups/create-group">Create Group</Link>
+          <Link href="/groups/all/create-group">Create Group</Link>
         </Button>
       </div>
 

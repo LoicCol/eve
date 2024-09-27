@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 export default function Header() {
   return (
     <header className="border-b">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div
+        className={`container mx-auto px-4 h-16 flex justify-between items-center`}
+      >
         <Link href="/" className="text-xl font-bold text-primary">
           Eve
         </Link>
@@ -18,7 +20,7 @@ export default function Header() {
               <Link href="/events/all">Events</Link>
             </Button>
             <Button variant="ghost" asChild>
-              <Link href="/groups">Groups</Link>
+              <Link href="/groups/all">Groups</Link>
             </Button>
             <UserButton />
           </SignedIn>

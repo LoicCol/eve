@@ -1,6 +1,12 @@
 "use server";
 
-import { insertEvent, insertGroup, insertUserEvent } from "@/server/queries";
+import {
+  insertEvent,
+  insertGroup,
+  insertUserEvent,
+  insertUserGroup,
+  removeUserGroup,
+} from "@/server/queries";
 import {
   CreateEventFormFields,
   createEventFormSchema,
@@ -58,4 +64,18 @@ export async function joinEvent(
   await insertUserEvent(user.userId, eventId, status);
 
   revalidatePath(`/events/${eventId}`);
+}
+
+export async function joinGroup(groupId: string) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+  await insertUserGroup(user.userId, groupId);
+  revalidatePath(`/groups/${groupId}`);
+}
+
+export async function leaveGroup(groupId: string) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+  await removeUserGroup(user.userId, groupId);
+  revalidatePath(`/groups/${groupId}`);
 }
