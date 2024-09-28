@@ -14,7 +14,7 @@ export async function insertUser(
   userId: string,
   email: string,
   name: string,
-  image: string
+  image: string,
 ) {
   await db.insert(users).values({
     userId,
@@ -28,7 +28,7 @@ export async function updateUser(
   userId: string,
   email: string,
   name: string,
-  image: string
+  image: string,
 ) {
   await db
     .update(users)
@@ -38,4 +38,8 @@ export async function updateUser(
       image,
     })
     .where(eq(users.userId, userId));
+}
+
+export async function deleteUser(userId: string) {
+  await db.delete(users).where(eq(users.userId, userId));
 }

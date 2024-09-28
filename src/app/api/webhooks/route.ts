@@ -1,7 +1,7 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { WebhookEvent } from "@clerk/nextjs/server";
-import { insertUser, updateUser } from "@/server/queries";
+import { deleteUser, insertUser, updateUser } from "@/server/queries";
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
-      "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local"
+      "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local",
     );
   }
 
@@ -53,7 +53,17 @@ export async function POST(req: Request) {
   // For this guide, you simply log the payload to the console
   const eventType = evt.type;
 
-  if (eventType !== "user.created" && eventType !== "user.updated") {
+  if (
+    eventType !== "user.created" &&
+    eventType !== "user.updated" &&
+    eventType !== "user.deleted"
+  ) {
+    return new Response("", { status: 200 });
+  }
+
+  if (eventType === "user.deleted") {
+    const userId = evt.data.id || "";
+    await deleteUser(userId);
     return new Response("", { status: 200 });
   }
 
