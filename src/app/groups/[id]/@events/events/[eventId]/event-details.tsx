@@ -43,7 +43,7 @@ export default function EventDetails({
   };
 
   return (
-    <Card className="w-full max-w-8xl mx-auto border-primary">
+    <Card className="w-full max-w-8xl mx-auto">
       <CardContent className="p-6">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex-1">

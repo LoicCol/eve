@@ -31,7 +31,7 @@ const EventBreadcrumb: React.FC<BreadcrumbProps> = ({
           <BreadcrumbLink asChild>
             <Button
               variant="link"
-              className="p-0 text-foreground after:bg-foreground"
+              className="p-0 text-foreground after:bg-foreground/40"
               asChild
             >
               <Link href="/groups/all">All groups</Link>
@@ -60,11 +60,11 @@ export default function Layout({
     <div className="container mx-auto px-4 flex flex-col">
       <EventBreadcrumb eventName="Group Name" className="pb-4 pl-4" />
       <ResizablePanelGroup direction="horizontal" className="border rounded-lg">
-        <ResizablePanel className="p-4" defaultSize={30}>
+        <ResizablePanel className="p-4" defaultSize={25}>
           {children}
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel className="p-4" defaultSize={70}>
+        <ResizablePanel className="p-4" defaultSize={75}>
           {events}
         </ResizablePanel>
       </ResizablePanelGroup>
