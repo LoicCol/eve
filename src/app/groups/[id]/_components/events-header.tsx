@@ -11,7 +11,6 @@ import {
   useTransition,
 } from "@react-spring/web";
 import { CSSProperties, useEffect, useState } from "react";
-import { is } from "drizzle-orm";
 
 export default function EventsHeader({ groupId }: { groupId: string }) {
   const [index, set] = useState(0);
