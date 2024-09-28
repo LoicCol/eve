@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS "eve_user_events";
 DROP TABLE IF EXISTS "eve_user_groups";
 DROP TABLE IF EXISTS "eve_users";
 
-
 CREATE TABLE IF NOT EXISTS "eve_events" (
 	"event_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"group_id" uuid,
@@ -52,25 +51,25 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "eve_user_events" ADD CONSTRAINT "eve_user_events_user_id_eve_users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."eve_users"("user_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "eve_user_events" ADD CONSTRAINT "eve_user_events_user_id_eve_users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."eve_users"("user_id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "eve_user_events" ADD CONSTRAINT "eve_user_events_event_id_eve_events_event_id_fk" FOREIGN KEY ("event_id") REFERENCES "public"."eve_events"("event_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "eve_user_events" ADD CONSTRAINT "eve_user_events_event_id_eve_events_event_id_fk" FOREIGN KEY ("event_id") REFERENCES "public"."eve_events"("event_id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "eve_user_groups" ADD CONSTRAINT "eve_user_groups_user_id_eve_users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."eve_users"("user_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "eve_user_groups" ADD CONSTRAINT "eve_user_groups_user_id_eve_users_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."eve_users"("user_id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "eve_user_groups" ADD CONSTRAINT "eve_user_groups_group_id_eve_groups_group_id_fk" FOREIGN KEY ("group_id") REFERENCES "public"."eve_groups"("group_id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "eve_user_groups" ADD CONSTRAINT "eve_user_groups_group_id_eve_groups_group_id_fk" FOREIGN KEY ("group_id") REFERENCES "public"."eve_groups"("group_id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

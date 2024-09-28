@@ -1,5 +1,5 @@
 {
-  "id": "a262ba01-97d6-4f4c-baa6-e61251879acf",
+  "id": "aff818e4-8e90-4692-8d0c-a867dc0dafef",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -159,7 +159,7 @@
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "no action",
+          "onDelete": "cascade",
           "onUpdate": "no action"
         },
         "eve_user_events_event_id_eve_events_event_id_fk": {
@@ -172,7 +172,7 @@
           "columnsTo": [
             "event_id"
           ],
-          "onDelete": "no action",
+          "onDelete": "cascade",
           "onUpdate": "no action"
         }
       },
@@ -222,7 +222,7 @@
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "no action",
+          "onDelete": "cascade",
           "onUpdate": "no action"
         },
         "eve_user_groups_group_id_eve_groups_group_id_fk": {
@@ -235,7 +235,7 @@
           "columnsTo": [
             "group_id"
           ],
-          "onDelete": "no action",
+          "onDelete": "cascade",
           "onUpdate": "no action"
         }
       },

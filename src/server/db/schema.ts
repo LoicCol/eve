@@ -37,24 +37,32 @@ export const events = createTable("events", {
 export const userGroups = createTable(
   "user_groups",
   {
-    userId: text("user_id").references(() => users.userId),
-    groupId: uuid("group_id").references(() => groups.groupId),
+    userId: text("user_id").references(() => users.userId, {
+      onDelete: "cascade",
+    }),
+    groupId: uuid("group_id").references(() => groups.groupId, {
+      onDelete: "cascade",
+    }),
     joinedAt: timestamp("joined_at").notNull(),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.userId, table.groupId] }),
-  })
+  }),
 );
 
 export const userEvents = createTable(
   "user_events",
   {
-    userId: text("user_id").references(() => users.userId),
-    eventId: uuid("event_id").references(() => events.eventId),
+    userId: text("user_id").references(() => users.userId, {
+      onDelete: "cascade",
+    }),
+    eventId: uuid("event_id").references(() => events.eventId, {
+      onDelete: "cascade",
+    }),
     joinedAt: timestamp("joined_at").notNull(),
     status: text("status", { enum: ["participate", "maybe"] }).notNull(),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.userId, table.eventId] }),
-  })
+  }),
 );
