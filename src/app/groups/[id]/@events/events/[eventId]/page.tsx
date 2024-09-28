@@ -1,12 +1,14 @@
 import { getEvent, getParticipants, getUser } from "@/server/queries";
 import EventDetails from "./event-details";
+import { decode } from "@/util/shorten-uuid";
 
 export default async function EventPage({
   params,
 }: {
-  params: { id: string };
+  params: { eventId: string };
 }) {
-  const event = await getEvent(params.id);
+  const eventUuid = decode(params.eventId);
+  const event = await getEvent(eventUuid);
 
   if (!event) {
     return <p>Event not found</p>;
@@ -14,7 +16,7 @@ export default async function EventPage({
 
   const [user, participants] = await Promise.all([
     getUser(event.createdBy),
-    getParticipants(params.id),
+    getParticipants(eventUuid),
   ]);
 
   return (

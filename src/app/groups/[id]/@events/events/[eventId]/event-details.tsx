@@ -14,6 +14,7 @@ interface EventDetailsProps {
     location: string;
     eventDate: Date;
     description: string | null;
+    groupId: string | null;
   };
   user?: {
     userId: string;
@@ -42,7 +43,7 @@ export default function EventDetails({
   };
 
   return (
-    <Card className="w-full max-w-8xl mx-auto">
+    <Card className="w-full max-w-8xl mx-auto border-primary">
       <CardContent className="p-6">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex-1">

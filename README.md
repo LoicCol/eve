@@ -2,9 +2,13 @@ TODO
 
 - [x] Change schema to have events that are linked to groups
 - [o] Group Details UI with events linked
-  - [ ] Event creation from group details
-  - [ ] Add users to groups
-  - [ ] improve ui
+  - [x] Event creation from group details
+  - [x] Add users to groups
+  - [x] improve ui
+  - [ ] Event details in group
+- [ ] Improve breadcrumb
+  - [ ] add photo and name
+  - [ ] add selected event name
 - [ ] Event details
   - [ ] Event details improve UI
   - [ ] Event details edit
@@ -12,5 +16,7 @@ TODO
   - [ ] add search
   - [ ] add filters
 - [ ] Find a way to link events between them (weekend / festival)
-- [ ] User management / Authentication
-- [ ] Deployment on Vercel
+- [o] User management / Authentication
+  - [x] Auth
+  - [ ] Syjc user updates on production
+- [x] Deployment on Vercel

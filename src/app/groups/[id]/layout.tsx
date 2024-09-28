@@ -13,6 +13,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { Button } from "@/components/ui/button";
 
 interface BreadcrumbProps {
   eventName: string;
@@ -28,7 +29,13 @@ const EventBreadcrumb: React.FC<BreadcrumbProps> = ({
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/groups/all">All groups</Link>
+            <Button
+              variant="link"
+              className="p-0 text-foreground after:bg-foreground"
+              asChild
+            >
+              <Link href="/groups/all">All groups</Link>
+            </Button>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
