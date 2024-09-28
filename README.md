@@ -5,10 +5,10 @@ TODO
   - [x] Event creation from group details
   - [x] Add users to groups
   - [x] improve ui
-  - [ ] Event details in group
-- [ ] Improve breadcrumb
+  - [x] Event details in group
+- [o] Improve breadcrumb
   - [ ] add photo and name
-  - [ ] add selected event name
+  - [x] add selected event name
 - [ ] Event details
   - [ ] Event details improve UI
   - [ ] Event details edit
@@ -16,7 +16,7 @@ TODO
   - [ ] add search
   - [ ] add filters
 - [ ] Find a way to link events between them (weekend / festival)
-- [o] User management / Authentication
+- [x] User management / Authentication
   - [x] Auth
-  - [ ] Syjc user updates on production
+  - [x] Syjc user updates on production
 - [x] Deployment on Vercel
