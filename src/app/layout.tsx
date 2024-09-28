@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
-import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
 import Providers from "@/util/providers";
+import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-screen">
-      <body className={`${inter.className} h-screen`}>
+      <body className={`${inter.className} h-screen py-4`}>
         <Providers>
           <Header />
           <main
-            className={`container mx-auto px-4 py-4 flex justify-center h-[calc(100%-64px)]`}
+            className={`container mx-auto flex h-[calc(100%-80px)] justify-center`}
           >
             {children}
           </main>

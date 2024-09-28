@@ -6,6 +6,8 @@ import {
   insertUserEvent,
   insertUserGroup,
   removeUserGroup,
+  getGroup,
+  getEvent,
 } from "@/server/queries";
 import {
   CreateEventFormFields,
@@ -16,6 +18,24 @@ import {
 import { encode } from "@/util/shorten-uuid";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+
+export async function getGroupName(groupId: string) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  const group = await getGroup(groupId);
+
+  return group?.groupName;
+}
+
+export async function getEventName(eventId: string) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  const event = await getEvent(eventId);
+
+  return event?.eventName;
+}
 
 export async function createEvent(formData: CreateEventFormFields) {
   const user = auth();
@@ -57,7 +77,7 @@ export async function createGroup(formData: CreateGroupFormFields) {
 
 export async function joinEvent(
   eventId: string,
-  status: "participate" | "maybe"
+  status: "participate" | "maybe",
 ) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
