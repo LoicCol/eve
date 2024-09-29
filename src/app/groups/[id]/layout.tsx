@@ -19,13 +19,13 @@ export default function Layout({
       <ResizablePanelGroup direction="horizontal" className="rounded-lg border">
         <ResizablePanel className="p-4" defaultSize={25}>
           {children}
+          {modal}
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel className="p-4" defaultSize={75}>
           {events}
         </ResizablePanel>
       </ResizablePanelGroup>
-      {modal}
     </>
   );
 }

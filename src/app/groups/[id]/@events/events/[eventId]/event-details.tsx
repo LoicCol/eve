@@ -43,11 +43,11 @@ export default function EventDetails({
   };
 
   return (
-    <Card className="w-full max-w-8xl mx-auto">
+    <Card className="max-w-8xl mx-auto w-full">
       <CardContent className="p-6">
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col gap-6 md:flex-row">
           <div className="flex-1">
-            <h1 className="text-3xl font-bold mb-4">{event.eventName}</h1>
+            <h1 className="mb-4 text-3xl font-bold">{event.eventName}</h1>
             <div className="space-y-4">
               <div className="flex items-center text-muted-foreground">
                 <CalendarIcon className="mr-2 h-5 w-5" />
@@ -59,8 +59,8 @@ export default function EventDetails({
               </div>
               <div className="flex items-center">
                 <UserIcon className="mr-2 h-5 w-5 text-muted-foreground" />
-                <span className="text-muted-foreground mr-2">Created by:</span>
-                <Avatar className="h-6 w-6 mr-2">
+                <span className="mr-2 text-muted-foreground">Created by:</span>
+                <Avatar className="mr-2 h-6 w-6">
                   <AvatarImage src={user?.image || ""} />
                   <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
                 </Avatar>
@@ -70,7 +70,7 @@ export default function EventDetails({
                 <h2 className="text-lg font-semibold">Participants</h2>
                 <ParticipantsList participants={participants} />
               </div>
-              <div className="flex gap-2 mt-4">
+              <div className="mt-4 flex gap-2">
                 <Button
                   className="bg-green-500 hover:bg-green-600"
                   onClick={handleParticipate}
@@ -86,12 +86,12 @@ export default function EventDetails({
               </div>
             </div>
           </div>
-          <div className="flex-1 border-t md:border-t-0 md:border-l border-border pt-4 md:pt-0 md:pl-6">
-            <h2 className="text-xl font-semibold mb-2">Description</h2>
+          <div className="flex-1 border-t border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+            <h2 className="mb-2 text-xl font-semibold">Description</h2>
             {event.description ? (
               <p className="text-muted-foreground">{event.description}</p>
             ) : (
-              <p className="text-muted-foreground italic">
+              <p className="italic text-muted-foreground">
                 No description provided
               </p>
             )}
