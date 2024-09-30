@@ -2,7 +2,6 @@
 import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { events, userEvents } from "../db/schema";
-import { CreateEventFormFields } from "@/types";
 
 export async function getEvents() {
   const events = await db.query.events.findMany();

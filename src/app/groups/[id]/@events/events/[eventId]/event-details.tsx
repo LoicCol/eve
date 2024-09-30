@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { joinEvent, editEvent } from "@/lib/actions";
 import ParticipantsList from "@/components/participant-list";
-import { CalendarIcon, Edit, MapPinIcon, UserIcon } from "lucide-react";
+import { CalendarIcon, MapPinIcon, UserIcon } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateEventFormFields } from "@/types";
 import EditableText from "@/components/editable-input";
