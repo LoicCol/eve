@@ -8,9 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getEventName } from "@/lib/actions";
 import { decode } from "@/util/shorten-uuid";
 import { RotateCw } from "lucide-react";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { useResize } from "@react-spring/web";
-import React from "react";
 import BreadcrumbItem from "./animated-breadcrumb-item";
 
 export default function EventLink() {
@@ -29,7 +28,7 @@ export default function EventLink() {
   });
 
   return (
-    <>
+    <Fragment>
       {eventId && <BreadcrumbSeparator />}
 
       <BreadcrumbItem
@@ -54,6 +53,6 @@ export default function EventLink() {
           </Button>
         </div>
       </BreadcrumbItem>
-    </>
+    </Fragment>
   );
 }

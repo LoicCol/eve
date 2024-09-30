@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getGroupName } from "@/lib/actions";
 import { decode } from "@/util/shorten-uuid";
 import { RotateCw } from "lucide-react";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { useResize } from "@react-spring/web";
 import React from "react";
 import BreadcrumbItem from "./animated-breadcrumb-item";
@@ -29,7 +29,7 @@ export default function GroupLink() {
   });
 
   return (
-    <>
+    <Fragment>
       {groupId && <BreadcrumbSeparator />}
 
       <BreadcrumbItem
@@ -50,6 +50,6 @@ export default function GroupLink() {
           </Button>
         </div>
       </BreadcrumbItem>
-    </>
+    </Fragment>
   );
 }
