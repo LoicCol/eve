@@ -6,8 +6,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { joinEvent, editEvent } from "@/lib/actions";
 import ParticipantsList from "@/components/participant-list";
 import { CalendarIcon, Edit, MapPinIcon, UserIcon } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateEventFormFields } from "@/types";
+import EditableText from "@/components/editable-input";
+import { encode } from "@/util/shorten-uuid";
 
 interface EventDetailsProps {
   event: {
@@ -36,10 +38,21 @@ export default function EventDetails({
   user,
   participants,
 }: EventDetailsProps) {
-  const { mutate } = useMutation({
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending, variables } = useMutation({
     mutationFn: (data: Partial<CreateEventFormFields>) =>
-      editEvent(event.eventId, data),
-    mutationKey: ["editEvent"],
+      editEvent(event.eventId, {
+        name: data.name || event.eventName,
+        location: data.location || event.location,
+        date: data.date || event.eventDate.toISOString(),
+        group: data.group || event.groupId || "",
+      }),
+    onSettled: async () => {
+      return await queryClient.invalidateQueries({
+        queryKey: ["event", encode(event.eventId)],
+      });
+    },
   });
 
   const handleParticipate = async () => {
@@ -50,13 +63,25 @@ export default function EventDetails({
     await joinEvent(event.eventId, "maybe");
   };
 
+  const handleSave = async (value: string) => {
+    mutate({ name: value });
+  };
+
   return (
     <Card className="max-w-8xl mx-2 mb-2 flex-1">
       <CardContent className="p-6">
         <div className="flex flex-col gap-6 md:flex-row">
           <div className="flex-1">
-            <div className="flex gap-2">
-              <h1 className="mb-4 text-xl font-bold">{event.eventName}</h1>
+            <div className="flex pb-4">
+              <EditableText
+                value={event.eventName}
+                onSave={handleSave}
+                isPending={isPending}
+              >
+                <h1 className="text-xl font-bold">
+                  {variables?.name || event.eventName}
+                </h1>
+              </EditableText>
             </div>
             <div className="space-y-4">
               <div className="flex items-center text-muted-foreground">

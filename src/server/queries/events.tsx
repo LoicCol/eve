@@ -78,7 +78,12 @@ export async function getParticipants(eventId: string) {
 
 export async function updateEvent(
   eventId: string,
-  data: Partial<CreateEventFormFields>,
+  data: {
+    eventName: string;
+    location: string;
+    eventDate: Date;
+    groupId: string;
+  },
 ) {
   await db.update(events).set(data).where(eq(events.eventId, eventId));
 }

@@ -109,7 +109,7 @@ export async function editEvent(
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
-  const validationResult = createEventFormSchema.partial().safeParse(formData);
+  const validationResult = createEventFormSchema.safeParse(formData);
 
   if (!validationResult.success) {
     return {
@@ -117,14 +117,16 @@ export async function editEvent(
     };
   }
 
-  const { name, location, date, group } = validationResult.data;
+  const { name: eventName, location, date, group } = validationResult.data;
 
   await updateEvent(eventId, {
-    name,
+    eventName,
     location,
-    date,
-    group,
+    eventDate: new Date(date),
+    groupId: group,
   });
 
-  revalidatePath(`/events/${eventId}`);
+  console.log();
+
+  revalidatePath(`/groups/${group}/events/${eventId}`);
 }
