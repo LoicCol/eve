@@ -1,7 +1,8 @@
-import "server-only";
+"use server";
 import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { users } from "../db/schema";
+import { auth } from "@clerk/nextjs/server";
 
 export async function getUser(userId: string) {
   const user = await db.query.users.findFirst({
@@ -43,4 +44,18 @@ export async function updateUser(
 
 export async function deleteUser(userId: string) {
   await db.delete(users).where(eq(users.userId, userId));
+}
+
+export async function getCurrentUser() {
+  const { userId }: { userId: string | null } = auth();
+
+  if (!userId) {
+    return null;
+  }
+
+  const user = await db.query.users.findFirst({
+    where: eq(users.userId, userId),
+  });
+
+  return user;
 }

@@ -1,4 +1,4 @@
-import "server-only";
+"use server";
 import { and, eq } from "drizzle-orm";
 import { db } from "../db";
 import { groups, userGroups } from "../db/schema";

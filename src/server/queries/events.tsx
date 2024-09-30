@@ -1,4 +1,4 @@
-import "server-only";
+"use server";
 import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { events, userEvents } from "../db/schema";
@@ -30,7 +30,7 @@ export async function insertEvent(
   location: string,
   eventDate: string,
   groupId: string,
-  createdBy: string
+  createdBy: string,
 ) {
   await db.insert(events).values({
     eventName,
@@ -45,7 +45,7 @@ export async function insertEvent(
 export async function insertUserEvent(
   userId: string,
   eventId: string,
-  status: "participate" | "maybe"
+  status: "participate" | "maybe",
 ) {
   await db
     .insert(userEvents)
