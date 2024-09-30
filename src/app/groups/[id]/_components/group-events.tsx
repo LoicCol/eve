@@ -7,7 +7,7 @@ export default async function GroupEvents({ groupId }: { groupId: string }) {
   const events = await getEventsForGroup(groupId);
 
   return events.length > 0 ? (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 overflow-auto p-2 md:grid-cols-2 lg:grid-cols-3">
       {events.map((event) => (
         <Link
           href={`/groups/${encode(groupId)}/events/${encode(event.eventId)}`}

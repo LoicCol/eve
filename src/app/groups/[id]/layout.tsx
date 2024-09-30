@@ -22,7 +22,7 @@ export default function Layout({
           {modal}
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel className="p-4" defaultSize={75}>
+        <ResizablePanel className="flex flex-col p-2" defaultSize={75}>
           {events}
         </ResizablePanel>
       </ResizablePanelGroup>

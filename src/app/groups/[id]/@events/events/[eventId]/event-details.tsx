@@ -43,11 +43,11 @@ export default function EventDetails({
   };
 
   return (
-    <Card className="max-w-8xl mx-auto w-full">
+    <Card className="max-w-8xl mx-auto w-full flex-1">
       <CardContent className="p-6">
         <div className="flex flex-col gap-6 md:flex-row">
           <div className="flex-1">
-            <h1 className="mb-4 text-3xl font-bold">{event.eventName}</h1>
+            <h1 className="mb-4 text-xl font-bold">{event.eventName}</h1>
             <div className="space-y-4">
               <div className="flex items-center text-muted-foreground">
                 <CalendarIcon className="mr-2 h-5 w-5" />

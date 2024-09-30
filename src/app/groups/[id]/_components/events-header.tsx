@@ -18,7 +18,7 @@ export default function EventsHeader({ groupId }: { groupId: string }) {
   const isEventDetails = pathname.includes("events");
 
   const buttons: ((
-    props: AnimatedProps<{ style: CSSProperties }>
+    props: AnimatedProps<{ style: CSSProperties }>,
   ) => React.ReactElement)[] = [
     ({ style }) => (
       <animated.div className="flex gap-2" key="1" style={style}>
@@ -61,7 +61,7 @@ export default function EventsHeader({ groupId }: { groupId: string }) {
   }, [isEventDetails]);
 
   return (
-    <div className="flex justify-between items-center mb-4">
+    <div className="mb-4 flex items-center justify-between px-2 pt-2">
       <Button variant="link" className="p-0" asChild>
         <Link href={`/groups/${groupId}`}>
           <CalendarRange className="mr-2 h-4 w-4" />

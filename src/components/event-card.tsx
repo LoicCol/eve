@@ -13,7 +13,7 @@ interface EventCardProps {
 
 export default async function EventCard({ event }: EventCardProps) {
   return (
-    <Card className="transition-all rounded-xl ease-in-out duration-300 hover:rounded-md hover:translate-y-[-3px] hover:shadow-xl active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none">
+    <Card className="rounded-xl transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-md hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none">
       <CardHeader>
         <CardTitle>{event.eventName}</CardTitle>
       </CardHeader>

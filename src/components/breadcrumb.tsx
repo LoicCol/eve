@@ -7,7 +7,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
 import { useParams } from "next/navigation";
@@ -17,7 +16,6 @@ import { decode } from "@/util/shorten-uuid";
 import { RotateCw } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import { getCurrentUser } from "@/server/queries";
-import React from "react";
 
 export default function EventBreadcrumb() {
   const { id: groupId = "", eventId = "" } = useParams<{
@@ -56,27 +54,24 @@ export default function EventBreadcrumb() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink className="flex items-center gap-2">
-            <Avatar className="h-6 w-6">
-              <AvatarImage src={user?.image || ""} alt="user-image" />
-              <AvatarFallback className="flex justify-end">
-                {isPendingUser && (
-                  <RotateCw className="mr-2 h-4 w-4 animate-spin" />
-                )}
-              </AvatarFallback>
-            </Avatar>
-            <Button
-              variant="link"
-              className="flex items-center p-0 text-foreground transition-all duration-300 ease-in-out after:bg-primary hover:translate-y-[-1px] hover:text-primary"
-              asChild
-            >
-              <Link
-                href="/groups/all"
-                className="capitalize"
-              >{`${user?.name}'s groups`}</Link>
-            </Button>
-          </BreadcrumbLink>
+        <BreadcrumbItem className="flex items-center gap-2">
+          <Avatar className="h-6 w-6">
+            <AvatarImage src={user?.image || ""} alt="user-image" />
+            <AvatarFallback className="flex justify-end">
+              {isPendingUser && (
+                <RotateCw className="mr-2 h-4 w-4 animate-spin" />
+              )}
+            </AvatarFallback>
+          </Avatar>
+          <Button
+            variant="link"
+            className="flex items-center p-0 text-foreground transition-all duration-300 ease-in-out after:bg-primary hover:translate-y-[-1px] hover:text-primary"
+            asChild
+          >
+            <Link href="/groups/all" className="capitalize">
+              {`${user?.name}'s groups`}
+            </Link>
+          </Button>
         </BreadcrumbItem>
         {groupId && (
           <>
@@ -112,7 +107,6 @@ export default function EventBreadcrumb() {
                   {eventName}
                 </Link>
               </Button>
-              <BreadcrumbPage>{}</BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}

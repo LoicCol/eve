@@ -1,7 +1,7 @@
 TODO
 
 - [x] Change schema to have events that are linked to groups
-- [o] Group Details UI with events linked
+- [x] Group Details UI with events linked
   - [x] Event creation from group details
   - [x] Add users to groups
   - [x] improve ui
@@ -9,7 +9,7 @@ TODO
 - [x] Improve breadcrumb
   - [x] add photo and name
   - [x] add selected event name
-- [ ] Event details
+- [o] Event details
   - [ ] Event details improve UI
   - [ ] Event details edit
 - [ ] List events of all groups i'm in
