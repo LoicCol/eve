@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { joinEvent, editEvent } from "@/lib/actions";
 import ParticipantsList from "@/components/participant-list";
-import { CalendarIcon, MapPinIcon, UserIcon } from "lucide-react";
+import { CalendarIcon, Edit, MapPinIcon, UserIcon } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateEventFormFields } from "@/types";
 import EditableText from "@/components/editable-input";
@@ -68,7 +68,7 @@ export default function EventDetails({
   };
 
   return (
-    <Card className="max-w-8xl mx-2 mb-2 flex-1">
+    <Card className="max-w-8xl m-2 flex-1">
       <CardContent className="p-6">
         <div className="flex flex-col gap-6 md:flex-row">
           <div className="flex-1">

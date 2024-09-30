@@ -63,7 +63,11 @@ export default function EditableText({
   ) : (
     <div className="flex items-center">
       {children}
-      <Button className="ml-4 p-0" variant="link" onClick={handleEditClick}>
+      <Button
+        className="ml-4 p-0 text-foreground after:bg-primary hover:text-primary"
+        variant="link"
+        onClick={handleEditClick}
+      >
         <Pencil className="h-4 w-4" />
       </Button>
     </div>

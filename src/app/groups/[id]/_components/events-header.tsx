@@ -61,7 +61,7 @@ export default function EventsHeader({ groupId }: { groupId: string }) {
   }, [isEventDetails]);
 
   return (
-    <div className="mb-4 flex items-center justify-between px-2 pt-2">
+    <div className="mb-2 flex items-center justify-between px-2 pt-2">
       <Button variant="link" className="p-0" asChild>
         <Link href={`/groups/${groupId}`}>
           <CalendarRange className="mr-2 h-4 w-4" />
