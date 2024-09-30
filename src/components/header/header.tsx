@@ -1,10 +1,12 @@
+"use server";
+
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 import EventBreadcrumb from "./breadcrumb";
 
-export default function Header() {
+export default async function Header() {
   return (
     <div className="container mx-auto mb-4 flex h-16 items-center justify-between rounded-lg border px-4">
       <EventBreadcrumb />

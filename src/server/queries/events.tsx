@@ -2,6 +2,7 @@
 import { eq } from "drizzle-orm";
 import { db } from "../db";
 import { events, userEvents } from "../db/schema";
+import { CreateEventFormFields } from "@/types";
 
 export async function getEvents() {
   const events = await db.query.events.findMany();
@@ -73,4 +74,11 @@ export async function getParticipants(eventId: string) {
   });
 
   return participants;
+}
+
+export async function updateEvent(
+  eventId: string,
+  data: Partial<CreateEventFormFields>,
+) {
+  await db.update(events).set(data).where(eq(events.eventId, eventId));
 }

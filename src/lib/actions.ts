@@ -8,6 +8,7 @@ import {
   removeUserGroup,
   getGroup,
   getEvent,
+  updateEvent,
 } from "@/server/queries";
 import {
   CreateEventFormFields,
@@ -99,4 +100,31 @@ export async function leaveGroup(groupId: string) {
   if (!user.userId) throw new Error("Unauthorized");
   await removeUserGroup(user.userId, groupId);
   revalidatePath(`/groups/${encode(groupId)}`);
+}
+
+export async function editEvent(
+  eventId: string,
+  formData: CreateEventFormFields,
+) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  const validationResult = createEventFormSchema.partial().safeParse(formData);
+
+  if (!validationResult.success) {
+    return {
+      errors: validationResult.error.flatten().fieldErrors,
+    };
+  }
+
+  const { name, location, date, group } = validationResult.data;
+
+  await updateEvent(eventId, {
+    name,
+    location,
+    date,
+    group,
+  });
+
+  revalidatePath(`/events/${eventId}`);
 }

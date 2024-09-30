@@ -3,9 +3,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { joinEvent } from "@/lib/actions";
+import { joinEvent, editEvent } from "@/lib/actions";
 import ParticipantsList from "@/components/participant-list";
-import { CalendarIcon, MapPinIcon, UserIcon } from "lucide-react";
+import { CalendarIcon, Edit, MapPinIcon, UserIcon } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { CreateEventFormFields } from "@/types";
 
 interface EventDetailsProps {
   event: {
@@ -34,6 +36,12 @@ export default function EventDetails({
   user,
   participants,
 }: EventDetailsProps) {
+  const { mutate } = useMutation({
+    mutationFn: (data: Partial<CreateEventFormFields>) =>
+      editEvent(event.eventId, data),
+    mutationKey: ["editEvent"],
+  });
+
   const handleParticipate = async () => {
     await joinEvent(event.eventId, "participate");
   };
@@ -43,11 +51,13 @@ export default function EventDetails({
   };
 
   return (
-    <Card className="max-w-8xl mx-auto w-full flex-1">
+    <Card className="max-w-8xl mx-2 mb-2 flex-1">
       <CardContent className="p-6">
         <div className="flex flex-col gap-6 md:flex-row">
           <div className="flex-1">
-            <h1 className="mb-4 text-xl font-bold">{event.eventName}</h1>
+            <div className="flex gap-2">
+              <h1 className="mb-4 text-xl font-bold">{event.eventName}</h1>
+            </div>
             <div className="space-y-4">
               <div className="flex items-center text-muted-foreground">
                 <CalendarIcon className="mr-2 h-5 w-5" />
@@ -86,7 +96,7 @@ export default function EventDetails({
               </div>
             </div>
           </div>
-          <div className="flex-1 border-t border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+          <div className="flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
             <h2 className="mb-2 text-xl font-semibold">Description</h2>
             {event.description ? (
               <p className="text-muted-foreground">{event.description}</p>
