@@ -6,8 +6,8 @@ TODO
   - [x] Add users to groups
   - [x] improve ui
   - [x] Event details in group
-- [o] Improve breadcrumb
-  - [ ] add photo and name
+- [x] Improve breadcrumb
+  - [x] add photo and name
   - [x] add selected event name
 - [ ] Event details
   - [ ] Event details improve UI
