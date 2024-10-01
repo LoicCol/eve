@@ -20,6 +20,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { RotateCw } from "lucide-react";
 import { decode } from "@/util/shorten-uuid";
+import { Fragment } from "react";
 
 export default function CreateEventForm() {
   const router = useRouter();
@@ -61,7 +62,7 @@ export default function CreateEventForm() {
   };
 
   return (
-    <>
+    <Fragment>
       <CardHeader>
         <CardTitle>Create New Event</CardTitle>
       </CardHeader>
@@ -114,6 +115,6 @@ export default function CreateEventForm() {
           </form>
         </Form>
       </CardContent>
-    </>
+    </Fragment>
   );
 }

@@ -9,22 +9,22 @@ import { useRef } from "react";
 
 interface JoinButtonProps {
   groupId: string;
-  asJoined: boolean;
+  hasJoined: boolean;
 }
 
-export default function JoinButton({ groupId, asJoined }: JoinButtonProps) {
+export default function JoinButton({ groupId, hasJoined }: JoinButtonProps) {
   const container = useRef(null);
   const { width } = useResize({ container });
 
   const { mutate, isPending } = useMutation({
-    mutationFn: asJoined ? leaveGroup : joinGroup,
+    mutationFn: hasJoined ? leaveGroup : joinGroup,
   });
 
   const handleJoin = async () => {
     mutate(groupId);
   };
 
-  const icon = asJoined ? (
+  const icon = hasJoined ? (
     <UserRoundCheck className="mr-2 h-4 w-4" />
   ) : (
     <Users className="mr-2 h-4 w-4" />
@@ -39,7 +39,7 @@ export default function JoinButton({ groupId, asJoined }: JoinButtonProps) {
         ref={container}
       >
         {isPending ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : icon}
-        {asJoined ? "Joined" : "Join"}
+        {hasJoined ? "Joined" : "Join"}
       </Button>
     </animated.div>
   );
