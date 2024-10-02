@@ -10,6 +10,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateEventFormFields } from "@/types";
 import EditableText from "@/components/editable-input";
 import { encode } from "@/util/shorten-uuid";
+import EditableDate from "@/components/editable-date";
 
 interface EventDetailsProps {
   event: {
@@ -63,74 +64,96 @@ export default function EventDetails({
     await joinEvent(event.eventId, "maybe");
   };
 
-  const handleSave = async (value: string) => {
+  const handleSaveName = async (value: string) => {
     mutate({ name: value });
+  };
+
+  const handleSaveDate = async (value: Date) => {
+    mutate({ date: value.toDateString() });
+  };
+
+  const handleSaveLocation = async (value: string) => {
+    mutate({ location: value });
   };
 
   return (
     <Card className="max-w-8xl m-2 flex-1">
-      <CardContent className="p-6">
-        <div className="flex flex-col gap-6 md:flex-row">
-          <div className="flex-1">
-            <div className="flex pb-4">
-              <EditableText
-                value={event.eventName}
-                onSave={handleSave}
+      <CardContent className="flex h-full flex-col gap-6 p-6 md:flex-row">
+        <div className="flex-1">
+          <div className="flex pb-4">
+            <EditableText
+              value={event.eventName}
+              onSave={handleSaveName}
+              isPending={isPending}
+            >
+              <h1 className="text-xl font-bold">
+                {variables?.name || event.eventName}
+              </h1>
+            </EditableText>
+          </div>
+          <div className="space-y-4">
+            <div className="flex items-center text-muted-foreground">
+              <EditableDate
+                value={event.eventDate}
+                onSave={handleSaveDate}
                 isPending={isPending}
               >
-                <h1 className="text-xl font-bold">
-                  {variables?.name || event.eventName}
-                </h1>
+                <CalendarIcon className="mr-2 h-5 w-5" />
+                <span>
+                  {new Date(
+                    variables?.date || event.eventDate,
+                  ).toLocaleString()}
+                </span>
+              </EditableDate>
+            </div>
+            <div className="flex items-center text-muted-foreground">
+              <MapPinIcon className="mr-2 h-5 w-5" />
+              <EditableText
+                value={event.location}
+                onSave={handleSaveLocation}
+                isPending={isPending}
+              >
+                <span>{variables?.location || event.location}</span>
               </EditableText>
             </div>
-            <div className="space-y-4">
-              <div className="flex items-center text-muted-foreground">
-                <CalendarIcon className="mr-2 h-5 w-5" />
-                <span>{new Date(event.eventDate).toLocaleString()}</span>
-              </div>
-              <div className="flex items-center text-muted-foreground">
-                <MapPinIcon className="mr-2 h-5 w-5" />
-                <span>{event.location}</span>
-              </div>
-              <div className="flex items-center">
-                <UserIcon className="mr-2 h-5 w-5 text-muted-foreground" />
-                <span className="mr-2 text-muted-foreground">Created by:</span>
-                <Avatar className="mr-2 h-6 w-6">
-                  <AvatarImage src={user?.image || ""} />
-                  <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <span>{user?.name}</span>
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-lg font-semibold">Participants</h2>
-                <ParticipantsList participants={participants} />
-              </div>
-              <div className="mt-4 flex gap-2">
-                <Button
-                  className="bg-green-500 hover:bg-green-600"
-                  onClick={handleParticipate}
-                >
-                  Participate
-                </Button>
-                <Button
-                  className="bg-orange-500 hover:bg-orange-600"
-                  onClick={handleMaybe}
-                >
-                  Maybe
-                </Button>
-              </div>
+            <div className="flex items-center">
+              <UserIcon className="mr-2 h-5 w-5 text-muted-foreground" />
+              <span className="mr-2 text-muted-foreground">Created by:</span>
+              <Avatar className="mr-2 h-6 w-6">
+                <AvatarImage src={user?.image || ""} />
+                <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <span>{user?.name}</span>
+            </div>
+            <div className="space-y-2">
+              <h2 className="text-lg font-semibold">Participants</h2>
+              <ParticipantsList participants={participants} />
+            </div>
+            <div className="mt-4 flex gap-2">
+              <Button
+                className="bg-green-500 hover:bg-green-600"
+                onClick={handleParticipate}
+              >
+                Participate
+              </Button>
+              <Button
+                className="bg-orange-500 hover:bg-orange-600"
+                onClick={handleMaybe}
+              >
+                Maybe
+              </Button>
             </div>
           </div>
-          <div className="flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
-            <h2 className="mb-2 text-xl font-semibold">Description</h2>
-            {event.description ? (
-              <p className="text-muted-foreground">{event.description}</p>
-            ) : (
-              <p className="italic text-muted-foreground">
-                No description provided
-              </p>
-            )}
-          </div>
+        </div>
+        <div className="flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+          <h2 className="mb-2 text-xl font-semibold">Description</h2>
+          {event.description ? (
+            <p className="text-muted-foreground">{event.description}</p>
+          ) : (
+            <p className="italic text-muted-foreground">
+              No description provided
+            </p>
+          )}
         </div>
       </CardContent>
     </Card>
