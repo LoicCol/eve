@@ -18,7 +18,7 @@ import { CreateEventFormFields, createEventFormSchema } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { RotateCw } from "lucide-react";
+import { Loader } from "lucide-react";
 import { decode } from "@/util/shorten-uuid";
 import { Fragment } from "react";
 
@@ -109,7 +109,7 @@ export default function CreateEventForm() {
               )}
             />
             <Button type="submit" disabled={isPending}>
-              {isPending && <RotateCw className="mr-2 h-4 w-4 animate-spin" />}
+              {isPending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
               Create Event
             </Button>
           </form>

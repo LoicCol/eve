@@ -9,7 +9,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
-import { RotateCw } from "lucide-react";
+import { Loader } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import { getCurrentUser } from "@/server/queries";
 import GroupLink from "./group-link";
@@ -38,7 +38,7 @@ export default async function EventBreadcrumb() {
           <Avatar className="h-6 w-6">
             <AvatarImage src={user?.image || ""} alt="user-image" />
             <AvatarFallback>
-              <RotateCw className="h-4 w-4 animate-spin" />
+              <Loader className="h-4 w-4 animate-spin" />
             </AvatarFallback>
           </Avatar>
           <Button

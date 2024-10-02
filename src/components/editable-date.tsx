@@ -75,7 +75,7 @@ export default function EditableDate({
         disabled={isPending || !date}
       >
         {isPending ? (
-          <Loader className="h-4 w-4" />
+          <Loader className="h-4 w-4 animate-spin" />
         ) : (
           <Check className="h-4 w-4" />
         )}

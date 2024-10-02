@@ -7,7 +7,7 @@ import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getGroupName } from "@/lib/actions";
 import { decode } from "@/util/shorten-uuid";
-import { RotateCw } from "lucide-react";
+import { Loader } from "lucide-react";
 import { Fragment, useRef } from "react";
 import { useResize } from "@react-spring/web";
 import React from "react";
@@ -40,7 +40,7 @@ export default function GroupLink() {
         }}
       >
         <div ref={groupContainer} className="flex items-center gap-2">
-          {isPendingGroup && <RotateCw className="mr-2 h-4 w-4 animate-spin" />}
+          {isPendingGroup && <Loader className="mr-2 h-4 w-4 animate-spin" />}
           <Button
             variant="link"
             className={`p-0 text-foreground after:bg-primary hover:text-primary ${isPendingGroup ? "opacity-0" : "opacity-100"}`}

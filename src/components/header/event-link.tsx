@@ -7,7 +7,7 @@ import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getEventName } from "@/lib/actions";
 import { decode } from "@/util/shorten-uuid";
-import { RotateCw } from "lucide-react";
+import { Loader } from "lucide-react";
 import { Fragment, useRef } from "react";
 import { useResize } from "@react-spring/web";
 import BreadcrumbItem from "./animated-breadcrumb-item";
@@ -38,7 +38,7 @@ export default function EventLink() {
         }}
       >
         <div ref={eventContainer} className="flex items-center gap-2">
-          <RotateCw
+          <Loader
             className={`mr-2 h-4 w-4 animate-spin ${!isPendingEvent && "hidden"}`}
           />
 

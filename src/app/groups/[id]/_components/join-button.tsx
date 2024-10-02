@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { joinGroup, leaveGroup } from "@/lib/actions";
 import { useMutation } from "@tanstack/react-query";
-import { RotateCw, UserRoundCheck, Users } from "lucide-react";
+import { Loader, UserRoundCheck, Users } from "lucide-react";
 import { useResize, animated } from "@react-spring/web";
 import { useRef } from "react";
 
@@ -38,7 +38,7 @@ export default function JoinButton({ groupId, hasJoined }: JoinButtonProps) {
         variant="link"
         ref={container}
       >
-        {isPending ? <RotateCw className="mr-2 h-4 w-4 animate-spin" /> : icon}
+        {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : icon}
         {hasJoined ? "Joined" : "Join"}
       </Button>
     </animated.div>

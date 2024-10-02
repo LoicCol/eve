@@ -4,13 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { joinEvent, editEvent, leaveEvent } from "@/lib/actions";
 import ParticipantsList from "@/components/participant-list";
-import {
-  CalendarIcon,
-  Loader,
-  MapPinIcon,
-  RotateCw,
-  UserIcon,
-} from "lucide-react";
+import { CalendarIcon, Loader, MapPinIcon, UserIcon } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateEventFormFields } from "@/types";
 import EditableText from "@/components/editable-input";
@@ -195,7 +189,9 @@ function ParticipationButton({
 
   return (
     <div className="flex items-center">
-      {isPending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
+      {isPending && (
+        <Loader className="mr-2 h-4 w-4 animate-spin text-primary" />
+      )}
 
       <Select onValueChange={handleSelect} value={value}>
         <SelectTrigger className="w-auto px-2">

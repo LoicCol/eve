@@ -54,7 +54,7 @@ export default function EditableText({
         disabled={isPending || !newValue}
       >
         {isPending ? (
-          <Loader className="h-4 w-4" />
+          <Loader className="h-4 w-4 animate-spin" />
         ) : (
           <Check className="h-4 w-4" />
         )}
