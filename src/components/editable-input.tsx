@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 interface EditableTextProps {
   value: string;
-  onSave: (value: string) => Promise<void>;
+  onSave: (value: string) => void;
   isPending: boolean;
   children?: React.ReactNode;
 }

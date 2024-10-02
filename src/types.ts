@@ -1,3 +1,4 @@
+import { desc } from "drizzle-orm";
 import { z } from "zod";
 
 export interface Group {
@@ -11,6 +12,7 @@ export const createEventFormSchema = z.object({
   location: z.string(),
   date: z.string(),
   group: z.string(),
+  description: z.string().nullable(),
 });
 
 export type CreateEventFormFields = z.infer<typeof createEventFormSchema>;

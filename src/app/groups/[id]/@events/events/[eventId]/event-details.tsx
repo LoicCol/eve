@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import EditableTextArea from "@/components/editable-text-area";
 
 interface EventDetailsProps {
   event: {
@@ -60,6 +61,7 @@ export default function EventDetails({
         location: data.location || event.location,
         date: data.date || event.eventDate.toISOString(),
         group: data.group || event.groupId || "",
+        description: data.description || event.description || "",
       }),
     onSettled: async () => {
       return await queryClient.invalidateQueries({
@@ -68,16 +70,20 @@ export default function EventDetails({
     },
   });
 
-  const handleSaveName = async (value: string) => {
+  const handleSaveName = (value: string) => {
     mutate({ name: value });
   };
 
-  const handleSaveDate = async (value: Date) => {
+  const handleSaveDate = (value: Date) => {
     mutate({ date: value.toDateString() });
   };
 
-  const handleSaveLocation = async (value: string) => {
+  const handleSaveLocation = (value: string) => {
     mutate({ location: value });
+  };
+
+  const handleSaveDescription = (value: string) => {
+    mutate({ description: value });
   };
 
   const currentUserParticipation = participants.find(
@@ -144,14 +150,20 @@ export default function EventDetails({
           </div>
         </div>
         <div className="flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
-          <h2 className="mb-2 text-xl font-semibold">Description</h2>
-          {event.description ? (
+          <EditableTextArea
+            value={event.description || "No description provided"}
+            isPending={isPending}
+            onSave={handleSaveDescription}
+          >
+            <h2 className="mb-2 text-xl font-semibold">Description</h2>
+          </EditableTextArea>
+          {/* {event.description ? (
             <p className="text-muted-foreground">{event.description}</p>
           ) : (
             <p className="italic text-muted-foreground">
               No description provided
             </p>
-          )}
+          )} */}
         </div>
       </CardContent>
     </Card>

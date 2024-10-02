@@ -8,9 +8,9 @@ import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Calendar } from "./ui/calendar";
 import { cn } from "@/lib/utils";
 
-interface EditableTextProps {
+interface EditableDateProps {
   value: Date;
-  onSave: (value: Date) => Promise<void>;
+  onSave: (value: Date) => void;
   isPending: boolean;
   children?: React.ReactNode;
 }
@@ -20,7 +20,7 @@ export default function EditableDate({
   onSave,
   isPending,
   children,
-}: EditableTextProps) {
+}: EditableDateProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [date, setDate] = useState<Date | undefined>(value);
   const [isEditing, setIsEditing] = useState(false);
