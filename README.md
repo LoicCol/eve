@@ -9,14 +9,21 @@ TODO
 - [x] Improve breadcrumb
   - [x] add photo and name
   - [x] add selected event name
-- [o] Event details
-  - [ ] Event details improve UI
-  - [ ] Event details edit
-- [ ] List events of all groups i'm in
-  - [ ] add search
-  - [ ] add filters
-- [ ] Find a way to link events between them (weekend / festival)
 - [x] User management / Authentication
   - [x] Auth
   - [x] Syjc user updates on production
 - [x] Deployment on Vercel
+
+- [o] Event details
+  - [x] Event details improve UI
+  - [o] Event details edit
+    - [x] Title / Date / Location
+    - [ ] Description
+    - [ ] Limit to admin (creator for now)
+  - [ ] Delete event
+- [ ] Edit Group
+  - [ ] Title / Description
+- [ ] List events of all groups i'm in
+  - [ ] add search
+  - [ ] add filters
+- [ ] Find a way to link events between them (weekend / festival)

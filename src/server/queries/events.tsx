@@ -1,5 +1,5 @@
 "use server";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { db } from "../db";
 import { events, userEvents } from "../db/schema";
 
@@ -62,6 +62,12 @@ export async function insertUserEvent(
         joinedAt: new Date(),
       },
     });
+}
+
+export async function deleteUsersEvent(userId: string, eventId: string) {
+  await db
+    .delete(userEvents)
+    .where(and(eq(userEvents.userId, userId), eq(userEvents.eventId, eventId)));
 }
 
 export async function getParticipants(eventId: string) {

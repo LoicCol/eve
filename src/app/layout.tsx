@@ -18,16 +18,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-screen">
-      <body className={`${inter.className} h-screen py-4`}>
-        <Providers>
-          <Header />
-          <main
-            className={`container mx-auto flex h-[calc(100%-80px)] justify-center`}
-          >
-            {children}
-          </main>
-          <Toaster />
-        </Providers>
+      <body className={`${inter.className} h-screen`}>
+        <div className="h-screen py-4">
+          <Providers>
+            <Header />
+            <main
+              className={`container mx-auto flex h-[calc(100%-80px)] justify-center`}
+            >
+              {children}
+            </main>
+            <Toaster />
+          </Providers>
+        </div>
       </body>
     </html>
   );

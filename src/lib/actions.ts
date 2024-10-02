@@ -9,6 +9,7 @@ import {
   getGroup,
   getEvent,
   updateEvent,
+  deleteUsersEvent,
 } from "@/server/queries";
 import {
   CreateEventFormFields,
@@ -84,6 +85,15 @@ export async function joinEvent(
   if (!user.userId) throw new Error("Unauthorized");
 
   await insertUserEvent(user.userId, eventId, status);
+
+  revalidatePath(`/events/${eventId}`);
+}
+
+export async function leaveEvent(eventId: string) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  await deleteUsersEvent(user.userId, eventId);
 
   revalidatePath(`/events/${eventId}`);
 }

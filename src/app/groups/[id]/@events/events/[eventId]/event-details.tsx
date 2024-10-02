@@ -1,16 +1,28 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { joinEvent, editEvent } from "@/lib/actions";
+import { joinEvent, editEvent, leaveEvent } from "@/lib/actions";
 import ParticipantsList from "@/components/participant-list";
-import { CalendarIcon, MapPinIcon, UserIcon } from "lucide-react";
+import {
+  CalendarIcon,
+  Loader,
+  MapPinIcon,
+  RotateCw,
+  UserIcon,
+} from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateEventFormFields } from "@/types";
 import EditableText from "@/components/editable-input";
 import { encode } from "@/util/shorten-uuid";
 import EditableDate from "@/components/editable-date";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface EventDetailsProps {
   event: {
@@ -20,6 +32,11 @@ interface EventDetailsProps {
     eventDate: Date;
     description: string | null;
     groupId: string | null;
+  };
+  creator?: {
+    userId: string;
+    name: string;
+    image: string | null;
   };
   user?: {
     userId: string;
@@ -37,6 +54,7 @@ interface EventDetailsProps {
 export default function EventDetails({
   event,
   user,
+  creator,
   participants,
 }: EventDetailsProps) {
   const queryClient = useQueryClient();
@@ -56,14 +74,6 @@ export default function EventDetails({
     },
   });
 
-  const handleParticipate = async () => {
-    await joinEvent(event.eventId, "participate");
-  };
-
-  const handleMaybe = async () => {
-    await joinEvent(event.eventId, "maybe");
-  };
-
   const handleSaveName = async (value: string) => {
     mutate({ name: value });
   };
@@ -76,11 +86,15 @@ export default function EventDetails({
     mutate({ location: value });
   };
 
+  const currentUserParticipation = participants.find(
+    (participant) => participant.userId === user?.userId,
+  );
+
   return (
     <Card className="max-w-8xl m-2 flex-1">
       <CardContent className="flex h-full flex-col gap-6 p-6 md:flex-row">
         <div className="flex-1">
-          <div className="flex pb-4">
+          <div className="flex justify-between pb-4">
             <EditableText
               value={event.eventName}
               onSave={handleSaveName}
@@ -90,6 +104,10 @@ export default function EventDetails({
                 {variables?.name || event.eventName}
               </h1>
             </EditableText>
+            <ParticipationButton
+              eventId={event.eventId}
+              currentUserParticipation={currentUserParticipation}
+            />
           </div>
           <div className="space-y-4">
             <div className="flex items-center text-muted-foreground">
@@ -120,28 +138,14 @@ export default function EventDetails({
               <UserIcon className="mr-2 h-5 w-5 text-muted-foreground" />
               <span className="mr-2 text-muted-foreground">Created by:</span>
               <Avatar className="mr-2 h-6 w-6">
-                <AvatarImage src={user?.image || ""} />
-                <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+                <AvatarImage src={creator?.image || ""} />
+                <AvatarFallback>{creator?.name?.charAt(0)}</AvatarFallback>
               </Avatar>
-              <span>{user?.name}</span>
+              <span>{creator?.name}</span>
             </div>
             <div className="space-y-2">
               <h2 className="text-lg font-semibold">Participants</h2>
               <ParticipantsList participants={participants} />
-            </div>
-            <div className="mt-4 flex gap-2">
-              <Button
-                className="bg-green-500 hover:bg-green-600"
-                onClick={handleParticipate}
-              >
-                Participate
-              </Button>
-              <Button
-                className="bg-orange-500 hover:bg-orange-600"
-                onClick={handleMaybe}
-              >
-                Maybe
-              </Button>
             </div>
           </div>
         </div>
@@ -157,5 +161,52 @@ export default function EventDetails({
         </div>
       </CardContent>
     </Card>
+  );
+}
+
+function ParticipationButton({
+  eventId,
+  currentUserParticipation,
+}: {
+  eventId: string;
+  currentUserParticipation?: {
+    status: "participate" | "maybe";
+  };
+}) {
+  const { mutate, isPending } = useMutation({
+    mutationFn: ({ status }: { status: string }) => {
+      if (status === "participate") {
+        return joinEvent(eventId, "participate");
+      }
+
+      if (status === "maybe") {
+        return joinEvent(eventId, "maybe");
+      }
+
+      return leaveEvent(eventId);
+    },
+  });
+
+  const handleSelect = (value: string) => {
+    mutate({ status: value });
+  };
+
+  const value = currentUserParticipation?.status || "leave";
+
+  return (
+    <div className="flex items-center">
+      {isPending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
+
+      <Select onValueChange={handleSelect} value={value}>
+        <SelectTrigger className="w-auto px-2">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="participate">Participate</SelectItem>
+          <SelectItem value="maybe">Maybe</SelectItem>
+          <SelectItem value="leave">Not going</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
   );
 }
