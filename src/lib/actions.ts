@@ -135,16 +135,6 @@ export async function editEvent(
     description,
   } = validationResult.data;
 
-  console.log(
-    "editEvent",
-    eventId,
-    eventName,
-    location,
-    date,
-    group,
-    description,
-  );
-
   await updateEvent(eventId, {
     eventName,
     location,
