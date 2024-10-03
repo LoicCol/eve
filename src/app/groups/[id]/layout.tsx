@@ -23,7 +23,7 @@ export default function Layout({
         </ResizablePanel>
         <ResizableHandle />
         <ResizablePanel className="flex flex-col p-2" defaultSize={75}>
-          {events}
+          <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
         </ResizablePanel>
       </ResizablePanelGroup>
     </>

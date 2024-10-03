@@ -61,7 +61,10 @@ export default function EventDetails({
         location: data.location || event.location,
         date: data.date || event.eventDate.toISOString(),
         group: data.group || event.groupId || "",
-        description: data.description || event.description || "",
+        description:
+          data.description === ""
+            ? ""
+            : data.description || event.description || "",
       }),
     onSettled: async () => {
       return await queryClient.invalidateQueries({
@@ -92,7 +95,7 @@ export default function EventDetails({
   );
 
   return (
-    <Card className="max-w-8xl m-2 flex-1">
+    <Card className="max-w-8xl m-2 flex-1 overflow-hidden">
       <CardContent className="flex h-full flex-col gap-6 p-6 md:flex-row">
         <div className="flex-1">
           <div className="flex justify-between pb-4">
@@ -150,7 +153,7 @@ export default function EventDetails({
             </div>
           </div>
         </div>
-        <div className="flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+        <div className="flex flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
           <EditableTextArea
             value={variables?.description || event.description || ""}
             isPending={isPending}

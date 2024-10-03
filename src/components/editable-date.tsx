@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { format } from "date-fns";
 import { Check, Pencil, Loader, CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,13 +21,11 @@ export default function EditableDate({
   isPending,
   children,
 }: EditableDateProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
   const [date, setDate] = useState<Date | undefined>(value);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditClick = () => {
     setIsEditing(true);
-    inputRef.current?.focus();
   };
 
   const handleSaveClick = async () => {

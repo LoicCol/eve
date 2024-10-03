@@ -1,12 +1,9 @@
 "use client";
 
-import React, { Suspense, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Check, Pencil, Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import dynamic from "next/dynamic";
-import { MDXEditorMethods } from "@mdxeditor/editor";
-
-const EditorComp = dynamic(() => import("./editor"), { ssr: false });
+import { Textarea } from "./ui/textarea";
 
 interface EditableTextAreaProps {
   value: string;
@@ -21,22 +18,16 @@ export default function EditableTextArea({
   isPending,
   children,
 }: EditableTextAreaProps) {
-  const inputRef = useRef<MDXEditorMethods>(null);
   const [newValue, setNewValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditClick = () => {
     setIsEditing(true);
-    console.log("inputRef.current", inputRef.current);
   };
 
   const handleSaveClick = async () => {
     await onSave(newValue);
     setIsEditing(false);
-  };
-
-  const handleChange = (markdown: string) => {
-    setNewValue(markdown);
   };
 
   let icon = <Pencil className="h-4 w-4" />;
@@ -47,7 +38,7 @@ export default function EditableTextArea({
   }
 
   return (
-    <div>
+    <div className="flex flex-1 flex-col overflow-auto">
       <div className="flex items-center">
         {children}
         <Button
@@ -58,19 +49,23 @@ export default function EditableTextArea({
           {icon}
         </Button>
       </div>
-      {!isEditing && !value && (
-        <p className="mt-2 italic text-muted-foreground">
-          No description provided
-        </p>
+      {!isEditing && (
+        <div className="flex-1 overflow-auto">
+          <p
+            className={`mt-2 whitespace-pre-line ${!value && "italic text-muted-foreground"}`}
+          >
+            {value || "No description provided"}
+          </p>
+        </div>
       )}
-      <Suspense fallback={null}>
-        <EditorComp
-          markdown={value}
-          onChange={handleChange}
-          readOnly={!isEditing}
-          editorRef={inputRef}
+      {isEditing && (
+        <Textarea
+          value={newValue}
+          onChange={(e) => setNewValue(e.target.value)}
+          autoFocus
+          className="flex-1 resize-none"
         />
-      </Suspense>
+      )}
     </div>
   );
 }
