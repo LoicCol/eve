@@ -9,16 +9,16 @@ export default function Layout({
   modal: React.ReactNode;
 }) {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto flex flex-col rounded-lg border border-stone-300 px-4 py-4">
       <div className="flex justify-between">
-        <h1 className="text-3xl font-bold mb-8">Groups</h1>
+        <h1 className="text-2xl font-bold">{"Groups you are in"}</h1>
         <Button asChild>
           <Link href="/groups/all/create-group">Create Group</Link>
         </Button>
       </div>
 
-      <div>{modal}</div>
-      <div>{children}</div>
+      <div className="flex flex-col overflow-hidden">{children}</div>
+      {modal}
     </div>
   );
 }

@@ -9,11 +9,11 @@ export default async function GroupList() {
   const groups = await getGroups();
 
   return (
-    <div className="mt-8">
+    <div className="mt-4 flex overflow-hidden">
       {groups.length === 0 ? (
         <p className="text-muted-foreground">No groups found.</p>
       ) : (
-        <Table className="min-w-full divide-y divide-gray-200">
+        <Table className="min-w-full divide-y divide-gray-200 rounded-lg border border-dashed">
           <TableBody>
             {groups.map((group) => (
               <Link
@@ -21,7 +21,7 @@ export default async function GroupList() {
                 key={group.groupId}
                 legacyBehavior
               >
-                <TableRow className="h-14 hover:text-primary cursor-pointer">
+                <TableRow className="h-14 cursor-pointer border-dashed border-stone-300 hover:text-primary">
                   <TableCell>{group.groupName}</TableCell>
                   <TableCell className="text-right">
                     {group.createdAt.toLocaleDateString()}
