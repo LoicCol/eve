@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
 import { MDXEditorMethods } from "@mdxeditor/editor";
 
-const EditorComp = dynamic(() => import("./editor/editor"), { ssr: false });
+const EditorComp = dynamic(() => import("./editor"), { ssr: false });
 
 interface EditableTextAreaProps {
   value: string;
