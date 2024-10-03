@@ -152,23 +152,12 @@ export default function EventDetails({
         </div>
         <div className="flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
           <EditableTextArea
-            value={
-              variables?.description ||
-              event.description ||
-              "No description provided"
-            }
+            value={variables?.description || event.description || ""}
             isPending={isPending}
             onSave={handleSaveDescription}
           >
             <h2 className="text-xl font-semibold">Description</h2>
           </EditableTextArea>
-          {/* {event.description ? (
-            <p className="text-muted-foreground">{event.description}</p>
-          ) : (
-            <p className="italic text-muted-foreground">
-              No description provided
-            </p>
-          )} */}
         </div>
       </CardContent>
     </Card>

@@ -58,6 +58,11 @@ export default function EditableTextArea({
           {icon}
         </Button>
       </div>
+      {!isEditing && !value && (
+        <p className="mt-2 italic text-muted-foreground">
+          No description provided
+        </p>
+      )}
       <Suspense fallback={null}>
         <EditorComp
           markdown={value}

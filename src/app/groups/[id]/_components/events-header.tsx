@@ -33,13 +33,7 @@ export default function EventsHeader({ groupId }: { groupId: string }) {
         </Button>
       </animated.div>
     ),
-    ({ style }) => (
-      <animated.div key="2" style={style}>
-        <Button variant="outline">
-          <Group className="mr-2 h-4 w-4" /> Edit
-        </Button>
-      </animated.div>
-    ),
+    ({ style }) => <animated.div key="2" style={style} />,
   ];
 
   const transRef = useSpringRef();
