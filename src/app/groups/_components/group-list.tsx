@@ -13,7 +13,7 @@ export default async function GroupList() {
       {groups.length === 0 ? (
         <p className="text-muted-foreground">No groups found.</p>
       ) : (
-        <Table className="min-w-full divide-y divide-gray-200 rounded-lg border border-dashed">
+        <Table className="min-w-full divide-y divide-gray-200 rounded-lg border border-dashed border-stone-300">
           <TableBody>
             {groups.map((group) => (
               <Link
