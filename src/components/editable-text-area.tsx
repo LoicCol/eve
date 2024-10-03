@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { Suspense, useRef, useState } from "react";
 import { Check, Pencil, Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { createEditor } from "slate";
-import { Slate, Editable, withReact } from "slate-react";
+import dynamic from "next/dynamic";
+import { MDXEditorMethods } from "@mdxeditor/editor";
+
+const EditorComp = dynamic(() => import("./editor/editor"), { ssr: false });
 
 interface EditableTextAreaProps {
   value: string;
@@ -13,32 +15,28 @@ interface EditableTextAreaProps {
   children?: React.ReactNode;
 }
 
-const initialValue = [
-  {
-    type: "paragraph",
-    children: [{ text: "A line of text in a paragraph." }],
-  },
-];
-
 export default function EditableTextArea({
   value = "",
   onSave,
   isPending,
   children,
 }: EditableTextAreaProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<MDXEditorMethods>(null);
   const [newValue, setNewValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
-  const [editor] = useState(() => withReact(createEditor()));
 
   const handleEditClick = () => {
     setIsEditing(true);
-    inputRef.current?.focus();
+    console.log("inputRef.current", inputRef.current);
   };
 
   const handleSaveClick = async () => {
     await onSave(newValue);
     setIsEditing(false);
+  };
+
+  const handleChange = (markdown: string) => {
+    setNewValue(markdown);
   };
 
   let icon = <Pencil className="h-4 w-4" />;
@@ -60,9 +58,14 @@ export default function EditableTextArea({
           {icon}
         </Button>
       </div>
-      <Slate editor={editor} initialValue={initialValue}>
-        <Editable readOnly={!isEditing} autoFocus />
-      </Slate>
+      <Suspense fallback={null}>
+        <EditorComp
+          markdown={value}
+          onChange={handleChange}
+          readOnly={!isEditing}
+          editorRef={inputRef}
+        />
+      </Suspense>
     </div>
   );
 }

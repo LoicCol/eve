@@ -127,16 +127,21 @@ export async function editEvent(
     };
   }
 
-  const { name: eventName, location, date, group } = validationResult.data;
+  const {
+    name: eventName,
+    location,
+    date,
+    group,
+    description,
+  } = validationResult.data;
 
   await updateEvent(eventId, {
     eventName,
     location,
     eventDate: new Date(date),
     groupId: group,
+    description: description || "",
   });
-
-  console.log();
 
   revalidatePath(`/groups/${group}/events/${eventId}`);
 }

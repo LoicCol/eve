@@ -83,6 +83,7 @@ export default function EventDetails({
   };
 
   const handleSaveDescription = (value: string) => {
+    console.log("value", value);
     mutate({ description: value });
   };
 
@@ -151,11 +152,15 @@ export default function EventDetails({
         </div>
         <div className="flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
           <EditableTextArea
-            value={event.description || "No description provided"}
+            value={
+              variables?.description ||
+              event.description ||
+              "No description provided"
+            }
             isPending={isPending}
             onSave={handleSaveDescription}
           >
-            <h2 className="mb-2 text-xl font-semibold">Description</h2>
+            <h2 className="text-xl font-semibold">Description</h2>
           </EditableTextArea>
           {/* {event.description ? (
             <p className="text-muted-foreground">{event.description}</p>

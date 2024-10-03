@@ -88,6 +88,7 @@ export async function updateEvent(
     location: string;
     eventDate: Date;
     groupId: string;
+    description: string;
   },
 ) {
   await db.update(events).set(data).where(eq(events.eventId, eventId));
