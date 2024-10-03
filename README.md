@@ -18,7 +18,7 @@ TODO
   - [x] Event details improve UI
   - [o] Event details edit
     - [x] Title / Date / Location
-    - [ ] Description
+    - [x] Description
     - [ ] Limit to admin (creator for now)
   - [ ] Delete event
 - [ ] Edit Group
@@ -27,3 +27,4 @@ TODO
   - [ ] add search
   - [ ] add filters
 - [ ] Find a way to link events between them (weekend / festival)
+- [ ] Participants on event cards
