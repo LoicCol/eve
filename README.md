@@ -20,9 +20,9 @@ TODO
   - [x] Description
 - [x] Delete event
 - [x] Edit Group
-
   - [x] Title
   - [x] Description
+- [x] Delete group
 
 - [ ] Limit edition to admin (creator for now)
 - [ ] List events of all groups i'm in
@@ -33,4 +33,3 @@ TODO
 - [o] responsiveness
   - [x] usage of Drawer
   - [ ] group details
-- [ ] Delete group

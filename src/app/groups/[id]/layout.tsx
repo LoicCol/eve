@@ -5,6 +5,8 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
 export default function Layout({
   children,
   events,
@@ -16,7 +18,10 @@ export default function Layout({
 }) {
   return (
     <>
-      <ResizablePanelGroup direction="horizontal" className="rounded-lg border">
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="rounded-lg border sm:hidden"
+      >
         <ResizablePanel className="p-4" defaultSize={25}>
           {children}
           {modal}
@@ -26,6 +31,18 @@ export default function Layout({
           <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
         </ResizablePanel>
       </ResizablePanelGroup>
+      <div className="md:hidden">
+        {children}
+        <Sheet>
+          <SheetTrigger>
+            <button className="btn">Open Sheet</button>
+          </SheetTrigger>
+          <SheetContent>
+            {modal}
+            {events}
+          </SheetContent>
+        </Sheet>
+      </div>
     </>
   );
 }
