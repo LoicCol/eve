@@ -22,8 +22,9 @@ TODO
   - [x] Description
   - [ ] Limit to admin (creator for now)
 - [x] Delete event
-- [ ] Edit Group
-  - [ ] Title / Description
+- [o] Edit Group
+  - [x] Title
+  - [ ] Description
 - [ ] List events of all groups i'm in
   - [ ] add search
   - [ ] add filters
