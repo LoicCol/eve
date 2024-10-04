@@ -9,11 +9,11 @@ export default async function GroupList() {
   const groups = await getGroups();
 
   return (
-    <div className="mt-4 flex overflow-hidden">
+    <div className="mt-4 flex overflow-hidden rounded-lg border border-dashed border-stone-300">
       {groups.length === 0 ? (
         <p className="text-muted-foreground">No groups found.</p>
       ) : (
-        <Table className="min-w-full divide-y divide-gray-200 rounded-lg border border-dashed border-stone-300">
+        <Table className="min-w-full divide-y divide-gray-200">
           <TableBody>
             {groups.map((group) => (
               <Link
