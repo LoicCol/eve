@@ -53,7 +53,6 @@ export default function CreateEventForm() {
   });
 
   const onSubmit = (data: CreateEventFormFields) => {
-    console.log(data);
     startTransition(() => {
       return mutate(data);
     });
