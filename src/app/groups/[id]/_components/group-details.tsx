@@ -6,6 +6,7 @@ import JoinButton from "./join-button";
 import { currentUser } from "@clerk/nextjs/server";
 import { Fragment } from "react";
 import GroupDetailsName from "./group-details-name";
+import GroupDetailsDescription from "./group-details-description";
 
 export default async function GroupDetails({ groupId }: { groupId: string }) {
   const [group, members, currUser] = await Promise.all([
@@ -29,14 +30,10 @@ export default async function GroupDetails({ groupId }: { groupId: string }) {
       </div>
 
       <div className="mt-6">
-        {group.description ? (
-          <p className="text-muted-foreground">{group.description}</p>
-        ) : (
-          <i className="text-muted-foreground">No description</i>
-        )}
+        <GroupDetailsDescription {...group} />
       </div>
 
-      <div className="mt-4">
+      <div className="mt-6">
         <p className="pr-2 text-muted-foreground">Created by:</p>
         <div className="flex items-center gap-2">
           <Avatar>

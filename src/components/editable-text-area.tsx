@@ -5,19 +5,19 @@ import { Check, Pencil, Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "./ui/textarea";
 
-interface EditableTextAreaProps {
+interface EditableTextareaProps {
   value: string;
   onSave: (value: string) => void;
   isPending: boolean;
   children?: React.ReactNode;
 }
 
-export default function EditableTextArea({
+export default function EditableTextarea({
   value = "",
   onSave,
   isPending,
   children,
-}: EditableTextAreaProps) {
+}: EditableTextareaProps) {
   const [newValue, setNewValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -52,7 +52,7 @@ export default function EditableTextArea({
       {!isEditing && (
         <div className="flex-1 overflow-auto">
           <p
-            className={`mt-2 whitespace-pre-line ${!value && "italic text-muted-foreground"}`}
+            className={`whitespace-pre-line ${!value && "italic text-muted-foreground"}`}
           >
             {value || "No description provided"}
           </p>

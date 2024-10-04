@@ -170,3 +170,17 @@ export async function editGroupName(groupId: string, groupName: string) {
 
   revalidatePath(`/groups/${groupId}`);
 }
+
+export async function editGroupDescription(
+  groupId: string,
+  description: string,
+) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  await editGroupQuery(groupId, {
+    description,
+  });
+
+  revalidatePath(`/groups/${groupId}`);
+}
