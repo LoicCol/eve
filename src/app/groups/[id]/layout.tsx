@@ -18,28 +18,31 @@ export default function Layout({
 }) {
   return (
     <>
-      <ResizablePanelGroup
-        direction="horizontal"
-        className="rounded-lg border sm:hidden"
-      >
-        <ResizablePanel className="p-4" defaultSize={25}>
-          {children}
-          {modal}
-        </ResizablePanel>
-        <ResizableHandle />
-        <ResizablePanel className="flex flex-col p-2" defaultSize={75}>
-          <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
-        </ResizablePanel>
-      </ResizablePanelGroup>
+      <div className="hidden md:block">
+        <ResizablePanelGroup
+          direction="horizontal"
+          className="rounded-lg border"
+        >
+          <ResizablePanel className="p-4" defaultSize={25}>
+            {children}
+            {modal}
+          </ResizablePanel>
+          <ResizableHandle />
+          <ResizablePanel className="flex flex-col p-2" defaultSize={75}>
+            <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
       <div className="md:hidden">
-        {children}
+        {events}
+
         <Sheet>
           <SheetTrigger>
             <button className="btn">Open Sheet</button>
           </SheetTrigger>
-          <SheetContent>
+          <SheetContent className="w-svw">
             {modal}
-            {events}
+            {children}
           </SheetContent>
         </Sheet>
       </div>

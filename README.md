@@ -24,12 +24,12 @@ TODO
   - [x] Description
 - [x] Delete group
 
+- [o] responsiveness
+  - [x] usage of Drawer
+  - [o] group details
 - [ ] Limit edition to admin (creator for now)
 - [ ] List events of all groups i'm in
   - [ ] add search
   - [ ] add filters
 - [ ] Find a way to link events between them (weekend / festival)
 - [ ] Participants on event cards
-- [o] responsiveness
-  - [x] usage of Drawer
-  - [o] group details
