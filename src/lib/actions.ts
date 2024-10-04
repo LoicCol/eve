@@ -11,6 +11,7 @@ import {
   updateEvent,
   deleteUsersEvent,
   deleteEvent as deleteEventQuery,
+  editGroup as editGroupQuery,
 } from "@/server/queries";
 import {
   CreateEventFormFields,
@@ -157,4 +158,15 @@ export async function deleteEvent(eventId: string) {
   await deleteEventQuery(eventId);
 
   revalidatePath("/events");
+}
+
+export async function editGroupName(groupId: string, groupName: string) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  await editGroupQuery(groupId, {
+    groupName,
+  });
+
+  revalidatePath(`/groups/${groupId}`);
 }

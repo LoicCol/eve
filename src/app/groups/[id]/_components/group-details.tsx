@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import JoinButton from "./join-button";
 import { currentUser } from "@clerk/nextjs/server";
 import { Fragment } from "react";
+import GroupDetailsName from "./group-details-name";
 
 export default async function GroupDetails({ groupId }: { groupId: string }) {
   const [group, members, currUser] = await Promise.all([
@@ -23,7 +24,7 @@ export default async function GroupDetails({ groupId }: { groupId: string }) {
   return (
     <Fragment>
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold">{group.groupName}</h1>
+        <GroupDetailsName {...group} />
         <JoinButton groupId={groupId} hasJoined={hasJoined} />
       </div>
 

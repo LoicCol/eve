@@ -54,3 +54,10 @@ export async function removeUserGroup(userId: string, groupId: string) {
     .delete(userGroups)
     .where(and(eq(userGroups.userId, userId), eq(userGroups.groupId, groupId)));
 }
+
+export async function editGroup(
+  groupId: string,
+  data: { groupName?: string; description?: string },
+) {
+  await db.update(groups).set(data).where(eq(groups.groupId, groupId));
+}

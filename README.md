@@ -15,13 +15,13 @@ TODO
 - [x] Deployment on Vercel
 - [x] Event details
 
-  - [x] Event details improve UI
+- [x] Event details improve UI
 
 - [o] Event details edit
   - [x] Title / Date / Location
   - [x] Description
   - [ ] Limit to admin (creator for now)
-- [ ] Delete event
+- [x] Delete event
 - [ ] Edit Group
   - [ ] Title / Description
 - [ ] List events of all groups i'm in
@@ -29,6 +29,7 @@ TODO
   - [ ] add filters
 - [ ] Find a way to link events between them (weekend / festival)
 - [ ] Participants on event cards
-- [ ] responsiveness
-  - [ ] usage of Drawer
+- [o] responsiveness
+  - [x] usage of Drawer
+  - [ ] group details
 - [ ] Delete group
