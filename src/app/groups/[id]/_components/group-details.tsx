@@ -36,10 +36,6 @@ export default async function GroupDetails({ groupId }: { groupId: string }) {
       <div className="mt-6">
         <p className="pr-2 text-muted-foreground">Created by:</p>
         <div className="flex items-center gap-2">
-          <Avatar>
-            <AvatarImage src={user?.image || ""} />
-            <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
-          </Avatar>
           <p className="text-foreground">{user?.name}</p>
         </div>
       </div>

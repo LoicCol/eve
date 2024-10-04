@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { joinEvent, editEvent, leaveEvent } from "@/lib/actions";
 import ParticipantsList from "@/components/participant-list";
 import { CalendarIcon, Loader, MapPinIcon, UserIcon } from "lucide-react";
@@ -140,10 +139,6 @@ export default function EventDetails({
             <div className="flex items-center">
               <UserIcon className="mr-2 h-5 w-5 text-muted-foreground" />
               <span className="mr-2 text-muted-foreground">Created by:</span>
-              <Avatar className="mr-2 h-6 w-6">
-                <AvatarImage src={creator?.image || ""} />
-                <AvatarFallback>{creator?.name?.charAt(0)}</AvatarFallback>
-              </Avatar>
               <span>{creator?.name}</span>
             </div>
             <div className="space-y-2">
