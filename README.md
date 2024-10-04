@@ -14,17 +14,17 @@ TODO
   - [x] Syjc user updates on production
 - [x] Deployment on Vercel
 - [x] Event details
-
 - [x] Event details improve UI
-
-- [o] Event details edit
+- [x] Event details edit
   - [x] Title / Date / Location
   - [x] Description
-  - [ ] Limit to admin (creator for now)
 - [x] Delete event
-- [o] Edit Group
+- [x] Edit Group
+
   - [x] Title
-  - [ ] Description
+  - [x] Description
+
+- [ ] Limit edition to admin (creator for now)
 - [ ] List events of all groups i'm in
   - [ ] add search
   - [ ] add filters
