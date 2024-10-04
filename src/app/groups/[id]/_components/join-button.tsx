@@ -31,7 +31,10 @@ export default function JoinButton({ groupId, hasJoined }: JoinButtonProps) {
   );
 
   return (
-    <animated.div style={{ width, overflow: "hidden" }}>
+    <animated.div
+      style={{ width, overflow: "hidden" }}
+      className="flex-shrink-0"
+    >
       <Button
         className="flex items-center p-0"
         onClick={handleJoin}

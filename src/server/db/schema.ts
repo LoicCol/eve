@@ -25,7 +25,9 @@ export const groups = createTable("groups", {
 
 export const events = createTable("events", {
   eventId: uuid("event_id").defaultRandom().primaryKey(),
-  groupId: uuid("group_id").references(() => groups.groupId),
+  groupId: uuid("group_id").references(() => groups.groupId, {
+    onDelete: "cascade",
+  }),
   eventName: text("name").notNull(),
   description: text("description"),
   location: text("location").notNull(),

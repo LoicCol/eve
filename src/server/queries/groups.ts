@@ -61,3 +61,7 @@ export async function editGroup(
 ) {
   await db.update(groups).set(data).where(eq(groups.groupId, groupId));
 }
+
+export async function deleteGroup(groupId: string) {
+  await db.delete(groups).where(eq(groups.groupId, groupId));
+}
