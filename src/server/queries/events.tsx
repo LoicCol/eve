@@ -93,3 +93,7 @@ export async function updateEvent(
 ) {
   await db.update(events).set(data).where(eq(events.eventId, eventId));
 }
+
+export async function deleteEvent(eventId: string) {
+  await db.delete(events).where(eq(events.eventId, eventId));
+}

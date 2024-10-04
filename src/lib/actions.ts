@@ -10,6 +10,7 @@ import {
   getEvent,
   updateEvent,
   deleteUsersEvent,
+  deleteEvent as deleteEventQuery,
 } from "@/server/queries";
 import {
   CreateEventFormFields,
@@ -144,4 +145,13 @@ export async function editEvent(
   });
 
   revalidatePath(`/groups/${group}/events/${eventId}`);
+}
+
+export async function deleteEvent(eventId: string) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  await deleteEventQuery(eventId);
+
+  revalidatePath("/events");
 }

@@ -14,13 +14,14 @@ TODO
   - [x] Syjc user updates on production
 - [x] Deployment on Vercel
 - [x] Event details
+
   - [x] Event details improve UI
 
- - [o] Event details edit
-   - [x] Title / Date / Location
-   - [x] Description
-   - [ ] Limit to admin (creator for now)
- - [ ] Delete event
+- [o] Event details edit
+  - [x] Title / Date / Location
+  - [x] Description
+  - [ ] Limit to admin (creator for now)
+- [ ] Delete event
 - [ ] Edit Group
   - [ ] Title / Description
 - [ ] List events of all groups i'm in
@@ -28,5 +29,6 @@ TODO
   - [ ] add filters
 - [ ] Find a way to link events between them (weekend / festival)
 - [ ] Participants on event cards
-- [ ] responsiveness 
-- [ ] Delete group 
+- [ ] responsiveness
+  - [ ] usage of Drawer
+- [ ] Delete group
