@@ -18,6 +18,6 @@ export default async function GroupEvents({ groupId }: { groupId: string }) {
       ))}
     </div>
   ) : (
-    <p className="p-2 italic text-muted-foreground">No events found</p>
+    <p className="p-2 px-6 italic text-muted-foreground">No events found</p>
   );
 }

@@ -32,4 +32,4 @@ TODO
 - [ ] Participants on event cards
 - [o] responsiveness
   - [x] usage of Drawer
-  - [ ] group details
+  - [o] group details
