@@ -21,6 +21,7 @@ import {
 import { encode } from "@/util/shorten-uuid";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function getGroupName(groupId: string) {
   const user = auth();
@@ -47,16 +48,17 @@ export async function createEvent(formData: CreateEventFormFields) {
   const validationResult = createEventFormSchema.safeParse(formData);
 
   if (!validationResult.success) {
-    return {
+    throw {
       errors: validationResult.error.flatten().fieldErrors,
     };
   }
 
   const { name, location, date, group } = validationResult.data;
 
-  await insertEvent(name, location, date, group, user.userId);
+  const event = await insertEvent(name, location, date, group, user.userId);
 
   revalidatePath("/events");
+  redirect(`/groups/${encode(group)}/events/${encode(event?.eventId || "")}`);
 }
 
 export async function createGroup(formData: CreateGroupFormFields) {
@@ -73,9 +75,10 @@ export async function createGroup(formData: CreateGroupFormFields) {
 
   const { name } = validationResult.data;
 
-  await insertGroup(name, user.userId);
+  const group = await insertGroup(name, user.userId);
 
   revalidatePath("/groups");
+  redirect(`/groups/${encode(group?.groupId || "")}`);
 }
 
 export async function joinEvent(

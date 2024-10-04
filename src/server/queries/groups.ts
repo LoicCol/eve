@@ -29,11 +29,16 @@ export async function getMembers(groupId: string) {
 }
 
 export async function insertGroup(groupName: string, createdBy: string) {
-  await db.insert(groups).values({
-    groupName,
-    createdBy,
-    createdAt: new Date(),
-  });
+  const result = await db
+    .insert(groups)
+    .values({
+      groupName,
+      createdBy,
+      createdAt: new Date(),
+    })
+    .returning({ groupId: groups.groupId });
+
+  return result[0];
 }
 
 export async function insertUserGroup(userId: string, groupId: string) {

@@ -32,14 +32,19 @@ export async function insertEvent(
   groupId: string,
   createdBy: string,
 ) {
-  await db.insert(events).values({
-    eventName,
-    location,
-    eventDate: new Date(eventDate),
-    createdBy,
-    createdAt: new Date(),
-    groupId,
-  });
+  const event = await db
+    .insert(events)
+    .values({
+      eventName,
+      location,
+      eventDate: new Date(eventDate),
+      createdBy,
+      createdAt: new Date(),
+      groupId,
+    })
+    .returning({ eventId: events.eventId });
+
+  return event[0];
 }
 
 export async function insertUserEvent(

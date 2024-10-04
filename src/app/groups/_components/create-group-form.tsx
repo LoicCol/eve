@@ -14,25 +14,25 @@ import {
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { createGroup } from "@/lib/actions";
-import { useRouter } from "next/navigation";
+import { startTransition } from "react";
+import React from "react";
 
 type FormData = {
   name: string;
 };
 
 export default function CreateGroupForm() {
-  const router = useRouter();
   const form = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
     try {
-      await createGroup(data);
+      startTransition(async () => {
+        await createGroup(data);
+      });
       toast({
         title: "Group created",
         description: "Your new group has been successfully created.",
       });
-      router.back();
-      form.reset();
     } catch (error: unknown) {
       toast({
         title: "Error",

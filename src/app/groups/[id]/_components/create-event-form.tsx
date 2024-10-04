@@ -14,50 +14,48 @@ import {
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { createEvent } from "@/lib/actions";
-import { CreateEventFormFields, createEventFormSchema } from "@/types";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useParams, useRouter } from "next/navigation";
+import { CreateEventFormFields } from "@/types";
+import { useParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { Loader } from "lucide-react";
 import { decode } from "@/util/shorten-uuid";
-import { Fragment } from "react";
+import { Fragment, startTransition } from "react";
 
 export default function CreateEventForm() {
-  const router = useRouter();
   const { id } = useParams();
 
   const form = useForm<CreateEventFormFields>({
-    resolver: zodResolver(createEventFormSchema),
     defaultValues: {
       name: "",
       location: "",
       date: "",
       group: decode(id as string),
+      description: "",
     },
   });
 
   const { mutate, isPending } = useMutation({
     mutationFn: createEvent,
+    onSuccess: () => {
+      toast({
+        title: "Event created",
+        description: "Your new event has been successfully created.",
+      });
+    },
+    onError: (error: unknown) => {
+      toast({
+        title: "Error",
+        description: `There was a problem creating your event. ${error}.`,
+        variant: "destructive",
+      });
+      console.error(error);
+    },
   });
 
   const onSubmit = (data: CreateEventFormFields) => {
-    mutate(data, {
-      onSuccess: () => {
-        toast({
-          title: "Event created",
-          description: "Your new event has been successfully created.",
-        });
-        router.back();
-        form.reset();
-      },
-      onError: (error: unknown) => {
-        toast({
-          title: "Error",
-          description: `There was a problem creating your event. ${error}.`,
-          variant: "destructive",
-        });
-        console.error(error);
-      },
+    console.log(data);
+    startTransition(() => {
+      return mutate(data);
     });
   };
 
