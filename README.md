@@ -27,6 +27,8 @@ TODO
 - [o] responsiveness
   - [x] usage of Drawer
   - [o] group details
+  - [ ] breadcrumb
+  - [ ] event details
 - [ ] Limit edition to admin (creator for now)
 - [ ] List events of all groups i'm in
   - [ ] add search
