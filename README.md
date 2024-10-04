@@ -13,17 +13,20 @@ TODO
   - [x] Auth
   - [x] Syjc user updates on production
 - [x] Deployment on Vercel
-
-- [o] Event details
+- [x] Event details
   - [x] Event details improve UI
-  - [o] Event details edit
-    - [x] Title / Date / Location
-    - [ ] Description
-    - [ ] Limit to admin (creator for now)
-  - [ ] Delete event
+
+ - [o] Event details edit
+   - [x] Title / Date / Location
+   - [x] Description
+   - [ ] Limit to admin (creator for now)
+ - [ ] Delete event
 - [ ] Edit Group
   - [ ] Title / Description
 - [ ] List events of all groups i'm in
   - [ ] add search
   - [ ] add filters
 - [ ] Find a way to link events between them (weekend / festival)
+- [ ] Participants on event cards
+- [ ] responsiveness 
+- [ ] Delete group 
