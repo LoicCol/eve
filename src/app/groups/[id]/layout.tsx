@@ -18,7 +18,7 @@ export default function Layout({
 }) {
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden w-full md:block">
         <ResizablePanelGroup
           direction="horizontal"
           className="rounded-lg border"
