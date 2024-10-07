@@ -2,30 +2,37 @@
 
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { Dialog, DialogOverlay, DialogContent } from "./ui/dialog";
-import { usePathname, useRouter } from "next/navigation";
 import { Drawer, DrawerContent } from "./ui/drawer";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Modal({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState<boolean>(false);
   const router = useRouter();
   const pathname = usePathname();
 
+  const close = (open: boolean) => {
+    if (!open) {
+      setOpen(false);
+      setTimeout(() => {
+        router.back();
+      }, 300);
+    }
+  };
+
   useEffect(() => {
-    if (!pathname.includes("create")) {
+    if (pathname.includes("create")) {
+      setOpen(true);
+    } else {
       setOpen(false);
     }
-  }, [pathname]);
-
-  const handleOpenChange = () => {
-    router.back();
-  };
+  }, [pathname, setOpen]);
 
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
     return (
-      <Dialog defaultOpen open={open} onOpenChange={handleOpenChange}>
+      <Dialog defaultOpen open={open} onOpenChange={close}>
         <DialogOverlay className="bg-white/5">
           <DialogContent>{children}</DialogContent>
         </DialogOverlay>
@@ -34,7 +41,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <Drawer open={open} onOpenChange={handleOpenChange}>
+    <Drawer open={open} onOpenChange={close}>
       <DrawerContent>{children}</DrawerContent>
     </Drawer>
   );
