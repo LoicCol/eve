@@ -15,7 +15,7 @@ import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { createEvent } from "@/lib/actions";
 import { CreateEventFormFields } from "@/types";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { Loader } from "lucide-react";
 import { decode } from "@/util/shorten-uuid";
@@ -23,7 +23,6 @@ import { Fragment, startTransition } from "react";
 
 export default function CreateEventForm() {
   const { id } = useParams();
-  const router = useRouter();
 
   const form = useForm<CreateEventFormFields>({
     defaultValues: {
