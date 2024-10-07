@@ -26,8 +26,8 @@ interface EventBreadcrumbProps {
 export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  return (
-    isDesktop && (
+  if (!isDesktop) {
+    return (
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem className="p-0">
@@ -40,35 +40,52 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
               </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
-
-          {user && (
-            <>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem className="flex items-center gap-2">
-                <Avatar className="h-6 w-6">
-                  <AvatarImage src={user?.image || ""} alt="user-image" />
-                  <AvatarFallback>
-                    <Loader className="h-4 w-4 animate-spin" />
-                  </AvatarFallback>
-                </Avatar>
-                <Button
-                  variant="link"
-                  className="flex items-center p-0 text-foreground after:bg-primary hover:text-primary"
-                  asChild
-                >
-                  <Link href="/groups/all" className="capitalize">
-                    {`${user?.name}'s groups`}
-                  </Link>
-                </Button>
-              </BreadcrumbItem>
-            </>
-          )}
-
-          <GroupLink />
-
-          <EventLink />
         </BreadcrumbList>
       </Breadcrumb>
-    )
+    );
+  }
+
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem className="p-0">
+          <BreadcrumbLink asChild>
+            <Link
+              href="/"
+              className="text-xl font-bold text-primary transition-colors duration-300 ease-in-out"
+            >
+              Eve
+            </Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+
+        {user && (
+          <>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem className="flex items-center gap-2">
+              <Avatar className="h-6 w-6">
+                <AvatarImage src={user?.image || ""} alt="user-image" />
+                <AvatarFallback>
+                  <Loader className="h-4 w-4 animate-spin" />
+                </AvatarFallback>
+              </Avatar>
+              <Button
+                variant="link"
+                className="flex items-center p-0 text-foreground after:bg-primary hover:text-primary"
+                asChild
+              >
+                <Link href="/groups/all" className="capitalize">
+                  {`${user?.name}'s groups`}
+                </Link>
+              </Button>
+            </BreadcrumbItem>
+          </>
+        )}
+
+        <GroupLink />
+
+        <EventLink />
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 }

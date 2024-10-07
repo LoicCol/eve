@@ -29,7 +29,7 @@ export default function EventsHeader({
     props: AnimatedProps<{ style: CSSProperties }>,
   ) => React.ReactElement)[] = [
     ({ style }) => (
-      <animated.div className="flex gap-2" key="1" style={style}>
+      <animated.div className="gap-2 md:flex" key="1" style={style}>
         <Button variant="outline">
           <Group className="mr-2 h-4 w-4" /> Link Events
         </Button>
@@ -64,10 +64,20 @@ export default function EventsHeader({
 
   return (
     <>
-      <div className="md:hidden">
-        <GroupDetailsName groupId={groupId} groupName={groupName || ""} />
-      </div>
-      <div className="mb-2 flex items-center justify-between pl-6 pr-2 pt-2">
+      <GroupDetailsName groupId={groupId} groupName={groupName || ""} />
+      <Button variant="link" className="p-0" asChild>
+        <Link href={`/groups/${groupId}`}>
+          <CalendarRange className="mr-2 h-4 w-4" />
+          <h2 className="">Events</h2>
+        </Link>
+      </Button>
+
+      {transitions((style, index) => {
+        const AnimatedButton = buttons[index];
+        if (!AnimatedButton) return null;
+        return <AnimatedButton style={style} />;
+      })}
+      <div className="mb-2 hidden items-center justify-between pl-6 pr-2 pt-2 md:flex">
         <Button variant="link" className="p-0" asChild>
           <Link href={`/groups/${groupId}`}>
             <CalendarRange className="mr-2 h-4 w-4" />

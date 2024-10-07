@@ -5,17 +5,30 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import EventsHeader from "./_components/events-header";
+import { getGroup } from "@/server/queries";
+import { decode } from "@/util/shorten-uuid";
+import { Info } from "lucide-react";
 
-export default function Layout({
+export default async function Layout({
   children,
   events,
   modal,
+  params,
 }: {
   children: React.ReactNode;
   events: React.ReactNode;
   modal: React.ReactNode;
+  params: { id: string };
 }) {
+  const group = await getGroup(decode(params.id));
+
   return (
     <>
       <div className="hidden w-full md:block">
@@ -33,13 +46,17 @@ export default function Layout({
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>
-      <div className="md:hidden">
-        {events}
-
+      <div className="w-full px-4 md:hidden">
         <Sheet>
-          <SheetTrigger>
-            <button className="btn">Open Sheet</button>
-          </SheetTrigger>
+          <SheetHeader className="grid grid-cols-2">
+            <SheetTrigger>
+              <button className="btn">
+                <Info />
+              </button>
+            </SheetTrigger>
+            <EventsHeader groupId={params.id} groupName={group?.groupName} />
+          </SheetHeader>
+          {events}
           <SheetContent className="w-svw">
             {modal}
             {children}
