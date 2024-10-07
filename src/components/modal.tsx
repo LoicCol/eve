@@ -3,7 +3,7 @@
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { Dialog, DialogOverlay, DialogContent } from "./ui/dialog";
 import { Drawer, DrawerContent } from "./ui/drawer";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function Modal({ children }: { children: React.ReactNode }) {
