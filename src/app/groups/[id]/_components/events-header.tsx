@@ -11,8 +11,16 @@ import {
   useTransition,
 } from "@react-spring/web";
 import { CSSProperties, useEffect, useState } from "react";
+import GroupDetailsName from "./group-details-name";
+import React from "react";
 
-export default function EventsHeader({ groupId }: { groupId: string }) {
+export default function EventsHeader({
+  groupId,
+  groupName,
+}: {
+  groupId: string;
+  groupName?: string;
+}) {
   const [index, set] = useState(0);
   const pathname = usePathname();
   const isEventDetails = pathname.includes("events");
@@ -55,19 +63,24 @@ export default function EventsHeader({ groupId }: { groupId: string }) {
   }, [isEventDetails]);
 
   return (
-    <div className="mb-2 flex items-center justify-between pl-6 pr-2 pt-2">
-      <Button variant="link" className="p-0" asChild>
-        <Link href={`/groups/${groupId}`}>
-          <CalendarRange className="mr-2 h-4 w-4" />
-          <h2 className="">Events</h2>
-        </Link>
-      </Button>
+    <>
+      <div className="md:hidden">
+        <GroupDetailsName groupId={groupId} groupName={groupName || ""} />
+      </div>
+      <div className="mb-2 flex items-center justify-between pl-6 pr-2 pt-2">
+        <Button variant="link" className="p-0" asChild>
+          <Link href={`/groups/${groupId}`}>
+            <CalendarRange className="mr-2 h-4 w-4" />
+            <h2 className="">Events</h2>
+          </Link>
+        </Button>
 
-      {transitions((style, index) => {
-        const AnimatedButton = buttons[index];
-        if (!AnimatedButton) return null;
-        return <AnimatedButton style={style} />;
-      })}
-    </div>
+        {transitions((style, index) => {
+          const AnimatedButton = buttons[index];
+          if (!AnimatedButton) return null;
+          return <AnimatedButton style={style} />;
+        })}
+      </div>
+    </>
   );
 }
