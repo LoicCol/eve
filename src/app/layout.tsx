@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-screen">
       <body className={`${inter.className} h-screen`}>
-        <div className="h-screen py-4">
+        <div className="h-screen md:py-4">
           <Providers>
             <Header />
             <main
