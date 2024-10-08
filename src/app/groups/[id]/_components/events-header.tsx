@@ -80,7 +80,7 @@ export default function EventsHeader({
       >
         <Link href={`/groups/${groupId}`}>
           <CalendarRange className="mr-2 h-4 w-4" />
-          <h2 className="">All Events</h2>
+          <h2 className="">Group&apos;s Events</h2>
         </Link>
       </Button>
 
