@@ -23,12 +23,11 @@ TODO
   - [x] Title
   - [x] Description
 - [x] Delete group
-
-- [o] responsiveness
+- [x] responsiveness
   - [x] usage of Drawer
   - [o] group details
-  - [ ] breadcrumb
-  - [ ] event details
+  - [x] breadcrumb
+  - [x] event details
 - [ ] Limit edition to admin (creator for now)
 - [ ] List events of all groups i'm in
   - [ ] add search

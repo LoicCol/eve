@@ -37,7 +37,7 @@ export default async function Layout({
       {/* Mobile */}
       <Tabs
         defaultValue="details"
-        className="flex w-full flex-col px-4 md:hidden"
+        className="flex w-full flex-col px-4 pb-4 md:hidden"
       >
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="details">Details</TabsTrigger>

@@ -28,14 +28,14 @@ export default function EventsHeader({
   ) => React.ReactElement)[] = [
     ({ style }) => (
       <animated.div
-        className={`gap-2 md:flex ${isEventDetails && "hidden"}`}
+        className={`justify-between gap-2 md:flex ${isEventDetails ? "hidden" : "flex"}`}
         key="1"
         style={style}
       >
-        <Button variant="link">
+        <Button variant="outline" className="">
           <Group className="mr-2 h-4 w-4" /> Link Events
         </Button>
-        <Button variant="link" asChild>
+        <Button asChild className="">
           <Link href={`/groups/${groupId}/create-event`}>
             <Calendar className="mr-2 h-4 w-4" />
             Create Event
@@ -65,7 +65,9 @@ export default function EventsHeader({
   }, [isEventDetails]);
 
   return (
-    <div className="mb-2 items-center justify-between pl-6 pr-2 md:flex md:pt-2">
+    <div
+      className={`mb-2 items-center justify-between md:flex md:pl-6 md:pr-2 ${!isEventDetails && "pt-2"}`}
+    >
       {/* Desktop */}
       <Button variant="link" className={`hidden p-0 md:flex`} asChild>
         <Link href={`/groups/${groupId}`}>

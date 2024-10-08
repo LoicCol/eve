@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { createGroup } from "@/lib/actions";
 import { startTransition } from "react";
 import React from "react";
@@ -29,16 +29,9 @@ export default function CreateGroupForm() {
       startTransition(async () => {
         await createGroup(data);
       });
-      toast({
-        title: "Group created",
-        description: "Your new group has been successfully created.",
-      });
+      toast.success("Your new group has been successfully created.");
     } catch (error: unknown) {
-      toast({
-        title: "Error",
-        description: `There was a problem creating your group. ${error}.`,
-        variant: "destructive",
-      });
+      toast.error(`There was a problem creating your group. ${error}.`);
     }
   };
 

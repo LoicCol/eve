@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { createEvent } from "@/lib/actions";
 import { CreateEventFormFields } from "@/types";
 import { useParams } from "next/navigation";
@@ -37,17 +37,10 @@ export default function CreateEventForm() {
   const { mutate, isPending } = useMutation({
     mutationFn: createEvent,
     onSuccess: () => {
-      toast({
-        title: "Event created",
-        description: "Your new event has been successfully created.",
-      });
+      toast.success("Your new event has been successfully created.");
     },
     onError: (error: unknown) => {
-      toast({
-        title: "Error",
-        description: `There was a problem creating your event. ${error}.`,
-        variant: "destructive",
-      });
+      toast.error(`There was a problem creating your event. ${error}.`);
       console.error(error);
     },
   });

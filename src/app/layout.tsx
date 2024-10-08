@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 import Providers from "@/util/providers";
 import Header from "@/components/header";
 
@@ -27,7 +27,7 @@ export default function RootLayout({
             >
               {children}
             </main>
-            <Toaster />
+            <Toaster richColors position="top-right" closeButton />
           </Providers>
         </div>
       </body>

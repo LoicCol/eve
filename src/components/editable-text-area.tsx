@@ -63,7 +63,7 @@ export default function EditableTextarea({
           value={newValue}
           onChange={(e) => setNewValue(e.target.value)}
           autoFocus
-          className="flex-1 resize-none"
+          className="flex-1 resize-none focus-visible:border-primary"
         />
       )}
     </div>
