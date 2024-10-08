@@ -27,7 +27,11 @@ export default function EventsHeader({
     props: AnimatedProps<{ style: CSSProperties }>,
   ) => React.ReactElement)[] = [
     ({ style }) => (
-      <animated.div className="gap-2 md:flex" key="1" style={style}>
+      <animated.div
+        className={`gap-2 md:flex ${isEventDetails && "hidden"}`}
+        key="1"
+        style={style}
+      >
         <Button variant="link">
           <Group className="mr-2 h-4 w-4" /> Link Events
         </Button>
@@ -60,8 +64,6 @@ export default function EventsHeader({
     set(1);
   }, [isEventDetails]);
 
-  const allEventsNeeded = pathname.includes("events");
-
   return (
     <div className="mb-2 items-center justify-between pl-6 pr-2 md:flex md:pt-2">
       {/* Desktop */}
@@ -75,7 +77,7 @@ export default function EventsHeader({
       {/* Mobile */}
       <Button
         variant="link"
-        className={`p-0 md:hidden ${!allEventsNeeded && "hidden"}`}
+        className={`p-0 md:hidden ${!isEventDetails && "hidden"}`}
         asChild
       >
         <Link href={`/groups/${groupId}`}>
