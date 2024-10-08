@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, CalendarRange, Group } from "lucide-react";
+import { Calendar, CalendarRange, Group, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,6 +13,7 @@ import {
 import { CSSProperties, useEffect, useState } from "react";
 import GroupDetailsName from "./group-details-name";
 import React from "react";
+import { SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 
 export default function EventsHeader({
   groupId,
@@ -30,10 +31,10 @@ export default function EventsHeader({
   ) => React.ReactElement)[] = [
     ({ style }) => (
       <animated.div className="gap-2 md:flex" key="1" style={style}>
-        <Button variant="outline">
+        <Button variant="link">
           <Group className="mr-2 h-4 w-4" /> Link Events
         </Button>
-        <Button asChild>
+        <Button variant="link" asChild>
           <Link href={`/groups/${groupId}/create-event`}>
             <Calendar className="mr-2 h-4 w-4" />
             Create Event
@@ -63,9 +64,8 @@ export default function EventsHeader({
   }, [isEventDetails]);
 
   return (
-    <>
-      <GroupDetailsName groupId={groupId} groupName={groupName || ""} />
-      <Button variant="link" className="p-0" asChild>
+    <div className="mb-2 flex items-center justify-between pl-6 pr-2 pt-2">
+      <Button variant="link" className="hidden p-0 md:block" asChild>
         <Link href={`/groups/${groupId}`}>
           <CalendarRange className="mr-2 h-4 w-4" />
           <h2 className="">Events</h2>
@@ -77,20 +77,6 @@ export default function EventsHeader({
         if (!AnimatedButton) return null;
         return <AnimatedButton style={style} />;
       })}
-      <div className="mb-2 hidden items-center justify-between pl-6 pr-2 pt-2 md:flex">
-        <Button variant="link" className="p-0" asChild>
-          <Link href={`/groups/${groupId}`}>
-            <CalendarRange className="mr-2 h-4 w-4" />
-            <h2 className="">Events</h2>
-          </Link>
-        </Button>
-
-        {transitions((style, index) => {
-          const AnimatedButton = buttons[index];
-          if (!AnimatedButton) return null;
-          return <AnimatedButton style={style} />;
-        })}
-      </div>
-    </>
+    </div>
   );
 }
