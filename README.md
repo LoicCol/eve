@@ -36,3 +36,5 @@ TODO
 - [ ] Participants on event cards
 - [ ] enhance user tooltip
 - [ ] users group custom names 
+- [ ] comments section
+- [ ] only 1 person should be able to edit at a time (websocket?)
