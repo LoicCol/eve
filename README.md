@@ -34,3 +34,5 @@ TODO
   - [ ] add filters
 - [ ] Find a way to link events between them (weekend / festival)
 - [ ] Participants on event cards
+- [ ] enhance user tooltip
+- [ ] users group custom names 
