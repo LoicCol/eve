@@ -18,9 +18,22 @@ export async function getEvent(eventId: string) {
 }
 
 export async function getEventsForGroup(groupId: string) {
-  const eventsRes = await db.query.events.findMany({
-    where: eq(events.groupId, groupId),
-  });
+  const eventsRes = await db
+    .select({
+      eventId: events.eventId,
+      eventName: events.eventName,
+      description: events.description,
+      location: events.location,
+      eventDate: events.eventDate,
+      createdAt: events.createdAt,
+      createdBy: events.createdBy,
+      sectionId: events.sectionId,
+      groupId: events.groupId,
+      sectionName: eventSections.name,
+    })
+    .from(events)
+    .leftJoin(eventSections, eq(events.sectionId, eventSections.sectionId))
+    .where(eq(events.groupId, groupId));
 
   return eventsRes;
 }

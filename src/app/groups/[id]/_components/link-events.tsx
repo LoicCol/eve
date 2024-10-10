@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/form";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
+import { useMutation } from "@tanstack/react-query";
+import { createSectionAndLinkToEvent } from "@/lib/actions";
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -38,13 +40,21 @@ export default function LinkEvents({ events }: LinkEventsProps) {
     },
   });
 
+  const { mutate } = useMutation({
+    mutationFn: (data: z.infer<typeof FormSchema>) => {
+      return createSectionAndLinkToEvent(data.items, data.name);
+    },
+  });
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast("You submitted the following values:", {
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+    mutate(data, {
+      onSuccess: () => {
+        toast.success("Your events has been successfully linked.");
+      },
+      onError: (error: unknown) => {
+        toast.error(`There was a problem linking your events. ${error}.`);
+        console.error(error);
+      },
     });
   }
 
