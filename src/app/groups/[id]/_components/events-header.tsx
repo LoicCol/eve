@@ -32,8 +32,10 @@ export default function EventsHeader({
         key="1"
         style={style}
       >
-        <Button variant="outline" className="">
-          <Group className="mr-2 h-4 w-4" /> Link Events
+        <Button asChild variant="outline" className="">
+          <Link href={`/groups/${groupId}/link-events`}>
+            <Group className="mr-2 h-4 w-4" /> Link Events
+          </Link>
         </Button>
         <Button asChild className="">
           <Link href={`/groups/${groupId}/create-event`}>

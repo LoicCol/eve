@@ -21,7 +21,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    if (pathname.includes("create")) {
+    if (pathname.includes("create") || pathname.includes("link-events")) {
       setOpen(true);
     } else {
       setOpen(false);
