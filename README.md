@@ -25,7 +25,7 @@ TODO
 - [x] Delete group
 - [x] responsiveness
   - [x] usage of Drawer
-  - [o] group details
+  - [x] group details
   - [x] breadcrumb
   - [x] event details
 - [x] Find a way to link events between them (weekend / festival)
