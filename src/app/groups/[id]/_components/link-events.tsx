@@ -16,11 +16,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
+import { Input } from "@/components/ui/input";
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You have to select at least one item.",
   }),
+  name: z.string(),
 });
 
 interface LinkEventsProps {
@@ -31,7 +33,8 @@ export default function LinkEvents({ events }: LinkEventsProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      items: ["recents", "home"],
+      items: [],
+      name: "",
     },
   });
 
@@ -54,7 +57,7 @@ export default function LinkEvents({ events }: LinkEventsProps) {
           render={() => (
             <FormItem>
               <div className="mb-4">
-                <FormLabel className="text-base">Sidebar</FormLabel>
+                <FormLabel className="text-base">Link Events</FormLabel>
                 <FormDescription>
                   Select the events you want to link.
                 </FormDescription>
@@ -95,6 +98,19 @@ export default function LinkEvents({ events }: LinkEventsProps) {
                   }}
                 />
               ))}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Link Name</FormLabel>
+              <FormControl>
+                <Input type="text" {...field} />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
