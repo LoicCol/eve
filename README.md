@@ -28,13 +28,13 @@ TODO
   - [o] group details
   - [x] breadcrumb
   - [x] event details
+- [x] Find a way to link events between them (weekend / festival)
 - [ ] Limit edition to admin (creator for now)
 - [ ] List events of all groups i'm in
   - [ ] add search
   - [ ] add filters
-- [ ] Find a way to link events between them (weekend / festival)
 - [ ] Participants on event cards
 - [ ] enhance user tooltip
-- [ ] users group custom names 
+- [ ] users group custom names
 - [ ] comments section
 - [ ] only 1 person should be able to edit at a time (websocket?)
