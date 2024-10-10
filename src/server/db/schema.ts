@@ -28,6 +28,9 @@ export const events = createTable("events", {
   groupId: uuid("group_id").references(() => groups.groupId, {
     onDelete: "cascade",
   }),
+  sectionId: uuid("section_id").references(() => eventSections.sectionId, {
+    onDelete: "cascade",
+  }),
   eventName: text("name").notNull(),
   description: text("description"),
   location: text("location").notNull(),
@@ -68,3 +71,9 @@ export const userEvents = createTable(
     pk: primaryKey({ columns: [table.userId, table.eventId] }),
   }),
 );
+
+export const eventSections = createTable("event_sections", {
+  sectionId: uuid("section_id").defaultRandom().primaryKey(),
+  name: text("name").notNull(),
+  description: text("description"),
+});

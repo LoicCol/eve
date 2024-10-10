@@ -1,5 +1,12 @@
 import { relations } from "drizzle-orm";
-import { events, groups, userEvents, userGroups, users } from "./schema";
+import {
+  events,
+  eventSections,
+  groups,
+  userEvents,
+  userGroups,
+  users,
+} from "./schema";
 
 export const usersRelations = relations(users, ({ many }) => ({
   userGroups: many(userGroups),
@@ -13,6 +20,10 @@ export const groupsRelations = relations(groups, ({ many }) => ({
 
 export const eventsRelations = relations(events, ({ many }) => ({
   userEvents: many(userEvents),
+}));
+
+export const eventSectionsRelations = relations(eventSections, ({ many }) => ({
+  events: many(events),
 }));
 
 export const userGroupsRelations = relations(userGroups, ({ one }) => ({
