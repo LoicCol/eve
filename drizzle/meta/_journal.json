@@ -8,6 +8,13 @@
       "when": 1728046170221,
       "tag": "0000_loving_nebula",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1728570956768,
+      "tag": "0001_woozy_patch",
+      "breakpoints": true
     }
   ]
 }

@@ -1,9 +1,3 @@
-DROP TABLE IF EXISTS "eve_user_events";
-DROP TABLE IF EXISTS "eve_user_groups";
-DROP TABLE IF EXISTS "eve_users";
-DROP TABLE IF EXISTS "eve_events";
-DROP TABLE IF EXISTS "eve_groups";
-
 CREATE TABLE IF NOT EXISTS "eve_events" (
 	"event_id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"group_id" uuid,
