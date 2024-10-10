@@ -30,7 +30,7 @@ export default async function GroupEvents({ groupId }: { groupId: string }) {
     <div className="space-y-8 pt-2 md:p-2">
       {sortedSections.map((sectionName) => (
         <div key={sectionName}>
-          <h2 className="mb-4 text-2xl font-bold">{sectionName}</h2>
+          <h2 className="mb-4 text-xl font-bold">{sectionName}</h2>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {groupedEvents[sectionName]?.map((event) => (
               <Link
