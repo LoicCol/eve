@@ -1,7 +1,7 @@
 "use server";
-import { and, eq } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 import { db } from "../db";
-import { events, userEvents } from "../db/schema";
+import { events, eventSections, userEvents } from "../db/schema";
 
 export async function getEvents() {
   const events = await db.query.events.findMany();
@@ -101,4 +101,26 @@ export async function updateEvent(
 
 export async function deleteEvent(eventId: string) {
   await db.delete(events).where(eq(events.eventId, eventId));
+}
+
+export async function createSection(name: string, description: string) {
+  const section = await db
+    .insert(eventSections)
+    .values({
+      name,
+      description,
+    })
+    .returning({ sectionId: eventSections.sectionId });
+
+  return section[0];
+}
+
+export async function linkEventsToSection(
+  eventIds: string[],
+  sectionId: string,
+) {
+  await db
+    .update(events)
+    .set({ sectionId })
+    .where(inArray(events.eventId, eventIds));
 }
