@@ -10,7 +10,7 @@ export default async function GroupList() {
   const groups = await getCurrentUserGroups();
 
   return (
-    <div className="mt-4 flex overflow-hidden rounded-lg border border-dashed border-stone-300">
+    <div className="mt-4 flex overflow-hidden rounded-lg border border-dashed">
       {groups.length === 0 ? (
         <p className="p-4 text-muted-foreground">No groups found.</p>
       ) : (
@@ -22,7 +22,7 @@ export default async function GroupList() {
                 key={group.groupId}
                 legacyBehavior
               >
-                <TableRow className="relative h-14 cursor-pointer border-dashed border-stone-300 hover:text-primary">
+                <TableRow className="relative h-14 cursor-pointer border-dashed hover:text-primary">
                   <TableCell>{group.groupName}</TableCell>
                   <TableCell className="text-right">
                     {group.createdAt.toLocaleDateString()}

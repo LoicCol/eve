@@ -12,7 +12,7 @@ export default async function Header() {
   const user = await getCurrentUser();
 
   return (
-    <div className="container mx-auto mb-4 flex h-16 items-center justify-between rounded-lg border px-4">
+    <div className="container mx-auto mb-4 flex h-16 items-center justify-between rounded-lg border px-4 shadow">
       <EventBreadcrumb user={user} />
 
       <nav className="flex items-center space-x-4">
