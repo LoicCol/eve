@@ -24,7 +24,7 @@ export default async function Layout({
           direction="horizontal"
           className="rounded-lg border shadow"
         >
-          <ResizablePanel className="bg-card p-4" defaultSize={30}>
+          <ResizablePanel className="bg-card/30 p-4" defaultSize={30}>
             {children}
           </ResizablePanel>
           <ResizableHandle withHandle />
@@ -44,11 +44,13 @@ export default async function Layout({
           <TabsTrigger value="events">Events</TabsTrigger>
         </TabsList>
         <TabsContent value="details" className="flex-1">
-          <Card className="h-full py-4">
+          <Card className="mt-2 h-full py-4">
             <CardContent>{children}</CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="events">{events}</TabsContent>
+        <TabsContent className="pb-2" value="events">
+          {events}
+        </TabsContent>
       </Tabs>
 
       {modal}
