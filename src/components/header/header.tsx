@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/server/queries";
 
 import EventBreadcrumb from "./breadcrumb";
+import { ModeToggle } from "../theme-toggle";
 
 export default async function Header() {
   const user = await getCurrentUser();
@@ -27,6 +28,7 @@ export default async function Header() {
           </Button>
           <UserButton />
         </SignedIn>
+        <ModeToggle />
       </nav>
     </div>
   );
