@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Check, Pencil, Loader } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "./ui/textarea";
+import { AutosizeTextarea } from "./autosize-textarea";
 
 interface EditableTextareaProps {
   value: string;
@@ -59,7 +59,7 @@ export default function EditableTextarea({
         </div>
       )}
       {isEditing && (
-        <Textarea
+        <AutosizeTextarea
           value={newValue}
           onChange={(e) => setNewValue(e.target.value)}
           autoFocus

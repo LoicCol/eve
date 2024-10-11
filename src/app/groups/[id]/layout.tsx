@@ -24,11 +24,11 @@ export default async function Layout({
           direction="horizontal"
           className="rounded-lg border shadow"
         >
-          <ResizablePanel className="bg-card p-4" defaultSize={25}>
+          <ResizablePanel className="bg-card p-4" defaultSize={30}>
             {children}
           </ResizablePanel>
-          <ResizableHandle />
-          <ResizablePanel className="flex flex-col p-2" defaultSize={75}>
+          <ResizableHandle withHandle />
+          <ResizablePanel className="flex flex-col p-2" defaultSize={70}>
             <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
           </ResizablePanel>
         </ResizablePanelGroup>
