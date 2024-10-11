@@ -13,8 +13,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   const { theme } = useTheme();
 
-  console.log(theme);
-
   return (
     <TooltipProvider>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
