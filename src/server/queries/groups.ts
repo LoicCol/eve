@@ -3,10 +3,15 @@ import { and, eq } from "drizzle-orm";
 import { db } from "../db";
 import { groups, userGroups } from "../db/schema";
 
-export async function getGroups() {
-  const groups = await db.query.groups.findMany();
+export async function getUserGroups(userId: string) {
+  const groups = await db.query.userGroups.findMany({
+    where: eq(userGroups.userId, userId),
+    with: {
+      group: true,
+    },
+  });
 
-  return groups;
+  return groups.map((group) => group.group).filter((group) => group !== null);
 }
 
 export async function getGroup(groupId: string) {

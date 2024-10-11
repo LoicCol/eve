@@ -1,13 +1,13 @@
 "use server";
 
 import { Table, TableRow, TableCell, TableBody } from "@/components/ui/table";
-import { getGroups } from "@/server/queries";
 import { encode } from "@/util/shorten-uuid";
 import Link from "next/link";
 import GroupRowDropdown from "./group-row-dropdown";
+import { getCurrentUserGroups } from "@/lib/actions";
 
 export default async function GroupList() {
-  const groups = await getGroups();
+  const groups = await getCurrentUserGroups();
 
   return (
     <div className="mt-4 flex overflow-hidden rounded-lg border border-dashed border-stone-300">

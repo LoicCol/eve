@@ -15,6 +15,7 @@ import {
   deleteGroup as deleteGroupQuery,
   createSection,
   linkEventsToSection,
+  getUserGroups,
 } from "@/server/queries";
 import {
   CreateEventFormFields,
@@ -213,4 +214,13 @@ export async function createSectionAndLinkToEvent(
   await linkEventsToSection(eventIds, section.sectionId);
 
   revalidatePath("/events");
+}
+
+export async function getCurrentUserGroups() {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  const groups = await getUserGroups(user.userId);
+
+  return groups.filter((group) => group?.groupId);
 }
