@@ -7,7 +7,7 @@ export default async function EventList() {
   const events = await getEvents();
 
   return (
-    <div className="mt-8">
+    <div className="mt-4">
       {events.length === 0 ? (
         <p className="text-muted-foreground">No events found.</p>
       ) : (
