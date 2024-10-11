@@ -24,7 +24,7 @@ export default async function Layout({
           direction="horizontal"
           className="rounded-lg border shadow"
         >
-          <ResizablePanel className="p-4" defaultSize={25}>
+          <ResizablePanel className="bg-card p-4" defaultSize={25}>
             {children}
           </ResizablePanel>
           <ResizableHandle />
