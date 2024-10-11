@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CheckIcon, HelpCircleIcon } from "lucide-react";
+import { TooltipPortal } from "@radix-ui/react-tooltip";
 
 interface ParticipantsListProps {
   participants: {
@@ -14,11 +15,16 @@ interface ParticipantsListProps {
     image?: string | null;
     status: "participate" | "maybe";
   }[];
+  iconSize?: string;
 }
 
 export default function ParticipantsList({
   participants,
+  iconSize,
 }: ParticipantsListProps) {
+  const iconSizeClass = iconSize === "small" ? "h-7 w-7" : "h-10 w-10";
+  const indicatorSizeClass = iconSize === "small" ? "h-3 w-3" : "h-4 w-4";
+
   return (
     <div className="flex flex-wrap gap-2">
       <TooltipProvider>
@@ -26,32 +32,38 @@ export default function ParticipantsList({
           <Tooltip key={participant.userId}>
             <TooltipTrigger>
               <div className="relative">
-                <Avatar className="h-10 w-10 border-2 border-white">
+                <Avatar className={`${iconSizeClass} border-2 border-white`}>
                   <AvatarImage src={participant.image || ""} />
                   <AvatarFallback>{participant.name?.charAt(0)}</AvatarFallback>
                 </Avatar>
                 {participant.status === "participate" ? (
-                  <CheckIcon className="absolute -bottom-1 -right-1 h-4 w-4 text-green-500 bg-white rounded-full" />
+                  <CheckIcon
+                    className={`absolute -bottom-1 -right-1 ${indicatorSizeClass} rounded-full bg-white text-green-500`}
+                  />
                 ) : (
-                  <HelpCircleIcon className="absolute -bottom-1 -right-1 h-4 w-4 text-orange-500 bg-white rounded-full" />
+                  <HelpCircleIcon
+                    className={`absolute -bottom-1 -right-1 ${indicatorSizeClass} rounded-full bg-white text-orange-500`}
+                  />
                 )}
               </div>
             </TooltipTrigger>
-            <TooltipContent
-              side="bottom"
-              className={
-                participant.status === "participate"
-                  ? "bg-green-500"
-                  : "bg-orange-500"
-              }
-            >
-              <p className="text-white font-semibold">{participant.name}</p>
-              <p className="text-white text-xs">
-                {participant.status === "participate"
-                  ? "Participating"
-                  : "Maybe"}
-              </p>
-            </TooltipContent>
+            <TooltipPortal>
+              <TooltipContent
+                side="bottom"
+                className={
+                  participant.status === "participate"
+                    ? "bg-green-500"
+                    : "bg-orange-500"
+                }
+              >
+                <p className="font-semibold text-white">{participant.name}</p>
+                <p className="text-xs text-white">
+                  {participant.status === "participate"
+                    ? "Participating"
+                    : "Maybe"}
+                </p>
+              </TooltipContent>
+            </TooltipPortal>
           </Tooltip>
         ))}
       </TooltipProvider>

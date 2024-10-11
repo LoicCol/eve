@@ -25,15 +25,17 @@ export default async function EventPage({
     getCurrentUser(),
   ]);
 
+  const serializedParticipants = participants.map(({ user, status }) => ({
+    ...user,
+    status,
+  }));
+
   return (
     <EventDetails
       event={event}
       user={user || undefined}
       creator={creator}
-      participants={participants.map(({ user, status }) => ({
-        ...user,
-        status,
-      }))}
+      participants={serializedParticipants}
     />
   );
 }
