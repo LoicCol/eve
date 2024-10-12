@@ -38,4 +38,6 @@ TODO
 - [ ] users group custom names
 - [ ] comments section
 - [ ] only 1 person should be able to edit at a time (websocket?)
-- [ ] event suggestion in a group 
+- [ ] event suggestion in a group
+- [ ] notifications 
+- [ ] history in events
