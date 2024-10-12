@@ -2,6 +2,7 @@ import { getEventsForGroup } from "@/server/queries";
 import EventCard from "@/components/event-card";
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
+import { AnimatedGroup } from "@/components/animated-group";
 
 export default async function GroupEvents({ groupId }: { groupId: string }) {
   const events = await getEventsForGroup(groupId);
@@ -31,7 +32,10 @@ export default async function GroupEvents({ groupId }: { groupId: string }) {
       {sortedSections.map((sectionName) => (
         <div key={sectionName}>
           <h2 className="mb-4 text-xl font-bold">{sectionName}</h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatedGroup
+            className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+            preset="blur"
+          >
             {groupedEvents[sectionName]?.map((event) => (
               <Link
                 href={`/groups/${encode(groupId)}/events/${encode(event.eventId)}`}
@@ -40,7 +44,7 @@ export default async function GroupEvents({ groupId }: { groupId: string }) {
                 <EventCard event={event} />
               </Link>
             ))}
-          </div>
+          </AnimatedGroup>
         </div>
       ))}
     </div>
