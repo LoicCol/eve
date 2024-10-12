@@ -9,7 +9,7 @@ export default function Layout({
   modal: React.ReactNode;
 }) {
   return (
-    <div className="container mx-auto flex flex-col rounded-lg px-4 md:border md:py-4">
+    <div className="container mx-auto flex flex-col rounded-lg px-4 shadow md:border md:py-4">
       <div className="flex justify-between gap-2">
         <h1 className="text-2xl font-bold">{"Groups you are in"}</h1>
         <Button asChild>
