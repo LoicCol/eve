@@ -12,24 +12,26 @@ export default async function Header() {
   const user = await getCurrentUser();
 
   return (
-    <div className="container mx-auto mb-4 flex h-16 items-center justify-between border px-4 shadow md:rounded-lg">
-      <EventBreadcrumb user={user} />
+    <SignedIn>
+      <div className="container mx-auto mb-4 flex h-16 items-center justify-between border px-4 shadow md:rounded-lg">
+        <EventBreadcrumb user={user} />
 
-      <nav className="flex items-center space-x-4">
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
-          <Button variant="ghost" asChild>
-            <Link href="/events/all">Events</Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/groups/all">Groups</Link>
-          </Button>
-          <UserButton />
-        </SignedIn>
-        <ModeToggle />
-      </nav>
-    </div>
+        <nav className="flex items-center space-x-4">
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <Button variant="ghost" asChild>
+              <Link href="/events/all">Events</Link>
+            </Button>
+            <Button variant="ghost" asChild>
+              <Link href="/groups/all">Groups</Link>
+            </Button>
+            <UserButton />
+          </SignedIn>
+          <ModeToggle />
+        </nav>
+      </div>
+    </SignedIn>
   );
 }

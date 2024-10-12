@@ -37,6 +37,8 @@ export default function GroupLink() {
           width: groupId ? groupStyle.width : 0,
           opacity: groupId ? 1 : 0,
           overflow: "hidden",
+          animationDuration: "0.2s",
+          animationDelay: "0.1s",
         }}
       >
         <div ref={groupContainer} className="flex items-center gap-2">
