@@ -137,3 +137,11 @@ export async function linkEventsToSection(
     .set({ sectionId })
     .where(inArray(events.eventId, eventIds));
 }
+
+export async function getSection(sectionId: string) {
+  const section = await db.query.eventSections.findFirst({
+    where: eq(eventSections.sectionId, sectionId),
+  });
+
+  return section;
+}

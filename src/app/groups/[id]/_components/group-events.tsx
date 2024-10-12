@@ -9,11 +9,11 @@ export default async function GroupEvents({ groupId }: { groupId: string }) {
 
   const groupedEvents = events.reduce(
     (acc, event) => {
-      const sectionName = event.sectionName || "Other";
-      if (!acc[sectionName]) {
-        acc[sectionName] = [];
+      const sectionId = event.sectionId || "other";
+      if (!acc[sectionId]) {
+        acc[sectionId] = [];
       }
-      acc[sectionName].push(event);
+      acc[sectionId].push(event);
       return acc;
     },
     {} as { [key: string]: typeof events },
@@ -21,22 +21,26 @@ export default async function GroupEvents({ groupId }: { groupId: string }) {
 
   let sortedSections = Object.keys(groupedEvents).sort();
 
-  // Move "Other" section to the end if it exists
-  if (sortedSections.includes("Other")) {
-    sortedSections = sortedSections.filter((section) => section !== "Other");
-    sortedSections.push("Other");
+  // Move "other" section to the end if it exists
+  if (sortedSections.includes("other")) {
+    sortedSections = sortedSections.filter((section) => section !== "other");
+    sortedSections.push("other");
   }
 
   return events.length > 0 ? (
-    <div className="space-y-8 pt-2 md:p-2">
-      {sortedSections.map((sectionName) => (
-        <div key={sectionName}>
-          <h2 className="mb-4 text-xl font-bold">{sectionName}</h2>
+    <div className="space-y-8 overflow-auto pt-2 md:p-2">
+      {sortedSections.map((sectionId) => (
+        <div key={sectionId}>
+          <h2 className="mb-4 text-xl font-bold delay-100 animate-in">
+            {sectionId === "other"
+              ? "Other"
+              : groupedEvents[sectionId]?.[0]?.sectionName}
+          </h2>
           <AnimatedGroup
             className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
             preset="blur"
           >
-            {groupedEvents[sectionName]?.map((event) => (
+            {groupedEvents[sectionId]?.map((event) => (
               <Link
                 href={`/groups/${encode(groupId)}/events/${encode(event.eventId)}`}
                 key={event.eventId}

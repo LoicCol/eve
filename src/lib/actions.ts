@@ -14,8 +14,9 @@ import {
   editGroup as editGroupQuery,
   deleteGroup as deleteGroupQuery,
   createSection,
-  linkEventsToSection,
+  linkEventsToSection as linkEventsToSectionQuery,
   getUserGroups,
+  getSection,
 } from "@/server/queries";
 import {
   CreateEventFormFields,
@@ -198,20 +199,31 @@ export async function deleteGroup(groupId: string) {
   revalidatePath("/groups");
 }
 
-export async function createSectionAndLinkToEvent(
+export async function linkEventsToSection(
   eventIds: string[],
-  sectionName: string,
+  sectionName?: string,
+  sectionId?: string,
 ) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
-  const section = await createSection(sectionName, "");
+  let section;
 
-  if (!section) {
-    throw new Error("Failed to create section");
+  if (sectionId) {
+    section = await getSection(sectionId);
+    if (!section) {
+      throw new Error("Section not found");
+    }
+  } else if (sectionName) {
+    section = await createSection(sectionName, "");
+    if (!section) {
+      throw new Error("Failed to create section");
+    }
+  } else {
+    throw new Error("Either sectionName or sectionId must be provided");
   }
 
-  await linkEventsToSection(eventIds, section.sectionId);
+  await linkEventsToSectionQuery(eventIds, section.sectionId);
 
   revalidatePath("/events");
 }
