@@ -10,7 +10,7 @@ export default async function Page({
 }) {
   const events = await getEventsForGroup(decode(id));
 
-  const sanitizedEvents = events.map((event) => ({
+  const serializedEvents = events.map((event) => ({
     eventId: event.eventId,
     eventName: event.eventName,
     sectionName: event.sectionName || "Other",
@@ -19,7 +19,7 @@ export default async function Page({
 
   return (
     <Modal>
-      <LinkEvents events={sanitizedEvents} />
+      <LinkEvents events={serializedEvents} />
     </Modal>
   );
 }
