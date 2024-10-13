@@ -33,7 +33,8 @@ export async function getEventsForGroup(groupId: string) {
     })
     .from(events)
     .leftJoin(eventSections, eq(events.sectionId, eventSections.sectionId))
-    .where(eq(events.groupId, groupId));
+    .where(eq(events.groupId, groupId))
+    .orderBy(events.eventDate);
 
   return eventsRes;
 }
