@@ -160,7 +160,7 @@ export default function LinkEvents({ events }: LinkEventsProps) {
                   onValueChange={(value) => field.onChange(value)}
                 >
                   <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select a fruit" />
+                    <SelectValue placeholder="Select a section" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>

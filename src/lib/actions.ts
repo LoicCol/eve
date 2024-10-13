@@ -17,6 +17,7 @@ import {
   linkEventsToSection as linkEventsToSectionQuery,
   getUserGroups,
   getSection,
+  getEventsForGroup,
 } from "@/server/queries";
 import {
   CreateEventFormFields,
@@ -235,4 +236,16 @@ export async function getCurrentUserGroups() {
   const groups = await getUserGroups(user.userId);
 
   return groups.filter((group) => group?.groupId);
+}
+
+export async function getGroupEvents(
+  groupId: string,
+  filter: "upcoming" | "past",
+) {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  const events = await getEventsForGroup(groupId, filter);
+
+  return events;
 }

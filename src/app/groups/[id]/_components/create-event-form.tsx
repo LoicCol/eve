@@ -20,8 +20,20 @@ import { useMutation } from "@tanstack/react-query";
 import { Loader } from "lucide-react";
 import { decode } from "@/util/shorten-uuid";
 import { Fragment, startTransition } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-export default function CreateEventForm() {
+interface CreateEventFormProps {
+  sections: { sectionId: string; sectionName: string }[];
+}
+
+export default function CreateEventForm({ sections }: CreateEventFormProps) {
   const { id } = useParams();
 
   const form = useForm<CreateEventFormFields>({
@@ -31,6 +43,7 @@ export default function CreateEventForm() {
       date: "",
       group: decode(id as string),
       description: "",
+      sectionId: "", // Add sectionId to default values
     },
   });
 
@@ -93,6 +106,40 @@ export default function CreateEventForm() {
                   <FormLabel>Date and Time</FormLabel>
                   <FormControl>
                     <Input type="date" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="sectionId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>
+                    Select Section <i>(Optional)</i>
+                  </FormLabel>
+                  <FormControl>
+                    <Select
+                      value={field.value ?? undefined}
+                      onValueChange={(value) => field.onChange(value)}
+                    >
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Select a section" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          {sections.map((section) => (
+                            <SelectItem
+                              key={section.sectionId}
+                              value={section.sectionId}
+                            >
+                              {section.sectionName}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -1,5 +1,5 @@
 "use server";
-import { and, eq, inArray } from "drizzle-orm";
+import { and, eq, gte, inArray, lt } from "drizzle-orm";
 import { db } from "../db";
 import { events, eventSections, userEvents } from "../db/schema";
 
@@ -17,7 +17,11 @@ export async function getEvent(eventId: string) {
   return event;
 }
 
-export async function getEventsForGroup(groupId: string) {
+export async function getEventsForGroup(
+  groupId: string,
+  dateFilter: "upcoming" | "past" = "upcoming",
+) {
+  const now = new Date();
   const eventsRes = await db
     .select({
       eventId: events.eventId,
@@ -33,7 +37,14 @@ export async function getEventsForGroup(groupId: string) {
     })
     .from(events)
     .leftJoin(eventSections, eq(events.sectionId, eventSections.sectionId))
-    .where(eq(events.groupId, groupId))
+    .where(
+      and(
+        eq(events.groupId, groupId),
+        dateFilter === "upcoming"
+          ? gte(events.eventDate, now)
+          : lt(events.eventDate, now),
+      ),
+    )
     .orderBy(events.eventDate);
 
   return eventsRes;
