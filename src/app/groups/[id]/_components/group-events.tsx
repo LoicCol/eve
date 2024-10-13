@@ -7,6 +7,8 @@ import { AnimatedGroup } from "@/components/animated-group";
 export default async function GroupEvents({ groupId }: { groupId: string }) {
   const events = await getEventsForGroup(groupId);
 
+  console.log(events);
+
   const groupedEvents = events.reduce(
     (acc, event) => {
       const sectionId = event.sectionId || "other";
@@ -19,7 +21,7 @@ export default async function GroupEvents({ groupId }: { groupId: string }) {
     {} as { [key: string]: typeof events },
   );
 
-  let sortedSections = Object.keys(groupedEvents).sort();
+  let sortedSections = Object.keys(groupedEvents);
 
   // Move "other" section to the end if it exists
   if (sortedSections.includes("other")) {
