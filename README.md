@@ -41,3 +41,5 @@ TODO
 - [ ] event suggestion in a group
 - [ ] notifications 
 - [ ] history in events
+- [ ] first production release
+- [ ] translations
