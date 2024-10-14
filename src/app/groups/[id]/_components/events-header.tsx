@@ -45,7 +45,6 @@ export default function EventsHeader({
         </Button>
       </animated.div>
     ),
-    ({ style }) => <animated.div key="2" style={style} />,
   ];
 
   const transRef = useSpringRef();
@@ -68,7 +67,7 @@ export default function EventsHeader({
 
   return (
     <div
-      className={`mb-2 items-center justify-between md:flex md:pl-2 md:pr-2 md:pt-2 ${!isEventDetails && "pt-2"}`}
+      className={`mb-2 items-center justify-between md:flex md:pl-2 md:pr-2 md:pt-2 ${!isEventDetails ? "pt-2" : ""}`}
     >
       {/* Desktop */}
       <Button variant="link" className={`hidden p-0 md:flex`} asChild>

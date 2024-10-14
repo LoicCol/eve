@@ -96,7 +96,10 @@ export default function LinkEvents({ events }: LinkEventsProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 md:p-0 p-4">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 p-4 md:p-0"
+      >
         <FormField
           control={form.control}
           name="items"
@@ -117,7 +120,7 @@ export default function LinkEvents({ events }: LinkEventsProps) {
                     return (
                       <FormItem
                         key={event.eventId}
-                        className="flex flex-row items-start space-x-3 space-y-0"
+                        className="flex flex-row items-center space-x-3 space-y-0"
                       >
                         <FormControl>
                           <Checkbox
