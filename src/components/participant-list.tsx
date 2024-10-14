@@ -7,6 +7,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CheckIcon, HelpCircleIcon } from "lucide-react";
 import { TooltipPortal } from "@radix-ui/react-tooltip";
+import { Skeleton } from "./ui/skeleton";
 
 interface ParticipantsListProps {
   participants: {
@@ -16,14 +17,25 @@ interface ParticipantsListProps {
     status: "participate" | "maybe";
   }[];
   iconSize?: string;
+  isPending?: boolean;
 }
 
 export default function ParticipantsList({
   participants,
   iconSize,
+  isPending,
 }: ParticipantsListProps) {
   const iconSizeClass = iconSize === "small" ? "h-7 w-7" : "h-10 w-10";
   const indicatorSizeClass = iconSize === "small" ? "h-3 w-3" : "h-4 w-4";
+
+  if (isPending) {
+    return (
+      <div className="flex gap-2">
+        <Skeleton className="h-7 w-7 rounded-full" />
+        <Skeleton className="h-7 w-7 rounded-full" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-wrap gap-2">

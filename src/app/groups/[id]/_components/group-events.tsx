@@ -64,8 +64,8 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
         <div className="space-y-8 pt-2 md:p-2">
           <Skeleton className="h-4 w-[80px]" />
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <Skeleton className="h-[125px] w-full rounded-xl" />
-            <Skeleton className="h-[125px] w-full rounded-xl" />
+            <Skeleton className="h-[162px] w-full rounded-xl" />
+            <Skeleton className="h-[162px] w-full rounded-xl" />
           </div>
         </div>
       ) : null}
