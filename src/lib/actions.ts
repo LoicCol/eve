@@ -245,7 +245,7 @@ export async function getGroupEvents(
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
-  const events = await getEventsForGroup(groupId, filter);
+  const events = await getEventsForGroup(groupId);
 
   return events;
 }

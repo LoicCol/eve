@@ -1,11 +1,26 @@
-import { getEventsForGroup } from "@/server/queries";
+"use client";
+
 import EventCard from "@/components/event-card";
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
 import { AnimatedGroup } from "@/components/animated-group";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { getGroupEvents } from "@/lib/actions";
 
-export default async function GroupEvents({ groupId }: { groupId: string }) {
-  const events = await getEventsForGroup(groupId);
+export default function GroupEvents({ groupId }: { groupId: string }) {
+  const [filter, setFilter] = useState<"upcoming" | "past">("upcoming");
+
+  const { data: events = [] } = useQuery({
+    queryKey: ["events", groupId, filter],
+    queryFn: async () => {
+      const data = await getGroupEvents(groupId, filter);
+      console.log("coucou data", data);
+      return data;
+    },
+  });
+
+  // const events = [];
 
   const groupedEvents = events.reduce(
     (acc, event) => {

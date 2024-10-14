@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import EventCardDropdown from "./event-card-dropdown";
@@ -14,8 +14,8 @@ interface EventCardProps {
   };
 }
 
-export default async function EventCard({ event }: EventCardProps) {
-  const participants = await getParticipants(event.eventId);
+export default function EventCard({ event }: EventCardProps) {
+  const participants = []; // await getParticipants(event.eventId);
 
   const serializedParticipants = participants.map(({ user, status }) => ({
     ...user,
