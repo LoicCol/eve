@@ -22,7 +22,7 @@ export default async function Layout({
       <div className="hidden w-full md:block">
         <ResizablePanelGroup
           direction="horizontal"
-          className="rounded-lg border shadow"
+          className="rounded-lg border shadow-sm"
         >
           <ResizablePanel className="bg-card/30 p-4" defaultSize={30}>
             {children}

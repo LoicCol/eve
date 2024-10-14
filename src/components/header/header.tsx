@@ -13,7 +13,7 @@ export default async function Header() {
 
   return (
     <SignedIn>
-      <div className="container mx-auto mb-4 flex h-16 items-center justify-between border px-4 shadow md:rounded-lg">
+      <div className="container mx-auto mb-4 flex h-16 items-center justify-between border px-4 shadow-sm md:rounded-lg">
         <EventBreadcrumb user={user} />
 
         <nav className="flex items-center space-x-4">

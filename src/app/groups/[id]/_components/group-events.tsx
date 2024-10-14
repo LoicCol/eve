@@ -51,7 +51,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
   return (
     <div className="flex flex-col gap-2 overflow-auto">
       <Select onValueChange={handleSelect} value={filter}>
-        <SelectTrigger className="w-fit overflow-visible p-2">
+        <SelectTrigger className="m-[1px] w-fit overflow-visible p-2">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
