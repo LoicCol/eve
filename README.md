@@ -42,3 +42,4 @@ TODO
 - [ ] notifications 
 - [ ] history in events
 - [ ] first production release
+- [ ] translations
