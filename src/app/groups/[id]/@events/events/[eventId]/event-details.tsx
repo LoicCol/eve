@@ -124,7 +124,12 @@ export default function EventDetails({
                 <span>
                   {new Date(
                     variables?.date || event.eventDate,
-                  ).toLocaleString()}
+                  ).toLocaleDateString("en-UK", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
                 </span>
               </EditableDate>
             </div>

@@ -25,7 +25,12 @@ export default async function GroupList() {
                 <TableRow className="relative h-14 cursor-pointer border-dashed hover:text-primary">
                   <TableCell>{group.groupName}</TableCell>
                   <TableCell className="text-right">
-                    {group.createdAt.toLocaleDateString()}
+                    {group.createdAt.toLocaleDateString("en-UK", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
                   </TableCell>
                   <TableCell>
                     <GroupRowDropdown groupId={group.groupId} />
