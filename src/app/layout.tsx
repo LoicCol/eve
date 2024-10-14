@@ -8,7 +8,7 @@ import { ThemeProvider } from "next-themes";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Event Manager",
+  title: "Eve",
   description: "Manage events for your group of friends",
 };
 
