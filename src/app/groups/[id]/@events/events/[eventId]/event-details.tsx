@@ -26,6 +26,7 @@ interface EventDetailsProps {
     eventDate: Date;
     description: string | null;
     groupId: string | null;
+    sectionId: string | null;
   };
   creator?: {
     userId: string;
@@ -64,6 +65,7 @@ export default function EventDetails({
           data.description === ""
             ? ""
             : data.description || event.description || "",
+        sectionId: event.sectionId || null,
       }),
     onSettled: async () => {
       return await queryClient.invalidateQueries({
