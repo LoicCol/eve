@@ -14,15 +14,17 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  params: { locale },
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
   return (
     <html lang="en" className="h-screen">
       <body className={`${inter.className} h-screen`}>
         <div className="h-screen md:py-4">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Providers>
+            <Providers locale={locale}>
               <Header />
               <main
                 className={`container mx-auto flex h-[calc(100%-80px)] justify-center`}
