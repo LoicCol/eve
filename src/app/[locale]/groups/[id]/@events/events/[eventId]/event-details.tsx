@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import EditableTextArea from "@/components/editable-text-area";
+import { useI18n } from "@/locales/client";
 
 interface EventDetailsProps {
   event: {
@@ -52,6 +53,7 @@ export default function EventDetails({
   creator,
   participants,
 }: EventDetailsProps) {
+  const t = useI18n();
   const queryClient = useQueryClient();
 
   const { mutate, isPending, variables } = useMutation({
@@ -145,11 +147,15 @@ export default function EventDetails({
             </div>
             <div className="flex items-center">
               <UserIcon className="mr-2 h-5 w-5 text-muted-foreground" />
-              <span className="mr-2 text-muted-foreground">Created by:</span>
+              <span className="mr-2 text-muted-foreground">
+                {t("eventDetails.createdBy")}:
+              </span>
               <span>{creator?.name}</span>
             </div>
             <div className="space-y-2">
-              <h2 className="text-lg font-semibold">Participants</h2>
+              <h2 className="text-lg font-semibold">
+                {t("eventDetails.participants")}
+              </h2>
               <ParticipantsList participants={participants} />
             </div>
           </div>
@@ -177,6 +183,7 @@ function ParticipationButton({
     status: "participate" | "maybe";
   };
 }) {
+  const t = useI18n();
   const { mutate, isPending } = useMutation({
     mutationFn: ({ status }: { status: string }) => {
       if (status === "participate") {
@@ -208,9 +215,15 @@ function ParticipationButton({
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="participate">Participate</SelectItem>
-          <SelectItem value="maybe">Maybe</SelectItem>
-          <SelectItem value="leave">Not going</SelectItem>
+          <SelectItem value="participate">
+            {t("eventDetails.participation.participate")}
+          </SelectItem>
+          <SelectItem value="maybe">
+            {t("eventDetails.participation.maybe")}
+          </SelectItem>
+          <SelectItem value="leave">
+            {t("eventDetails.participation.notGoing")}
+          </SelectItem>
         </SelectContent>
       </Select>
     </div>
