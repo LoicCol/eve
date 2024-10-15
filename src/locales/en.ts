@@ -9,7 +9,7 @@ export default {
     title: "Sign Up",
   },
   events: {
-    allEvents: "All Events",
+    allEvents: "All your groups events",
   },
   groups: {
     yourGroups: "Groups you are in",
