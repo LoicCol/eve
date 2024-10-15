@@ -48,3 +48,5 @@ TODO
 - [ ] history in events
 - [ ] first production release
 - [ ] translations
+- [ ] improve readme
+- [ ] rate limiting
