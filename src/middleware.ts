@@ -12,8 +12,8 @@ function i18nMiddleware(request: NextRequest) {
 }
 
 const isPublicRoute = createRouteMatcher([
-  "/sign-in(.*)",
-  "/sign-up(.*)",
+  "/:locale/sign-in(.*)",
+  "/:locale/sign-up(.*)",
   "/api/webhooks(.*)",
 ]);
 
