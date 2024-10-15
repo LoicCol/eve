@@ -1,12 +1,20 @@
 "use server";
 import { and, eq, gte, inArray, lt } from "drizzle-orm";
 import { db } from "../db";
-import { events, eventSections, userEvents } from "../db/schema";
+import { events, eventSections, userEvents, userGroups } from "../db/schema";
 
-export async function getEvents() {
-  const events = await db.query.events.findMany();
+export async function getEvents(userId: string) {
+  const groups = await db.query.userGroups.findMany({
+    where: eq(userGroups.userId, userId),
+  });
 
-  return events;
+  const groupIds = groups.map((group) => group.groupId).filter((id) => id !== null);
+
+  const evts = await db.query.events.findMany({
+    where: inArray(events.groupId, groupIds),
+  });
+
+  return evts;
 }
 
 export async function getEvent(eventId: string) {

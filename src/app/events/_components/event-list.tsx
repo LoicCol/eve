@@ -2,9 +2,11 @@
 
 import EventCard from "@/components/event-card";
 import { getEvents } from "@/server/queries";
+import { auth } from "@clerk/nextjs/server";
 
 export default async function EventList() {
-  const events = await getEvents();
+  const { userId } = auth();
+  const events = await getEvents(userId || "");
 
   return (
     <div className="mt-4">
