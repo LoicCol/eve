@@ -39,7 +39,9 @@ TODO
 - [ ] comments section
 - [ ] only 1 person should be able to edit at a time (websocket?)
 - [ ] event suggestion in a group
-- [ ] notifications 
+- [ ] notifications
 - [ ] history in events
 - [ ] first production release
-- [ ] translations
+- [o] translations
+  - [x] init
+  - [ ] translate everything
