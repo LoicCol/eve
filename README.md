@@ -1,3 +1,20 @@
+
+Little application to manage events in group of friends accessible here:
+
+(still in development)[live](https://www.eve-nts.app/)
+
+[group example](https://www.eve-nts.app/groups/vgh9vcg7HdVtHMfYrjtbGH)
+
+Stack:
+- NextJS
+- shadcn
+- postgres
+- drizzle
+- clerk
+- tailwind
+- react query
+
+
 TODO
 
 - [x] Change schema to have events that are linked to groups
@@ -43,3 +60,5 @@ TODO
 - [ ] history in events
 - [ ] first production release
 - [ ] translations
+- [ ] improve readme
+- [ ] rate limiting
