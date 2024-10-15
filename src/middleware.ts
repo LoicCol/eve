@@ -1,20 +1,18 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { createI18nMiddleware } from "next-international/middleware";
-import { NextRequest } from "next/server";
 
 const I18nMiddleware = createI18nMiddleware({
   locales: ["en", "fr"],
   defaultLocale: "en",
 });
 
-function i18nMiddleware(request: NextRequest) {
-  return I18nMiddleware(request);
-}
-
 const isPublicRoute = createRouteMatcher([
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  "/api/webhooks(.*)",
+  "/:locale",
   "/:locale/sign-in(.*)",
   "/:locale/sign-up(.*)",
-  "/api/webhooks(.*)",
 ]);
 
 export default clerkMiddleware((auth, request) => {
@@ -22,7 +20,12 @@ export default clerkMiddleware((auth, request) => {
     auth().protect();
   }
 
-  return i18nMiddleware(request);
+  const apiRoutes = request.url.includes("/api/");
+  if (apiRoutes) {
+    return;
+  }
+
+  return I18nMiddleware(request);
 });
 
 export const config = {
@@ -31,5 +34,6 @@ export const config = {
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
     // Always run for API routes
     "/(api|trpc)(.*)",
+    "/((?!api|static|.*\\..*|_next|favicon.ico|robots.txt).*)",
   ],
 };
