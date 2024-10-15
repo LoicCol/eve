@@ -1,3 +1,8 @@
+Little app made with NextJS, accessible here:
+
+[live](https://www.eve-nts.app/)
+
+
 TODO
 
 - [x] Change schema to have events that are linked to groups
