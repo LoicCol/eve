@@ -1,6 +1,7 @@
 Little application to manage events in group of friends accessible here:
 
 [live](https://www.eve-nts.app/)
+
 [group example](https://www.eve-nts.app/groups/vgh9vcg7HdVtHMfYrjtbGH)
 
 Stack:
