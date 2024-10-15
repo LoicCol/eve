@@ -1,6 +1,15 @@
-Little app made with NextJS, accessible here:
+Little application to manage events in group of friends accessible here:
 
 [live](https://www.eve-nts.app/)
+
+Stack:
+- NextJS
+- shadcn
+- postgres
+- drizzle
+- clerk
+- tailwind
+- react query
 
 
 TODO
