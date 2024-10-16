@@ -1,4 +1,4 @@
-import { getI18n } from "@/src/locales/server";
+import { getI18n } from "@/locales/server";
 
 export default async function Layout({
   children,

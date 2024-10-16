@@ -1,15 +1,10 @@
 "use server";
 
-import {
-  Table,
-  TableRow,
-  TableCell,
-  TableBody,
-} from "@/src/components/ui/table";
-import { encode } from "@/src/util/shorten-uuid";
+import { Table, TableRow, TableCell, TableBody } from "@/components/ui/table";
+import { encode } from "@/util/shorten-uuid";
 import Link from "next/link";
 import GroupRowDropdown from "./group-row-dropdown";
-import { getCurrentUserGroups } from "@/src/lib/actions";
+import { getCurrentUserGroups } from "@/lib/actions";
 
 export default async function GroupList() {
   const groups = await getCurrentUserGroups();

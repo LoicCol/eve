@@ -1,14 +1,14 @@
 "use client";
 
 import { ClerkProvider } from "@clerk/nextjs";
-import { TooltipProvider } from "@/src/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
-import { ThemeProvider } from "@/src/components/next-provider";
+import { ThemeProvider } from "@/components/next-provider";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
-import { I18nProviderClient } from "@/src/locales/client";
+import { I18nProviderClient } from "@/locales/client";
 
 export default function Providers({
   children,

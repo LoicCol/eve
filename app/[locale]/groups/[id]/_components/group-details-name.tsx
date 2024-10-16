@@ -1,8 +1,8 @@
 "use client";
 
-import EditableText from "@/src/components/editable-input";
-import { editGroupName } from "@/src/lib/actions";
-import { encode } from "@/src/util/shorten-uuid";
+import EditableText from "@/components/editable-input";
+import { editGroupName } from "@/lib/actions";
+import { encode } from "@/util/shorten-uuid";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function GroupDetailsName({

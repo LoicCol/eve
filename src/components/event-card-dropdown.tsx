@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useMutation } from "@tanstack/react-query";
-import { deleteEvent } from "@/src/lib/actions";
+import { deleteEvent } from "@/lib/actions";
 
 export default function EventCardDropdown({ eventId }: { eventId: string }) {
   const { mutate, isPending } = useMutation({

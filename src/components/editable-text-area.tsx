@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Check, Pencil, Loader } from "lucide-react";
-import { Button } from "@/src/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { AutosizeTextarea } from "./autosize-textarea";
 
 interface EditableTextareaProps {

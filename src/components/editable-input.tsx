@@ -2,8 +2,8 @@
 
 import React, { useRef, useState } from "react";
 import { Check, Pencil, Loader } from "lucide-react";
-import { Input } from "@/src/components/ui/input";
-import { Button } from "@/src/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 interface EditableTextProps {
   value: string;

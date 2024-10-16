@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { Button } from "@/src/components/ui/button";
-import { getCurrentUser } from "@/src/server/queries";
+import { Button } from "@/components/ui/button";
+import { getCurrentUser } from "@/server/queries";
 
 import EventBreadcrumb from "./breadcrumb";
 import { ModeToggle } from "../theme-toggle";

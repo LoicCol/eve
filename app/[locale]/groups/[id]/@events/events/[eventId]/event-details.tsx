@@ -1,23 +1,23 @@
 "use client";
 
-import { Card, CardContent } from "@/src/components/ui/card";
-import { joinEvent, editEvent, leaveEvent } from "@/src/lib/actions";
-import ParticipantsList from "@/src/components/participant-list";
+import { Card, CardContent } from "@/components/ui/card";
+import { joinEvent, editEvent, leaveEvent } from "@/lib/actions";
+import ParticipantsList from "@/components/participant-list";
 import { CalendarIcon, Loader, MapPinIcon, UserIcon } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CreateEventFormFields } from "types";
-import EditableText from "@/src/components/editable-input";
-import { encode } from "@/src/util/shorten-uuid";
-import EditableDate from "@/src/components/editable-date";
+import EditableText from "@/components/editable-input";
+import { encode } from "@/util/shorten-uuid";
+import EditableDate from "@/components/editable-date";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select";
-import EditableTextArea from "@/src/components/editable-text-area";
-import { useI18n } from "@/src/locales/client";
+} from "@/components/ui/select";
+import EditableTextArea from "@/components/editable-text-area";
+import { useI18n } from "@/locales/client";
 
 interface EventDetailsProps {
   event: {

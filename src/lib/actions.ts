@@ -18,14 +18,14 @@ import {
   getUserGroups,
   getSection,
   getEventsForGroup,
-} from "@/src/server/queries";
+} from "@/server/queries";
 import {
   CreateEventFormFields,
   createEventFormSchema,
   CreateGroupFormFields,
   createGroupFormSchema,
 } from "types";
-import { encode } from "@/src/util/shorten-uuid";
+import { encode } from "@/util/shorten-uuid";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

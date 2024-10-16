@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/src/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { BreadcrumbSeparator } from "../ui/breadcrumb";
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { getGroupName } from "@/src/lib/actions";
-import { decode } from "@/src/util/shorten-uuid";
+import { getGroupName } from "@/lib/actions";
+import { decode } from "@/util/shorten-uuid";
 import { Loader } from "lucide-react";
 import { Fragment, useRef } from "react";
 import { useResize } from "@react-spring/web";

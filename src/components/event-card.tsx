@@ -1,14 +1,9 @@
 "use client";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/src/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import EventCardDropdown from "./event-card-dropdown";
 import ParticipantsList from "./participant-list";
-import { getParticipants } from "@/src/server/queries";
+import { getParticipants } from "@/server/queries";
 import { useQuery } from "@tanstack/react-query";
 
 interface EventCardProps {

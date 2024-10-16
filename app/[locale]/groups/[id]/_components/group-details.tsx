@@ -1,11 +1,7 @@
 "use server";
 
-import { getGroup, getUser, getMembers } from "@/src/server/queries";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/src/components/ui/avatar";
+import { getGroup, getUser, getMembers } from "@/server/queries";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import JoinButton from "./join-button";
 import { currentUser } from "@clerk/nextjs/server";
 import { Fragment } from "react";

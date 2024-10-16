@@ -1,8 +1,8 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { Button } from "@/src/components/ui/button";
-import { Input } from "@/src/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -10,10 +10,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/src/components/ui/form";
-import { CardHeader, CardTitle, CardContent } from "@/src/components/ui/card";
+} from "@/components/ui/form";
+import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
-import { createGroup } from "@/src/lib/actions";
+import { createGroup } from "@/lib/actions";
 import { startTransition } from "react";
 import React from "react";
 

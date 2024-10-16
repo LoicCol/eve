@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import { format } from "date-fns";
 import { Check, Pencil, Loader, CalendarIcon } from "lucide-react";
-import { Button } from "@/src/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Calendar } from "./ui/calendar";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 
 interface EditableDateProps {
   value: Date;

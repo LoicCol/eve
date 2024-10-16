@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from "react";
 import { motion, Variants } from "framer-motion";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 import React from "react";
 
 type PresetType =

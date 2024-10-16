@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { useImperativeHandle } from "react";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 import { Textarea } from "./ui/textarea";
 
 interface UseAutosizeTextAreaProps {

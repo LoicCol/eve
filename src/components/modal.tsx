@@ -1,6 +1,6 @@
 "use client";
 
-import { useMediaQuery } from "@/src/hooks/use-media-query";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { Dialog, DialogOverlay, DialogContent } from "./ui/dialog";
 import { Drawer, DrawerContent } from "./ui/drawer";
 import { useEffect, useState } from "react";

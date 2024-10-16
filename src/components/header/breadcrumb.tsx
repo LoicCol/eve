@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/src/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,7 +14,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import GroupLink from "./group-link";
 import EventLink from "./event-link";
 import React from "react";
-import { useMediaQuery } from "@/src/hooks/use-media-query";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { Sofia } from "next/font/google";
 
 const sofia = Sofia({ weight: "400", subsets: ["latin"] });

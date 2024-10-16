@@ -1,7 +1,7 @@
 "use server";
 
-import EventCard from "@/src/components/event-card";
-import { getEvents } from "@/src/server/queries";
+import EventCard from "@/components/event-card";
+import { getEvents } from "@/server/queries";
 import { auth } from "@clerk/nextjs/server";
 
 export default async function EventList() {
