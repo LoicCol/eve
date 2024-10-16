@@ -46,17 +46,17 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
       date: "",
       group: decode(id as string),
       description: "",
-      sectionId: "", // Add sectionId to default values
+      sectionId: "",
     },
   });
 
   const { mutate, isPending } = useMutation({
     mutationFn: createEvent,
     onSuccess: () => {
-      toast.success("Your new event has been successfully created.");
+      toast.success(t("createEventForm.successMessage"));
     },
     onError: (error: unknown) => {
-      toast.error(`There was a problem creating your event. ${error}.`);
+      toast.error(t("createEventForm.errorMessage", { error: String(error) }));
       console.error(error);
     },
   });
@@ -133,12 +133,15 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
                     <Select
                       value={field.value ?? undefined}
                       onValueChange={(value) => field.onChange(value)}
+                      disabled={sections.length === 0}
                     >
-                      <SelectTrigger className="w-[180px]">
+                      <SelectTrigger>
                         <SelectValue
-                          placeholder={t(
-                            "createEventForm.selectSectionPlaceholder",
-                          )}
+                          placeholder={
+                            sections.length === 0
+                              ? t("createEventForm.noSections")
+                              : t("createEventForm.selectSectionPlaceholder")
+                          }
                         />
                       </SelectTrigger>
                       <SelectContent>

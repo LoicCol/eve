@@ -42,6 +42,9 @@ export default {
     optional: "Optional",
     selectSectionPlaceholder: "Select a section",
     createEvent: "Create Event",
+    successMessage: "Your new event has been successfully created.",
+    errorMessage: "There was a problem creating your event. {error}",
+    noSections: "No sections available",
   },
   eventsHeader: {
     linkEvents: "Link Events",
@@ -84,6 +87,7 @@ export default {
   locale: "en-UK",
   eventCardDropdown: {
     delete: "Delete",
+    deleteError: "Failed to delete the event. Please try again.",
   },
   breadcrumb: {
     appName: "Eve",
@@ -102,5 +106,35 @@ export default {
     light: "Light",
     dark: "Dark",
     system: "System",
+  },
+  home: {
+    title: "Welcome to Event Manager",
+    description:
+      "Organize and manage events with your friends easily. Create groups, plan events, and keep track of who's attending.",
+    upcomingEvents: {
+      title: "Upcoming Events",
+      description: "View and manage your upcoming events here.",
+      content: "Stay up to date with all your planned activities.",
+      button: "View Events",
+    },
+    yourGroups: {
+      title: "Your Groups",
+      description: "Manage your friend groups and create new ones.",
+      content: "Organize your friends into groups for easier event planning.",
+      button: "View Groups",
+    },
+  },
+  errors: {
+    createGroup: "Failed to create group",
+    joinGroup: "Failed to join group",
+    deleteEvent: "Failed to delete event",
+    getEventsForGroup: "Failed to fetch events for group",
+  },
+  createGroupForm: {
+    errors: {
+      nameRequired: "Group name is required",
+    },
+    success: "Group created successfully",
+    error: "Failed to create group",
   },
 } as const;

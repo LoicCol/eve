@@ -1,3 +1,4 @@
+import { getI18n } from "@/locales/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,44 +10,45 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 
-export default function Home() {
+export default async function Home() {
+  const t = await getI18n();
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="mb-8 text-4xl font-bold">Welcome to Event Manager</h1>
+      <h1 className="mb-8 text-4xl font-bold">{t("home.title")}</h1>
       <p className="mb-8 text-lg text-muted-foreground">
-        Organize and manage events with your friends easily. Create groups, plan
-        events, and keep track of who&#39;s attending.
+        {t("home.description")}
       </p>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Upcoming Events</CardTitle>
+            <CardTitle>{t("home.upcomingEvents.title")}</CardTitle>
             <CardDescription>
-              View and manage your upcoming events here.
+              {t("home.upcomingEvents.description")}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p>Stay up to date with all your planned activities.</p>
+            <p>{t("home.upcomingEvents.content")}</p>
           </CardContent>
           <CardFooter>
             <Button asChild>
-              <Link href="/events/all">View Events</Link>
+              <Link href="/events/all">{t("home.upcomingEvents.button")}</Link>
             </Button>
           </CardFooter>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Your Groups</CardTitle>
+            <CardTitle>{t("home.yourGroups.title")}</CardTitle>
             <CardDescription>
-              Manage your friend groups and create new ones.
+              {t("home.yourGroups.description")}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p>Organize your friends into groups for easier event planning.</p>
+            <p>{t("home.yourGroups.content")}</p>
           </CardContent>
           <CardFooter>
             <Button asChild>
-              <Link href="/groups/all">View Groups</Link>
+              <Link href="/groups/all">{t("home.yourGroups.button")}</Link>
             </Button>
           </CardFooter>
         </Card>

@@ -29,6 +29,7 @@ import { encode } from "@/util/shorten-uuid";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { getCurrentLocale } from "@/locales/server";
 
 export async function getGroupName(groupId: string) {
   const user = auth();
@@ -61,11 +62,14 @@ export async function createEvent(formData: CreateEventFormFields) {
   }
 
   const { name, location, date, group } = validationResult.data;
+  const locale = getCurrentLocale();
 
   const event = await insertEvent(name, location, date, group, user.userId);
 
-  revalidatePath("/events");
-  redirect(`/groups/${encode(group)}/events/${encode(event?.eventId || "")}`);
+  revalidatePath(`/${locale}/events`);
+  redirect(
+    `/${locale}/groups/${encode(group)}/events/${encode(event?.eventId || "")}`,
+  );
 }
 
 export async function createGroup(formData: CreateGroupFormFields) {
@@ -81,11 +85,12 @@ export async function createGroup(formData: CreateGroupFormFields) {
   }
 
   const { name } = validationResult.data;
+  const locale = getCurrentLocale();
 
   const group = await insertGroup(name, user.userId);
 
-  revalidatePath("/groups");
-  redirect(`/groups/${encode(group?.groupId || "")}`);
+  revalidatePath(`/${locale}/groups`);
+  redirect(`/${locale}/groups/${encode(group?.groupId || "")}`);
 }
 
 export async function joinEvent(
@@ -95,32 +100,42 @@ export async function joinEvent(
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
+  const locale = getCurrentLocale();
+
   await insertUserEvent(user.userId, eventId, status);
 
-  revalidatePath(`/events/${eventId}`);
+  revalidatePath(`/${locale}/events/${eventId}`);
 }
 
 export async function leaveEvent(eventId: string) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
+  const locale = getCurrentLocale();
+
   await deleteUsersEvent(user.userId, eventId);
 
-  revalidatePath(`/events/${eventId}`);
+  revalidatePath(`/${locale}/events/${eventId}`);
 }
 
 export async function joinGroup(groupId: string) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
+
+  const locale = getCurrentLocale();
+
   await insertUserGroup(user.userId, groupId);
-  revalidatePath(`/groups/${encode(groupId)}`);
+  revalidatePath(`/${locale}/groups/${encode(groupId)}`);
 }
 
 export async function leaveGroup(groupId: string) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
+
+  const locale = getCurrentLocale();
+
   await removeUserGroup(user.userId, groupId);
-  revalidatePath(`/groups/${encode(groupId)}`);
+  revalidatePath(`/${locale}/groups/${encode(groupId)}`);
 }
 
 export async function editEvent(
@@ -145,6 +160,7 @@ export async function editEvent(
     group,
     description,
   } = validationResult.data;
+  const locale = getCurrentLocale();
 
   await updateEvent(eventId, {
     eventName,
@@ -154,27 +170,31 @@ export async function editEvent(
     description: description || "",
   });
 
-  revalidatePath(`/groups/${group}/events/${eventId}`);
+  revalidatePath(`/${locale}/groups/${group}/events/${eventId}`);
 }
 
 export async function deleteEvent(eventId: string) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
+  const locale = getCurrentLocale();
+
   await deleteEventQuery(eventId);
 
-  revalidatePath("/events");
+  revalidatePath(`/${locale}/groups`);
 }
 
 export async function editGroupName(groupId: string, groupName: string) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
+  const locale = getCurrentLocale();
+
   await editGroupQuery(groupId, {
     groupName,
   });
 
-  revalidatePath(`/groups/${groupId}`);
+  revalidatePath(`/${locale}/groups/${groupId}`);
 }
 
 export async function editGroupDescription(
@@ -184,20 +204,24 @@ export async function editGroupDescription(
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
+  const locale = getCurrentLocale();
+
   await editGroupQuery(groupId, {
     description,
   });
 
-  revalidatePath(`/groups/${groupId}`);
+  revalidatePath(`/${locale}/groups/${groupId}`);
 }
 
 export async function deleteGroup(groupId: string) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
+  const locale = getCurrentLocale();
+
   await deleteGroupQuery(groupId);
 
-  revalidatePath("/groups");
+  revalidatePath(`/${locale}/groups`);
 }
 
 export async function linkEventsToSection(
@@ -207,6 +231,8 @@ export async function linkEventsToSection(
 ) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
+
+  const locale = getCurrentLocale();
 
   let section;
 
@@ -226,7 +252,7 @@ export async function linkEventsToSection(
 
   await linkEventsToSectionQuery(eventIds, section.sectionId);
 
-  revalidatePath("/events");
+  revalidatePath(`/${locale}/events`);
 }
 
 export async function getCurrentUserGroups() {

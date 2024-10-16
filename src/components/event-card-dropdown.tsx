@@ -10,13 +10,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteEvent } from "@/lib/actions";
+import { toast } from "sonner";
 
 export default function EventCardDropdown({ eventId }: { eventId: string }) {
   const t = useI18n();
+  const queryClient = useQueryClient();
+
   const { mutate, isPending } = useMutation({
     mutationFn: () => deleteEvent(eventId),
+    onError: () => {
+      toast.error(t("eventCardDropdown.deleteError"));
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["events"] });
+    },
   });
 
   const handleDelete = (e: MouseEvent<HTMLDivElement>) => {

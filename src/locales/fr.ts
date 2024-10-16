@@ -43,6 +43,10 @@ export default {
     optional: "Optionnel",
     selectSectionPlaceholder: "Sélectionnez une section",
     createEvent: "Créer l'événement",
+    successMessage: "Votre nouvel événement a été créé avec succès.",
+    errorMessage:
+      "Un problème est survenu lors de la création de votre événement. {error}",
+    noSections: "Aucune section disponible",
   },
   eventsHeader: {
     linkEvents: "Lier des événements",
@@ -85,6 +89,7 @@ export default {
   locale: "fr-FR",
   eventCardDropdown: {
     delete: "Supprimer",
+    deleteError: "Échec de la suppression de l'événement. Veuillez réessayer.",
   },
   breadcrumb: {
     appName: "Eve",
@@ -103,5 +108,36 @@ export default {
     light: "Clair",
     dark: "Sombre",
     system: "Système",
+  },
+  home: {
+    title: "Bienvenue sur Event Manager",
+    description:
+      "Organisez et gérez facilement des événements avec vos amis. Créez des groupes, planifiez des événements et suivez qui participe.",
+    upcomingEvents: {
+      title: "Événements à venir",
+      description: "Consultez et gérez vos prochains événements ici.",
+      content: "Restez à jour avec toutes vos activités planifiées.",
+      button: "Voir les événements",
+    },
+    yourGroups: {
+      title: "Vos groupes",
+      description: "Gérez vos groupes d'amis et créez-en de nouveaux.",
+      content:
+        "Organisez vos amis en groupes pour faciliter la planification d'événements.",
+      button: "Voir les groupes",
+    },
+  },
+  errors: {
+    createGroup: "Échec de la création du groupe",
+    joinGroup: "Échec de l'adhésion au groupe",
+    deleteEvent: "Échec de la suppression de l'événement",
+    getEventsForGroup: "Échec de la récupération des événements pour le groupe",
+  },
+  createGroupForm: {
+    errors: {
+      nameRequired: "Le nom du groupe est requis",
+    },
+    success: "Groupe créé avec succès",
+    error: "Échec de la création du groupe",
   },
 } as const;
