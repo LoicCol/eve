@@ -1,5 +1,6 @@
 "use client";
 
+import { useI18n } from "@/locales/client";
 import { EllipsisVertical, Loader } from "lucide-react";
 import { MouseEvent } from "react";
 import { Button } from "./ui/button";
@@ -9,12 +10,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteEvent } from "@/lib/actions";
+import { toast } from "sonner";
 
 export default function EventCardDropdown({ eventId }: { eventId: string }) {
+  const t = useI18n();
+  const queryClient = useQueryClient();
+
   const { mutate, isPending } = useMutation({
     mutationFn: () => deleteEvent(eventId),
+    onError: () => {
+      toast.error(t("eventCardDropdown.deleteError"));
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["events"] });
+    },
   });
 
   const handleDelete = (e: MouseEvent<HTMLDivElement>) => {
@@ -39,7 +50,7 @@ export default function EventCardDropdown({ eventId }: { eventId: string }) {
             onClick={handleDelete}
             className="flex justify-between"
           >
-            <p>Delete</p>
+            <p>{t("eventCardDropdown.delete")}</p>
             {isPending && (
               <Loader className="h-4 w-4 animate-spin text-primary" />
             )}

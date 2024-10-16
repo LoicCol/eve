@@ -1,5 +1,6 @@
 "use client";
 
+import { useI18n } from "@/locales/client";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import EventCardDropdown from "./event-card-dropdown";
 import ParticipantsList from "./participant-list";
@@ -16,6 +17,7 @@ interface EventCardProps {
 }
 
 export default function EventCard({ event }: EventCardProps) {
+  const t = useI18n();
   const { data: participants = [], isPending } = useQuery({
     queryKey: ["participants", event.eventId],
     queryFn: () => getParticipants(event.eventId),
@@ -35,7 +37,7 @@ export default function EventCard({ event }: EventCardProps) {
         <p className="text-sm text-muted-foreground">{event.location}</p>
 
         <p className="pb-4 text-sm text-muted-foreground">
-          {new Date(event.eventDate).toLocaleDateString("en-UK", {
+          {new Date(event.eventDate).toLocaleDateString(t("locale"), {
             weekday: "long",
             year: "numeric",
             month: "short",

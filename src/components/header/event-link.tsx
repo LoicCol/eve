@@ -16,10 +16,9 @@ export default function EventLink() {
   const eventContainer = useRef(null);
   const eventStyle = useResize({ container: eventContainer });
 
-  const { id: groupId = "", eventId = "" } = useParams<{
-    id: string;
-    eventId: string;
-  }>();
+  const params = useParams<{ id: string; eventId: string }>();
+  const groupId = params?.id ?? "";
+  const eventId = params?.eventId ?? "";
 
   const { data: eventName = "", isPending: isPendingEvent } = useQuery({
     queryFn: () => getEventName(decode(eventId)),

@@ -17,10 +17,8 @@ export default function GroupLink() {
   const groupContainer = useRef(null);
   const groupStyle = useResize({ container: groupContainer });
 
-  const { id: groupId = "" } = useParams<{
-    id: string;
-    eventId: string;
-  }>();
+  const params = useParams<{ id: string; eventId: string }>();
+  const groupId = params?.id ?? "";
 
   const { data: groupName = "", isPending: isPendingGroup } = useQuery({
     queryFn: () => getGroupName(decode(groupId)),

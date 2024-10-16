@@ -56,7 +56,7 @@ export function Combobox({ objects, value = "", onSelect }: ComboboxProps) {
                   <CheckIcon
                     className={cn(
                       "ml-auto h-4 w-4",
-                      value === object.value ? "opacity-100" : "opacity-0"
+                      value === object.value ? "opacity-100" : "opacity-0",
                     )}
                   />
                 </CommandItem>

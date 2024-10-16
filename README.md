@@ -5,6 +5,7 @@ Welcome to the **Event Management Application**! This little application helps y
 [Live Demo](https://www.eve-nts.app/)
 
 ### Group Example
+
 See how groups and events work in this example:  
 [Group Example](https://www.eve-nts.app/groups/vgh9vcg7HdVtHMfYrjtbGH)
 
@@ -27,6 +28,7 @@ This application is built using the following technologies:
 ## Features and To-Do List
 
 ### Completed Tasks
+
 - [x] Change schema to link events to groups.
 - [x] Implement Group Details UI with linked events.
   - [x] Enable event creation from group details.
@@ -58,6 +60,7 @@ This application is built using the following technologies:
 - [x] Implement a method to link related events (e.g., weekends or festivals).
 
 ### Upcoming Features
+
 - [ ] Limit editing permissions to admin (currently only the creator).
 - [ ] List events for all groups a user is in.
   - [ ] Add search functionality.

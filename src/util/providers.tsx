@@ -8,8 +8,15 @@ import { useState } from "react";
 import { ThemeProvider } from "@/components/next-provider";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
+import { I18nProviderClient } from "@/locales/client";
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+  children,
+  locale,
+}: {
+  children: React.ReactNode;
+  locale: string;
+}) {
   const [queryClient] = useState(() => new QueryClient());
   const { theme } = useTheme();
 
@@ -21,7 +28,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         >
           <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools initialIsOpen={false} />
-            {children}
+            <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
           </QueryClientProvider>
         </ClerkProvider>
       </ThemeProvider>

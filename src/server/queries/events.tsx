@@ -8,7 +8,9 @@ export async function getEvents(userId: string) {
     where: eq(userGroups.userId, userId),
   });
 
-  const groupIds = groups.map((group) => group.groupId).filter((id) => id !== null);
+  const groupIds = groups
+    .map((group) => group.groupId)
+    .filter((id) => id !== null);
 
   const evts = await db.query.events.findMany({
     where: inArray(events.groupId, groupIds),
@@ -133,7 +135,9 @@ export async function updateEvent(
 }
 
 export async function deleteEvent(eventId: string) {
-  await db.delete(events).where(eq(events.eventId, eventId));
+  const event = await db.delete(events).where(eq(events.eventId, eventId));
+
+  return event;
 }
 
 export async function createSection(name: string, description: string) {
