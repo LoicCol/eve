@@ -29,6 +29,7 @@ import {
 import { linkEventsToSection } from "@/lib/actions";
 import { startTransition, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/locales/client";
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -49,6 +50,7 @@ interface LinkEventsProps {
 
 export default function LinkEvents({ events }: LinkEventsProps) {
   const router = useRouter();
+  const t = useI18n();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -106,10 +108,10 @@ export default function LinkEvents({ events }: LinkEventsProps) {
           render={() => (
             <FormItem>
               <div className="mb-4">
-                <FormLabel className="text-base">Link Events</FormLabel>
-                <FormDescription>
-                  Select the events you want to link.
-                </FormDescription>
+                <FormLabel className="text-base">
+                  {t("linkEvents.title")}
+                </FormLabel>
+                <FormDescription>{t("linkEvents.description")}</FormDescription>
               </div>
               {events.map((event) => (
                 <FormField
@@ -156,14 +158,16 @@ export default function LinkEvents({ events }: LinkEventsProps) {
           name="sectionId"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Select Existing Section</FormLabel>
+              <FormLabel>{t("linkEvents.selectExistingSection")}</FormLabel>
               <FormControl>
                 <Select
                   value={field.value}
                   onValueChange={(value) => field.onChange(value)}
                 >
                   <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Select a section" />
+                    <SelectValue
+                      placeholder={t("linkEvents.selectSectionPlaceholder")}
+                    />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -188,18 +192,22 @@ export default function LinkEvents({ events }: LinkEventsProps) {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Create New Section</FormLabel>
+              <FormLabel>{t("linkEvents.createNewSection")}</FormLabel>
               <FormControl>
-                <Input type="text" {...field} placeholder="New section name" />
+                <Input
+                  type="text"
+                  {...field}
+                  placeholder={t("linkEvents.newSectionNamePlaceholder")}
+                />
               </FormControl>
               <FormDescription>
-                Leave empty if you want to link to an existing section.
+                {t("linkEvents.newSectionDescription")}
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">{t("linkEvents.submit")}</Button>
       </form>
     </Form>
   );

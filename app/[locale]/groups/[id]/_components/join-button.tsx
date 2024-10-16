@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Loader, UserRoundCheck, Users } from "lucide-react";
 import { useResize, animated } from "@react-spring/web";
 import { useRef } from "react";
+import { useI18n } from "@/locales/client";
 
 interface JoinButtonProps {
   groupId: string;
@@ -30,6 +31,8 @@ export default function JoinButton({ groupId, hasJoined }: JoinButtonProps) {
     <Users className="mr-2 h-4 w-4" />
   );
 
+  const t = useI18n();
+
   return (
     <animated.div
       style={{ width, overflow: "hidden" }}
@@ -42,7 +45,7 @@ export default function JoinButton({ groupId, hasJoined }: JoinButtonProps) {
         ref={container}
       >
         {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : icon}
-        {hasJoined ? "Joined" : "Join"}
+        {hasJoined ? t("joinButton.joined") : t("joinButton.join")}
       </Button>
     </animated.div>
   );

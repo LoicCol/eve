@@ -5,14 +5,16 @@ import { encode } from "@/util/shorten-uuid";
 import Link from "next/link";
 import GroupRowDropdown from "./group-row-dropdown";
 import { getCurrentUserGroups } from "@/lib/actions";
+import { getI18n } from "@/locales/server";
 
 export default async function GroupList() {
+  const t = await getI18n();
   const groups = await getCurrentUserGroups();
 
   return (
     <div className="mt-4 flex overflow-hidden rounded-lg border border-dashed">
       {groups.length === 0 ? (
-        <p className="p-4 text-muted-foreground">No groups found.</p>
+        <p className="p-4 text-muted-foreground">{t("groups.noGroupsFound")}</p>
       ) : (
         <Table className="min-w-full divide-y divide-gray-200">
           <TableBody>

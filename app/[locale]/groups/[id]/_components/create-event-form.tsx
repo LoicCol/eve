@@ -1,5 +1,6 @@
 "use client";
 
+import { useI18n } from "@/locales/client";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,6 +37,7 @@ interface CreateEventFormProps {
 export default function CreateEventForm({ sections }: CreateEventFormProps) {
   const params = useParams();
   const id = params?.id as string | undefined;
+  const t = useI18n();
 
   const form = useForm<CreateEventFormFields>({
     defaultValues: {
@@ -68,7 +70,7 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
   return (
     <Fragment>
       <CardHeader>
-        <CardTitle>Create New Event</CardTitle>
+        <CardTitle>{t("createEventForm.title")}</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -78,9 +80,12 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Event Name</FormLabel>
+                  <FormLabel>{t("createEventForm.eventName")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter event name" {...field} />
+                    <Input
+                      placeholder={t("createEventForm.enterEventName")}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -91,9 +96,12 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
               name="location"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Location</FormLabel>
+                  <FormLabel>{t("createEventForm.location")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter event location" {...field} />
+                    <Input
+                      placeholder={t("createEventForm.enterEventLocation")}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -104,7 +112,7 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
               name="date"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Date and Time</FormLabel>
+                  <FormLabel>{t("createEventForm.dateAndTime")}</FormLabel>
                   <FormControl>
                     <Input type="date" {...field} />
                   </FormControl>
@@ -118,7 +126,8 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    Select Section <i>(Optional)</i>
+                    {t("createEventForm.selectSection")}{" "}
+                    <i>({t("createEventForm.optional")})</i>
                   </FormLabel>
                   <FormControl>
                     <Select
@@ -126,7 +135,11 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
                       onValueChange={(value) => field.onChange(value)}
                     >
                       <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Select a section" />
+                        <SelectValue
+                          placeholder={t(
+                            "createEventForm.selectSectionPlaceholder",
+                          )}
+                        />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
@@ -148,7 +161,7 @@ export default function CreateEventForm({ sections }: CreateEventFormProps) {
             />
             <Button type="submit" disabled={isPending}>
               {isPending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
-              Create Event
+              {t("createEventForm.createEvent")}
             </Button>
           </form>
         </Form>

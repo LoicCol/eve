@@ -1,5 +1,6 @@
 "use client";
 
+import { useI18n } from "@/locales/client";
 import { Calendar, CalendarRange, Group } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -19,6 +20,7 @@ export default function EventsHeader({
   groupId: string;
   groupName?: string;
 }) {
+  const t = useI18n();
   const [index, set] = useState(0);
   const pathname = usePathname();
   const isEventDetails = pathname?.includes("events");
@@ -34,13 +36,13 @@ export default function EventsHeader({
       >
         <Button asChild variant="outline" className="">
           <Link href={`/groups/${groupId}/link-events`}>
-            <Group className="mr-2 h-4 w-4" /> Link Events
+            <Group className="mr-2 h-4 w-4" /> {t("eventsHeader.linkEvents")}
           </Link>
         </Button>
         <Button asChild className="">
           <Link href={`/groups/${groupId}/create-event`}>
             <Calendar className="mr-2 h-4 w-4" />
-            Create Event
+            {t("eventsHeader.createEvent")}
           </Link>
         </Button>
       </animated.div>
@@ -73,7 +75,7 @@ export default function EventsHeader({
       <Button variant="link" className={`hidden p-0 md:flex`} asChild>
         <Link href={`/groups/${groupId}`}>
           <CalendarRange className="mr-2 h-4 w-4" />
-          <h2 className="">Events</h2>
+          <h2 className="">{t("eventsHeader.events")}</h2>
         </Link>
       </Button>
 
@@ -85,7 +87,7 @@ export default function EventsHeader({
       >
         <Link href={`/groups/${groupId}`}>
           <CalendarRange className="mr-2 h-4 w-4" />
-          <h2 className="">Group&apos;s Events</h2>
+          <h2 className="">{t("eventsHeader.groupEvents")}</h2>
         </Link>
       </Button>
 

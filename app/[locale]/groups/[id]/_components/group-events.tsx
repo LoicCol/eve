@@ -1,5 +1,6 @@
 "use client";
 
+import { useI18n } from "@/locales/client";
 import EventCard from "@/components/event-card";
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
@@ -17,6 +18,7 @@ import {
 } from "@/components/ui/select";
 
 export default function GroupEvents({ groupId }: { groupId: string }) {
+  const t = useI18n();
   const [filter, setFilter] = useState<"upcoming" | "past">("upcoming");
 
   const { data: events = [], isPending } = useQuery({
@@ -55,8 +57,8 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="upcoming">Upcoming</SelectItem>
-          <SelectItem value="passt">Past</SelectItem>
+          <SelectItem value="upcoming">{t("groupEvents.upcoming")}</SelectItem>
+          <SelectItem value="past">{t("groupEvents.past")}</SelectItem>
         </SelectContent>
       </Select>
 
@@ -98,7 +100,9 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
       ) : null}
 
       {!isPending && events.length === 0 ? (
-        <p className="p-2 px-6 italic text-muted-foreground">No events found</p>
+        <p className="p-2 px-6 italic text-muted-foreground">
+          {t("groupEvents.noEventsFound")}
+        </p>
       ) : null}
     </div>
   );

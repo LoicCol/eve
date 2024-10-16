@@ -16,12 +16,14 @@ import { toast } from "sonner";
 import { createGroup } from "@/lib/actions";
 import { startTransition } from "react";
 import React from "react";
+import { useI18n } from "@/locales/client";
 
 type FormData = {
   name: string;
 };
 
 export default function CreateGroupForm() {
+  const t = useI18n();
   const form = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
@@ -29,16 +31,16 @@ export default function CreateGroupForm() {
       startTransition(async () => {
         await createGroup(data);
       });
-      toast.success("Your new group has been successfully created.");
+      toast.success(t("groups.createGroupSuccess"));
     } catch (error: unknown) {
-      toast.error(`There was a problem creating your group. ${error}.`);
+      toast.error(`${t("groups.createGroupError")} ${error}.`);
     }
   };
 
   return (
     <>
       <CardHeader>
-        <CardTitle>Create New Group</CardTitle>
+        <CardTitle>{t("groups.createNewGroup")}</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -48,15 +50,18 @@ export default function CreateGroupForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Group Name</FormLabel>
+                  <FormLabel>{t("groups.groupName")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter group name" {...field} />
+                    <Input
+                      placeholder={t("groups.enterGroupName")}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Create Group</Button>
+            <Button type="submit">{t("groups.createGroup")}</Button>
           </form>
         </Form>
       </CardContent>

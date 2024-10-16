@@ -4,6 +4,7 @@ import EditableTextarea from "@/components/editable-text-area";
 import { editGroupDescription } from "@/lib/actions";
 import { encode } from "@/util/shorten-uuid";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useI18n } from "@/locales/client";
 
 export default function GroupDetailsDescription({
   groupId,
@@ -13,6 +14,7 @@ export default function GroupDetailsDescription({
   description: string | null;
 }) {
   const queryClient = useQueryClient();
+  const t = useI18n();
 
   const { mutate, isPending, variables } = useMutation({
     mutationFn: (data: { description: string }) =>
@@ -34,7 +36,9 @@ export default function GroupDetailsDescription({
       value={variables?.description || description || ""}
       isPending={isPending}
     >
-      <h2 className="font-semibold text-muted-foreground">Description</h2>
+      <h2 className="font-semibold text-muted-foreground">
+        {t("groupDetails.description")}
+      </h2>
     </EditableTextarea>
   );
 }

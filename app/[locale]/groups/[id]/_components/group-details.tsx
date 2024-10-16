@@ -6,8 +6,11 @@ import JoinButton from "./join-button";
 import { currentUser } from "@clerk/nextjs/server";
 import { Fragment } from "react";
 import GroupDetailsName from "./group-details-name";
+import { getI18n } from "@/locales/server";
 
 export default async function GroupDetails({ groupId }: { groupId: string }) {
+  const t = await getI18n();
+
   const [group, members, currUser] = await Promise.all([
     getGroup(groupId),
     getMembers(groupId),
@@ -29,14 +32,18 @@ export default async function GroupDetails({ groupId }: { groupId: string }) {
       </div>
 
       <div className="mt-6">
-        <p className="pr-2 text-muted-foreground">Created by:</p>
+        <p className="pr-2 text-muted-foreground">
+          {t("groupDetails.createdBy")}:
+        </p>
         <div className="flex items-center gap-2">
           <p className="text-foreground">{user?.name}</p>
         </div>
       </div>
 
       <div className="mt-4 flex flex-col gap-2">
-        <p className="pr-2 text-muted-foreground">Members:</p>
+        <p className="pr-2 text-muted-foreground">
+          {t("groupDetails.members")}:
+        </p>
         {members.map((member) => (
           <div key={member?.userId} className="flex gap-2">
             <Avatar>
