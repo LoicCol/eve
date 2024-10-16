@@ -1,7 +1,7 @@
-import Modal from "components/modal";
+import Modal from "@/src/components/modal";
 import LinkEvents from "../../_components/link-events";
-import { getEventsForGroup } from "server/queries";
-import { decode } from "util/shorten-uuid";
+import { getEventsForGroup } from "@/src/server/queries";
+import { decode } from "@/src/util/shorten-uuid";
 
 export default async function Page({
   params: { id },

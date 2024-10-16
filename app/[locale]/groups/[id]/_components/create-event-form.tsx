@@ -1,8 +1,8 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { Button } from "components/ui/button";
-import { Input } from "components/ui/input";
+import { Button } from "@/src/components/ui/button";
+import { Input } from "@/src/components/ui/input";
 import {
   Form,
   FormControl,
@@ -10,15 +10,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "components/ui/form";
-import { CardHeader, CardTitle, CardContent } from "components/ui/card";
+} from "@/src/components/ui/form";
+import { CardHeader, CardTitle, CardContent } from "@/src/components/ui/card";
 import { toast } from "sonner";
-import { createEvent } from "lib/actions";
+import { createEvent } from "@/src/lib/actions";
 import { CreateEventFormFields } from "types";
 import { useParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { Loader } from "lucide-react";
-import { decode } from "util/shorten-uuid";
+import { decode } from "@/src/util/shorten-uuid";
 import { Fragment, startTransition } from "react";
 import {
   Select,
@@ -27,7 +27,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "components/ui/select";
+} from "@/src/components/ui/select";
 
 interface CreateEventFormProps {
   sections: { sectionId: string; sectionName: string }[];

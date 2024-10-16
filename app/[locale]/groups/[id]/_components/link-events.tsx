@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 
-import { Button } from "components/ui/button";
-import { Checkbox } from "components/ui/checkbox";
+import { Button } from "@/src/components/ui/button";
+import { Checkbox } from "@/src/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -15,9 +15,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "components/ui/form";
+} from "@/src/components/ui/form";
 import { toast } from "sonner";
-import { Input } from "components/ui/input";
+import { Input } from "@/src/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -25,8 +25,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "components/ui/select";
-import { linkEventsToSection } from "lib/actions";
+} from "@/src/components/ui/select";
+import { linkEventsToSection } from "@/src/lib/actions";
 import { startTransition, useMemo } from "react";
 import { useRouter } from "next/navigation";
 

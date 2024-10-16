@@ -3,9 +3,14 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "components/ui/resizable";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "components/ui/tabs";
-import { Card, CardContent } from "components/ui/card";
+} from "@/src/components/ui/resizable";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/src/components/ui/tabs";
+import { Card, CardContent } from "@/src/components/ui/card";
 
 export default async function Layout({
   children,

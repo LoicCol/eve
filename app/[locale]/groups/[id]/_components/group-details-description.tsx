@@ -1,8 +1,8 @@
 "use client";
 
-import EditableTextarea from "components/editable-text-area";
-import { editGroupDescription } from "lib/actions";
-import { encode } from "util/shorten-uuid";
+import EditableTextarea from "@/src/components/editable-text-area";
+import { editGroupDescription } from "@/src/lib/actions";
+import { encode } from "@/src/util/shorten-uuid";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export default function GroupDetailsDescription({

@@ -4,14 +4,14 @@ import { Ellipsis, Loader } from "lucide-react";
 import { MouseEvent } from "react";
 
 import { useMutation } from "@tanstack/react-query";
-import { deleteGroup } from "lib/actions";
+import { deleteGroup } from "@/src/lib/actions";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "components/ui/dropdown-menu";
-import { Button } from "components/ui/button";
+} from "@/src/components/ui/dropdown-menu";
+import { Button } from "@/src/components/ui/button";
 
 export default function GroupRowDropdown({ groupId }: { groupId: string }) {
   const { mutate, isPending } = useMutation({

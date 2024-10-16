@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "components/ui/card";
+} from "@/src/components/ui/card";
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
-import { Button } from "components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import Link from "next/link";
-import { getI18n } from "@/locales/server";
+import { getI18n } from "@/src/locales/server";
 
 export default async function Layout({
   children,

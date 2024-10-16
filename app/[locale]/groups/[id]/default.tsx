@@ -1,4 +1,4 @@
-import { decode } from "util/shorten-uuid";
+import { decode } from "@/src/util/shorten-uuid";
 import GroupDetails from "./_components/group-details";
 
 export default function Default({ params }: { params: { id: string } }) {

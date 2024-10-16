@@ -1,20 +1,20 @@
 "use client";
 
-import EventCard from "components/event-card";
+import EventCard from "@/src/components/event-card";
 import Link from "next/link";
-import { encode } from "util/shorten-uuid";
-import { AnimatedGroup } from "components/animated-group";
+import { encode } from "@/src/util/shorten-uuid";
+import { AnimatedGroup } from "@/src/components/animated-group";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { getGroupEvents } from "lib/actions";
-import { Skeleton } from "components/ui/skeleton";
+import { getGroupEvents } from "@/src/lib/actions";
+import { Skeleton } from "@/src/components/ui/skeleton";
 import {
   Select,
   SelectTrigger,
   SelectContent,
   SelectItem,
   SelectValue,
-} from "components/ui/select";
+} from "@/src/components/ui/select";
 
 export default function GroupEvents({ groupId }: { groupId: string }) {
   const [filter, setFilter] = useState<"upcoming" | "past">("upcoming");

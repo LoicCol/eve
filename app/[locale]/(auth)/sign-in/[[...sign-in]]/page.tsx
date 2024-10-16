@@ -1,5 +1,5 @@
 import { SignIn } from "@clerk/nextjs";
-import { getI18n } from "@/locales/server";
+import { getI18n } from "@/src/locales/server";
 
 export default async function Page() {
   const t = await getI18n();

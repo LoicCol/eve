@@ -3,9 +3,9 @@ import {
   getEvent,
   getParticipants,
   getUser,
-} from "server/queries";
+} from "@/src/server/queries";
 import EventDetails from "./event-details";
-import { decode } from "util/shorten-uuid";
+import { decode } from "@/src/util/shorten-uuid";
 
 export default async function EventPage({
   params,
