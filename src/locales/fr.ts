@@ -82,4 +82,26 @@ export default {
   createEvent: {
     title: "Créer un événement",
   },
+  locale: "fr-FR",
+  eventCardDropdown: {
+    delete: "Supprimer",
+  },
+  breadcrumb: {
+    appName: "Eve",
+    userGroups: "Groupes de {name}",
+  },
+  header: {
+    events: "Événements",
+    groups: "Groupes",
+  },
+  participantList: {
+    participating: "Participe",
+    maybe: "Peut-être",
+  },
+  themeToggle: {
+    toggleTheme: "Changer de thème",
+    light: "Clair",
+    dark: "Sombre",
+    system: "Système",
+  },
 } as const;

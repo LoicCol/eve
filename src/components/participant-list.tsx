@@ -1,3 +1,4 @@
+import { useI18n } from "@/locales/client";
 import {
   Tooltip,
   TooltipContent,
@@ -25,6 +26,7 @@ export default function ParticipantsList({
   iconSize,
   isPending,
 }: ParticipantsListProps) {
+  const t = useI18n();
   const iconSizeClass = iconSize === "small" ? "h-7 w-7" : "h-10 w-10";
   const indicatorSizeClass = iconSize === "small" ? "h-3 w-3" : "h-4 w-4";
 
@@ -71,8 +73,8 @@ export default function ParticipantsList({
                 <p className="font-semibold text-white">{participant.name}</p>
                 <p className="text-xs text-white">
                   {participant.status === "participate"
-                    ? "Participating"
-                    : "Maybe"}
+                    ? t("participantList.participating")
+                    : t("participantList.maybe")}
                 </p>
               </TooltipContent>
             </TooltipPortal>

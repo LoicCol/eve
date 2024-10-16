@@ -1,5 +1,6 @@
 "use client";
 
+import { useI18n } from "@/locales/client";
 import { EllipsisVertical, Loader } from "lucide-react";
 import { MouseEvent } from "react";
 import { Button } from "./ui/button";
@@ -13,6 +14,7 @@ import { useMutation } from "@tanstack/react-query";
 import { deleteEvent } from "@/lib/actions";
 
 export default function EventCardDropdown({ eventId }: { eventId: string }) {
+  const t = useI18n();
   const { mutate, isPending } = useMutation({
     mutationFn: () => deleteEvent(eventId),
   });
@@ -39,7 +41,7 @@ export default function EventCardDropdown({ eventId }: { eventId: string }) {
             onClick={handleDelete}
             className="flex justify-between"
           >
-            <p>Delete</p>
+            <p>{t("eventCardDropdown.delete")}</p>
             {isPending && (
               <Loader className="h-4 w-4 animate-spin text-primary" />
             )}

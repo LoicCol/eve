@@ -1,5 +1,6 @@
 "use client";
 
+import { useI18n } from "@/locales/client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -27,6 +28,7 @@ interface EventBreadcrumbProps {
 }
 
 export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
+  const t = useI18n();
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (!isDesktop) {
@@ -39,7 +41,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
                 href="/"
                 className={`font-sans text-xl font-bold text-primary transition-colors duration-300 ease-in-out ${sofia.className}`}
               >
-                Eve
+                {t("breadcrumb.appName")}
               </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
@@ -57,7 +59,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
               href="/"
               className="text-xl font-bold text-primary transition-colors duration-300 ease-in-out"
             >
-              Eve
+              {t("breadcrumb.appName")}
             </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
@@ -78,7 +80,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
                 asChild
               >
                 <Link href="/groups/all" className="capitalize">
-                  {`${user?.name}'s groups`}
+                  {t("breadcrumb.userGroups", { name: user?.name })}
                 </Link>
               </Button>
             </BreadcrumbItem>

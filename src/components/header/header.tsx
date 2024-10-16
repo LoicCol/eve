@@ -1,5 +1,6 @@
 "use server";
 
+import { getI18n } from "@/locales/server";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import EventBreadcrumb from "./breadcrumb";
 import { ModeToggle } from "../theme-toggle";
 
 export default async function Header() {
+  const t = await getI18n();
   const user = await getCurrentUser();
 
   return (
@@ -22,10 +24,10 @@ export default async function Header() {
           </SignedOut>
           <SignedIn>
             <Button variant="ghost" asChild>
-              <Link href="/events/all">Events</Link>
+              <Link href="/events/all">{t("header.events")}</Link>
             </Button>
             <Button variant="ghost" asChild>
-              <Link href="/groups/all">Groups</Link>
+              <Link href="/groups/all">{t("header.groups")}</Link>
             </Button>
             <UserButton />
           </SignedIn>
