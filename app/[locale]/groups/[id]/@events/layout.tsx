@@ -1,5 +1,5 @@
 import React from "react";
-import EventsHeader from "../_components/events-header";
+import EventsHeader from "../events-header";
 import { getGroup } from "@/server/queries";
 import { decode } from "@/util/shorten-uuid";
 

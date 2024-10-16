@@ -1,5 +1,5 @@
 import Modal from "@/components/modal";
-import CreateEventForm from "../../_components/create-event-form";
+import CreateEventForm from "../../create-event-form";
 import { decode } from "@/util/shorten-uuid";
 import { getEventsForGroup } from "@/server/queries";
 
