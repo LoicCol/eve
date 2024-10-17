@@ -12,7 +12,7 @@ export default {
     allEvents: "Tous les événements",
   },
   groups: {
-    yourGroups: "Groupes dont vous faites partie",
+    yourGroups: "Vos Groupes",
     createGroup: "Créer un groupe",
     createNewGroup: "Créer un nouveau groupe",
     groupName: "Nom du groupe",
@@ -110,7 +110,7 @@ export default {
     system: "Système",
   },
   home: {
-    title: "Bienvenue sur Event Manager",
+    title: "Bienvenue sur",
     description:
       "Organisez et gérez facilement des événements avec vos amis. Créez des groupes, planifiez des événements et suivez qui participe.",
     upcomingEvents: {

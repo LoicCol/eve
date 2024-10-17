@@ -24,7 +24,7 @@ export default function GroupRowDropdown({ groupId }: { groupId: string }) {
   };
 
   return (
-    <div className="absolute right-2 top-2">
+    <div className="right-2 top-2">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button

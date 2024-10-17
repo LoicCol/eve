@@ -15,14 +15,21 @@ export default async function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="mb-8 text-4xl font-bold">{t("home.title")}</h1>
+      <h1 className="mb-8 font-sans text-3xl font-bold">
+        {t("home.title")}
+        <span className="font-sofia font-sbold ml-3 text-5xl text-primary">
+          Eve
+        </span>
+      </h1>
       <p className="mb-8 text-lg text-muted-foreground">
         {t("home.description")}
       </p>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>{t("home.upcomingEvents.title")}</CardTitle>
+            <CardTitle className="font-sans">
+              {t("home.upcomingEvents.title")}
+            </CardTitle>
             <CardDescription>
               {t("home.upcomingEvents.description")}
             </CardDescription>
@@ -38,7 +45,9 @@ export default async function Home() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>{t("home.yourGroups.title")}</CardTitle>
+            <CardTitle className="font-sans">
+              {t("home.yourGroups.title")}
+            </CardTitle>
             <CardDescription>
               {t("home.yourGroups.description")}
             </CardDescription>

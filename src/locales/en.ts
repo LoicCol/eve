@@ -108,7 +108,7 @@ export default {
     system: "System",
   },
   home: {
-    title: "Welcome to Event Manager",
+    title: "Welcome on",
     description:
       "Organize and manage events with your friends easily. Create groups, plan events, and keep track of who's attending.",
     upcomingEvents: {

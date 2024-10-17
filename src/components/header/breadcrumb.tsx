@@ -16,9 +16,6 @@ import GroupLink from "./group-link";
 import EventLink from "./event-link";
 import React from "react";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { Sofia } from "next/font/google";
-
-const sofia = Sofia({ weight: "400", subsets: ["latin"] });
 
 interface EventBreadcrumbProps {
   user?: {
@@ -39,7 +36,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
             <BreadcrumbLink asChild>
               <Link
                 href="/"
-                className={`font-sans text-xl font-bold text-primary transition-colors duration-300 ease-in-out ${sofia.className}`}
+                className={`font-sofia text-xl font-bold text-primary transition-colors duration-300 ease-in-out`}
               >
                 {t("breadcrumb.appName")}
               </Link>
@@ -57,7 +54,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
           <BreadcrumbLink asChild>
             <Link
               href="/"
-              className="text-xl font-bold text-primary transition-colors duration-300 ease-in-out"
+              className="font-sofia text-xl font-bold text-primary transition-colors duration-300 ease-in-out"
             >
               {t("breadcrumb.appName")}
             </Link>

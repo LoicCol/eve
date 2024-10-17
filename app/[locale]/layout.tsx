@@ -1,11 +1,16 @@
 import "@/styles/globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Sofia } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import Providers from "@/util/providers";
 import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
+const sofia = Sofia({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-sofia",
+});
 
 export const metadata = {
   title: "Eve",
@@ -21,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-screen">
-      <body className={`${inter.className} h-screen`}>
+      <body className={`${inter.className} ${sofia.variable} h-screen`}>
         <div className="h-screen md:py-4">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Providers locale={locale}>
