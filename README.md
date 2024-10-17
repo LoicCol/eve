@@ -62,7 +62,7 @@ This application is built using the following technologies:
 ### Upcoming Features
 
 - [ ] Limit editing permissions to admin (currently only the creator).
-- [ ] List events for all groups a user is in.
+- [x] List events for all groups a user is in.
   - [ ] Add search functionality.
   - [ ] Implement filters for events.
 - [ ] Show participants on event cards.
