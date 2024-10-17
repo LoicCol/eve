@@ -4,7 +4,7 @@ import { getI18n } from "@/locales/server";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import { getCurrentUser } from "@/server/queries";
+import { getCurrentUser } from "server/queries";
 
 import EventBreadcrumb from "./breadcrumb";
 import { ModeToggle } from "../theme-toggle";

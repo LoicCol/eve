@@ -18,7 +18,7 @@ import {
   getUserGroups,
   getSection,
   getEventsForGroup,
-} from "@/server/queries";
+} from "server/queries";
 import {
   CreateEventFormFields,
   createEventFormSchema,

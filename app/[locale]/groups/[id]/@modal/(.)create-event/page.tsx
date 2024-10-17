@@ -1,7 +1,7 @@
 import Modal from "@/components/modal";
 import CreateEventForm from "../../create-event-form";
 import { decode } from "@/util/shorten-uuid";
-import { getEventsForGroup } from "@/server/queries";
+import { getEventsForGroup } from "server/queries";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const events = await getEventsForGroup(decode(params.id));

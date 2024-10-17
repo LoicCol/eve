@@ -1,7 +1,7 @@
 import { getI18n } from "@/locales/server";
 import Modal from "@/components/modal";
 import LinkEvents from "../link-events";
-import { getEventsForGroup } from "@/server/queries";
+import { getEventsForGroup } from "server/queries";
 import { decode } from "@/util/shorten-uuid";
 
 export default async function Page({

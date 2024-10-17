@@ -1,6 +1,6 @@
 import React from "react";
 import EventsHeader from "../events-header";
-import { getGroup } from "@/server/queries";
+import { getGroup } from "server/queries";
 import { decode } from "@/util/shorten-uuid";
 
 export default async function Layout({

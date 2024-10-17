@@ -3,7 +3,7 @@ import {
   getEvent,
   getParticipants,
   getUser,
-} from "@/server/queries";
+} from "server/queries";
 import EventDetails from "./event-details";
 import { decode } from "@/util/shorten-uuid";
 

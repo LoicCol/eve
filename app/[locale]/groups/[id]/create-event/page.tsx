@@ -1,6 +1,6 @@
 import CreateEventForm from "../create-event-form";
 import { decode } from "@/util/shorten-uuid";
-import { getEventsForGroup } from "@/server/queries";
+import { getEventsForGroup } from "server/queries";
 import CloseButton from "./close-button";
 
 export default async function Page({
