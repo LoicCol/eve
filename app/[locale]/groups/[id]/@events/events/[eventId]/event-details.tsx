@@ -97,7 +97,7 @@ export default function EventDetails({
   );
 
   return (
-    <Card className="max-w-8xl flex-1 overflow-hidden shadow-sm dark:bg-card md:m-2">
+    <Card className="max-w-8xl flex-1 overflow-hidden border-primary/40 shadow-sm dark:bg-card md:m-2">
       <CardContent className="flex h-full flex-col gap-4 p-4 md:flex-row">
         <div className="flex-1">
           <div className="flex justify-between gap-2 pb-4">
@@ -160,7 +160,7 @@ export default function EventDetails({
             </div>
           </div>
         </div>
-        <div className="flex flex-1 border-t border-dashed border-border pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+        <div className="flex flex-1 border-t border-dashed border-primary/40 pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
           <EditableTextArea
             value={variables?.description || event.description || ""}
             isPending={isPending}

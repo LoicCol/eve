@@ -12,7 +12,7 @@ export default {
     allEvents: "Tous les {evnts}",
   },
   groups: {
-    yourGroups: "Vos Groupes",
+    yourGroups: "Vos {groups}",
     createGroup: "Créer un groupe",
     createNewGroup: "Créer un nouveau groupe",
     groupName: "Nom du groupe",
@@ -49,8 +49,8 @@ export default {
     noSections: "Aucune section disponible",
   },
   eventsHeader: {
-    linkEvents: "Lier des évmts",
-    createEvent: "Créer un évmt",
+    linkEvents: "Lier",
+    createEvent: "Créer un événement",
     events: "Événements",
     groupEvents: "Événements du groupe",
   },
@@ -70,7 +70,8 @@ export default {
   },
   linkEvents: {
     title: "Lier des événements",
-    description: "Sélectionnez les événements que vous souhaitez lier.",
+    description:
+      "Sélectionnez les événements que vous souhaitez lier. Ils seront regroupés dans une même section.",
     selectExistingSection: "Sélectionner une section existante",
     selectSectionPlaceholder: "Sélectionnez une section",
     createNewSection: "Créer une nouvelle section",

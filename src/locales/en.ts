@@ -12,7 +12,7 @@ export default {
     allEvents: "All {evnts}",
   },
   groups: {
-    yourGroups: "Your Groups",
+    yourGroups: "Your {groups}",
     createGroup: "Create Group",
     createNewGroup: "Create New Group",
     groupName: "Group Name",
@@ -68,7 +68,8 @@ export default {
   },
   linkEvents: {
     title: "Link Events",
-    description: "Select the events you want to link.",
+    description:
+      "Select the events you want to link. They will be grouped in a section.",
     selectExistingSection: "Select Existing Section",
     selectSectionPlaceholder: "Select a section",
     createNewSection: "Create New Section",

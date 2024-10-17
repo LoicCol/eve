@@ -1,7 +1,8 @@
 import React from "react";
-import EventsHeader from "../events-header";
+import EventsHeader from "./events-header";
 import { getGroup } from "server/queries";
 import { decode } from "@/util/shorten-uuid";
+import { Separator } from "@/components/ui/separator";
 
 export default async function Layout({
   children,
@@ -14,6 +15,7 @@ export default async function Layout({
   return (
     <>
       <EventsHeader groupId={params.id} groupName={group?.groupName} />
+      <Separator className="mb-4 mt-3 w-auto md:mx-2 md:mt-2" />
       {children}
     </>
   );
