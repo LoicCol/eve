@@ -13,7 +13,7 @@ export function TrailedButton({ children, ...props }: TrailedButtonProps) {
 
   return (
     <div
-      className="relative rounded-md border border-transparent"
+      className="relative h-fit rounded-md border border-transparent"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

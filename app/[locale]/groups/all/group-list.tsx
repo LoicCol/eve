@@ -15,7 +15,7 @@ export default async function GroupList({ locale }: { locale: string }) {
       {groups.length === 0 ? (
         <p className="p-4 text-muted-foreground">{t("groups.noGroupsFound")}</p>
       ) : (
-        <ul className="w-full space-y-4">
+        <ul className="w-full space-y-4 px-2 md:px-0">
           {groups.map((group) => (
             <li
               key={group.groupId}
