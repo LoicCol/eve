@@ -36,7 +36,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
             <BreadcrumbLink asChild>
               <Link
                 href="/"
-                className={`font-sofia text-xl font-bold text-primary transition-colors duration-300 ease-in-out`}
+                className={`font-sofia text-2xl font-bold text-primary transition-colors duration-300 ease-in-out`}
               >
                 {t("breadcrumb.appName")}
               </Link>
