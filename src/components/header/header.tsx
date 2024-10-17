@@ -15,7 +15,7 @@ export default async function Header() {
 
   return (
     <SignedIn>
-      <div className="container mx-auto mb-4 bg-gradient-to-t from-border to-green-300 p-[1px] dark:to-green-900 md:rounded-lg">
+      <div className="container mx-auto mb-4 bg-gradient-to-l from-border to-green-300 p-[1px] dark:to-green-900 md:rounded-lg">
         <div className="flex h-16 items-center justify-between bg-background px-4 md:rounded-lg">
           <EventBreadcrumb user={user} />
 
