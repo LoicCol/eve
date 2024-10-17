@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { BreadcrumbSeparator } from "../ui/breadcrumb";
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { getGroupName } from "@/lib/actions";
+import { getGroupName } from "server/actions/actions";
 import { decode } from "@/util/shorten-uuid";
 import { Loader } from "lucide-react";
 import { Fragment, useRef } from "react";

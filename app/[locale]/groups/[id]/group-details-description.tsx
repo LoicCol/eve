@@ -1,7 +1,7 @@
 "use client";
 
 import EditableTextarea from "@/components/editable-text-area";
-import { editGroupDescription } from "@/lib/actions";
+import { editGroupDescription } from "server/actions/actions";
 import { encode } from "@/util/shorten-uuid";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useI18n } from "@/locales/client";

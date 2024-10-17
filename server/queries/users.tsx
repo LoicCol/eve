@@ -1,7 +1,7 @@
 "use server";
 import { eq } from "drizzle-orm";
 import { db } from "../db";
-import { users } from "../db/schema";
+import { userGroups, users } from "../db/schema";
 import { auth } from "@clerk/nextjs/server";
 
 export async function getUser(userId: string) {
@@ -55,6 +55,14 @@ export async function getCurrentUser() {
 
   const user = await db.query.users.findFirst({
     where: eq(users.userId, userId),
+  });
+
+  return user;
+}
+
+export async function checkUserGroup(userId: string) {
+  const user = await db.query.userGroups.findFirst({
+    where: eq(userGroups.userId, userId),
   });
 
   return user;

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { joinGroup, leaveGroup } from "@/lib/actions";
+import { joinGroup, leaveGroup } from "server/actions/actions";
 import { useMutation } from "@tanstack/react-query";
 import { Loader, UserRoundCheck, Users } from "lucide-react";
 import { useResize, animated } from "@react-spring/web";

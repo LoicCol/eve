@@ -3,7 +3,7 @@
 import { encode } from "@/util/shorten-uuid";
 import Link from "next/link";
 import GroupRowDropdown from "./group-row-dropdown";
-import { getCurrentUserGroups } from "@/lib/actions";
+import { getCurrentUserGroups } from "server/actions/actions";
 import { getI18n } from "@/locales/server";
 
 export default async function GroupList({ locale }: { locale: string }) {

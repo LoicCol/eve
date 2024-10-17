@@ -13,29 +13,43 @@ import {
 } from "@/components/ui/form";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
-import { createGroup } from "@/lib/actions";
+import { createGroup } from "server/actions/actions";
 import { startTransition } from "react";
 import React from "react";
 import { useI18n } from "@/locales/client";
+import { useMutation } from "@tanstack/react-query";
+import { Loader } from "lucide-react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-type FormData = {
-  name: string;
-};
+const FormSchema = z.object({
+  name: z.string().min(1, { message: "Group name is required" }),
+});
 
 export default function CreateGroupForm() {
   const t = useI18n();
-  const form = useForm<FormData>();
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+  });
 
-  const onSubmit = async (data: FormData) => {
-    try {
-      startTransition(async () => {
-        await createGroup(data);
-      });
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data: z.infer<typeof FormSchema>) => {
+      return createGroup(data);
+    },
+    onSuccess: () => {
       toast.success(t("groups.createGroupSuccess"));
-    } catch (error: unknown) {
+    },
+    onError: (error: unknown) => {
       toast.error(`${t("groups.createGroupError")} ${error}.`);
-    }
-  };
+      console.error(error);
+    },
+  });
+
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    startTransition(() => {
+      return mutate(data);
+    });
+  }
 
   return (
     <>
@@ -61,7 +75,10 @@ export default function CreateGroupForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit">{t("groups.createGroup")}</Button>
+            <Button type="submit" disabled={isPending}>
+              {isPending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
+              {t("groups.createGroup")}
+            </Button>
           </form>
         </Form>
       </CardContent>

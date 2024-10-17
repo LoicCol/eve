@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { joinEvent, editEvent, leaveEvent } from "@/lib/actions";
+import { joinEvent, editEvent, leaveEvent } from "server/actions/actions";
 import ParticipantsList from "@/components/participant-list";
 import { CalendarIcon, Loader, MapPinIcon, UserIcon } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

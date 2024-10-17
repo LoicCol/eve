@@ -13,16 +13,16 @@ export function TrailedButton({ children, ...props }: TrailedButtonProps) {
 
   return (
     <div
-      className="relative h-fit overflow-hidden rounded-md border border-transparent"
+      className={cn(
+        "relative h-fit overflow-hidden rounded-md border border-transparent",
+        props.className,
+      )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <Button
         variant="outline"
-        className={cn(
-          "bg-primary/10 text-primary transition-colors duration-300 hover:animate-none hover:bg-primary hover:text-white",
-          props.className,
-        )}
+        className="bg-primary/10 text-primary transition-colors duration-300 hover:animate-none hover:bg-primary hover:text-white"
         {...props}
       >
         {children}
