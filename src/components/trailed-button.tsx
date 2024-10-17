@@ -4,7 +4,6 @@ import { ButtonProps } from "./ui/button";
 import { Button } from "./ui/button";
 import BorderTrail from "./border-trail";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
 
 interface TrailedButtonProps extends ButtonProps {}
 
@@ -13,10 +12,7 @@ export function TrailedButton({ children, ...props }: TrailedButtonProps) {
 
   return (
     <div
-      className={cn(
-        "relative h-fit overflow-hidden rounded-md border border-transparent",
-        props.className,
-      )}
+      className="relative h-fit overflow-hidden rounded-md border border-transparent"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
