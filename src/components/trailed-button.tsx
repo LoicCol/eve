@@ -4,7 +4,6 @@ import { ButtonProps } from "./ui/button";
 import { Button } from "./ui/button";
 import BorderTrail from "./border-trail";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
 
 interface TrailedButtonProps extends ButtonProps {}
 
@@ -19,10 +18,7 @@ export function TrailedButton({ children, ...props }: TrailedButtonProps) {
     >
       <Button
         variant="outline"
-        className={cn(
-          "bg-primary/10 text-primary transition-colors duration-300 hover:animate-none hover:bg-primary hover:text-white",
-          props.className,
-        )}
+        className="bg-primary/10 text-primary transition-colors duration-300 hover:animate-none hover:bg-primary hover:text-white"
         {...props}
       >
         {children}

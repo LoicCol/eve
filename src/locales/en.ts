@@ -14,7 +14,7 @@ export default {
   groups: {
     yourGroups: "Your {groups}",
     createGroup: "Create Group",
-    createNewGroup: "Create New Group",
+    createNewGroup: "Create a Group",
     groupName: "Group Name",
     enterGroupName: "Enter group name",
     createGroupSuccess: "Your new group has been successfully created.",

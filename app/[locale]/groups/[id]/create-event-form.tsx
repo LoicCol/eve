@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
-import { createEvent } from "@/lib/actions";
+import { createEvent } from "server/actions/actions";
 import { CreateEventFormFields } from "types";
 import { useParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";

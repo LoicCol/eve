@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteEvent } from "@/lib/actions";
+import { deleteEvent } from "server/actions/actions";
 import { toast } from "sonner";
 
 export default function EventCardDropdown({ eventId }: { eventId: string }) {

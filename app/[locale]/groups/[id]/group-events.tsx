@@ -7,7 +7,7 @@ import { encode } from "@/util/shorten-uuid";
 import { AnimatedGroup } from "@/components/animated-group";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { getGroupEvents } from "@/lib/actions";
+import { getGroupEvents } from "server/actions/actions";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 

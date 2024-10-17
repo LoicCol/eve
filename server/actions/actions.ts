@@ -18,6 +18,7 @@ import {
   getUserGroups,
   getSection,
   getEventsForGroup,
+  checkUserGroup,
 } from "server/queries";
 import {
   CreateEventFormFields,
@@ -278,4 +279,13 @@ export async function getGroupEvents(
   const events = await getEventsForGroup(groupId, filter);
 
   return events;
+}
+
+export async function hasUserJoinedGroup() {
+  const user = auth();
+  if (!user.userId) throw new Error("Unauthorized");
+
+  const isUserInGroup = await checkUserGroup(user.userId);
+
+  return isUserInGroup;
 }
