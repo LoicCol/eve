@@ -15,9 +15,9 @@ export default async function Home() {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="mb-8 px-4 font-sans text-3xl font-bold underline underline-offset-auto">
+      <h1 className="mb-8 px-4 font-sans text-3xl font-bold">
         {t("home.title")}
-        <span className="font-sofia font-sbold ml-4 inline-block text-6xl text-primary no-underline">
+        <span className="font-sofia font-sbold ml-4 text-6xl text-primary">
           Eve
         </span>
       </h1>
