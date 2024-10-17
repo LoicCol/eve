@@ -12,7 +12,7 @@ export default {
     allEvents: "Tous les {evnts}",
   },
   groups: {
-    yourGroups: "Vos Groupes",
+    yourGroups: "Vos {groups}",
     createGroup: "Créer un groupe",
     createNewGroup: "Créer un nouveau groupe",
     groupName: "Nom du groupe",

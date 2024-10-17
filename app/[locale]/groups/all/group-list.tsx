@@ -1,6 +1,5 @@
 "use server";
 
-import { Table, TableRow, TableCell, TableBody } from "@/components/ui/table";
 import { encode } from "@/util/shorten-uuid";
 import Link from "next/link";
 import GroupRowDropdown from "./group-row-dropdown";
@@ -12,36 +11,36 @@ export default async function GroupList({ locale }: { locale: string }) {
   const groups = await getCurrentUserGroups();
 
   return (
-    <div className="mt-4 flex overflow-hidden rounded-lg border border-dashed">
+    <div className="mt-6 flex overflow-hidden">
       {groups.length === 0 ? (
         <p className="p-4 text-muted-foreground">{t("groups.noGroupsFound")}</p>
       ) : (
-        <Table className="min-w-full divide-y divide-gray-200">
-          <TableBody>
-            {groups.map((group) => (
+        <ul className="w-full space-y-4">
+          {groups.map((group) => (
+            <li
+              key={group.groupId}
+              className="relative rounded-md border border-dashed border-primary/50 hover:bg-accent"
+            >
               <Link
                 href={`/groups/${encode(group.groupId)}`}
-                key={group.groupId}
-                legacyBehavior
+                className="flex cursor-pointer items-center justify-between py-1 pl-4 pr-2 hover:text-primary"
               >
-                <TableRow className="relative h-14 cursor-pointer border-dashed hover:text-primary">
-                  <TableCell>{group.groupName}</TableCell>
-                  <TableCell className="text-right">
+                <span className="text-sm font-medium">{group.groupName}</span>
+                <div className="flex items-center text-end">
+                  <span className="mr-4 text-sm text-muted-foreground">
                     {new Date(group.createdAt).toLocaleDateString(locale, {
                       weekday: "long",
                       year: "numeric",
                       month: "short",
                       day: "numeric",
                     })}
-                  </TableCell>
-                  <TableCell className="w-[36px] text-right">
-                    <GroupRowDropdown groupId={group.groupId} />
-                  </TableCell>
-                </TableRow>
+                  </span>
+                  <GroupRowDropdown groupId={group.groupId} />
+                </div>
               </Link>
-            ))}
-          </TableBody>
-        </Table>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

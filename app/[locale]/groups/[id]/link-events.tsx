@@ -126,6 +126,7 @@ export default function LinkEvents({ events }: LinkEventsProps) {
                       >
                         <FormControl>
                           <Checkbox
+                            className="rounded-none"
                             checked={field.value?.includes(event.eventId)}
                             onCheckedChange={(checked) => {
                               return checked
@@ -141,7 +142,7 @@ export default function LinkEvents({ events }: LinkEventsProps) {
                             }}
                           />
                         </FormControl>
-                        <FormLabel className="text-sm font-normal">
+                        <FormLabel className="text-sm font-normal hover:cursor-pointer">
                           {event.eventName}
                         </FormLabel>
                       </FormItem>

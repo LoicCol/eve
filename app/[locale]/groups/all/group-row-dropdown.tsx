@@ -30,7 +30,7 @@ export default function GroupRowDropdown({ groupId }: { groupId: string }) {
           <Button
             variant="outline"
             size="icon"
-            className="mt-0 rounded-full border-none text-muted-foreground"
+            className="mt-0 rounded-full border-none text-muted-foreground shadow-none hover:bg-primary/10 hover:text-primary"
           >
             <Ellipsis className="h-4 w-4" />
           </Button>

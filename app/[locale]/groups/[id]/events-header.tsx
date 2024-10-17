@@ -5,14 +5,8 @@ import { Calendar, CalendarRange, Group } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  animated,
-  AnimatedProps,
-  useSpringRef,
-  useTransition,
-} from "@react-spring/web";
-import { CSSProperties, useEffect, useState } from "react";
 import React from "react";
+import { TrailedButton } from "@/components/trailed-button";
 
 export default function EventsHeader({
   groupId,
@@ -21,55 +15,12 @@ export default function EventsHeader({
   groupName?: string;
 }) {
   const t = useI18n();
-  const [index, set] = useState(0);
   const pathname = usePathname();
   const isEventDetails = pathname?.includes("events");
 
-  const buttons: ((
-    props: AnimatedProps<{ style: CSSProperties }>,
-  ) => React.ReactElement)[] = [
-    ({ style }) => (
-      <animated.div
-        className={`justify-between gap-2 md:flex ${isEventDetails ? "hidden" : "flex"}`}
-        key="1"
-        style={style}
-      >
-        <Button asChild variant="outline" className="">
-          <Link href={`/groups/${groupId}/link-events`}>
-            <Group className="mr-2 h-4 w-4" /> {t("eventsHeader.linkEvents")}
-          </Link>
-        </Button>
-        <Button asChild className="">
-          <Link href={`/groups/${groupId}/create-event`}>
-            <Calendar className="mr-2 h-4 w-4" />
-            {t("eventsHeader.createEvent")}
-          </Link>
-        </Button>
-      </animated.div>
-    ),
-  ];
-
-  const transRef = useSpringRef();
-  const transitions = useTransition(index, {
-    ref: transRef,
-    keys: null,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  });
-
-  useEffect(() => {
-    transRef.start();
-  }, [index, transRef]);
-
-  useEffect(() => {
-    if (!isEventDetails) return set(0);
-    set(1);
-  }, [isEventDetails]);
-
   return (
     <div
-      className={`mb-2 items-center justify-between md:flex md:pl-2 md:pr-2 md:pt-2 ${!isEventDetails ? "pt-2" : ""}`}
+      className={`mb-2 items-center justify-between pt-2 md:flex md:pl-2 md:pr-2 md:pt-2`}
     >
       {/* Desktop */}
       <Button variant="link" className={`hidden p-0 md:flex`} asChild>
@@ -82,7 +33,7 @@ export default function EventsHeader({
       {/* Mobile */}
       <Button
         variant="link"
-        className={`p-0 md:hidden ${!isEventDetails && "hidden"}`}
+        className={`ml-4 p-0 md:hidden ${!isEventDetails && "hidden"}`}
         asChild
       >
         <Link href={`/groups/${groupId}`}>
@@ -91,11 +42,23 @@ export default function EventsHeader({
         </Link>
       </Button>
 
-      {transitions((style, index) => {
-        const AnimatedButton = buttons[index];
-        if (!AnimatedButton) return null;
-        return <AnimatedButton style={style} />;
-      })}
+      <div
+        className={`flex justify-end gap-2 pt-2 md:py-0 ${
+          isEventDetails ? "hidden md:flex" : ""
+        }`}
+      >
+        <Button asChild variant="outline" className="">
+          <Link href={`/groups/${groupId}/link-events`}>
+            <Group className="mr-2 h-4 w-4" /> {t("eventsHeader.linkEvents")}
+          </Link>
+        </Button>
+        <TrailedButton asChild>
+          <Link href={`/groups/${groupId}/create-event`}>
+            <Calendar className="mr-2 h-4 w-4" />
+            {t("eventsHeader.createEvent")}
+          </Link>
+        </TrailedButton>
+      </div>
     </div>
   );
 }

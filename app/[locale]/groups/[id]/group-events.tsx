@@ -10,6 +10,7 @@ import { useState } from "react";
 import { getGroupEvents } from "@/lib/actions";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
 
 export default function GroupEvents({ groupId }: { groupId: string }) {
   const t = useI18n();
@@ -42,7 +43,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
 
     return sortedSections.map((sectionId) => (
       <div key={sectionId}>
-        <h2 className="mb-4 px-4 font-sans text-xl font-bold delay-100 animate-in">
+        <h2 className="mb-4 font-sans text-xl font-bold delay-100 animate-in">
           {sectionId === "other"
             ? "Other"
             : groupedEvents[sectionId]?.[0]?.sectionName}
@@ -68,16 +69,26 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
     <Tabs
       value={activeTab}
       onValueChange={(value) => setActiveTab(value as "upcoming" | "past")}
-      className="flex flex-1 flex-col overflow-hidden pt-2 md:p-2"
+      className="flex flex-1 flex-col overflow-hidden md:px-2"
     >
-      <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="upcoming">{t("groupEvents.upcoming")}</TabsTrigger>
-        <TabsTrigger value="past">{t("groupEvents.past")}</TabsTrigger>
+      <TabsList className="flex h-auto grid-cols-2 justify-start gap-2 border-none bg-transparent p-0">
+        <TabsTrigger
+          className="rounded-[.375rem] bg-card-foreground/5 p-0 px-2 py-1 text-sm font-medium data-[state=active]:bg-card-foreground/20 data-[state=active]:text-foreground data-[state=active]:shadow-none"
+          value="upcoming"
+        >
+          {t("groupEvents.upcoming")}
+        </TabsTrigger>
+        <TabsTrigger
+          className="rounded-[.375rem] bg-card-foreground/5 p-0 px-2 py-1 text-sm font-medium data-[state=active]:bg-card-foreground/20 data-[state=active]:text-foreground data-[state=active]:shadow-none"
+          value="past"
+        >
+          {t("groupEvents.past")}
+        </TabsTrigger>
       </TabsList>
-      <TabsContent
-        className="flex-1 space-y-8 overflow-auto pt-2"
-        value="upcoming"
-      >
+
+      <Separator className="mb-2 mt-3 w-auto" />
+
+      <TabsContent className="flex-1 space-y-6 overflow-auto" value="upcoming">
         {isPending ? (
           <div className="space-y-8 pt-2 md:p-2">
             <Skeleton className="h-4 w-[80px]" />
@@ -94,7 +105,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
           </p>
         )}
       </TabsContent>
-      <TabsContent value="past" className="flex-1 space-y-8 overflow-auto pt-2">
+      <TabsContent value="past" className="flex-1 space-y-6 overflow-auto">
         {isPending ? (
           <div className="space-y-8 pt-2 md:p-2">
             <Skeleton className="h-4 w-[80px]" />
