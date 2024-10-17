@@ -22,7 +22,7 @@ export default async function Layout({
               <TextEffect
                 preset="blur"
                 as="span"
-                className="font-sofia font-bold"
+                className="font-sofia ml-1 font-bold"
                 per="word"
               >
                 {t("header.groups")}
