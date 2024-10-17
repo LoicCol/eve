@@ -21,11 +21,11 @@ export default async function Home() {
           Eve
         </span>
       </h1>
-      <p className="mb-16 px-4 font-sans text-lg text-foreground">
+      <p className="mb-14 px-4 font-sans text-lg text-foreground">
         {t("home.description")}
       </p>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <Card>
+        <Card className="transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none">
           <CardHeader>
             <CardTitle className="font-sans">
               {t("home.upcomingEvents.title")}
@@ -43,7 +43,7 @@ export default async function Home() {
             </Button>
           </CardFooter>
         </Card>
-        <Card>
+        <Card className="transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none">
           <CardHeader>
             <CardTitle className="font-sans">
               {t("home.yourGroups.title")}
