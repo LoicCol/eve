@@ -20,7 +20,7 @@ export default function EventsHeader({
 
   return (
     <div
-      className={`mb-2 items-center justify-between pt-2 md:flex md:pl-2 md:pr-2 md:pt-2`}
+      className={`1 mb-2 items-center justify-between pt-1 md:flex md:pl-2 md:pr-2 md:pt-2`}
     >
       {/* Desktop */}
       <Button variant="link" className={`hidden p-0 md:flex`} asChild>
@@ -43,7 +43,7 @@ export default function EventsHeader({
       </Button>
 
       <div
-        className={`flex justify-end gap-2 pt-2 md:py-0 ${
+        className={`flex justify-between gap-2 md:py-0 ${
           isEventDetails ? "hidden md:flex" : ""
         }`}
       >

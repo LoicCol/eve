@@ -49,8 +49,8 @@ export default {
     noSections: "Aucune section disponible",
   },
   eventsHeader: {
-    linkEvents: "Lier des évmts",
-    createEvent: "Créer un évmt",
+    linkEvents: "Lier",
+    createEvent: "Créer un événement",
     events: "Événements",
     groupEvents: "Événements du groupe",
   },
