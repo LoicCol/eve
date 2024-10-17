@@ -76,7 +76,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
         <div className="space-y-8 overflow-auto pt-2 md:p-2">
           {sortedSections.map((sectionId) => (
             <div key={sectionId}>
-              <h2 className="mb-4 text-xl font-bold delay-100 animate-in">
+              <h2 className="mb-4 px-4 text-xl font-bold delay-100 animate-in">
                 {sectionId === "other"
                   ? "Other"
                   : groupedEvents[sectionId]?.[0]?.sectionName}
