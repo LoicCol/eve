@@ -33,7 +33,9 @@ export default function GroupDetailsName({
       value={groupName}
       isPending={isPending}
     >
-      <h1 className="text-xl font-bold">{variables?.name || groupName}</h1>
+      <h1 className="font-sans text-xl font-bold">
+        {variables?.name || groupName}
+      </h1>
     </EditableText>
   );
 }

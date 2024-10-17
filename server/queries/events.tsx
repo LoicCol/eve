@@ -14,6 +14,7 @@ export async function getEvents(userId: string) {
 
   const evts = await db.query.events.findMany({
     where: inArray(events.groupId, groupIds),
+    orderBy: (events, { asc }) => [asc(events.eventDate)],
   });
 
   return evts;

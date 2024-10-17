@@ -9,9 +9,12 @@ export async function getUserGroups(userId: string) {
     with: {
       group: true,
     },
+    orderBy: (userGroups, { desc }) => [desc(userGroups.joinedAt)],
   });
 
-  return groups.map((group) => group.group).filter((group) => group !== null);
+  return groups
+    .map((group) => group.group)
+    .filter((group): group is NonNullable<typeof group> => group !== null);
 }
 
 export async function getGroup(groupId: string) {

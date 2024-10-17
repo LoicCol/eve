@@ -9,7 +9,7 @@ export default {
     title: "Sign Up",
   },
   events: {
-    allEvents: "All your groups events",
+    allEvents: "All {evnts}",
   },
   groups: {
     yourGroups: "Your Groups",
@@ -136,5 +136,10 @@ export default {
     },
     success: "Group created successfully",
     error: "Failed to create group",
+  },
+  eventList: {
+    noEvents: "No events found.",
+    upcomingEvents: "Upcoming Events",
+    pastEvents: "Past Events",
   },
 } as const;

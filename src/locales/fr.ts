@@ -9,7 +9,7 @@ export default {
     title: "S'inscrire",
   },
   events: {
-    allEvents: "Tous les événements",
+    allEvents: "Tous les {evnts}",
   },
   groups: {
     yourGroups: "Vos Groupes",
@@ -139,5 +139,10 @@ export default {
     },
     success: "Groupe créé avec succès",
     error: "Échec de la création du groupe",
+  },
+  eventList: {
+    noEvents: "Aucun événement trouvé.",
+    upcomingEvents: "Événements à venir",
+    pastEvents: "Événements passés",
   },
 } as const;
