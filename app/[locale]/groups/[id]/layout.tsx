@@ -19,10 +19,10 @@ export default async function Layout({
   return (
     <>
       {/* Desktop */}
-      <div className="hidden w-full md:block">
+      <div className="hidden w-full bg-gradient-to-bl from-border to-green-300 p-[1px] dark:to-green-900 md:block md:rounded-lg">
         <ResizablePanelGroup
           direction="horizontal"
-          className="rounded-lg border shadow-sm"
+          className="rounded-lg bg-background shadow-sm"
         >
           <ResizablePanel className="bg-card/30 p-4" defaultSize={30}>
             {children}
