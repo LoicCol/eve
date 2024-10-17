@@ -10,7 +10,6 @@ import { useState } from "react";
 import { getGroupEvents } from "@/lib/actions";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Separator } from "@/components/ui/separator";
 
 export default function GroupEvents({ groupId }: { groupId: string }) {
   const t = useI18n();
