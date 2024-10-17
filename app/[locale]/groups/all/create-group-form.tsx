@@ -23,7 +23,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const FormSchema = z.object({
-  name: z.string().min(1, { message: "Group name is required" }),
+  name: z.string(),
 });
 
 export default function CreateGroupForm() {
