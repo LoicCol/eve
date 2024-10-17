@@ -15,7 +15,7 @@ export default async function Home() {
   const t = await getI18n();
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto overflow-auto py-8 md:overflow-visible">
       <h1 className="mb-8 px-4 font-sans text-3xl font-bold">
         {t("home.title")}
         <TextEffect
@@ -31,8 +31,8 @@ export default async function Home() {
       <p className="mb-14 px-4 font-sans text-lg text-foreground">
         {t("home.description")}
       </p>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <Card className="border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none">
+      <div className="grid grid-cols-1 gap-6 px-0 md:grid-cols-2 md:px-0">
+        <Card className="rounded-none border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none md:rounded-md">
           <CardHeader>
             <CardTitle className="font-sans">
               {t("home.upcomingEvents.title")}
@@ -50,7 +50,7 @@ export default async function Home() {
             </Button>
           </CardFooter>
         </Card>
-        <Card className="border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none">
+        <Card className="rounded-none border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none md:rounded-md">
           <CardHeader>
             <CardTitle className="font-sans">
               {t("home.yourGroups.title")}

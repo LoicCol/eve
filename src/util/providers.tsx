@@ -27,7 +27,7 @@ export default function Providers({
           appearance={{ baseTheme: theme === "dark" ? dark : undefined }}
         >
           <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
+            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
             <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
           </QueryClientProvider>
         </ClerkProvider>
