@@ -12,12 +12,12 @@ import {
 import { TextEffect } from "@/components/text-effect";
 import { hasUserJoinedGroup } from "server/actions/actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { HandHeart, HandMetal, Smile } from "lucide-react";
+import { Smile } from "lucide-react";
 import { TrailedButton } from "@/components/trailed-button";
 
 export default async function Home() {
   const t = await getI18n();
-  const hasUserJoinedAGroup = false; //await hasUserJoinedGroup();
+  const hasUserJoinedAGroup = await hasUserJoinedGroup();
 
   return (
     <div className="container mx-auto overflow-auto py-8 md:overflow-visible">
