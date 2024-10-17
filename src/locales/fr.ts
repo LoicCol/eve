@@ -70,7 +70,8 @@ export default {
   },
   linkEvents: {
     title: "Lier des événements",
-    description: "Sélectionnez les événements que vous souhaitez lier.",
+    description:
+      "Sélectionnez les événements que vous souhaitez lier. Ils seront regroupés dans une même section.",
     selectExistingSection: "Sélectionner une section existante",
     selectSectionPlaceholder: "Sélectionnez une section",
     createNewSection: "Créer une nouvelle section",

@@ -68,7 +68,8 @@ export default {
   },
   linkEvents: {
     title: "Link Events",
-    description: "Select the events you want to link.",
+    description:
+      "Select the events you want to link. They will be grouped in a section.",
     selectExistingSection: "Select Existing Section",
     selectSectionPlaceholder: "Select a section",
     createNewSection: "Create New Section",
