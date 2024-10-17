@@ -123,7 +123,7 @@ export default {
       title: "Vos groupes",
       description: "Gérez vos groupes d'amis et créez-en de nouveaux.",
       content:
-        "Organisez vos amis en groupes pour faciliter la planification d'événements.",
+        "Organisez vos groupes pour faciliter la planification d'événements.",
       button: "Voir les groupes",
     },
   },
