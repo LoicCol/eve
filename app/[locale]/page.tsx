@@ -21,7 +21,7 @@ export default async function Home() {
           Eve
         </span>
       </h1>
-      <p className="mb-8 px-4 font-sans text-lg text-muted-foreground">
+      <p className="mb-16 px-4 font-sans text-lg text-foreground">
         {t("home.description")}
       </p>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
