@@ -90,6 +90,10 @@ export async function createGroup(formData: CreateGroupFormFields) {
 
   const group = await insertGroup(name, user.userId);
 
+  if (group?.groupId) {
+    await insertUserGroup(user.userId, group.groupId);
+  }
+
   revalidatePath(`/${locale}/groups`);
   redirect(`/${locale}/groups/${encode(group?.groupId || "")}`);
 }

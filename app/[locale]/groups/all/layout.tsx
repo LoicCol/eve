@@ -14,7 +14,7 @@ export default async function Layout({
   const t = await getI18n();
 
   return (
-    <div className="container mx-auto flex flex-col rounded-lg md:py-4">
+    <div className="container mx-auto">
       <div className="flex justify-between gap-2 px-2 md:px-0">
         <h1 className="px-4 font-sans text-3xl font-bold">
           {t("groups.yourGroups", {
@@ -37,7 +37,7 @@ export default async function Layout({
 
       <Separator className="mx-4 mt-6 w-auto" />
 
-      <div className="flex flex-col overflow-hidden">{children}</div>
+      <div className="flex flex-col overflow-hidden pb-8">{children}</div>
       {modal}
     </div>
   );
