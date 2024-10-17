@@ -40,45 +40,44 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
       sortedSections.push("other");
     }
 
-    return (
-      <div className="space-y-8 overflow-auto pt-2 md:p-2">
-        {sortedSections.map((sectionId) => (
-          <div key={sectionId}>
-            <h2 className="mb-4 px-4 font-sans text-xl font-bold delay-100 animate-in">
-              {sectionId === "other"
-                ? "Other"
-                : groupedEvents[sectionId]?.[0]?.sectionName}
-            </h2>
-            <AnimatedGroup
-              className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
-              preset="blur"
+    return sortedSections.map((sectionId) => (
+      <div key={sectionId}>
+        <h2 className="mb-4 px-4 font-sans text-xl font-bold delay-100 animate-in">
+          {sectionId === "other"
+            ? "Other"
+            : groupedEvents[sectionId]?.[0]?.sectionName}
+        </h2>
+        <AnimatedGroup
+          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+          preset="blur"
+        >
+          {groupedEvents[sectionId]?.map((event) => (
+            <Link
+              href={`/groups/${encode(groupId)}/events/${encode(event.eventId)}`}
+              key={event.eventId}
             >
-              {groupedEvents[sectionId]?.map((event) => (
-                <Link
-                  href={`/groups/${encode(groupId)}/events/${encode(event.eventId)}`}
-                  key={event.eventId}
-                >
-                  <EventCard event={event} />
-                </Link>
-              ))}
-            </AnimatedGroup>
-          </div>
-        ))}
+              <EventCard event={event} />
+            </Link>
+          ))}
+        </AnimatedGroup>
       </div>
-    );
+    ));
   };
 
   return (
     <Tabs
       value={activeTab}
       onValueChange={(value) => setActiveTab(value as "upcoming" | "past")}
-      className="pt-2"
+      className="flex flex-1 flex-col overflow-hidden pt-2 md:p-2"
     >
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="upcoming">{t("groupEvents.upcoming")}</TabsTrigger>
         <TabsTrigger value="past">{t("groupEvents.past")}</TabsTrigger>
       </TabsList>
-      <TabsContent value="upcoming">
+      <TabsContent
+        className="flex-1 space-y-8 overflow-auto pt-2"
+        value="upcoming"
+      >
         {isPending ? (
           <div className="space-y-8 pt-2 md:p-2">
             <Skeleton className="h-4 w-[80px]" />
@@ -95,7 +94,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
           </p>
         )}
       </TabsContent>
-      <TabsContent value="past">
+      <TabsContent value="past" className="flex-1 space-y-8 overflow-auto pt-2">
         {isPending ? (
           <div className="space-y-8 pt-2 md:p-2">
             <Skeleton className="h-4 w-[80px]" />
