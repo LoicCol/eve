@@ -18,15 +18,23 @@ export default async function Header() {
       <div className="container mx-auto mb-4 flex h-16 items-center justify-between border px-4 shadow-sm md:rounded-lg">
         <EventBreadcrumb user={user} />
 
-        <nav className="flex items-center space-x-1 md:space-x-4">
+        <nav className="flex items-center space-x-4 md:space-x-6">
           <SignedOut>
             <SignInButton />
           </SignedOut>
           <SignedIn>
-            <Button variant="ghost" asChild>
+            <Button
+              variant="link"
+              asChild
+              className="p-0 text-foreground hover:text-primary"
+            >
               <Link href="/events/all">{t("header.events")}</Link>
             </Button>
-            <Button variant="ghost" asChild>
+            <Button
+              variant="link"
+              asChild
+              className="p-0 text-foreground hover:text-primary"
+            >
               <Link href="/groups/all">{t("header.groups")}</Link>
             </Button>
             <UserButton />

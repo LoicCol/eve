@@ -14,7 +14,9 @@ export default async function Layout({
   return (
     <div className="container mx-auto flex flex-col rounded-lg px-4 shadow-sm md:border md:py-4">
       <div className="flex justify-between gap-2">
-        <h1 className="text-2xl font-bold">{t("groups.yourGroups")}</h1>
+        <h1 className="font-sans text-2xl font-bold">
+          {t("groups.yourGroups")}
+        </h1>
         <Button asChild>
           <Link href="/groups/all/create-group">{t("groups.createGroup")}</Link>
         </Button>

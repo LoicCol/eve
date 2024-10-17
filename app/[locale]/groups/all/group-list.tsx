@@ -34,7 +34,7 @@ export default async function GroupList() {
                       day: "numeric",
                     })}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="w-[36px] text-right">
                     <GroupRowDropdown groupId={group.groupId} />
                   </TableCell>
                 </TableRow>
