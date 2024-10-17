@@ -14,14 +14,14 @@ export default async function Home() {
   const t = await getI18n();
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="mb-8 font-sans text-3xl font-bold">
+    <div className="container mx-auto py-8">
+      <h1 className="mb-8 px-4 font-sans text-3xl font-bold underline underline-offset-auto">
         {t("home.title")}
-        <span className="font-sofia font-sbold ml-3 text-5xl text-primary">
+        <span className="font-sofia font-sbold ml-4 inline-block text-6xl text-primary no-underline">
           Eve
         </span>
       </h1>
-      <p className="mb-8 text-lg text-muted-foreground">
+      <p className="mb-8 px-4 font-sans text-lg text-muted-foreground">
         {t("home.description")}
       </p>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

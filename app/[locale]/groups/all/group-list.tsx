@@ -7,7 +7,7 @@ import GroupRowDropdown from "./group-row-dropdown";
 import { getCurrentUserGroups } from "@/lib/actions";
 import { getI18n } from "@/locales/server";
 
-export default async function GroupList() {
+export default async function GroupList({ locale }: { locale: string }) {
   const t = await getI18n();
   const groups = await getCurrentUserGroups();
 
@@ -27,7 +27,7 @@ export default async function GroupList() {
                 <TableRow className="relative h-14 cursor-pointer border-dashed hover:text-primary">
                   <TableCell>{group.groupName}</TableCell>
                   <TableCell className="text-right">
-                    {group.createdAt.toLocaleDateString("en-UK", {
+                    {new Date(group.createdAt).toLocaleDateString(locale, {
                       weekday: "long",
                       year: "numeric",
                       month: "short",
