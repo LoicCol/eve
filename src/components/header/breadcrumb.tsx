@@ -76,7 +76,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
                 className="flex items-center p-0 text-foreground after:bg-primary hover:text-primary"
                 asChild
               >
-                <Link href="/groups/all" className="capitalize">
+                <Link href="/groups/all">
                   {t("breadcrumb.userGroups", { name: user?.name })}
                 </Link>
               </Button>
