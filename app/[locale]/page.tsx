@@ -39,7 +39,7 @@ export default async function Home() {
       {!hasUserJoinedAGroup ? (
         <Alert
           variant="default"
-          className="duration-[1000ms] mb-8 flex animate-bounce items-center justify-between gap-2 border-green-500 bg-green-100/20 text-green-500"
+          className="mb-8 flex animate-bounce items-center justify-between gap-2 border-primary/80 bg-primary/10 text-primary/80 duration-1000"
         >
           <div className="flex items-center gap-2">
             <Smile className="mr-4 h-5 w-5" />
