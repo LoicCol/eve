@@ -16,7 +16,7 @@ export default async function Header() {
   return (
     <SignedIn>
       <div className="overflow-hidden">
-        <div className="container mx-auto mb-4 bg-gradient-to-tl from-border to-green-300 dark:to-green-900 md:rounded-lg md:border-none md:p-[1px]">
+        <div className="container mx-auto mb-4 bg-gradient-to-bl from-border to-green-300 dark:to-green-900 md:rounded-lg md:border-none md:p-[1px]">
           <div className="flex h-16 items-center justify-between border-b bg-background px-4 md:rounded-lg md:border-none">
             <EventBreadcrumb user={user} />
 
