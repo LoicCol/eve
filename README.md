@@ -58,6 +58,9 @@ This application is built using the following technologies:
   - [x] Improve breadcrumb responsiveness.
   - [x] Ensure responsive event details view.
 - [x] Implement a method to link related events (e.g., weekends or festivals).
+- [x] Show participants on event cards.
+- [x] Add support for translations.
+- [x] Improve this README for clarity and usability.
 
 ### Upcoming Features
 
@@ -65,17 +68,14 @@ This application is built using the following technologies:
 - [x] List events for all groups a user is in.
   - [ ] Add search functionality.
   - [ ] Implement filters for events.
-- [ ] Show participants on event cards.
 - [ ] Enhance user tooltips for better usability.
 - [ ] Allow users to set custom group names.
 - [ ] Implement a comments section for events.
 - [ ] Restrict editing to one user at a time (consider using WebSockets).
 - [ ] Enable event suggestions within groups.
 - [ ] Implement notifications for users.
-- [ ] Create a history feature for events.
+- [ ] Create a history of changes for events.
 - [ ] Prepare for the first production release.
-- [ ] Add support for translations.
-- [ ] Improve this README for clarity and usability.
 - [ ] Implement rate limiting for API requests.
 
 ---
