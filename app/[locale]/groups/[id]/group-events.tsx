@@ -69,10 +69,8 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
     <Tabs
       value={activeTab}
       onValueChange={(value) => setActiveTab(value as "upcoming" | "past")}
-      className="flex flex-1 flex-col overflow-hidden md:px-2"
+      className="flex flex-1 flex-col overflow-auto md:px-2"
     >
-      <Separator className="mb-4 mt-2 w-auto" />
-
       <TabsList className="flex h-auto grid-cols-2 justify-start gap-2 border-none bg-transparent p-0">
         <TabsTrigger
           className="rounded-[.375rem] bg-card-foreground/5 p-0 px-2 py-1 text-sm font-medium text-muted-foreground/80 data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-sm"
@@ -88,10 +86,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
         </TabsTrigger>
       </TabsList>
 
-      <TabsContent
-        className="mt-4 flex-1 space-y-4 overflow-auto"
-        value="upcoming"
-      >
+      <TabsContent className="mt-4 space-y-4" value="upcoming">
         {isPending ? (
           <div className="space-y-8 pt-2 md:p-2">
             <Skeleton className="h-4 w-[80px]" />
@@ -108,7 +103,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
           </p>
         )}
       </TabsContent>
-      <TabsContent value="past" className="flex-1 space-y-6 overflow-auto">
+      <TabsContent value="past" className="mt-4 space-y-4">
         {isPending ? (
           <div className="space-y-8 pt-2 md:p-2">
             <Skeleton className="h-4 w-[80px]" />
