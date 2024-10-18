@@ -61,6 +61,7 @@ This application is built using the following technologies:
 - [x] Show participants on event cards.
 - [x] Add support for translations.
 - [x] Improve this README for clarity and usability.
+- [x] PWA - Chrome
 
 ### Upcoming Features
 

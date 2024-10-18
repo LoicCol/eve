@@ -16,6 +16,10 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware((auth, request) => {
+  if (request.url === "site.webmanifest") {
+    return;
+  }
+
   if (!isPublicRoute(request)) {
     auth().protect();
   }
