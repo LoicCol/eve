@@ -8,7 +8,6 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbSeparator,
 } from "../ui/breadcrumb";
 import { Loader } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
@@ -50,38 +49,24 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        <BreadcrumbItem className="p-0">
-          <BreadcrumbLink asChild>
-            <Link
-              href="/"
-              className="font-sofia text-2xl font-bold text-primary transition-colors duration-300 ease-in-out"
-            >
-              {t("breadcrumb.appName")}
-            </Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-
         {user && (
-          <>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem className="flex items-center gap-2">
-              <Avatar className="h-6 w-6">
-                <AvatarImage src={user?.image || ""} alt="user-image" />
-                <AvatarFallback>
-                  <Loader className="h-4 w-4 animate-spin" />
-                </AvatarFallback>
-              </Avatar>
-              <Button
-                variant="link"
-                className="flex items-center p-0 text-foreground after:bg-primary hover:text-primary"
-                asChild
-              >
-                <Link href="/groups/all">
-                  {t("breadcrumb.userGroups", { name: user?.name })}
-                </Link>
-              </Button>
-            </BreadcrumbItem>
-          </>
+          <BreadcrumbItem className="flex items-center gap-2">
+            <Avatar className="h-6 w-6">
+              <AvatarImage src={user?.image || ""} alt="user-image" />
+              <AvatarFallback>
+                <Loader className="h-4 w-4 animate-spin" />
+              </AvatarFallback>
+            </Avatar>
+            <Button
+              variant="link"
+              className="flex items-center p-0 text-foreground after:bg-primary hover:text-primary"
+              asChild
+            >
+              <Link href="/groups/all">
+                {t("breadcrumb.userGroups", { name: user?.name })}
+              </Link>
+            </Button>
+          </BreadcrumbItem>
         )}
 
         <GroupLink />

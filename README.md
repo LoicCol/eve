@@ -65,6 +65,7 @@ This application is built using the following technologies:
 
 ### Upcoming Features
 
+- [ ] new sidebar
 - [ ] Well manage the events time.
 - [ ] Limit editing permissions to admin (currently only the creator).
 - [x] List events for all groups a user is in.

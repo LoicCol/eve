@@ -4,6 +4,13 @@ import { Toaster } from "@/components/ui/sonner";
 import Providers from "@/util/providers";
 import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
+import { AppSidebar } from "@/components/app-sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 const sofia = Sofia({
@@ -44,16 +51,39 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${inter.className} ${sofia.variable} h-screen`}>
-        <div className="h-screen md:py-4">
+        <div className="h-screen">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Providers locale={locale}>
-              <Header />
-              <main
-                className={`container mx-auto flex h-[calc(100%-80px)] justify-center`}
+              <SidebarProvider
+                style={
+                  {
+                    "--sidebar-width": "176px",
+                  } as React.CSSProperties
+                }
               >
-                {children}
-              </main>
-              <Toaster richColors position="top-right" closeButton />
+                <AppSidebar />
+                <SidebarInset className="h-[calc(100vh-80px)] bg-gradient-to-bl from-border to-green-300 p-[1px] dark:to-green-900">
+                  <div className="flex h-full flex-col overflow-hidden rounded-sm bg-background">
+                    <header className="flex shrink-0 items-center gap-2">
+                      <div className="flex items-center gap-2 px-4">
+                        <SidebarTrigger className="h-5 w-5" />
+                        <Separator
+                          orientation="vertical"
+                          className="mx-2 h-4"
+                        />
+                        <Header />
+                      </div>
+                    </header>
+
+                    <main
+                      className={`mx-auto flex h-full w-full flex-1 justify-center overflow-auto`}
+                    >
+                      {children}
+                    </main>
+                  </div>
+                  <Toaster richColors position="top-right" closeButton />
+                </SidebarInset>
+              </SidebarProvider>
             </Providers>
           </ThemeProvider>
         </div>

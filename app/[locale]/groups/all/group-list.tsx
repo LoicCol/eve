@@ -11,11 +11,11 @@ export default async function GroupList({ locale }: { locale: string }) {
   const groups = await getCurrentUserGroups();
 
   return (
-    <div className="mt-6 flex overflow-hidden">
+    <div className="mt-6 overflow-hidden">
       {groups.length === 0 ? (
         <p className="p-4 text-muted-foreground">{t("groups.noGroupsFound")}</p>
       ) : (
-        <ul className="w-full space-y-4 px-2 md:px-0">
+        <ul className="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:px-0 lg:grid-cols-3">
           {groups.map((group) => (
             <li
               key={group.groupId}
@@ -23,13 +23,14 @@ export default async function GroupList({ locale }: { locale: string }) {
             >
               <Link
                 href={`/groups/${encode(group.groupId)}`}
-                className="flex cursor-pointer items-center justify-between py-1 pl-4 pr-2 hover:text-primary"
+                className="flex h-full cursor-pointer flex-col p-4 hover:text-primary"
               >
-                <span className="text-sm font-medium">{group.groupName}</span>
-                <div className="flex items-center text-end">
-                  <span className="mr-4 text-sm text-muted-foreground">
+                <span className="mb-2 text-sm font-medium">
+                  {group.groupName}
+                </span>
+                <div className="mt-auto flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">
                     {new Date(group.createdAt).toLocaleDateString(locale, {
-                      weekday: "long",
                       year: "numeric",
                       month: "short",
                       day: "numeric",

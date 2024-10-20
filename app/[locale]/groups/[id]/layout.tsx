@@ -19,20 +19,18 @@ export default async function Layout({
   return (
     <>
       {/* Desktop */}
-      <div className="hidden w-full bg-gradient-to-bl from-border to-green-300 p-[1px] dark:to-green-900 md:block md:rounded-lg">
-        <ResizablePanelGroup
-          direction="horizontal"
-          className="rounded-lg bg-background shadow-sm"
-        >
-          <ResizablePanel className="bg-card/30 p-4" defaultSize={30}>
-            {children}
-          </ResizablePanel>
-          <ResizableHandle withHandle />
-          <ResizablePanel className="flex flex-col p-2" defaultSize={70}>
-            <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
-          </ResizablePanel>
-        </ResizablePanelGroup>
-      </div>
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="border-t bg-background shadow-sm"
+      >
+        <ResizablePanel className="bg-card/30 p-4" defaultSize={30}>
+          {children}
+        </ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel className="flex flex-col p-2" defaultSize={70}>
+          <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
+        </ResizablePanel>
+      </ResizablePanelGroup>
 
       {/* Mobile */}
       <Tabs
