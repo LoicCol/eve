@@ -1,4 +1,3 @@
-import Modal from "@/components/modal";
 import LinkEvents from "../../link-events";
 import { getEventsForGroup } from "server/queries";
 import { decode } from "@/util/shorten-uuid";
@@ -17,9 +16,5 @@ export default async function Page({
     sectionId: event.sectionId || "other",
   }));
 
-  return (
-    <Modal>
-      <LinkEvents events={serializedEvents} />
-    </Modal>
-  );
+  return <LinkEvents events={serializedEvents} />;
 }

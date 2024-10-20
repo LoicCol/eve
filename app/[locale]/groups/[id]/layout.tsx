@@ -8,29 +8,31 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default async function Layout({
-  children,
+  details,
   events,
   modal,
 }: {
-  children: React.ReactNode;
+  details: React.ReactNode;
   events: React.ReactNode;
   modal: React.ReactNode;
 }) {
   return (
     <>
       {/* Desktop */}
-      <ResizablePanelGroup
-        direction="horizontal"
-        className="border-t bg-background shadow-sm"
-      >
-        <ResizablePanel className="bg-card/30 p-4" defaultSize={30}>
-          {children}
-        </ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel className="flex flex-col p-2" defaultSize={70}>
-          <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
-        </ResizablePanel>
-      </ResizablePanelGroup>
+      <div className="hidden w-full md:block">
+        <ResizablePanelGroup
+          direction="horizontal"
+          className="hidden border-t bg-background shadow-sm"
+        >
+          <ResizablePanel className="bg-card/30 p-4" defaultSize={30}>
+            {details}
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel className="flex flex-col p-2" defaultSize={70}>
+            <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
 
       {/* Mobile */}
       <Tabs
@@ -43,7 +45,7 @@ export default async function Layout({
         </TabsList>
         <TabsContent value="details" className="flex-1">
           <Card className="mt-2 h-full py-4">
-            <CardContent>{children}</CardContent>
+            <CardContent>{details}</CardContent>
           </Card>
         </TabsContent>
         <TabsContent className="pb-2" value="events">

@@ -1,4 +1,3 @@
-import Modal from "@/components/modal";
 import CreateEventForm from "../../create-event-form";
 import { decode } from "@/util/shorten-uuid";
 import { getEventsForGroup } from "server/queries";
@@ -21,9 +20,5 @@ export default async function Page({ params }: { params: { id: string } }) {
     [] as { sectionId: string; sectionName: string }[],
   );
 
-  return (
-    <Modal>
-      <CreateEventForm sections={sections} />
-    </Modal>
-  );
+  return <CreateEventForm sections={sections} />;
 }
