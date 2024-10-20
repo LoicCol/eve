@@ -9,14 +9,14 @@ export default async function Layout({
   const t = await getI18n();
 
   return (
-    <div className="container mx-auto mt-4 px-2 pb-2 md:px-0">
+    <div className="mx-auto mt-4 w-full px-2 pb-2 md:px-14">
       <h1 className="px-4 font-sans text-3xl font-bold">
         {t("events.allEvents", {
           evnts: (
             <TextEffect
               preset="blur"
               as="span"
-              className="font-sofia ml-1 font-bold"
+              className="ml-1 font-sofia font-bold"
               per="word"
             >
               {t("eventsHeader.events")}

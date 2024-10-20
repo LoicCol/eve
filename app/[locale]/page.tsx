@@ -20,13 +20,13 @@ export default async function Home() {
   const hasUserJoinedAGroup = await hasUserJoinedGroup();
 
   return (
-    <div className="container mx-auto overflow-auto py-8 md:overflow-visible">
+    <div className="mx-auto w-full overflow-auto px-10 py-8 md:overflow-visible">
       <h1 className="mb-8 px-4 font-sans text-3xl font-bold">
         {t("home.title")}
         <TextEffect
           preset="blur"
           as="span"
-          className="font-sofia ml-4 text-6xl text-primary"
+          className="ml-4 font-sofia text-6xl text-primary"
           per="word"
           delay={0.2}
         >

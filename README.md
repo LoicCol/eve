@@ -62,6 +62,7 @@ This application is built using the following technologies:
 - [x] Add support for translations.
 - [x] Improve this README for clarity and usability.
 - [x] PWA - Chrome
+- [x] New sidebar
 
 ### Upcoming Features
 

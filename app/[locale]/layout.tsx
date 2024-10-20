@@ -4,6 +4,8 @@ import { Toaster } from "@/components/ui/sonner";
 import Providers from "@/util/providers";
 import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 const sofia = Sofia({
@@ -44,16 +46,33 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${inter.className} ${sofia.variable} h-screen`}>
-        <div className="h-screen md:py-4">
+        <div className="h-screen">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Providers locale={locale}>
-              <Header />
-              <main
-                className={`container mx-auto flex h-[calc(100%-80px)] justify-center`}
+              <SidebarProvider
+                style={
+                  {
+                    "--sidebar-width": "176px",
+                  } as React.CSSProperties
+                }
               >
-                {children}
-              </main>
-              <Toaster richColors position="top-right" closeButton />
+                {/* <SignedIn> */}
+                <AppSidebar />
+                {/* </SignedIn> */}
+
+                <SidebarInset className="h-[calc(100vh-80px)] bg-gradient-to-br from-border to-green-300 p-[1px] dark:to-green-700">
+                  <div className="flex h-full flex-col overflow-hidden rounded-sm bg-background">
+                    <Header />
+
+                    <main
+                      className={`mx-auto flex h-full w-full flex-1 justify-center overflow-auto`}
+                    >
+                      {children}
+                    </main>
+                  </div>
+                  <Toaster richColors position="top-right" closeButton />
+                </SidebarInset>
+              </SidebarProvider>
             </Providers>
           </ThemeProvider>
         </div>
