@@ -2,7 +2,7 @@ import { SignIn } from "@clerk/nextjs";
 
 export default async function Page() {
   return (
-    <div className="h-screen content-center">
+    <div className="content-center">
       <SignIn />
     </div>
   );

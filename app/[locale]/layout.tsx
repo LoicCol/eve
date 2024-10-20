@@ -4,12 +4,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Providers from "@/util/providers";
 import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
-import { Separator } from "@/components/ui/separator";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -61,19 +56,13 @@ export default function RootLayout({
                   } as React.CSSProperties
                 }
               >
+                {/* <SignedIn> */}
                 <AppSidebar />
-                <SidebarInset className="h-[calc(100vh-80px)] bg-gradient-to-bl from-border to-green-300 p-[1px] dark:to-green-900">
+                {/* </SignedIn> */}
+
+                <SidebarInset className="h-[calc(100vh-80px)] border border-transparent bg-gradient-to-bl from-border to-green-300 p-[1px] dark:to-green-900">
                   <div className="flex h-full flex-col overflow-hidden rounded-sm bg-background">
-                    <header className="flex shrink-0 items-center gap-2">
-                      <div className="flex items-center gap-2 px-4">
-                        <SidebarTrigger className="h-5 w-5" />
-                        <Separator
-                          orientation="vertical"
-                          className="mx-2 h-4"
-                        />
-                        <Header />
-                      </div>
-                    </header>
+                    <Header />
 
                     <main
                       className={`mx-auto flex h-full w-full flex-1 justify-center overflow-auto`}
