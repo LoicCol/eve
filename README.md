@@ -62,10 +62,10 @@ This application is built using the following technologies:
 - [x] Add support for translations.
 - [x] Improve this README for clarity and usability.
 - [x] PWA - Chrome
+- [x] New sidebar
 
 ### Upcoming Features
 
-- [ ] new sidebar
 - [ ] Well manage the events time.
 - [ ] Limit editing permissions to admin (currently only the creator).
 - [x] List events for all groups a user is in.
