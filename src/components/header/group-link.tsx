@@ -37,7 +37,7 @@ export default function GroupLink() {
 
   return (
     <Fragment>
-      {!isMobile && <BreadcrumbSeparator />}
+      {!isMobile && groupId && <BreadcrumbSeparator />}
       <BreadcrumbItem
         style={{
           width: groupId ? groupStyle.width : 0,
