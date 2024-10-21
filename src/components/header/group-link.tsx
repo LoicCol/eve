@@ -35,8 +35,6 @@ export default function GroupLink() {
     enabled: Boolean(groupId),
   });
 
-  console.log("cc4", groupId, groupStyle.width);
-
   return (
     <Fragment>
       {!isMobile && <BreadcrumbSeparator />}
