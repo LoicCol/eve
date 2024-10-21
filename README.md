@@ -82,6 +82,7 @@ This application is built using the following technologies:
 - [ ] Create a history of changes for events.
 - [ ] Implement rate limiting for API requests.
 - [ ] Use ATP.
+- [ ] Use https://gist.github.com/gpichot/df6b586c0ac09ebde794c7f5bef5800f
 
 ### Bugs
 
