@@ -33,7 +33,11 @@ export default function EventLink() {
       <BreadcrumbItem
         style={{
           width: eventId ? eventStyle.width : 0,
+          opacity: eventId ? 1 : 0,
           overflow: "hidden",
+          animationDuration: "0.2s",
+          animationDelay: "0.1s",
+          height: "100%",
         }}
       >
         <div ref={eventContainer} className="flex items-center gap-2">
@@ -43,7 +47,7 @@ export default function EventLink() {
 
           <Button
             variant="link"
-            className={`p-0 text-foreground after:bg-primary hover:text-primary ${isPendingEvent ? "opacity-0" : "opacity-100"}`}
+            className={`overflow-hidden p-0 text-foreground after:bg-primary hover:text-primary ${isPendingEvent ? "opacity-0" : "opacity-100"}`}
             asChild
           >
             <Link href={`/groups/${groupId}/events/${eventId}`}>
