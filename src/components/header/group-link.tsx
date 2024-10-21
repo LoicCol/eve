@@ -35,24 +35,24 @@ export default function GroupLink() {
     enabled: Boolean(groupId),
   });
 
-  if (!groupId) {
-    return null;
-  }
+  console.log("cc4", groupId, groupStyle.width);
 
   return (
     <Fragment>
       {!isMobile && <BreadcrumbSeparator />}
       <BreadcrumbItem
         style={{
-          width: groupStyle.width,
-          opacity: 1,
+          width: groupId ? groupStyle.width : 0,
+          opacity: groupId ? 1 : 0,
           overflow: "hidden",
           animationDuration: "0.2s",
           animationDelay: "0.1s",
         }}
       >
         <div ref={groupContainer} className="flex items-center gap-2">
+          {isPendingGroup && <Loader className="mr-2 h-4 w-4 animate-spin" />}
           <GroupContent
+            isMobile={isMobile}
             groupId={groupId}
             groupName={groupName}
             isPendingGroup={isPendingGroup}
@@ -69,6 +69,7 @@ interface GroupContentProps {
   groupName: string;
   isPendingGroup: boolean;
   isEventDetailsPage: boolean;
+  isMobile: boolean;
 }
 
 const GroupContent: React.FC<GroupContentProps> = ({
@@ -76,14 +77,9 @@ const GroupContent: React.FC<GroupContentProps> = ({
   groupName,
   isPendingGroup,
   isEventDetailsPage,
+  isMobile,
 }) => {
-  const isMobile = useIsMobile();
-
-  if (isPendingGroup) {
-    return <Loader className="mr-2 h-4 w-4 animate-spin" />;
-  }
-
-  if (isEventDetailsPage && isMobile) {
+  if (!isPendingGroup && isEventDetailsPage && isMobile) {
     return (
       <TooltipProvider>
         <Tooltip>
@@ -91,7 +87,7 @@ const GroupContent: React.FC<GroupContentProps> = ({
             <Button
               variant="ghost"
               size="icon"
-              className="p-0 text-foreground hover:text-primary"
+              className="rounded-full p-0 text-foreground hover:text-primary"
               asChild
             >
               <Link href={`/groups/${groupId}`}>
@@ -110,7 +106,7 @@ const GroupContent: React.FC<GroupContentProps> = ({
   return (
     <Button
       variant="link"
-      className="p-0 text-foreground after:bg-primary hover:text-primary"
+      className={`p-0 text-foreground after:bg-primary hover:text-primary ${isPendingGroup ? "opacity-0" : "opacity-100"}`}
       asChild
     >
       <Link href={`/groups/${groupId}`}>{groupName}</Link>

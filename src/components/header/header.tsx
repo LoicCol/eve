@@ -16,7 +16,7 @@ export default async function Header() {
           <SidebarTrigger className="h-5 w-5" />{" "}
           <Separator orientation="vertical" className="mx-2 h-4" />
           <div className="overflow-hidden">
-            <div className="flex h-16 items-center justify-between border-b md:rounded-lg md:border-none">
+            <div className="flex h-16 items-center justify-between md:rounded-lg">
               <EventBreadcrumb user={user} />
 
               <nav className="flex items-center space-x-4 md:space-x-6">
