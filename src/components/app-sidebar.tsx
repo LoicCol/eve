@@ -17,10 +17,12 @@ import { ModeToggle } from "./theme-toggle";
 import Link from "next/link";
 import { useI18n } from "@/locales/client";
 import { usePathname } from "next/navigation";
+import { useSidebar } from "@/components/ui/sidebar";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useI18n();
   const pathname = usePathname();
+  const { isMobile, setOpenMobile } = useSidebar();
 
   const isActive = (path: string) => {
     const pathSegments = pathname.split("/").filter(Boolean);
@@ -49,7 +51,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 variant={isActive("/groups") ? "outline" : "default"}
                 asChild
               >
-                <Link href="/groups/all">
+                <Link
+                  href="/groups/all"
+                  onClick={() => isMobile && setOpenMobile(false)}
+                >
                   <Users /> {t("header.groups")}
                 </Link>
               </SidebarMenuButton>
@@ -59,7 +64,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 variant={isActive("/events") ? "outline" : "default"}
                 asChild
               >
-                <Link href="/events/all">
+                <Link
+                  href="/events/all"
+                  onClick={() => isMobile && setOpenMobile(false)}
+                >
                   <CalendarCheck2 />
                   {t("header.events")}
                 </Link>

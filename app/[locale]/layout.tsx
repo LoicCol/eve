@@ -62,7 +62,7 @@ export default function RootLayout({
                 </SignedIn>
 
                 <SidebarInset className="h-[calc(100vh-80px)] bg-gradient-to-br from-border to-green-300 p-[1px] dark:to-green-700">
-                  <div className="flex h-full flex-col overflow-hidden rounded-sm bg-background">
+                  <div className="flex h-full flex-col overflow-hidden bg-background md:rounded-sm">
                     <Header />
 
                     <main

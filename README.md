@@ -63,6 +63,7 @@ This application is built using the following technologies:
 - [x] Improve this README for clarity and usability.
 - [x] PWA - Chrome
 - [x] New sidebar
+- [x] Prepare for the first production release.
 
 ### Upcoming Features
 
@@ -79,9 +80,12 @@ This application is built using the following technologies:
 - [ ] Enable event suggestions within groups.
 - [ ] Implement notifications for users.
 - [ ] Create a history of changes for events.
-- [ ] Prepare for the first production release.
 - [ ] Implement rate limiting for API requests.
 - [ ] Use ATP.
+
+### Bugs
+
+- [ ] Clerk manage account modal not working on mobile
 
 ---
 
