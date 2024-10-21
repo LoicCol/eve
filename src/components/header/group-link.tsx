@@ -45,6 +45,8 @@ export default function GroupLink() {
           overflow: "hidden",
           animationDuration: "0.2s",
           animationDelay: "0.1s",
+          height: "100%",
+          flexShrink: 0,
         }}
       >
         <div ref={groupContainer} className="flex items-center gap-2">
@@ -104,7 +106,7 @@ const GroupContent: React.FC<GroupContentProps> = ({
   return (
     <Button
       variant="link"
-      className={`p-0 text-foreground after:bg-primary hover:text-primary ${isPendingGroup ? "opacity-0" : "opacity-100"}`}
+      className={`overflow-hidden p-0 text-foreground after:bg-primary hover:text-primary ${isPendingGroup ? "opacity-0" : "opacity-100"}`}
       asChild
     >
       <Link href={`/groups/${groupId}`}>{groupName}</Link>

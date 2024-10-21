@@ -23,8 +23,8 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
   const isMobile = useIsMobile();
 
   return (
-    <Breadcrumb>
-      <BreadcrumbList>
+    <Breadcrumb className="h-full flex-1 overflow-hidden">
+      <BreadcrumbList className="h-full flex-nowrap overflow-hidden">
         {!isMobile && user ? (
           <BreadcrumbItem className="flex items-center gap-2">
             <Avatar className="h-6 w-6">
