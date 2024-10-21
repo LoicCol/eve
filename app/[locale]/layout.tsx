@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { SignedIn } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 const sofia = Sofia({
@@ -56,9 +57,9 @@ export default function RootLayout({
                   } as React.CSSProperties
                 }
               >
-                {/* <SignedIn> */}
-                <AppSidebar />
-                {/* </SignedIn> */}
+                <SignedIn>
+                  <AppSidebar />
+                </SignedIn>
 
                 <SidebarInset className="h-[calc(100vh-80px)] bg-gradient-to-br from-border to-green-300 p-[1px] dark:to-green-700">
                   <div className="flex h-full flex-col overflow-hidden rounded-sm bg-background">
