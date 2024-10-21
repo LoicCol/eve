@@ -34,7 +34,10 @@ import { getCurrentLocale } from "@/locales/server";
 
 export async function getGroupName(groupId: string) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const group = await getGroup(groupId);
 
@@ -43,7 +46,10 @@ export async function getGroupName(groupId: string) {
 
 export async function getEventName(eventId: string) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const event = await getEvent(eventId);
 
@@ -52,7 +58,10 @@ export async function getEventName(eventId: string) {
 
 export async function createEvent(formData: CreateEventFormFields) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const validationResult = createEventFormSchema.safeParse(formData);
 
@@ -75,7 +84,10 @@ export async function createEvent(formData: CreateEventFormFields) {
 
 export async function createGroup(formData: CreateGroupFormFields) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const validationResult = createGroupFormSchema.safeParse(formData);
 
@@ -103,7 +115,10 @@ export async function joinEvent(
   status: "participate" | "maybe",
 ) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -114,7 +129,10 @@ export async function joinEvent(
 
 export async function leaveEvent(eventId: string) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -125,7 +143,10 @@ export async function leaveEvent(eventId: string) {
 
 export async function joinGroup(groupId: string) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -135,7 +156,10 @@ export async function joinGroup(groupId: string) {
 
 export async function leaveGroup(groupId: string) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -148,7 +172,10 @@ export async function editEvent(
   formData: CreateEventFormFields,
 ) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const validationResult = createEventFormSchema.safeParse(formData);
 
@@ -180,7 +207,10 @@ export async function editEvent(
 
 export async function deleteEvent(eventId: string) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -191,7 +221,10 @@ export async function deleteEvent(eventId: string) {
 
 export async function editGroupName(groupId: string, groupName: string) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -207,7 +240,10 @@ export async function editGroupDescription(
   description: string,
 ) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -220,7 +256,10 @@ export async function editGroupDescription(
 
 export async function deleteGroup(groupId: string) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -235,7 +274,10 @@ export async function linkEventsToSection(
   sectionId?: string,
 ) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const locale = getCurrentLocale();
 
@@ -262,7 +304,10 @@ export async function linkEventsToSection(
 
 export async function getCurrentUserGroups() {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const groups = await getUserGroups(user.userId);
 
@@ -274,7 +319,10 @@ export async function getGroupEvents(
   filter: "upcoming" | "past",
 ) {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const events = await getEventsForGroup(groupId, filter);
 
@@ -283,7 +331,10 @@ export async function getGroupEvents(
 
 export async function hasUserJoinedGroup() {
   const user = auth();
-  if (!user.userId) return auth().protect();
+  if (!user.userId) {
+    auth().protect();
+    throw new Error("Unauthorized");
+  }
 
   const isUserInGroup = await checkUserGroup(user.userId);
 
