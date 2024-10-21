@@ -3,18 +3,13 @@
 import { useI18n } from "@/locales/client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-} from "../ui/breadcrumb";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList } from "../ui/breadcrumb";
 import { Loader } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import GroupLink from "./group-link";
 import EventLink from "./event-link";
 import React from "react";
-import { useMediaQuery } from "@/hooks/use-media-query";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface EventBreadcrumbProps {
   user?: {
@@ -25,31 +20,12 @@ interface EventBreadcrumbProps {
 
 export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
   const t = useI18n();
-  const isDesktop = useMediaQuery("(min-width: 768px)");
-
-  if (!isDesktop) {
-    return (
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem className="p-0">
-            <BreadcrumbLink asChild>
-              <Link
-                href="/"
-                className={`font-sofia text-2xl font-bold text-primary transition-colors duration-300 ease-in-out`}
-              >
-                {t("breadcrumb.appName")}
-              </Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-    );
-  }
+  const isMobile = useIsMobile();
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {user && (
+        {!isMobile && user ? (
           <BreadcrumbItem className="flex items-center gap-2">
             <Avatar className="h-6 w-6">
               <AvatarImage src={user?.image || ""} alt="user-image" />
@@ -67,7 +43,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
               </Link>
             </Button>
           </BreadcrumbItem>
-        )}
+        ) : null}
 
         <GroupLink />
 

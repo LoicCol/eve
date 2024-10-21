@@ -20,7 +20,7 @@ export default async function Home() {
   const hasUserJoinedAGroup = await hasUserJoinedGroup();
 
   return (
-    <div className="mx-auto w-full overflow-auto px-10 py-8 md:overflow-visible">
+    <div className="mx-auto w-full overflow-auto px-2 py-8 md:overflow-visible md:px-10">
       <h1 className="mb-8 px-4 font-sans text-3xl font-bold">
         {t("home.title")}
         <TextEffect
