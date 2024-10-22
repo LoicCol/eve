@@ -28,7 +28,7 @@ export default function RootLayout({
   params: { locale: string };
 }) {
   return (
-    <html lang="en" className="h-screen">
+    <html lang="en" className="h-svh">
       <head>
         <link
           rel="icon"
@@ -46,8 +46,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Eve-nts" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className={`${inter.className} ${sofia.variable} h-screen`}>
-        <div className="h-screen">
+      <body className={`${inter.className} ${sofia.variable} h-svh`}>
+        <div className="h-svh">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Providers locale={locale}>
               <SidebarProvider
@@ -61,12 +61,12 @@ export default function RootLayout({
                   <AppSidebar />
                 </SignedIn>
 
-                <SidebarInset className="h-[calc(100vh-80px)] bg-gradient-to-br from-border to-green-300 p-[1px] dark:to-green-700">
+                <SidebarInset className="h-[calc(100vh-80px)] bg-gradient-to-br from-border to-green-300 p-px dark:to-green-700">
                   <div className="flex h-full flex-col overflow-hidden bg-background md:rounded-sm">
                     <Header />
 
                     <main
-                      className={`mx-auto flex h-full w-full flex-1 justify-center overflow-auto`}
+                      className={`mx-auto flex size-full flex-1 justify-center overflow-auto`}
                     >
                       {children}
                     </main>
