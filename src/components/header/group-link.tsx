@@ -19,6 +19,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Separator } from "../ui/separator";
 
 export default function GroupLink() {
   const groupContainer = useRef(null);
@@ -50,6 +51,9 @@ export default function GroupLink() {
         }}
       >
         <div ref={groupContainer} className="flex items-center gap-2">
+          {isMobile && groupId && (
+            <Separator orientation="vertical" className="mx-2 h-4" />
+          )}
           {isPendingGroup && <Loader className="mr-2 h-4 w-4 animate-spin" />}
           <GroupContent
             isMobile={isMobile}

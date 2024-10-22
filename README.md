@@ -63,10 +63,12 @@ This application is built using the following technologies:
 - [x] Improve this README for clarity and usability.
 - [x] PWA - Chrome
 - [x] New sidebar
+- [x] Prepare for the first production release.
 
 ### Upcoming Features
 
-- [ ] Well manage the events time.
+- [ ] Facebook connection re-up
+- [ ] Well manage the events times (start / end)
 - [ ] Limit editing permissions to admin (currently only the creator).
 - [x] List events for all groups a user is in.
   - [ ] Add search functionality.
@@ -78,9 +80,13 @@ This application is built using the following technologies:
 - [ ] Enable event suggestions within groups.
 - [ ] Implement notifications for users.
 - [ ] Create a history of changes for events.
-- [ ] Prepare for the first production release.
 - [ ] Implement rate limiting for API requests.
 - [ ] Use ATP.
+- [ ] Use https://gist.github.com/gpichot/df6b586c0ac09ebde794c7f5bef5800f
+
+### Bugs
+
+- [ ] Clerk manage account modal not working on mobile
 
 ---
 

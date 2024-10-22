@@ -2,7 +2,8 @@
   "extends": [
     "next/core-web-vitals",
     "next/typescript",
-    "plugin:@tanstack/query/recommended"
+    "plugin:@tanstack/query/recommended",
+    "plugin:tailwindcss/recommended"
   ],
   "rules": {
     "@typescript-eslint/no-empty-interface": "off",

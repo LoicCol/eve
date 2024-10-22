@@ -11,25 +11,31 @@ export default async function Layout({
   details,
   events,
   modal,
+  sidebar,
 }: {
   details: React.ReactNode;
   events: React.ReactNode;
   modal: React.ReactNode;
+  sidebar: React.ReactNode;
 }) {
   return (
     <>
       {/* Desktop */}
-      <div className="hidden w-full md:block">
+      <div className="relative hidden w-full gap-2 md:flex">
         <ResizablePanelGroup
           direction="horizontal"
-          className="hidden border-t bg-background shadow-sm"
+          className="border-t bg-background shadow-sm"
         >
-          <ResizablePanel className="bg-card/30 p-4" defaultSize={30}>
-            {details}
+          <ResizablePanel className="overflow-hidden" defaultSize={20}>
+            {sidebar}
           </ResizablePanel>
           <ResizableHandle withHandle />
-          <ResizablePanel className="flex flex-col p-2" defaultSize={70}>
+          <ResizablePanel className="flex flex-col p-2" defaultSize={60}>
             <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <ResizablePanel className="bg-card/30 p-4" defaultSize={20}>
+            {details}
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>

@@ -7,7 +7,7 @@ export default async function Loading() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {[...Array(6)].map((_, index) => (
             <div key={index} className="flex flex-col space-y-3">
-              <Skeleton className="h-[134px] w-full rounded-xl" />
+              <Skeleton className="h-[78px] w-full rounded-xl" />
             </div>
           ))}
         </div>

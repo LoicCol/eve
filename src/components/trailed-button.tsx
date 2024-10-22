@@ -12,7 +12,7 @@ export function TrailedButton({ children, ...props }: TrailedButtonProps) {
 
   return (
     <div
-      className="relative h-fit overflow-hidden rounded-md border border-transparent"
+      className="relative h-fit overflow-hidden rounded-md"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -25,7 +25,7 @@ export function TrailedButton({ children, ...props }: TrailedButtonProps) {
       </Button>
       <BorderTrail
         size={40}
-        className={`bg-gradient-to-l from-green-200 via-green-500 to-green-200 dark:from-green-900 dark:via-green-300 dark:to-green-900 ${isHovered ? "hidden" : ""}`}
+        className={`bg-gradient-to-l from-border via-primary to-border dark:from-border dark:via-primary dark:to-border ${isHovered ? "hidden" : ""}`}
       />
     </div>
   );

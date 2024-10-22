@@ -10,6 +10,7 @@ import GroupLink from "./group-link";
 import EventLink from "./event-link";
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Separator } from "../ui/separator";
 
 interface EventBreadcrumbProps {
   user?: {
@@ -26,23 +27,26 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
     <Breadcrumb className="h-full flex-1 overflow-hidden">
       <BreadcrumbList className="h-full flex-nowrap overflow-hidden">
         {!isMobile && user ? (
-          <BreadcrumbItem className="flex items-center gap-2">
-            <Avatar className="h-6 w-6">
-              <AvatarImage src={user?.image || ""} alt="user-image" />
-              <AvatarFallback>
-                <Loader className="h-4 w-4 animate-spin" />
-              </AvatarFallback>
-            </Avatar>
-            <Button
-              variant="link"
-              className="flex items-center p-0 text-foreground after:bg-primary hover:text-primary"
-              asChild
-            >
-              <Link href="/groups/all">
-                {t("breadcrumb.userGroups", { name: user?.name })}
-              </Link>
-            </Button>
-          </BreadcrumbItem>
+          <>
+            <Separator orientation="vertical" className="mx-2 h-4" />
+            <BreadcrumbItem className="flex items-center gap-2">
+              <Avatar className="h-6 w-6">
+                <AvatarImage src={user?.image || ""} alt="user-image" />
+                <AvatarFallback>
+                  <Loader className="h-4 w-4 animate-spin" />
+                </AvatarFallback>
+              </Avatar>
+              <Button
+                variant="link"
+                className="flex items-center p-0 text-foreground after:bg-primary hover:text-primary"
+                asChild
+              >
+                <Link href="/groups/all">
+                  {t("breadcrumb.userGroups", { name: user?.name })}
+                </Link>
+              </Button>
+            </BreadcrumbItem>
+          </>
         ) : null}
 
         <GroupLink />
