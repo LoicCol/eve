@@ -4,7 +4,7 @@ import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
 import { useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
-import {} from "react";
+import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
 import { useI18n } from "@/locales/client";
 
@@ -24,7 +24,8 @@ export function GroupSidebar({ groups }: GroupSidebarProps) {
 
   return (
     <div className="flex size-full flex-col rounded-sm pr-1">
-      <p className="p-6 pb-2 font-sans text-xl">{t("header.groups")}</p>
+      <p className="px-6 py-5 font-sofia text-xl">{t("header.groups")}</p>
+      <Separator className="mx-4 w-auto" />
       <ul className="flex flex-1 flex-col gap-2 overflow-auto p-2">
         {groups.map((group) => {
           const isActive = encode(group.groupId) === currentGroupId;

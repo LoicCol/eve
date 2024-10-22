@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import EditableTextArea from "@/components/editable-text-area";
 import { useI18n } from "@/locales/client";
+import { Separator } from "@/components/ui/separator";
 
 interface EventDetailsProps {
   event: {
@@ -97,7 +98,7 @@ export default function EventDetails({
   );
 
   return (
-    <Card className="max-w-8xl flex-1 overflow-hidden border-primary/40 shadow-sm dark:bg-card md:m-2">
+    <Card className="flex-1 overflow-hidden border-none bg-card/70 shadow-none md:m-2">
       <CardContent className="flex h-full flex-col gap-4 p-4 md:flex-row">
         <div className="flex-1">
           <div className="flex justify-between gap-2 pb-4">
@@ -122,7 +123,7 @@ export default function EventDetails({
                 onSave={handleSaveDate}
                 isPending={isPending}
               >
-                <CalendarIcon className="mr-2 h-5 w-5" />
+                <CalendarIcon className="mr-2 size-5" />
                 <span>
                   {new Date(
                     variables?.date || event.eventDate,
@@ -136,7 +137,7 @@ export default function EventDetails({
               </EditableDate>
             </div>
             <div className="flex items-center text-muted-foreground">
-              <MapPinIcon className="mr-2 h-5 w-5" />
+              <MapPinIcon className="mr-2 size-5" />
               <EditableText
                 value={event.location}
                 onSave={handleSaveLocation}
@@ -146,7 +147,7 @@ export default function EventDetails({
               </EditableText>
             </div>
             <div className="flex items-center">
-              <UserIcon className="mr-2 h-5 w-5 text-muted-foreground" />
+              <UserIcon className="mr-2 size-5 text-muted-foreground" />
               <span className="mr-2 text-muted-foreground">
                 {t("eventDetails.createdBy")}:
               </span>
@@ -160,7 +161,11 @@ export default function EventDetails({
             </div>
           </div>
         </div>
-        <div className="flex flex-1 border-t border-dashed border-primary/40 pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+        <Separator
+          orientation="vertical"
+          className="ml-2 hidden bg-gradient-to-b dark:from-card dark:via-zinc-700/30 dark:to-card md:block"
+        />
+        <div className="flex flex-1 pt-4 md:border-t-0 md:pl-4 md:pt-0">
           <EditableTextArea
             value={variables?.description || event.description || ""}
             isPending={isPending}
@@ -207,7 +212,7 @@ function ParticipationButton({
   return (
     <div className="flex items-center">
       {isPending && (
-        <Loader className="mr-2 h-4 w-4 animate-spin text-primary" />
+        <Loader className="mr-2 size-4 animate-spin text-primary" />
       )}
 
       <Select onValueChange={handleSelect} value={value}>
