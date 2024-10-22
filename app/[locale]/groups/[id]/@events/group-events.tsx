@@ -97,7 +97,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
         ) : events.length > 0 ? (
           renderEventList(events)
         ) : (
-          <p className="p-2 px-6 italic text-muted-foreground">
+          <p className="p-2 text-muted-foreground">
             {t("groupEvents.noEventsFound")}
           </p>
         )}
@@ -114,7 +114,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
         ) : events.length > 0 ? (
           renderEventList(events)
         ) : (
-          <p className="p-2 px-6 italic text-muted-foreground">
+          <p className="p-2 text-muted-foreground">
             {t("groupEvents.noEventsFound")}
           </p>
         )}

@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import {} from "react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/locales/client";
 
@@ -19,39 +19,24 @@ interface GroupSidebarProps {
 export function GroupSidebar({ groups }: GroupSidebarProps) {
   const t = useI18n();
   const params = useParams();
-  const router = useRouter();
   const currentGroupId = params.id as string;
   const locale = params.locale as string;
-  const [activeGroupId, setActiveGroupId] = useState(currentGroupId);
-
-  const handleGroupClick = (groupId: string, href: string) => {
-    setActiveGroupId(encode(groupId));
-    setTimeout(() => {
-      router.push(href);
-    }, 0);
-  };
 
   return (
-    <div className="flex w-96 flex-col gap-2 rounded-sm border border-dashed border-primary/50 p-2">
-      <p className="p-2 pb-3 pl-4 font-sans text-xl">{t("header.groups")}</p>
-      <ul className="flex flex-col gap-2 overflow-auto">
+    <div className="flex size-full flex-col rounded-sm pr-1">
+      <p className="p-6 pb-2 font-sans text-xl">{t("header.groups")}</p>
+      <ul className="flex flex-1 flex-col gap-2 overflow-auto p-2">
         {groups.map((group) => {
-          const isActive = encode(group.groupId) === activeGroupId;
+          const isActive = encode(group.groupId) === currentGroupId;
           return (
             <li
               className={cn("relative w-full cursor-pointer rounded-sm")}
               data-id={`group-${group.groupId}`}
               key={group.groupId}
-              onClick={() =>
-                handleGroupClick(
-                  group.groupId,
-                  `/groups/${encode(group.groupId)}`,
-                )
-              }
             >
               {isActive ? (
                 <motion.div
-                  className="absolute inset-0 rounded-sm bg-primary/10"
+                  className="absolute inset-0 rounded-sm border border-dashed border-primary/50 bg-primary/10"
                   layoutId={`active-group`}
                   transition={{
                     type: "spring",
@@ -66,6 +51,7 @@ export function GroupSidebar({ groups }: GroupSidebarProps) {
                   "flex w-full cursor-pointer flex-col p-4 hover:text-primary",
                   isActive && "text-primary",
                 )}
+                scroll={false}
               >
                 <span className="mb-2 w-full text-sm font-medium">
                   {group.groupName}
