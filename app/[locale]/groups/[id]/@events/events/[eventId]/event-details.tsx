@@ -98,7 +98,7 @@ export default function EventDetails({
   );
 
   return (
-    <Card className="flex-1 overflow-hidden border-none bg-card/70 shadow-none md:m-2">
+    <Card className="flex-1 overflow-hidden border-none shadow-none md:m-2">
       <CardContent className="flex h-full flex-col gap-4 p-4 md:flex-row">
         <div className="flex-1">
           <div className="flex justify-between gap-2 pb-4">
