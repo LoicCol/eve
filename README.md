@@ -65,11 +65,12 @@ This application is built using the following technologies:
 - [x] New sidebar
 - [x] Prepare for the first production release.
 - [x] Group list displayed in group details
+- [x] Facebook connection re-up
 
 ### Upcoming Features
 
+- [ ] Privacy policy / Deletion policy (link to fb)
 - [ ] Change mobile version of group details
-- [ ] Facebook connection re-up
 - [ ] Well manage the events times (start / end)
 - [ ] Limit editing permissions to admin (currently only the creator).
 - [x] List events for all groups a user is in.
