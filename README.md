@@ -64,9 +64,11 @@ This application is built using the following technologies:
 - [x] PWA - Chrome
 - [x] New sidebar
 - [x] Prepare for the first production release.
+- [x] Group list displayed in group details
 
 ### Upcoming Features
 
+- [ ] Change mobile version of group details
 - [ ] Facebook connection re-up
 - [ ] Well manage the events times (start / end)
 - [ ] Limit editing permissions to admin (currently only the creator).
