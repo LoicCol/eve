@@ -1,6 +1,5 @@
 "use client";
 
-import AnimatedBackground from "@/components/animated-background";
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
 import { useParams, useRouter } from "next/navigation";
