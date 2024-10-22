@@ -1,6 +1,8 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Eve-nts",
+  "short_name": "Eve",
+  "description": "Manage your events with ease",
+  "start_url": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
