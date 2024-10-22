@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useI18n } from "@/locales/client";
 
 interface GroupSidebarProps {
   groups: {
@@ -16,6 +17,7 @@ interface GroupSidebarProps {
 }
 
 export function GroupSidebar({ groups }: GroupSidebarProps) {
+  const t = useI18n();
   const params = useParams();
   const router = useRouter();
   const currentGroupId = params.id as string;
@@ -30,55 +32,58 @@ export function GroupSidebar({ groups }: GroupSidebarProps) {
   };
 
   return (
-    <ul className="flex w-96 flex-col gap-2 rounded-sm border border-dashed border-primary/50 p-2">
-      {groups.map((group) => {
-        const isActive = encode(group.groupId) === activeGroupId;
-        return (
-          <li
-            className={cn("relative w-full cursor-pointer rounded-sm")}
-            data-id={`group-${group.groupId}`}
-            key={group.groupId}
-            onClick={() =>
-              handleGroupClick(
-                group.groupId,
-                `/groups/${encode(group.groupId)}`,
-              )
-            }
-          >
-            {isActive ? (
-              <motion.div
-                className="absolute inset-0 rounded-sm bg-primary/10"
-                layoutId={`active-group`}
-                transition={{
-                  type: "spring",
-                  bounce: 0.1,
-                  duration: 0.6,
-                }}
-              />
-            ) : null}
-            <Link
-              href={`/groups/${encode(group.groupId)}`}
-              className={cn(
-                "flex w-full cursor-pointer flex-col p-4 hover:text-primary",
-                isActive && "text-primary",
-              )}
+    <div className="flex w-96 flex-col gap-2 rounded-sm border border-dashed border-primary/50 p-2">
+      <p className="p-2 pb-3 pl-4 font-sans text-xl">{t("header.groups")}</p>
+      <ul className="flex flex-col gap-2 overflow-auto">
+        {groups.map((group) => {
+          const isActive = encode(group.groupId) === activeGroupId;
+          return (
+            <li
+              className={cn("relative w-full cursor-pointer rounded-sm")}
+              data-id={`group-${group.groupId}`}
+              key={group.groupId}
+              onClick={() =>
+                handleGroupClick(
+                  group.groupId,
+                  `/groups/${encode(group.groupId)}`,
+                )
+              }
             >
-              <span className="mb-2 w-full text-sm font-medium">
-                {group.groupName}
-              </span>
-              <div className="mt-auto flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">
-                  {new Date(group.createdAt).toLocaleDateString(locale, {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
+              {isActive ? (
+                <motion.div
+                  className="absolute inset-0 rounded-sm bg-primary/10"
+                  layoutId={`active-group`}
+                  transition={{
+                    type: "spring",
+                    bounce: 0.1,
+                    duration: 0.6,
+                  }}
+                />
+              ) : null}
+              <Link
+                href={`/groups/${encode(group.groupId)}`}
+                className={cn(
+                  "flex w-full cursor-pointer flex-col p-4 hover:text-primary",
+                  isActive && "text-primary",
+                )}
+              >
+                <span className="mb-2 w-full text-sm font-medium">
+                  {group.groupName}
                 </span>
-              </div>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+                <div className="mt-auto flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">
+                    {new Date(group.createdAt).toLocaleDateString(locale, {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                </div>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
