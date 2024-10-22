@@ -32,7 +32,7 @@ export default function GroupRowDropdown({ groupId }: { groupId: string }) {
             size="icon"
             className="mt-0 rounded-full border-none text-muted-foreground shadow-none hover:bg-primary/10 hover:text-primary"
           >
-            <Ellipsis className="h-4 w-4" />
+            <Ellipsis className="size-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
@@ -42,7 +42,7 @@ export default function GroupRowDropdown({ groupId }: { groupId: string }) {
           >
             <p>Delete</p>
             {isPending && (
-              <Loader className="h-4 w-4 animate-spin text-primary" />
+              <Loader className="size-4 animate-spin text-primary" />
             )}
           </DropdownMenuItem>
         </DropdownMenuContent>
