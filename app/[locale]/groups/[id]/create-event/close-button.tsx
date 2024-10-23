@@ -13,7 +13,7 @@ export default function CloseButton({ groupId, locale }: CloseButtonProps) {
   const router = useRouter();
 
   const handleClose = () => {
-    router.push(`/${locale}/groups/${groupId}`);
+    router.push(`/${locale}/groups/${groupId}/events`);
   };
 
   return (
@@ -23,7 +23,7 @@ export default function CloseButton({ groupId, locale }: CloseButtonProps) {
       size="icon"
       className="absolute right-2 top-2"
     >
-      <X className="h-4 w-4" />
+      <X className="size-4" />
     </Button>
   );
 }

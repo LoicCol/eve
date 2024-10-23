@@ -18,9 +18,8 @@ export default async function EventPage({
   if (!event) {
     return <p>Event not found</p>;
   }
-
   const [creator, participants, user] = await Promise.all([
-    getUser(event.createdBy),
+    getUser(event.createdBy ?? ""),
     getParticipants(eventUuid),
     getCurrentUser(),
   ]);

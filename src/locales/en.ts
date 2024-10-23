@@ -30,6 +30,8 @@ export default {
       maybe: "Maybe",
       notGoing: "Not going",
     },
+    noStartTime: "No start time set",
+    noEndTime: "No end time set",
   },
   createEventForm: {
     title: "Create New Event",

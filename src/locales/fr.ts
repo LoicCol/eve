@@ -31,6 +31,8 @@ export default {
       maybe: "Peut-être",
       notGoing: "Ne participe pas",
     },
+    noStartTime: "Pas d'heure de début définie",
+    noEndTime: "Pas d'heure de fin définie",
   },
   createEventForm: {
     title: "Créer un nouvel événement",

@@ -47,7 +47,7 @@ export function GroupSidebar({ groups }: GroupSidebarProps) {
                 />
               ) : null}
               <Link
-                href={`/groups/${encode(group.groupId)}`}
+                href={`/groups/${encode(group.groupId)}/events`}
                 className={cn(
                   "flex w-full cursor-pointer flex-col p-4 hover:text-primary",
                   isActive && "text-primary",

@@ -9,7 +9,6 @@ export interface Group {
 export const createEventFormSchema = z.object({
   name: z.string(),
   location: z.string(),
-  date: z.string(),
   group: z.string(),
   description: z.string().nullable(),
   sectionId: z.string().nullable(),

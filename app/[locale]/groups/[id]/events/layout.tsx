@@ -1,4 +1,3 @@
-import React from "react";
 import EventsHeader from "./events-header";
 import { getGroup } from "server/queries";
 import { decode } from "@/util/shorten-uuid";
@@ -12,6 +11,7 @@ export default async function Layout({
   params: { id: string };
 }) {
   const group = await getGroup(decode(params.id));
+
   return (
     <>
       <EventsHeader groupId={params.id} groupName={group?.groupName} />

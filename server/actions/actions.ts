@@ -62,10 +62,16 @@ export async function createEvent(formData: CreateEventFormFields) {
     };
   }
 
-  const { name, location, date, group } = validationResult.data;
+  const { name, location, startDate, group } = validationResult.data;
   const locale = getCurrentLocale();
 
-  const event = await insertEvent(name, location, date, group, user.userId);
+  const event = await insertEvent(
+    name,
+    location,
+    startDate,
+    group,
+    user.userId,
+  );
 
   revalidatePath(`/${locale}/events`);
   redirect(

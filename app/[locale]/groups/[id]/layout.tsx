@@ -9,14 +9,14 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default async function Layout({
   details,
-  events,
   modal,
   sidebar,
+  children,
 }: {
   details: React.ReactNode;
-  events: React.ReactNode;
   modal: React.ReactNode;
   sidebar: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <>
@@ -31,7 +31,9 @@ export default async function Layout({
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel className="flex flex-col p-2" defaultSize={60}>
-            <div className="flex flex-1 flex-col overflow-hidden">{events}</div>
+            <div className="flex flex-1 flex-col overflow-hidden">
+              {children}
+            </div>
           </ResizablePanel>
           <ResizableHandle withHandle />
           <ResizablePanel className="bg-card/30 p-4" defaultSize={20}>
@@ -55,7 +57,7 @@ export default async function Layout({
           </Card>
         </TabsContent>
         <TabsContent className="pb-2" value="events">
-          {events}
+          {children}
         </TabsContent>
       </Tabs>
 

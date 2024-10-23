@@ -42,6 +42,7 @@ export function matchQueryStatus<T>(
     ) => JSX.Element;
   },
 ): JSX.Element;
+
 export function matchQueryStatus<T>(
   query: UseQueryResult<T>,
   options: {
@@ -50,6 +51,7 @@ export function matchQueryStatus<T>(
     Success: (data: UseQueryResult<T>) => JSX.Element;
   },
 ): JSX.Element;
+
 export function matchQueryStatus<T>(
   query: UseQueryResult<T>,
   {
