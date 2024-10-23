@@ -9,11 +9,11 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import { TextEffect } from "@/components/text-effect";
+import { TextEffect } from "@/components/motioned/text-effect";
 import { hasUserJoinedGroup } from "server/actions/actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Smile } from "lucide-react";
-import { TrailedButton } from "@/components/trailed-button";
+import { TrailedButton } from "@/components/motioned/trailed-button";
 
 export default async function Home() {
   const t = await getI18n();

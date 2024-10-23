@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { TrailedButton } from "@/components/trailed-button";
+import { TrailedButton } from "@/components/motioned/trailed-button";
 
 export default function EventsHeader({
   groupId,
@@ -20,12 +20,12 @@ export default function EventsHeader({
 
   return (
     <div
-      className={`1 mb-2 items-center justify-between pt-1 md:flex md:pl-2 md:pr-2 md:pt-2`}
+      className={`mb-2 items-center justify-between pt-1 md:flex md:px-2 md:pt-2`}
     >
       {/* Desktop */}
       <Button variant="link" className={`hidden p-0 md:flex`} asChild>
         <Link href={`/groups/${groupId}`}>
-          <CalendarRange className="mr-2 h-4 w-4" />
+          <CalendarRange className="mr-2 size-4" />
           <h2 className="">{t("eventsHeader.events")}</h2>
         </Link>
       </Button>
@@ -37,7 +37,7 @@ export default function EventsHeader({
         asChild
       >
         <Link href={`/groups/${groupId}`}>
-          <CalendarRange className="mr-2 h-4 w-4" />
+          <CalendarRange className="mr-2 size-4" />
           <h2 className="">{t("eventsHeader.groupEvents")}</h2>
         </Link>
       </Button>
@@ -49,12 +49,12 @@ export default function EventsHeader({
       >
         <Button asChild variant="outline" className="">
           <Link href={`/groups/${groupId}/link-events`}>
-            <Group className="mr-2 h-4 w-4" /> {t("eventsHeader.linkEvents")}
+            <Group className="mr-2 size-4" /> {t("eventsHeader.linkEvents")}
           </Link>
         </Button>
         <TrailedButton asChild>
           <Link href={`/groups/${groupId}/create-event`}>
-            <Calendar className="mr-2 h-4 w-4" />
+            <Calendar className="mr-2 size-4" />
             {t("eventsHeader.createEvent")}
           </Link>
         </TrailedButton>

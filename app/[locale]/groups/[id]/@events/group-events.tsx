@@ -1,10 +1,10 @@
 "use client";
 
 import { useI18n } from "@/locales/client";
-import EventCard from "@/components/event-card";
+import EventCard from "@/components/event-card/event-card";
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
-import { AnimatedGroup } from "@/components/animated-group";
+import { AnimatedGroup } from "@/components/motioned/animated-group";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getGroupEvents } from "server/actions/actions";

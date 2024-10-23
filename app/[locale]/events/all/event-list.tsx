@@ -1,13 +1,13 @@
 "use server";
 
-import EventCard from "@/components/event-card";
+import EventCard from "@/components/event-card/event-card";
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
 import { getEvents } from "server/queries";
 import { auth } from "@clerk/nextjs/server";
 import { getI18n } from "@/locales/server";
 import { Separator } from "@/components/ui/separator";
-import { AnimatedGroup } from "@/components/animated-group";
+import { AnimatedGroup } from "@/components/motioned/animated-group";
 
 export default async function EventList() {
   const { userId } = auth();
@@ -16,9 +16,9 @@ export default async function EventList() {
   const t = await getI18n();
 
   const upcomingEvents = events.filter(
-    (event) => new Date(event.eventDate) >= now,
+    (event) => new Date(event.startDate) >= now,
   );
-  const pastEvents = events.filter((event) => new Date(event.eventDate) < now);
+  const pastEvents = events.filter((event) => new Date(event.startDate) < now);
 
   return (
     <div className="py-8">
@@ -26,7 +26,7 @@ export default async function EventList() {
         <p className="text-muted-foreground">{t("eventList.noEvents")}</p>
       ) : (
         <>
-          <h2 className="d mb-4 px-4 text-xl font-bold text-primary">
+          <h2 className="mb-4 px-4 text-xl font-bold text-primary">
             {t("eventList.upcomingEvents")}
           </h2>
 
