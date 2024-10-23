@@ -4,6 +4,7 @@ import {
   timestamp,
   uuid,
   primaryKey,
+  time,
 } from "drizzle-orm/pg-core";
 
 export const createTable = pgTableCreator((name) => `eve_${name}`);
@@ -34,9 +35,12 @@ export const events = createTable("events", {
   eventName: text("name").notNull(),
   description: text("description"),
   location: text("location").notNull(),
-  eventDate: timestamp("event_date").notNull(),
-  createdBy: text("created_by").notNull(),
-  createdAt: timestamp("created_at").notNull(),
+  startDate: timestamp("start_date", { withTimezone: true }).notNull(),
+  startTime: time("start_time", { withTimezone: true }),
+  endDate: timestamp("end_date", { withTimezone: true }),
+  endTime: time("end_time", { withTimezone: true }),
+  createdBy: text("created_by"),
+  createdAt: timestamp("created_at"),
 });
 
 export const userGroups = createTable(
