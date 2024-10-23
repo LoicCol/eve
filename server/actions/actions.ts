@@ -161,7 +161,10 @@ export async function editEvent(
   const {
     name: eventName,
     location,
-    date,
+    startDate,
+    startTime,
+    endDate,
+    endTime,
     group,
     description,
   } = validationResult.data;
@@ -170,7 +173,10 @@ export async function editEvent(
   await updateEvent(eventId, {
     eventName,
     location,
-    eventDate: new Date(date),
+    startDate: new Date(startDate),
+    startTime: startTime || null,
+    endDate: endDate ? new Date(endDate) : null,
+    endTime: endTime || null,
     groupId: group,
     description: description || "",
   });

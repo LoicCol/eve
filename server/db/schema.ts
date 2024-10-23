@@ -43,6 +43,17 @@ export const events = createTable("events", {
   createdAt: timestamp("created_at"),
 });
 
+export const eventLinks = createTable("event_links", {
+  linkId: uuid("link_id").defaultRandom().primaryKey(),
+  eventId: uuid("event_id").references(() => events.eventId, {
+    onDelete: "cascade",
+  }),
+  linkName: text("link_name").notNull(),
+  link: text("link").notNull(),
+  createdBy: text("created_by"),
+  createdAt: timestamp("created_at"),
+});
+
 export const userGroups = createTable(
   "user_groups",
   {

@@ -14,7 +14,7 @@ export async function getEvents(userId: string) {
 
   const evts = await db.query.events.findMany({
     where: inArray(events.groupId, groupIds),
-    orderBy: (events, { asc }) => [asc(events.eventDate)],
+    orderBy: (events, { asc }) => [asc(events.startDate)],
   });
 
   return evts;
@@ -39,7 +39,10 @@ export async function getEventsForGroup(
       eventName: events.eventName,
       description: events.description,
       location: events.location,
-      eventDate: events.eventDate,
+      startDate: events.startDate,
+      startTime: events.startTime,
+      endDate: events.endDate,
+      endTime: events.endTime,
       createdAt: events.createdAt,
       createdBy: events.createdBy,
       sectionId: events.sectionId,
@@ -52,11 +55,11 @@ export async function getEventsForGroup(
       and(
         eq(events.groupId, groupId),
         dateFilter === "upcoming"
-          ? gte(events.eventDate, now)
-          : lt(events.eventDate, now),
+          ? gte(events.startDate, now)
+          : lt(events.startDate, now),
       ),
     )
-    .orderBy(events.eventDate);
+    .orderBy(events.startDate);
 
   return eventsRes;
 }
@@ -64,7 +67,7 @@ export async function getEventsForGroup(
 export async function insertEvent(
   eventName: string,
   location: string,
-  eventDate: string,
+  startDate: string,
   groupId: string,
   createdBy: string,
 ) {
@@ -73,7 +76,7 @@ export async function insertEvent(
     .values({
       eventName,
       location,
-      eventDate: new Date(eventDate),
+      startDate: new Date(startDate),
       createdBy,
       createdAt: new Date(),
       groupId,
@@ -127,7 +130,10 @@ export async function updateEvent(
   data: {
     eventName: string;
     location: string;
-    eventDate: Date;
+    startDate: Date;
+    startTime: string | null;
+    endDate: Date | null;
+    endTime: string | null;
     groupId: string;
     description: string;
   },
