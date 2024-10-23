@@ -4,11 +4,6 @@ Welcome to the **Event Management Application**! This little application helps y
 
 [Live](https://www.eve-nts.app/)
 
-### Group Example
-
-See how groups and events work in this example:  
-[Group Example](https://www.eve-nts.app/groups/vgh9vcg7HdVtHMfYrjtbGH)
-
 ---
 
 ## Tech Stack
@@ -90,6 +85,7 @@ This application is built using the following technologies:
 ### Bugs
 
 - [ ] Clerk manage account modal not working on mobile
+- [ ] All groups page shows 2 loading content
 
 ---
 
