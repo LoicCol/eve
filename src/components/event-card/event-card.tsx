@@ -3,7 +3,7 @@
 import { useI18n } from "@/locales/client";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import EventCardDropdown from "./event-card-dropdown";
-import ParticipantsList from "./participant-list";
+import ParticipantsList from "@/components/participant-list";
 import { getParticipants } from "server/queries";
 import { useQuery } from "@tanstack/react-query";
 
@@ -12,7 +12,7 @@ interface EventCardProps {
     eventId: string;
     eventName: string;
     location: string;
-    startDateTime: Date;
+    startDate: Date;
   };
 }
 
@@ -37,7 +37,7 @@ export default function EventCard({ event }: EventCardProps) {
         <p className="text-sm text-muted-foreground">{event.location}</p>
 
         <p className="pb-4 text-sm text-muted-foreground">
-          {new Date(event.startDateTime).toLocaleDateString(t("locale"), {
+          {new Date(event.startDate).toLocaleDateString(t("locale"), {
             weekday: "long",
             year: "numeric",
             month: "short",
