@@ -13,6 +13,10 @@ export const createEventFormSchema = z.object({
   group: z.string(),
   description: z.string().nullable(),
   sectionId: z.string().nullable(),
+  startDate: z.string(),
+  startTime: z.string().nullable(),
+  endDate: z.string().nullable(),
+  endTime: z.string().nullable(),
 });
 
 export type CreateEventFormFields = z.infer<typeof createEventFormSchema>;
