@@ -1,7 +1,7 @@
 "use client";
 
-import { ButtonProps } from "./ui/button";
-import { Button } from "./ui/button";
+import { ButtonProps } from "../ui/button";
+import { Button } from "../ui/button";
 import BorderTrail from "./border-trail";
 import { useState } from "react";
 

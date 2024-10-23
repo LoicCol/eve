@@ -12,7 +12,7 @@ interface EventCardProps {
     eventId: string;
     eventName: string;
     location: string;
-    eventDate: Date;
+    startDateTime: Date;
   };
 }
 
@@ -29,7 +29,7 @@ export default function EventCard({ event }: EventCardProps) {
   }));
 
   return (
-    <Card className="relative rounded-xl border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none">
+    <Card className="relative rounded-xl border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-0 active:translate-y-0 active:rounded-xl active:shadow-none">
       <CardHeader className="p-4">
         <CardTitle>{event.eventName}</CardTitle>
       </CardHeader>
@@ -37,7 +37,7 @@ export default function EventCard({ event }: EventCardProps) {
         <p className="text-sm text-muted-foreground">{event.location}</p>
 
         <p className="pb-4 text-sm text-muted-foreground">
-          {new Date(event.eventDate).toLocaleDateString(t("locale"), {
+          {new Date(event.startDateTime).toLocaleDateString(t("locale"), {
             weekday: "long",
             year: "numeric",
             month: "short",

@@ -3,13 +3,13 @@
 import { useI18n } from "@/locales/client";
 import { EllipsisVertical, Loader } from "lucide-react";
 import { MouseEvent } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+} from "../ui/dropdown-menu";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteEvent } from "server/actions/actions";
 import { toast } from "sonner";
