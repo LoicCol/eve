@@ -10,7 +10,7 @@ export default function FormSubmitButton({
   isPending: boolean;
 }) {
   return (
-    <Button type="submit" disabled={isPending}>
+    <Button className="self-end" type="submit" disabled={isPending}>
       {isPending && <Loader className="mr-2 size-4 animate-spin" />}
       {children}
     </Button>

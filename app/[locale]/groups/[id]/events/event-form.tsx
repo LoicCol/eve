@@ -6,6 +6,7 @@ import FormFieldSelect from "@/components/form/form-field-select";
 import { CreateEventFormFields, EditEventFormFields } from "types";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 import { useI18n } from "@/locales/client";
+import FormFieldTime from "@/components/form/form-field-time";
 
 interface EventFormProps {
   submitButton: React.ReactNode;
@@ -45,7 +46,10 @@ export default function EventForm<T extends UnresolvedEventFormProps>({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col space-y-8"
+      >
         <FormFieldText
           control={form.control}
           label={t("eventForm.eventName")}
@@ -58,16 +62,34 @@ export default function EventForm<T extends UnresolvedEventFormProps>({
           name="location"
           placeholder={t("eventForm.enterEventLocation")}
         />
-        <FormFieldDate
-          control={form.control}
-          label={t("eventForm.dateAndTime")}
-          name="startDate"
-        />
-        {/* <FormFieldTime
-              control={form.control}
-              name="startTime"
-              label={t("eventForm.startTime")}
-            /> */}
+        <div className="grid grid-cols-2 gap-2">
+          <FormFieldDate
+            control={form.control}
+            label={t("eventForm.startDate")}
+            name="startDate"
+            className=""
+          />
+          <FormFieldTime
+            control={form.control}
+            label={t("eventForm.startTime")}
+            name="startTime"
+            className=""
+          />
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          <FormFieldDate
+            control={form.control}
+            label={t("eventForm.endDate")}
+            name="endDate"
+            className=""
+          />
+          <FormFieldTime
+            control={form.control}
+            label={t("eventForm.endTime")}
+            name="endTime"
+            className=""
+          />
+        </div>
         <FormFieldSelect
           control={form.control}
           label={

@@ -23,6 +23,9 @@ export default async function EditPage({
     name: event.eventName,
     location: event.location,
     startDate: event.startDate.toISOString().substring(0, 10),
+    startTime: event.startTime?.substring(0, 5),
+    endDate: event.endDate?.toISOString().substring(0, 10),
+    endTime: event.endTime?.substring(0, 5),
     description: event.description,
     sectionId: event.sectionId,
   };

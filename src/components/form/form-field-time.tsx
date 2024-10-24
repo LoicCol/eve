@@ -6,33 +6,37 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { ReactElement } from "react";
-import { Control, FieldValues, Path } from "react-hook-form";
+import { ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 
-export default function FormFieldTime<T extends FieldValues>({
-  control,
-  name,
+interface FormFieldTimeProps<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+> extends Omit<ControllerProps<TFieldValues, TName>, "render" | "type"> {
+  label?: string;
+  placeholder?: string;
+  className?: string;
+}
+export default function FormFieldTime<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+>({
   label,
-  placeholder,
-}: {
-  control: Control<T>;
-  name: Path<T>;
-  label: string | ReactElement;
-  placeholder: string;
-}) {
+  placeholder = "",
+  className,
+  ...props
+}: FormFieldTimeProps<TFieldValues, TName>) {
   return (
     <FormField
-      control={control}
-      name={name}
       render={({ field }) => (
-        <FormItem>
-          <FormLabel>{label}</FormLabel>
+        <FormItem className={className}>
+          {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
             <Input type="time" placeholder={placeholder} {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>
       )}
+      {...props}
     />
   );
 }

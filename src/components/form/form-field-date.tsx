@@ -13,16 +13,17 @@ interface FormFieldDateProps<
   TName extends FieldPath<TFieldValues>,
 > extends Omit<ControllerProps<TFieldValues, TName>, "render" | "type"> {
   label: string;
+  className?: string;
 }
 
 export default function FormFieldDate<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
->({ label, ...props }: FormFieldDateProps<TFieldValues, TName>) {
+>({ label, className, ...props }: FormFieldDateProps<TFieldValues, TName>) {
   return (
     <FormField
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <Input type="date" {...field} />

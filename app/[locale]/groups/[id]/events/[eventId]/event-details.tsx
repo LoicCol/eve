@@ -5,7 +5,7 @@ import ParticipantsList from "@/components/participant-list";
 import { CalendarIcon, MapPinIcon, UserIcon, ClockIcon } from "lucide-react";
 import { useI18n } from "@/locales/client";
 import { Separator } from "@/components/ui/separator";
-import { isValid } from "date-fns";
+import { add, format, isValid } from "date-fns";
 import { ParticipationButton } from "./participation-button";
 import { useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -54,27 +54,6 @@ export default function EventDetails({
     (participant) => participant.userId === user?.userId,
   );
 
-  function formatSafeDate(date: Date | null | undefined): string {
-    if (date && isValid(date)) {
-      return new Date(date).toLocaleDateString(locale, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
-    }
-    return "-";
-  }
-
-  function formatSafeTime(time: string | null | undefined): string {
-    if (time) {
-      return new Date(time).toLocaleDateString(locale, {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    }
-    return "-";
-  }
-
   return (
     <Card className="flex-1 overflow-hidden border-none shadow-none md:m-2">
       <CardContent className="flex h-full flex-col gap-4 p-4 md:flex-row">
@@ -90,23 +69,31 @@ export default function EventDetails({
             <InformationItem
               icon={<CalendarIcon className="mr-2 size-5" />}
               label={t("eventDetails.startDate")}
-              value={formatSafeDate(event.startDate)}
+              value={formatSafeDate(event.startDate, locale as string)}
             />
 
             <InformationItem
               icon={<CalendarIcon className="mr-2 size-5" />}
               label={t("eventDetails.endDate")}
-              value={formatSafeDate(event.endDate)}
+              value={formatSafeDate(event.endDate, locale as string)}
             />
 
             <div className="flex items-center">
               <ClockIcon className="mr-2 size-5" />
-              <span>{formatSafeTime(event.startTime)}</span>
+              <span>
+                {formatSafeTime(
+                  event.startTime,
+                  event.startDate,
+                  locale as string,
+                )}
+              </span>
             </div>
 
             <div className="flex items-center">
               <ClockIcon className="mr-2 size-5" />
-              <span>{formatSafeTime(event.endTime)}</span>
+              <span>
+                {formatSafeTime(event.endTime, event.endDate, locale as string)}
+              </span>
             </div>
           </div>
 
@@ -159,4 +146,33 @@ function InformationItem({
       </div>
     </div>
   );
+}
+
+function formatSafeDate(date: Date | null | undefined, locale: string): string {
+  if (date && isValid(date)) {
+    return new Date(date).toLocaleDateString(locale, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  }
+  return "-";
+}
+
+function formatSafeTime(
+  time: string | null | undefined,
+  date: Date | null | undefined,
+  locale: string,
+): string {
+  if (time && date) {
+    var userTimezoneOffset = date.getTimezoneOffset() * 60000;
+    const dateWithOffset = new Date(date.getTime() + userTimezoneOffset);
+    const newDate = add(dateWithOffset, {
+      hours: parseInt(time.slice(0, 2)),
+      minutes: parseInt(time.slice(3, 5)),
+    });
+
+    return format(newDate, "HH:mm");
+  }
+  return "-";
 }
