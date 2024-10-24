@@ -9,6 +9,7 @@ import { isValid } from "date-fns";
 import { ParticipationButton } from "./participation-button";
 import { useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
+import EventDescription from "./event-description";
 
 interface EventDetailsProps {
   event: {
@@ -132,10 +133,7 @@ export default function EventDetails({
           orientation="vertical"
           className="ml-2 hidden bg-gradient-to-b dark:from-card dark:via-zinc-700/30 dark:to-card md:block"
         />
-        <div className="flex-1">
-          <h2 className="text-xl font-semibold">Description</h2>
-          <p>{event.description || ""}</p>
-        </div>
+        <EventDescription event={event} />
       </CardContent>
     </Card>
   );
