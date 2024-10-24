@@ -83,7 +83,7 @@ export default function LinkEvents({ events }: LinkEventsProps) {
     },
     onSuccess: () => {
       toast.success("Your events have been successfully linked.");
-      router.replace(`/${locale}/groups/${id}/events`);
+      router.push(`/${locale}/groups/${id}/events`);
     },
     onError: (error: unknown) => {
       toast.error(`There was a problem linking your events. ${error}.`);
