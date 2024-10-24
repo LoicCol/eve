@@ -11,7 +11,7 @@ interface EventDescriptionProps {
     eventId: string;
     eventName: string;
     location: string;
-    startDate: string;
+    startDate: Date;
     description: string | null;
     groupId: string | null;
     sectionId: string | null;
@@ -26,6 +26,7 @@ export default function EventDescription({ event }: EventDescriptionProps) {
       editEvent(event.eventId, {
         ...event,
         name: event.eventName,
+        startDate: event.startDate.toISOString(),
         description: data.description || "",
       }),
     onSettled: async () => {
