@@ -7,7 +7,7 @@ export default function FormSubmitButton({
   isPending,
 }: {
   children: string | ReactElement;
-  isPending?: boolean;
+  isPending: boolean;
 }) {
   return (
     <Button type="submit" disabled={isPending}>

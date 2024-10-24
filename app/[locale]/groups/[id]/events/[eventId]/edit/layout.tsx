@@ -1,5 +1,5 @@
-import Modal from "@/components/modal";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Modal from "@/components/modal";
 import { getI18n } from "@/locales/server";
 
 export default async function Layout({
@@ -12,7 +12,7 @@ export default async function Layout({
   return (
     <Modal>
       <CardHeader>
-        <CardTitle>{t("editEventForm.title")}</CardTitle>
+        <CardTitle>{t("createEventForm.title")}</CardTitle>
       </CardHeader>
       <CardContent>{children}</CardContent>
     </Modal>

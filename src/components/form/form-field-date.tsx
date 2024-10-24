@@ -6,22 +6,21 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { ReactElement } from "react";
-import { Control, FieldValues, Path } from "react-hook-form";
+import { ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 
-export default function FormFieldDate<T extends FieldValues>({
-  control,
-  name,
-  label,
-}: {
-  control: Control<T>;
-  name: Path<T>;
-  label: string | ReactElement;
-}) {
+interface FormFieldDateProps<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+> extends Omit<ControllerProps<TFieldValues, TName>, "render" | "type"> {
+  label: string;
+}
+
+export default function FormFieldDate<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+>({ label, ...props }: FormFieldDateProps<TFieldValues, TName>) {
   return (
     <FormField
-      control={control}
-      name={name}
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
@@ -31,6 +30,7 @@ export default function FormFieldDate<T extends FieldValues>({
           <FormMessage />
         </FormItem>
       )}
+      {...props}
     />
   );
 }

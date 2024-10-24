@@ -6,7 +6,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { ReactElement } from "react";
-import { Control, FieldValues, Path } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -15,24 +14,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 
-export default function FormFieldDate<T extends FieldValues>({
-  control,
-  name,
-  label,
-  options,
-  placeholder,
-}: {
-  control: Control<T>;
-  name: Path<T>;
+interface FormFieldSelectProps<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+> extends Omit<ControllerProps<TFieldValues, TName>, "render"> {
   label: string | ReactElement;
   options: { value: string; label: string }[];
   placeholder?: string;
-}) {
+}
+
+export default function FormFieldSelect<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+>({
+  label,
+  options,
+  placeholder,
+  ...props
+}: FormFieldSelectProps<TFieldValues, TName>) {
   return (
     <FormField
-      control={control}
-      name={name}
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
@@ -59,6 +62,7 @@ export default function FormFieldDate<T extends FieldValues>({
           <FormMessage />
         </FormItem>
       )}
+      {...props}
     />
   );
 }

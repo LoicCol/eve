@@ -6,24 +6,22 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { ReactElement } from "react";
-import { Control, FieldValues, Path } from "react-hook-form";
+import { ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 
-export default function FormFieldText<T extends FieldValues>({
-  control,
-  name,
-  label,
-  placeholder,
-}: {
-  control: Control<T>;
-  name: Path<T>;
-  label: string | ReactElement;
+interface FormFieldTextProps<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+> extends Omit<ControllerProps<TFieldValues, TName>, "render" | "type"> {
+  label: string;
   placeholder: string;
-}) {
+}
+
+export default function FormFieldText<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+>({ label, placeholder, ...props }: FormFieldTextProps<TFieldValues, TName>) {
   return (
     <FormField
-      control={control}
-      name={name}
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
@@ -33,6 +31,7 @@ export default function FormFieldText<T extends FieldValues>({
           <FormMessage />
         </FormItem>
       )}
+      {...props}
     />
   );
 }

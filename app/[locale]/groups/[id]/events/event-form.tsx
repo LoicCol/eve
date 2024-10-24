@@ -22,6 +22,11 @@ interface CreateEventFormProps extends EventFormProps {
   onSubmit: (data: CreateEventFormFields) => void;
 }
 
+interface UnresolvedEventFormProps extends EventFormProps {
+  form: UseFormReturn<FieldValues>;
+  onSubmit: (data: FieldValues) => void;
+}
+
 export default function EventForm<T extends EditEventFormProps>(
   props: T,
 ): React.ReactElement;
@@ -30,7 +35,7 @@ export default function EventForm<T extends CreateEventFormProps>(
   props: T,
 ): React.ReactElement;
 
-export default function EventForm<T extends FieldValues & EventFormProps>({
+export default function EventForm<T extends UnresolvedEventFormProps>({
   form,
   onSubmit,
   sections,
@@ -43,20 +48,20 @@ export default function EventForm<T extends FieldValues & EventFormProps>({
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormFieldText
           control={form.control}
-          name="name"
           label={t("eventForm.eventName")}
+          name="name"
           placeholder={t("eventForm.enterEventName")}
         />
         <FormFieldText
           control={form.control}
-          name="location"
           label={t("eventForm.location")}
+          name="location"
           placeholder={t("eventForm.enterEventLocation")}
         />
         <FormFieldDate
           control={form.control}
-          name="startDate"
           label={t("eventForm.dateAndTime")}
+          name="startDate"
         />
         {/* <FormFieldTime
               control={form.control}
@@ -65,17 +70,17 @@ export default function EventForm<T extends FieldValues & EventFormProps>({
             /> */}
         <FormFieldSelect
           control={form.control}
-          name="sectionId"
-          placeholder={
-            sections.length === 0
-              ? t("eventForm.noSections")
-              : t("eventForm.selectSectionPlaceholder")
-          }
           label={
             <Fragment>
               {t("eventForm.selectSection")}
               <i>{t("eventForm.optional")}</i>
             </Fragment>
+          }
+          name="sectionId"
+          placeholder={
+            sections.length === 0
+              ? t("eventForm.noSections")
+              : t("eventForm.selectSectionPlaceholder")
           }
           options={sections.map((section) => ({
             value: section.sectionId,
@@ -87,3 +92,5 @@ export default function EventForm<T extends FieldValues & EventFormProps>({
     </Form>
   );
 }
+
+export const EVENT_FORM_HEIGHT = 436;

@@ -32,6 +32,7 @@ export default {
     },
     noStartTime: "No start time set",
     noEndTime: "No end time set",
+    notFound: "Event not found",
   },
   eventForm: {
     eventName: "Event Name",
@@ -72,6 +73,7 @@ export default {
     upcoming: "Upcoming",
     past: "Past",
     noEventsFound: "No events found",
+    notFound: "Group not found",
   },
   joinButton: {
     joined: "Joined",

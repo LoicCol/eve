@@ -9,7 +9,7 @@ import { useParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { decode } from "@/util/shorten-uuid";
 import { startTransition } from "react";
-import EventForm from "../../event-form";
+import EventForm from "../event-form";
 import FormSubmitButton from "@/components/form/form-submit-button";
 
 interface CreateEventFormProps {

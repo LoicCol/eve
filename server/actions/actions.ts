@@ -188,6 +188,11 @@ export async function editEvent(
   });
 
   revalidatePath(`/${locale}/groups/${event?.groupId}/events/${eventId}`);
+  redirect(
+    `/${locale}/groups/${encode(event?.groupId || "")}/events/${encode(
+      eventId,
+    )}`,
+  );
 }
 
 export async function deleteEvent(eventId: string) {

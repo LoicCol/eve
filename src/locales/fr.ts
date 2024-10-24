@@ -33,6 +33,7 @@ export default {
     },
     noStartTime: "Pas d'heure de début définie",
     noEndTime: "Pas d'heure de fin définie",
+    notFound: "Événement non trouvé",
   },
   eventForm: {
     eventName: "Nom de l'événement",
@@ -75,6 +76,7 @@ export default {
     upcoming: "À venir",
     past: "Passés",
     noEventsFound: "Aucun événement trouvé",
+    notFound: "Groupe non trouvé",
   },
   joinButton: {
     joined: "Membre",

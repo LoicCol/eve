@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/select";
 import { linkEventsToSection } from "server/actions/actions";
 import { startTransition, useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useI18n } from "@/locales/client";
 
 const FormSchema = z.object({
@@ -50,6 +50,7 @@ interface LinkEventsProps {
 
 export default function LinkEvents({ events }: LinkEventsProps) {
   const router = useRouter();
+  const { locale, id } = useParams();
   const t = useI18n();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -82,7 +83,7 @@ export default function LinkEvents({ events }: LinkEventsProps) {
     },
     onSuccess: () => {
       toast.success("Your events have been successfully linked.");
-      router.back();
+      router.replace(`/${locale}/groups/${id}/events`);
     },
     onError: (error: unknown) => {
       toast.error(`There was a problem linking your events. ${error}.`);

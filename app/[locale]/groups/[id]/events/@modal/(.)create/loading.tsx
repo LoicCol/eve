@@ -1,5 +1,9 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import { EVENT_FORM_HEIGHT } from "../../event-form";
 
 export default function Loading() {
-  return <Skeleton className="h-[436px] w-full rounded-md" />;
+  return (
+    // eslint-disable-next-line tailwindcss/no-custom-classname
+    <Skeleton className={`h-[${EVENT_FORM_HEIGHT}px] w-full rounded-md`} />
+  );
 }
