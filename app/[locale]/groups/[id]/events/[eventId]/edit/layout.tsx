@@ -12,7 +12,7 @@ export default async function Layout({
   return (
     <Modal>
       <CardHeader>
-        <CardTitle>{t("createEventForm.title")}</CardTitle>
+        <CardTitle>{t("editEventForm.title")}</CardTitle>
       </CardHeader>
       <CardContent>{children}</CardContent>
     </Modal>

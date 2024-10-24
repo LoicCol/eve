@@ -1,10 +1,10 @@
 "use client";
 
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { Dialog, DialogOverlay, DialogContent } from "./ui/dialog";
 import { Drawer, DrawerContent } from "./ui/drawer";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function Modal({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState<boolean>(false);
@@ -28,12 +28,12 @@ export default function Modal({ children }: { children: React.ReactNode }) {
     }
   }, [pathname, setOpen]);
 
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isMobile = useIsMobile();
 
-  if (isDesktop) {
+  if (!isMobile) {
     return (
-      <Dialog defaultOpen open={open} onOpenChange={close}>
-        <DialogOverlay className="bg-white/5">
+      <Dialog open={open} onOpenChange={close}>
+        <DialogOverlay className="bg-white/5 backdrop-blur">
           <DialogContent>{children}</DialogContent>
         </DialogOverlay>
       </Dialog>

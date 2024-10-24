@@ -18,8 +18,6 @@ export default function EventsHeader({
   const { eventId } = useParams();
   const isEventDetails = !!eventId;
 
-  console.log("coucou eventId", eventId, isEventDetails);
-
   return (
     <div className="mb-2 items-center justify-between pt-1 md:flex md:px-2 md:pt-2">
       {/* Desktop */}
@@ -85,11 +83,13 @@ function ActionButtons({
   }
 
   return (
-    <TrailedButton asChild>
-      <Link href={`/groups/${groupId}/events/${eventId}/edit`}>
-        <Calendar className="mr-2 size-4" />
-        {t("eventsHeader.editEvent")}
-      </Link>
-    </TrailedButton>
+    <div className="flex">
+      <TrailedButton asChild>
+        <Link href={`/groups/${groupId}/events/${eventId}/edit`}>
+          <Calendar className="mr-2 size-4" />
+          {t("eventsHeader.editEvent")}
+        </Link>
+      </TrailedButton>
+    </div>
   );
 }
