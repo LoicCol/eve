@@ -33,7 +33,7 @@ export default async function GroupDetails({ groupId }: { groupId: string }) {
 
       <div className="mt-6">
         <p className="pr-2 text-muted-foreground">
-          {t("groupDetails.createdBy")}:
+          {t("groupDetails.createdBy")}
         </p>
         <div className="flex items-center gap-2">
           <p className="text-foreground">{user?.name}</p>
@@ -42,7 +42,7 @@ export default async function GroupDetails({ groupId }: { groupId: string }) {
 
       <div className="mt-4 flex flex-col gap-2">
         <p className="pr-2 text-muted-foreground">
-          {t("groupDetails.members")}:
+          {t("groupDetails.members")}
         </p>
         {members.map((member) => (
           <div key={member?.userId} className="flex gap-2">
