@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <CardHeader>
         <CardTitle>{t("createEventForm.title")}</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="overflow-auto">
         <CreateEventForm sections={sections} />
       </CardContent>
     </Modal>
