@@ -33,8 +33,8 @@ export default function ParticipantsList({
   if (isPending) {
     return (
       <div className="flex gap-2">
-        <Skeleton className="h-7 w-7 rounded-full" />
-        <Skeleton className="h-7 w-7 rounded-full" />
+        <Skeleton className="size-7 rounded-full" />
+        <Skeleton className="size-7 rounded-full" />
       </div>
     );
   }

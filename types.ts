@@ -9,13 +9,21 @@ export interface Group {
 export const createEventFormSchema = z.object({
   name: z.string(),
   location: z.string(),
-  date: z.string(),
   group: z.string(),
-  description: z.string().nullable(),
-  sectionId: z.string().nullable(),
+  description: z.string().nullable().optional(),
+  sectionId: z.string().nullable().optional(),
+  startDate: z.string(),
+  startTime: z.string().nullable().optional(),
+  endDate: z.string().nullable().optional(),
+  endTime: z.string().nullable().optional(),
+});
+
+export const editGroupFormSchema = createEventFormSchema.omit({
+  group: true,
 });
 
 export type CreateEventFormFields = z.infer<typeof createEventFormSchema>;
+export type EditEventFormFields = z.infer<typeof editGroupFormSchema>;
 
 export const createGroupFormSchema = z.object({
   name: z.string(),

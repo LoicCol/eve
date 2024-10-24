@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getI18n } from "@/locales/server";
-import { TextEffect } from "@/components/text-effect";
-import { TrailedButton } from "@/components/trailed-button";
+import { TextEffect } from "@/components/motioned/text-effect";
+import { TrailedButton } from "@/components/motioned/trailed-button";
 import { Separator } from "@/components/ui/separator";
 
 export default async function Layout({

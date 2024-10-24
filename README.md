@@ -64,9 +64,9 @@ This application is built using the following technologies:
 
 ### Upcoming Features
 
+- [ ] Well manage the events times (start / end)
 - [ ] Privacy policy / Deletion policy (link to fb)
 - [ ] Change mobile version of group details
-- [ ] Well manage the events times (start / end)
 - [ ] Limit editing permissions to admin (currently only the creator).
 - [x] List events for all groups a user is in.
   - [ ] Add search functionality.

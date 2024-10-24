@@ -25,6 +25,8 @@ import {
   createEventFormSchema,
   CreateGroupFormFields,
   createGroupFormSchema,
+  EditEventFormFields,
+  editGroupFormSchema,
 } from "types";
 import { encode } from "@/util/shorten-uuid";
 import { auth } from "@clerk/nextjs/server";
@@ -71,10 +73,16 @@ export async function createEvent(formData: CreateEventFormFields) {
     };
   }
 
-  const { name, location, date, group } = validationResult.data;
+  const { name, location, startDate, group } = validationResult.data;
   const locale = getCurrentLocale();
 
-  const event = await insertEvent(name, location, date, group, user.userId);
+  const event = await insertEvent(
+    name,
+    location,
+    startDate,
+    group,
+    user.userId,
+  );
 
   revalidatePath(`/${locale}/events`);
   redirect(
@@ -169,7 +177,7 @@ export async function leaveGroup(groupId: string) {
 
 export async function editEvent(
   eventId: string,
-  formData: CreateEventFormFields,
+  formData: EditEventFormFields,
 ) {
   const user = auth();
   if (!user.userId) {
@@ -177,7 +185,7 @@ export async function editEvent(
     throw new Error("Unauthorized");
   }
 
-  const validationResult = createEventFormSchema.safeParse(formData);
+  const validationResult = editGroupFormSchema.safeParse(formData);
 
   if (!validationResult.success) {
     return {
@@ -188,21 +196,30 @@ export async function editEvent(
   const {
     name: eventName,
     location,
-    date,
-    group,
+    startDate,
+    startTime,
+    endDate,
+    endTime,
     description,
   } = validationResult.data;
   const locale = getCurrentLocale();
 
-  await updateEvent(eventId, {
+  const event = await updateEvent(eventId, {
     eventName,
     location,
-    eventDate: new Date(date),
-    groupId: group,
+    startDate: new Date(startDate),
+    startTime: startTime || null,
+    endDate: endDate ? new Date(endDate) : null,
+    endTime: endTime || null,
     description: description || "",
   });
 
-  revalidatePath(`/${locale}/groups/${group}/events/${eventId}`);
+  revalidatePath(`/${locale}/groups/${event?.groupId}/events/${eventId}`);
+  redirect(
+    `/${locale}/groups/${encode(event?.groupId || "")}/events/${encode(
+      eventId,
+    )}`,
+  );
 }
 
 export async function deleteEvent(eventId: string) {

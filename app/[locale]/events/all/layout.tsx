@@ -1,4 +1,4 @@
-import { TextEffect } from "@/components/text-effect";
+import { TextEffect } from "@/components/motioned/text-effect";
 import { getI18n } from "@/locales/server";
 
 export default async function Layout({

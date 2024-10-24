@@ -22,7 +22,7 @@ export default async function GroupList({ locale }: { locale: string }) {
               className="relative rounded-md border border-dashed border-primary/50 hover:bg-accent"
             >
               <Link
-                href={`/groups/${encode(group.groupId)}`}
+                href={`/groups/${encode(group.groupId)}/events`}
                 className="flex h-full cursor-pointer flex-col p-4 hover:text-primary"
               >
                 <span className="mb-2 text-sm font-medium">

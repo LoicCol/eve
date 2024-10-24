@@ -15,6 +15,34 @@
       "when": 1728570956768,
       "tag": "0001_woozy_patch",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1729620328084,
+      "tag": "0002_cooing_reavers",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1729673526295,
+      "tag": "0003_small_the_fury",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1729676361133,
+      "tag": "0004_optimal_whirlwind",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1729785151463,
+      "tag": "0005_cloudy_sersi",
+      "breakpoints": true
     }
   ]
 }
