@@ -62,7 +62,7 @@ export function ParticipationButton({
       </Select>
 
       {isPending && (
-        <Loader className="mr-2 size-4 animate-spin text-primary" />
+        <Loader className="ml-2 size-4 animate-spin text-primary" />
       )}
     </div>
   );
