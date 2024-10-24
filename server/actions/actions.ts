@@ -25,6 +25,8 @@ import {
   createEventFormSchema,
   CreateGroupFormFields,
   createGroupFormSchema,
+  EditEventFormFields,
+  editGroupFormSchema,
 } from "types";
 import { encode } from "@/util/shorten-uuid";
 import { auth } from "@clerk/nextjs/server";
@@ -151,12 +153,12 @@ export async function leaveGroup(groupId: string) {
 
 export async function editEvent(
   eventId: string,
-  formData: CreateEventFormFields,
+  formData: EditEventFormFields,
 ) {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
-  const validationResult = createEventFormSchema.safeParse(formData);
+  const validationResult = editGroupFormSchema.safeParse(formData);
 
   if (!validationResult.success) {
     return {
@@ -171,23 +173,21 @@ export async function editEvent(
     startTime,
     endDate,
     endTime,
-    group,
     description,
   } = validationResult.data;
   const locale = getCurrentLocale();
 
-  await updateEvent(eventId, {
+  const event = await updateEvent(eventId, {
     eventName,
     location,
     startDate: new Date(startDate),
     startTime: startTime || null,
     endDate: endDate ? new Date(endDate) : null,
     endTime: endTime || null,
-    groupId: group,
     description: description || "",
   });
 
-  revalidatePath(`/${locale}/groups/${group}/events/${eventId}`);
+  revalidatePath(`/${locale}/groups/${event?.groupId}/events/${eventId}`);
 }
 
 export async function deleteEvent(eventId: string) {

@@ -34,8 +34,7 @@ export default {
     noStartTime: "Pas d'heure de début définie",
     noEndTime: "Pas d'heure de fin définie",
   },
-  createEventForm: {
-    title: "Créer un nouvel événement",
+  eventForm: {
     eventName: "Nom de l'événement",
     enterEventName: "Entrez le nom de l'événement",
     location: "Lieu",
@@ -44,11 +43,21 @@ export default {
     selectSection: "Sélectionner une section",
     optional: "Optionnel",
     selectSectionPlaceholder: "Sélectionnez une section",
-    createEvent: "Créer l'événement",
+    noSections: "Aucune section disponible",
+  },
+  createEventForm: {
+    title: "Créer un nouvel événement",
     successMessage: "Votre nouvel événement a été créé avec succès.",
     errorMessage:
       "Un problème est survenu lors de la création de votre événement. {error}",
-    noSections: "Aucune section disponible",
+    createEvent: "Créer l'événement",
+  },
+  editEventForm: {
+    title: "Modifier l'événement",
+    successMessage: "Votre événement a été mis à jour avec succès.",
+    errorMessage:
+      "Un problème est survenu lors de la mise à jour de votre événement. {error}",
+    editEvent: "Modifier l'événement",
   },
   eventsHeader: {
     linkEvents: "Lier",

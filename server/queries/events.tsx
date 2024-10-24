@@ -134,11 +134,16 @@ export async function updateEvent(
     startTime: string | null;
     endDate: Date | null;
     endTime: string | null;
-    groupId: string;
     description: string;
   },
 ) {
-  await db.update(events).set(data).where(eq(events.eventId, eventId));
+  const event = await db
+    .update(events)
+    .set(data)
+    .where(eq(events.eventId, eventId))
+    .returning({ eventId: events.eventId, groupId: events.groupId });
+
+  return event[0];
 }
 
 export async function deleteEvent(eventId: string) {

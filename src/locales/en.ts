@@ -33,8 +33,7 @@ export default {
     noStartTime: "No start time set",
     noEndTime: "No end time set",
   },
-  createEventForm: {
-    title: "Create New Event",
+  eventForm: {
     eventName: "Event Name",
     enterEventName: "Enter event name",
     location: "Location",
@@ -43,10 +42,19 @@ export default {
     selectSection: "Select Section",
     optional: "Optional",
     selectSectionPlaceholder: "Select a section",
-    createEvent: "Create Event",
+    noSections: "No sections available",
+  },
+  createEventForm: {
+    title: "Create New Event",
     successMessage: "Your new event has been successfully created.",
     errorMessage: "There was a problem creating your event. {error}",
-    noSections: "No sections available",
+    createEvent: "Create Event",
+  },
+  editEventForm: {
+    title: "Edit Event",
+    successMessage: "Your event has been successfully updated.",
+    errorMessage: "There was a problem updating your event. {error}",
+    editEvent: "Edit Event",
   },
   eventsHeader: {
     linkEvents: "Link Events",

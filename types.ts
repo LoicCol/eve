@@ -18,7 +18,12 @@ export const createEventFormSchema = z.object({
   endTime: z.string().nullable().optional(),
 });
 
+export const editGroupFormSchema = createEventFormSchema.omit({
+  group: true,
+});
+
 export type CreateEventFormFields = z.infer<typeof createEventFormSchema>;
+export type EditEventFormFields = z.infer<typeof editGroupFormSchema>;
 
 export const createGroupFormSchema = z.object({
   name: z.string(),
