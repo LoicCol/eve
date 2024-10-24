@@ -4,24 +4,38 @@ import FormFieldText from "@/components/form/form-field-text";
 import FormFieldDate from "@/components/form/form-field-date";
 import FormFieldSelect from "@/components/form/form-field-select";
 import { CreateEventFormFields, EditEventFormFields } from "types";
-import { Path, UseFormReturn } from "react-hook-form";
+import { FieldValues, UseFormReturn } from "react-hook-form";
 import { useI18n } from "@/locales/client";
 
-type EventFormFormField = CreateEventFormFields | EditEventFormFields;
-
-interface EventFormProps<T extends EventFormFormField> {
-  form: UseFormReturn<T>;
-  onSubmit: (data: T) => void;
+interface EventFormProps {
   submitButton: React.ReactNode;
   sections: { sectionId: string; sectionName: string }[];
 }
 
-export default function EventForm<T extends EventFormFormField>({
+interface EditEventFormProps extends EventFormProps {
+  form: UseFormReturn<EditEventFormFields>;
+  onSubmit: (data: EditEventFormFields) => void;
+}
+
+interface CreateEventFormProps extends EventFormProps {
+  form: UseFormReturn<CreateEventFormFields>;
+  onSubmit: (data: CreateEventFormFields) => void;
+}
+
+export default function EventForm<T extends EditEventFormProps>(
+  props: T,
+): React.ReactElement;
+
+export default function EventForm<T extends CreateEventFormProps>(
+  props: T,
+): React.ReactElement;
+
+export default function EventForm<T extends FieldValues & EventFormProps>({
   form,
   onSubmit,
   sections,
   submitButton,
-}: EventFormProps<T>) {
+}: T): React.ReactElement {
   const t = useI18n();
 
   return (
@@ -29,19 +43,19 @@ export default function EventForm<T extends EventFormFormField>({
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormFieldText
           control={form.control}
-          name={"name" as Path<T>}
+          name="name"
           label={t("eventForm.eventName")}
           placeholder={t("eventForm.enterEventName")}
         />
         <FormFieldText
           control={form.control}
-          name={"location" as Path<T>}
+          name="location"
           label={t("eventForm.location")}
           placeholder={t("eventForm.enterEventLocation")}
         />
         <FormFieldDate
           control={form.control}
-          name={"startDate" as Path<T>}
+          name="startDate"
           label={t("eventForm.dateAndTime")}
         />
         {/* <FormFieldTime
@@ -51,7 +65,7 @@ export default function EventForm<T extends EventFormFormField>({
             /> */}
         <FormFieldSelect
           control={form.control}
-          name={"sectionId" as Path<T>}
+          name="sectionId"
           placeholder={
             sections.length === 0
               ? t("eventForm.noSections")

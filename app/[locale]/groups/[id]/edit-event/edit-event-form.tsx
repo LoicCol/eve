@@ -55,7 +55,6 @@ interface EditEventFormProps {
 
 export default function EditEventForm({ sections }: EditEventFormProps) {
   const { form, onSubmit, isPending, t } = useEditEventForm();
-
   return (
     <EventForm
       form={form}
