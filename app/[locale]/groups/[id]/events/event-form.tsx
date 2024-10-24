@@ -115,4 +115,4 @@ export default function EventForm<T extends UnresolvedEventFormProps>({
   );
 }
 
-export const EVENT_FORM_HEIGHT = 436;
+export const EVENT_FORM_HEIGHT = 536;
