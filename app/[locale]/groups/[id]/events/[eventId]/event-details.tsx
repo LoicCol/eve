@@ -162,7 +162,6 @@ function formatSafeTime(
       hours: parseInt(time.slice(0, 2)),
       minutes: parseInt(time.slice(3, 5)),
     });
-
     return format(newDate, "HH:mm");
   }
   return "-";
