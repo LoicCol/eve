@@ -80,20 +80,12 @@ export default function EventDetails({
 
             <div className="flex items-center">
               <ClockIcon className="mr-2 size-5" />
-              <span>
-                {formatSafeTime(
-                  event.startTime,
-                  event.startDate,
-                  locale as string,
-                )}
-              </span>
+              <span>{formatSafeTime(event.startTime, event.startDate)}</span>
             </div>
 
             <div className="flex items-center">
               <ClockIcon className="mr-2 size-5" />
-              <span>
-                {formatSafeTime(event.endTime, event.endDate, locale as string)}
-              </span>
+              <span>{formatSafeTime(event.endTime, event.endDate)}</span>
             </div>
           </div>
 
@@ -162,7 +154,6 @@ function formatSafeDate(date: Date | null | undefined, locale: string): string {
 function formatSafeTime(
   time: string | null | undefined,
   date: Date | null | undefined,
-  locale: string,
 ): string {
   if (time && date) {
     var userTimezoneOffset = date.getTimezoneOffset() * 60000;
