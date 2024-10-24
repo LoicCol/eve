@@ -44,12 +44,8 @@ export function ParticipationButton({
 
   return (
     <div className="flex items-center">
-      {isPending && (
-        <Loader className="mr-2 size-4 animate-spin text-primary" />
-      )}
-
       <Select onValueChange={handleSelect} value={value}>
-        <SelectTrigger className="w-auto px-2">
+        <SelectTrigger className="w-auto">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -64,6 +60,10 @@ export function ParticipationButton({
           </SelectItem>
         </SelectContent>
       </Select>
+
+      {isPending && (
+        <Loader className="mr-2 size-4 animate-spin text-primary" />
+      )}
     </div>
   );
 }
