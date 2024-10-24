@@ -9,6 +9,8 @@ export default async function Layout({
 }) {
   const t = await getI18n();
 
+  console.log("coucou layout");
+
   return (
     <Modal>
       <CardHeader>

@@ -62,6 +62,7 @@ export default {
   eventsHeader: {
     linkEvents: "Lier",
     createEvent: "Créer un événement",
+    editEvent: "Modifier l'événement",
     events: "Événements",
     groupEvents: "Événements du groupe",
   },

@@ -1,3 +1,5 @@
+"use client";
+
 import { useI18n } from "@/locales/client";
 import { useMutation } from "@tanstack/react-query";
 import { startTransition } from "react";
@@ -5,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { editEvent } from "server/actions/actions";
 import { toast } from "sonner";
 import { EditEventFormFields } from "types";
-import EventForm from "../event-form";
+import EventForm from "../../../event-form";
 import { useParams } from "next/navigation";
 import FormSubmitButton from "@/components/form/form-submit-button";
 
@@ -54,6 +56,7 @@ interface EditEventFormProps {
 }
 
 export default function EditEventForm({ sections }: EditEventFormProps) {
+  console.log("coucou form");
   const { form, onSubmit, isPending, t } = useEditEventForm();
   return (
     <EventForm
