@@ -156,7 +156,7 @@ function formatSafeTime(
   date: Date | null | undefined,
 ): string {
   if (time && date) {
-    var userTimezoneOffset = date.getTimezoneOffset() * 60000;
+    const userTimezoneOffset = date.getTimezoneOffset() * 60000;
     const dateWithOffset = new Date(date.getTime() + userTimezoneOffset);
     const newDate = add(dateWithOffset, {
       hours: parseInt(time.slice(0, 2)),
