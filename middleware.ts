@@ -7,6 +7,7 @@ const I18nMiddleware = createI18nMiddleware({
 });
 
 const isPublicRoute = createRouteMatcher([
+  "/",
   "/sign-in(.*)",
   "/sign-up(.*)",
   "/api/webhooks(.*)",

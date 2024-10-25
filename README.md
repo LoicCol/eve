@@ -2,7 +2,7 @@
 
 Welcome to the **Event Management Application**! This little application helps you manage events within a group of friends. It's currently in development, but you can check out the live version here:
 
-[Live Demo](https://www.eve-nts.app/)
+[Live](https://www.eve-nts.app/)
 
 ### Group Example
 
