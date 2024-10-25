@@ -4,11 +4,6 @@ Welcome to the **Event Management Application**! This little application helps y
 
 [Live](https://www.eve-nts.app/)
 
-### Group Example
-
-See how groups and events work in this example:  
-[Group Example](https://www.eve-nts.app/groups/vgh9vcg7HdVtHMfYrjtbGH)
-
 ---
 
 ## Tech Stack
@@ -66,10 +61,11 @@ This application is built using the following technologies:
 - [x] Prepare for the first production release.
 - [x] Group list displayed in group details
 - [x] Facebook connection re-up
+- [x] Well manage the events times (start / end)
 
 ### Upcoming Features
 
-- [ ] Well manage the events times (start / end)
+- [ ] Shoz events times on event card
 - [ ] Privacy policy / Deletion policy (link to fb)
 - [ ] Change mobile version of group details
 - [ ] Limit editing permissions to admin (currently only the creator).
@@ -90,6 +86,7 @@ This application is built using the following technologies:
 ### Bugs
 
 - [ ] Clerk manage account modal not working on mobile
+- [ ] All groups page shows 2 loading content
 
 ---
 
