@@ -73,16 +73,20 @@ export async function createEvent(formData: CreateEventFormFields) {
     };
   }
 
-  const { name, location, startDate, group } = validationResult.data;
+  const { name, location, startDate, endDate, startTime, endTime, group } =
+    validationResult.data;
   const locale = getCurrentLocale();
 
-  const event = await insertEvent(
-    name,
+  const event = await insertEvent({
+    eventName: name,
     location,
     startDate,
-    group,
-    user.userId,
-  );
+    groupId: group,
+    createdBy: user.userId,
+    endDate,
+    startTime,
+    endTime,
+  });
 
   revalidatePath(`/${locale}/events`);
   redirect(
@@ -214,7 +218,9 @@ export async function editEvent(
     description: description || "",
   });
 
-  revalidatePath(`/${locale}/groups/${event?.groupId}/events/${eventId}`);
+  revalidatePath(
+    `/${locale}/groups/${event?.groupId}/events/${encode(eventId)}`,
+  );
   redirect(
     `/${locale}/groups/${encode(event?.groupId || "")}/events/${encode(
       eventId,

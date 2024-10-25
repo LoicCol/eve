@@ -47,10 +47,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
             ? "Other"
             : groupedEvents[sectionId]?.[0]?.sectionName}
         </h2>
-        <AnimatedGroup
-          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
-          preset="blur"
-        >
+        <AnimatedGroup className="grid gap-4 md:grid-cols-2" preset="blur">
           {groupedEvents[sectionId]?.map((event) => (
             <Link
               href={`/groups/${encode(groupId)}/events/${encode(event.eventId)}`}

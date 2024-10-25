@@ -15,6 +15,7 @@ interface FormFieldTimeProps<
   label?: string;
   placeholder?: string;
   className?: string;
+  min?: string;
 }
 export default function FormFieldTime<
   TFieldValues extends FieldValues,
@@ -23,6 +24,7 @@ export default function FormFieldTime<
   label,
   placeholder = "",
   className,
+  min,
   ...props
 }: FormFieldTimeProps<TFieldValues, TName>) {
   return (
@@ -31,7 +33,7 @@ export default function FormFieldTime<
         <FormItem className={className}>
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
-            <Input type="time" placeholder={placeholder} {...field} />
+            <Input type="time" min={min} placeholder={placeholder} {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>

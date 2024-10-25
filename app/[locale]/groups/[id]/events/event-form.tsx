@@ -44,6 +44,12 @@ export default function EventForm<T extends UnresolvedEventFormProps>({
 }: T): React.ReactElement {
   const t = useI18n();
 
+  const endDateMin = form.getValues("startDate");
+  const endTimeMin =
+    form.getValues("startDate") === form.getValues("endDate")
+      ? form.getValues("startTime")
+      : undefined;
+
   return (
     <Form {...form}>
       <form
@@ -67,13 +73,11 @@ export default function EventForm<T extends UnresolvedEventFormProps>({
             control={form.control}
             label={t("eventForm.startDate")}
             name="startDate"
-            className=""
           />
           <FormFieldTime
             control={form.control}
             label={t("eventForm.startTime")}
             name="startTime"
-            className=""
           />
         </div>
         <div className="grid grid-cols-2 gap-2">
@@ -81,13 +85,13 @@ export default function EventForm<T extends UnresolvedEventFormProps>({
             control={form.control}
             label={t("eventForm.endDate")}
             name="endDate"
-            className=""
+            min={endDateMin}
           />
           <FormFieldTime
             control={form.control}
             label={t("eventForm.endTime")}
             name="endTime"
-            className=""
+            min={endTimeMin}
           />
         </div>
         <FormFieldSelect
