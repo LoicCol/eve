@@ -61,10 +61,11 @@ This application is built using the following technologies:
 - [x] Prepare for the first production release.
 - [x] Group list displayed in group details
 - [x] Facebook connection re-up
+- [x] Well manage the events times (start / end)
 
 ### Upcoming Features
 
-- [ ] Well manage the events times (start / end)
+- [ ] Shoz events times on event card
 - [ ] Privacy policy / Deletion policy (link to fb)
 - [ ] Change mobile version of group details
 - [ ] Limit editing permissions to admin (currently only the creator).
