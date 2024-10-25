@@ -52,6 +52,7 @@ export default {
     optional: "Optionnel",
     selectSectionPlaceholder: "Sélectionnez une section",
     noSections: "Aucune section disponible",
+    endDateEror: "La date de fin doit être après la date de début",
   },
   createEventForm: {
     title: "Créer un nouvel événement",
@@ -166,5 +167,9 @@ export default {
     noEvents: "Aucun événement trouvé.",
     upcomingEvents: "Événements à venir",
     pastEvents: "Événements passés",
+  },
+  eventCard: {
+    from: "Du",
+    to: "au",
   },
 } as const;

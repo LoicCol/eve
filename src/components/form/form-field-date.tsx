@@ -14,19 +14,25 @@ interface FormFieldDateProps<
 > extends Omit<ControllerProps<TFieldValues, TName>, "render" | "type"> {
   label: string;
   className?: string;
+  min?: string;
 }
 
 export default function FormFieldDate<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
->({ label, className, ...props }: FormFieldDateProps<TFieldValues, TName>) {
+>({
+  label,
+  className,
+  min,
+  ...props
+}: FormFieldDateProps<TFieldValues, TName>) {
   return (
     <FormField
       render={({ field }) => (
         <FormItem className={className}>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input type="date" {...field} />
+            <Input type="date" min={min} {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>

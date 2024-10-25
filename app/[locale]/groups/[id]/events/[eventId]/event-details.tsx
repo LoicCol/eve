@@ -5,11 +5,11 @@ import ParticipantsList from "@/components/participant-list";
 import { CalendarIcon, MapPinIcon, UserIcon, ClockIcon } from "lucide-react";
 import { useI18n } from "@/locales/client";
 import { Separator } from "@/components/ui/separator";
-import { add, format, isValid } from "date-fns";
 import { ParticipationButton } from "./participation-button";
 import { useParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import EventDescription from "./event-description";
+import { formatSafeDate, formatSafeTime } from "@/util/date-time-format";
 
 interface EventDetailsProps {
   event: {
@@ -138,31 +138,4 @@ function InformationItem({
       </div>
     </div>
   );
-}
-
-function formatSafeDate(date: Date | null | undefined, locale: string): string {
-  if (date && isValid(date)) {
-    return new Date(date).toLocaleDateString(locale, {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  }
-  return "-";
-}
-
-function formatSafeTime(
-  time: string | null | undefined,
-  date: Date | null | undefined,
-): string {
-  if (time && date) {
-    const userTimezoneOffset = date.getTimezoneOffset() * 60000;
-    const dateWithOffset = new Date(date.getTime() + userTimezoneOffset);
-    const newDate = add(dateWithOffset, {
-      hours: parseInt(time.slice(0, 2)),
-      minutes: parseInt(time.slice(3, 5)),
-    });
-    return format(newDate, "HH:mm");
-  }
-  return "-";
 }

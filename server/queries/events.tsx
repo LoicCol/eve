@@ -64,19 +64,34 @@ export async function getEventsForGroup(
   return eventsRes;
 }
 
-export async function insertEvent(
-  eventName: string,
-  location: string,
-  startDate: string,
-  groupId: string,
-  createdBy: string,
-) {
+export async function insertEvent({
+  eventName,
+  location,
+  startDate,
+  groupId,
+  createdBy,
+  endDate,
+  startTime,
+  endTime,
+}: {
+  eventName: string;
+  location: string;
+  startDate: string;
+  groupId: string;
+  createdBy: string;
+  endDate?: string | null;
+  startTime?: string | null;
+  endTime?: string | null;
+}) {
   const event = await db
     .insert(events)
     .values({
       eventName,
       location,
       startDate: new Date(startDate),
+      endDate: endDate ? new Date(endDate) : null,
+      startTime,
+      endTime,
       createdBy,
       createdAt: new Date(),
       groupId,

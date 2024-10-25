@@ -4,13 +4,14 @@ import { useI18n } from "@/locales/client";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { createEvent } from "server/actions/actions";
-import { CreateEventFormFields } from "types";
+import { CreateEventFormFields, createEventFormSchema } from "types";
 import { useParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { decode } from "@/util/shorten-uuid";
 import { startTransition } from "react";
 import EventForm from "../event-form";
 import FormSubmitButton from "@/components/form/form-submit-button";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface CreateEventFormProps {
   sections: { sectionId: string; sectionName: string }[];
@@ -22,6 +23,7 @@ const useCreateEventForm = () => {
   const t = useI18n();
 
   const form = useForm<CreateEventFormFields>({
+    resolver: zodResolver(createEventFormSchema),
     defaultValues: {
       name: "",
       location: "",

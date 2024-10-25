@@ -163,4 +163,8 @@ export default {
     upcomingEvents: "Upcoming Events",
     pastEvents: "Past Events",
   },
+  eventCard: {
+    from: "From",
+    to: "to",
+  },
 } as const;

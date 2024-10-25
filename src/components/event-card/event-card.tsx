@@ -6,18 +6,25 @@ import EventCardDropdown from "./event-card-dropdown";
 import ParticipantsList from "@/components/participant-list";
 import { getParticipants } from "server/queries";
 import { useQuery } from "@tanstack/react-query";
+import { formatSafeDate, formatSafeTime } from "@/util/date-time-format";
+import { useParams } from "next/navigation";
+import { MapPinIcon } from "lucide-react";
+
+type Event = {
+  eventId: string;
+  eventName: string;
+  location: string;
+  startDate: Date;
+  endDate: Date | null;
+  startTime: string | null;
+  endTime: string | null;
+};
 
 interface EventCardProps {
-  event: {
-    eventId: string;
-    eventName: string;
-    location: string;
-    startDate: Date;
-  };
+  event: Event;
 }
 
 export default function EventCard({ event }: EventCardProps) {
-  const t = useI18n();
   const { data: participants = [], isPending } = useQuery({
     queryKey: ["participants", event.eventId],
     queryFn: () => getParticipants(event.eventId),
@@ -33,17 +40,18 @@ export default function EventCard({ event }: EventCardProps) {
       <CardHeader className="p-4">
         <CardTitle>{event.eventName}</CardTitle>
       </CardHeader>
-      <CardContent className="px-4">
-        <p className="text-sm text-muted-foreground">{event.location}</p>
+      <CardContent className="flex flex-col gap-2 px-4">
+        <div className="flex items-center text-sm text-muted-foreground">
+          <MapPinIcon className="mr-2 size-4" />
+          <p>{event.location}</p>
+        </div>
 
-        <p className="pb-4 text-sm text-muted-foreground">
-          {new Date(event.startDate).toLocaleDateString(t("locale"), {
-            weekday: "long",
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })}
-        </p>
+        <WhenComponent
+          startDate={event.startDate}
+          endDate={event.endDate}
+          startTime={event.startTime}
+          endTime={event.endTime}
+        />
 
         <EventCardDropdown eventId={event.eventId} />
 
@@ -54,5 +62,37 @@ export default function EventCard({ event }: EventCardProps) {
         />
       </CardContent>
     </Card>
+  );
+}
+
+function WhenComponent({
+  startDate,
+  endDate,
+  startTime,
+  endTime,
+}: Pick<Event, "startDate" | "endDate" | "startTime" | "endTime">) {
+  const t = useI18n();
+  const { locale } = useParams();
+
+  return (
+    <div className="flex flex-col pb-1 lg:flex-row lg:gap-2">
+      <p className="text-sm text-muted-foreground">
+        {t("eventCard.from")}{" "}
+        <span className="text-primary">
+          {formatSafeDate(startDate, locale as string)}
+          {startTime ? ` - ${formatSafeTime(startTime, startDate)}` : null}
+        </span>
+      </p>
+
+      {endDate ? (
+        <p className="text-sm text-muted-foreground">
+          {t("eventCard.to")}{" "}
+          <span className="text-primary">
+            {formatSafeDate(endDate, locale as string)}
+            {endTime ? ` - ${formatSafeTime(endTime, endDate)}` : null}
+          </span>
+        </p>
+      ) : null}
+    </div>
   );
 }
