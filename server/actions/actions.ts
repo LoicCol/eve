@@ -118,8 +118,8 @@ export async function createGroup(formData: CreateGroupFormFields) {
     await insertUserGroup(user.userId, group.groupId);
   }
 
-  revalidatePath(`/${locale}/groups`);
-  redirect(`/${locale}/groups/${encode(group?.groupId || "")}`);
+  revalidatePath(`/${locale}/groups/all`);
+  redirect(`/${locale}/groups/${encode(group?.groupId || "")}/events`);
 }
 
 export async function joinEvent(
