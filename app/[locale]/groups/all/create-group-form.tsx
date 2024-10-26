@@ -76,7 +76,7 @@ export default function CreateGroupForm() {
               )}
             />
             <Button type="submit" disabled={isPending}>
-              {isPending && <Loader className="mr-2 h-4 w-4 animate-spin" />}
+              {isPending && <Loader className="mr-2 size-4 animate-spin" />}
               {t("groups.createGroup")}
             </Button>
           </form>
