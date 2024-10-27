@@ -83,6 +83,7 @@ This application is built using the following technologies:
 - [ ] Implement rate limiting for API requests.
 - [ ] Use ATP.
 - [ ] Use https://gist.github.com/gpichot/df6b586c0ac09ebde794c7f5bef5800f
+- [ ] 100% accessibility
 
 ### Bugs
 
