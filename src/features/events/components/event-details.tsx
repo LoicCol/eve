@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import ParticipantsList from "@/components/participant-list";
+import ParticipantsList from "@/features/events/components/participant-list";
 import { CalendarIcon, MapPinIcon, UserIcon, ClockIcon } from "lucide-react";
 import { useI18n } from "@/locales/client";
 import { Separator } from "@/components/ui/separator";

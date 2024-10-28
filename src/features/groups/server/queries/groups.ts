@@ -1,7 +1,7 @@
 "use server";
 import { and, eq } from "drizzle-orm";
-import { db } from "../db";
-import { groups, userGroups } from "../db/schema";
+import { db } from "server/db";
+import { groups, userGroups } from "server/db/schema";
 
 export async function getUserGroups(userId: string) {
   const groups = await db.query.userGroups.findMany({

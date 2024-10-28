@@ -1,26 +1,6 @@
 "use server";
 
 import {
-  insertEvent,
-  insertGroup,
-  insertUserEvent,
-  insertUserGroup,
-  removeUserGroup,
-  getGroup,
-  getEvent,
-  updateEvent,
-  deleteUsersEvent,
-  deleteEvent as deleteEventQuery,
-  editGroup as editGroupQuery,
-  deleteGroup as deleteGroupQuery,
-  createSection,
-  linkEventsToSection as linkEventsToSectionQuery,
-  getUserGroups,
-  getSection,
-  getEventsForGroup,
-  checkUserGroup,
-} from "server/queries";
-import {
   CreateEventFormFields,
   createEventFormSchema,
   CreateGroupFormFields,
@@ -33,6 +13,26 @@ import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getCurrentLocale } from "@/locales/server";
+import {
+  editGroup,
+  getGroup,
+  insertGroup,
+  insertUserGroup,
+  removeUserGroup,
+  deleteGroup as deleteGroupQuery,
+  getUserGroups,
+} from "@/features/groups/server/queries/groups";
+import {
+  createSection,
+  deleteUsersEvent,
+  getEvent,
+  getEventsForGroup,
+  getSection,
+  insertEvent,
+  insertUserEvent,
+  updateEvent,
+} from "@/features/events/server/queries/events";
+import { checkUserGroup } from "@/features/users/server/queries/users";
 
 export async function getGroupName(groupId: string) {
   const user = auth();
@@ -237,7 +237,7 @@ export async function deleteEvent(eventId: string) {
 
   const locale = getCurrentLocale();
 
-  await deleteEventQuery(eventId);
+  await deleteEvent(eventId);
 
   revalidatePath(`/${locale}/groups`);
 }
@@ -251,7 +251,7 @@ export async function editGroupName(groupId: string, groupName: string) {
 
   const locale = getCurrentLocale();
 
-  await editGroupQuery(groupId, {
+  await editGroup(groupId, {
     groupName,
   });
 
@@ -270,7 +270,7 @@ export async function editGroupDescription(
 
   const locale = getCurrentLocale();
 
-  await editGroupQuery(groupId, {
+  await editGroup(groupId, {
     description,
   });
 
@@ -320,7 +320,7 @@ export async function linkEventsToSection(
     throw new Error("Either sectionName or sectionId must be provided");
   }
 
-  await linkEventsToSectionQuery(eventIds, section.sectionId);
+  await linkEventsToSection(eventIds, section.sectionId);
 
   revalidatePath(`/${locale}/events`);
 }
