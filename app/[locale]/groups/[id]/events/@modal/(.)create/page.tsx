@@ -1,5 +1,5 @@
 import CreateEventForm from "@/features/events/components/create-event-form";
-import { getEventsForGroup } from "@/features/events/server/queries/events";
+import { getEventsForGroup } from "@/features/events/server/events.queries";
 import { serializeSections } from "@/util/serialize-sections";
 import { decode } from "@/util/shorten-uuid";
 

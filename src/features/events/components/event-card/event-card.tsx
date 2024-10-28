@@ -4,7 +4,7 @@ import { useI18n } from "@/locales/client";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import EventCardDropdown from "./event-card-dropdown";
 import ParticipantsList from "../participant-list";
-import { getParticipants } from "../../server/queries/events";
+import { getParticipants } from "../../server/events.queries";
 import { useQuery } from "@tanstack/react-query";
 import { formatSafeDate, formatSafeTime } from "@/util/date-time-format";
 import { useParams } from "next/navigation";

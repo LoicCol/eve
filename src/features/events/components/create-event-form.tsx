@@ -3,8 +3,8 @@
 import { useI18n } from "@/locales/client";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { createEvent } from "server/actions/actions";
-import { CreateEventFormFields, createEventFormSchema } from "types";
+import { createEvent } from "../server/events.actions";
+import { CreateEventFormFields, createEventFormSchema } from "../types";
 import { useParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { decode } from "@/util/shorten-uuid";
