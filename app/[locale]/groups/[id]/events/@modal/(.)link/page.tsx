@@ -1,4 +1,4 @@
-import LinkEvents from "../../link/link-events";
+import LinkEvents from "../../../../../../../src/features/events/components/link-events";
 import { getEventsForGroup } from "server/queries";
 import { decode } from "@/util/shorten-uuid";
 

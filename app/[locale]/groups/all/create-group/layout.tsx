@@ -1,4 +1,4 @@
-import CloseButton from "./close-button";
+import CloseButton from "../../../../../src/features/groups/components/close-button";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

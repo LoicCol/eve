@@ -1,6 +1,6 @@
 "use server";
 
-import EventCard from "@/components/event-card/event-card";
+import EventCard from "@/features/events/components/event-card/event-card";
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
 import { getEvents } from "server/queries";
