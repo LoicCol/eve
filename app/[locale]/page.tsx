@@ -42,7 +42,7 @@ export default async function Home() {
           className="mb-8 flex animate-bounce items-center justify-between gap-2 border-primary/80 bg-primary/10 text-primary/80 duration-1000"
         >
           <div className="flex items-center gap-2">
-            <Smile className="mr-4 h-5 w-5" />
+            <Smile className="mr-4 size-5" />
             <div>
               <AlertTitle className="text-lg font-bold">
                 Everything start with a group!
@@ -60,7 +60,7 @@ export default async function Home() {
         </Alert>
       ) : null}
       <div className="grid grid-cols-1 gap-6 px-0 md:grid-cols-2 md:px-0">
-        <Card className="rounded-none border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none md:rounded-md">
+        <Card className="rounded-none border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-0 active:translate-y-0 active:rounded-xl active:shadow-none md:rounded-md">
           <CardHeader>
             <CardTitle className="font-sans">
               {t("home.yourGroups.title")}
@@ -78,7 +78,7 @@ export default async function Home() {
             </Button>
           </CardFooter>
         </Card>
-        <Card className="rounded-none border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-[0px] active:translate-y-[0px] active:rounded-xl active:shadow-none md:rounded-md">
+        <Card className="rounded-none border-primary/50 transition-all duration-300 ease-in-out hover:translate-y-[-3px] hover:rounded-none hover:shadow-lg active:translate-x-0 active:translate-y-0 active:rounded-xl active:shadow-none md:rounded-md">
           <CardHeader>
             <CardTitle className="font-sans">
               {t("home.upcomingEvents.title")}
