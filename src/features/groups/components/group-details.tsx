@@ -1,10 +1,7 @@
 "use server";
 
-import {
-  getGroup,
-  getUser,
-  getMembers,
-} from "@/features/groups/server/queries/groups";
+import { getGroup, getMembers } from "@/features/groups/server/queries/groups";
+import { getUser } from "@/features/users/server/queries/users";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import JoinButton from "./join-button";
 import { currentUser } from "@clerk/nextjs/server";
