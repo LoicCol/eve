@@ -9,7 +9,7 @@ import { useParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { decode } from "@/util/shorten-uuid";
 import { startTransition } from "react";
-import EventForm from "../../../../../../src/features/events/components/event-form";
+import EventForm from "@/features/events/components/event-form";
 import FormSubmitButton from "@/components/form/form-submit-button";
 import { zodResolver } from "@hookform/resolvers/zod";
 

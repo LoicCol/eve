@@ -1,10 +1,9 @@
 import {
-  getCurrentUser,
   getEvent,
   getParticipants,
-  getUser,
-} from "server/queries";
-import EventDetails from "./event-details";
+} from "@/features/events/server/queries/events";
+import { getCurrentUser, getUser } from "@/features/users/server/queries/users";
+import EventDetails from "@/features/events/components/event-details";
 import { decode } from "@/util/shorten-uuid";
 
 export default async function EventPage({

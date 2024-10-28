@@ -1,7 +1,7 @@
 "use server";
 import { eq } from "drizzle-orm";
-import { db } from "../db";
-import { userGroups, users } from "../db/schema";
+import { db } from "server/db";
+import { userGroups, users } from "server/db/schema";
 import { auth } from "@clerk/nextjs/server";
 
 export async function getUser(userId: string) {

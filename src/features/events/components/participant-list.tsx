@@ -8,7 +8,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CheckIcon, HelpCircleIcon } from "lucide-react";
 import { TooltipPortal } from "@radix-ui/react-tooltip";
-import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface ParticipantsListProps {
   participants: {
