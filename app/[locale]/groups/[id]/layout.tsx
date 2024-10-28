@@ -43,23 +43,16 @@ export default async function Layout({
       </Desktop>
 
       <Mobile>
-        <Tabs
-          defaultValue="details"
-          className="flex w-full flex-col px-4 pb-6 md:hidden"
-        >
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="details">Details</TabsTrigger>
-            <TabsTrigger value="events">Events</TabsTrigger>
-          </TabsList>
+        <div className="flex w-full flex-col px-4 pb-6 md:hidden">
+          {children}
+        </div>
+
+        {/* Put in vault: 
           <TabsContent value="details" className="flex-1">
             <Card className="mt-2 h-full py-4">
               <CardContent>{details}</CardContent>
             </Card>
-          </TabsContent>
-          <TabsContent className="pb-2" value="events">
-            {children}
-          </TabsContent>
-        </Tabs>
+          </TabsContent> */}
       </Mobile>
     </>
   );
