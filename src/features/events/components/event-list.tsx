@@ -3,11 +3,11 @@
 import EventCard from "@/features/events/components/event-card/event-card";
 import Link from "next/link";
 import { encode } from "@/util/shorten-uuid";
-import { getEvents } from "server/queries";
 import { auth } from "@clerk/nextjs/server";
 import { getI18n } from "@/locales/server";
 import { Separator } from "@/components/ui/separator";
 import { AnimatedGroup } from "@/components/motioned/animated-group";
+import { getEvents } from "../server/queries/events";
 
 export default async function EventList() {
   const { userId } = auth();
