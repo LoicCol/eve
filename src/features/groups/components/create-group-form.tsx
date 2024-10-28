@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
-import { createGroup } from "server/actions/actions";
+import { createGroup } from "../server/groups.actions";
 import { startTransition } from "react";
 import React from "react";
 import { useI18n } from "@/locales/client";

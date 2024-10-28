@@ -1,6 +1,6 @@
 "use client";
 
-import { joinEvent, leaveEvent } from "server/actions/actions";
+import { joinEvent, leaveEvent } from "../server/events.actions";
 import { Loader } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import {

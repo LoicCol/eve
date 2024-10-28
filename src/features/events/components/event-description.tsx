@@ -1,8 +1,8 @@
 "use client";
 
-import { editEvent } from "server/actions/actions";
+import { editEvent } from "../server/events.actions";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { CreateEventFormFields } from "types";
+import { CreateEventFormFields } from "../types";
 import { encode } from "@/util/shorten-uuid";
 import EditableTextArea from "@/components/editable-text-area";
 

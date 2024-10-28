@@ -18,7 +18,7 @@ export default function CloseButton() {
       size="icon"
       className="absolute right-2 top-2"
     >
-      <X className="h-4 w-4" />
+      <X className="size-4" />
     </Button>
   );
 }

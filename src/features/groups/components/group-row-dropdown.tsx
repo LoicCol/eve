@@ -4,7 +4,7 @@ import { Ellipsis, Loader } from "lucide-react";
 import { MouseEvent } from "react";
 
 import { useMutation } from "@tanstack/react-query";
-import { deleteGroup } from "server/actions/actions";
+import { deleteGroup } from "../server/groups.actions";
 import {
   DropdownMenu,
   DropdownMenuContent,

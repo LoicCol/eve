@@ -3,7 +3,7 @@ import { Form } from "@/components/ui/form";
 import FormFieldText from "@/components/form/form-field-text";
 import FormFieldDate from "@/components/form/form-field-date";
 import FormFieldSelect from "@/components/form/form-field-select";
-import { CreateEventFormFields, EditEventFormFields } from "types";
+import { CreateEventFormFields, EditEventFormFields } from "../types";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 import { useI18n } from "@/locales/client";
 import FormFieldTime from "@/components/form/form-field-time";

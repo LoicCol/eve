@@ -1,11 +1,4 @@
-"use server";
-
-import { CreateGroupFormFields, createGroupFormSchema } from "types";
-import { encode } from "@/util/shorten-uuid";
 import { auth } from "@clerk/nextjs/server";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { getCurrentLocale } from "@/locales/server";
 import {
   editGroup,
   getGroup,
@@ -14,9 +7,13 @@ import {
   removeUserGroup,
   deleteGroup as deleteGroupQuery,
   getUserGroups,
-} from "@/features/groups/server/queries/groups.queries";
-
-import { checkUserGroup } from "@/features/users/server/queries/users";
+} from "./groups.queries";
+import { getCurrentLocale } from "@/locales/server";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { encode } from "@/util/shorten-uuid";
+import { CreateGroupFormFields, createGroupFormSchema } from "../types";
+import { checkUserGroup } from "@/server/queries";
 
 export async function getGroupName(groupId: string) {
   const user = auth();

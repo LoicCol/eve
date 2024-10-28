@@ -1,5 +1,5 @@
 import { decode } from "@/util/shorten-uuid";
-import { getEventsForGroup } from "@/features/events/server/events.queries";
+import { getEventsForGroup } from "../server/events.queries";
 import { serializeSections } from "@/util/serialize-sections";
 import EditEventForm from "./edit-event-form";
 import { notFound } from "next/navigation";

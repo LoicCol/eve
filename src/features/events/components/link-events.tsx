@@ -26,7 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { linkEventsToSection } from "server/actions/actions";
+import { linkEventsToSection } from "../server/events.actions";
 import { startTransition, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useI18n } from "@/locales/client";

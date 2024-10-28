@@ -1,6 +1,6 @@
 import { decode } from "@/util/shorten-uuid";
 import GroupEvents from "@/features/events/components/group-events";
-import { getGroupEvents } from "server/actions/actions";
+import { getGroupEvents } from "@/features/events/server/events.actions";
 import { QueryClient } from "@tanstack/react-query";
 
 export default async function Page({ params }: { params: { id: string } }) {

@@ -1,7 +1,7 @@
 "use client";
 
 import EditableText from "@/components/editable-input";
-import { editGroupName } from "server/actions/actions";
+import { editGroupName } from "../server/groups.actions";
 import { encode } from "@/util/shorten-uuid";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
