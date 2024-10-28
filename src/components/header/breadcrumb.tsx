@@ -30,10 +30,10 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
           <>
             <Separator orientation="vertical" className="mx-2 h-4" />
             <BreadcrumbItem className="flex items-center gap-2">
-              <Avatar className="h-6 w-6">
+              <Avatar className="size-6">
                 <AvatarImage src={user?.image || ""} alt="user-image" />
                 <AvatarFallback>
-                  <Loader className="h-4 w-4 animate-spin" />
+                  <Loader className="size-4 animate-spin" />
                 </AvatarFallback>
               </Avatar>
               <Button

@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { db } from "./db";
-import { userGroups } from "./db/schema";
+import { events, groups, userGroups } from "./db/schema";
 import { users } from "./db/schema";
 
 export async function getCurrentUser() {
@@ -32,4 +32,20 @@ export async function getUser(userId: string) {
   });
 
   return user;
+}
+
+export async function getEventName(eventId: string) {
+  const event = await db.query.events.findFirst({
+    where: eq(events.eventId, eventId),
+  });
+
+  return event?.eventName;
+}
+
+export async function getGroupName(groupId: string) {
+  const group = await db.query.groups.findFirst({
+    where: eq(groups.groupId, groupId),
+  });
+
+  return group?.groupName;
 }

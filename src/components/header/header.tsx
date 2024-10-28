@@ -3,7 +3,7 @@
 import { SignedIn } from "@clerk/nextjs";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import EventBreadcrumb from "./breadcrumb";
-import { getCurrentUser } from "@/features/users/server/queries/users";
+import { getCurrentUser } from "@/server/queries";
 
 export default async function Header() {
   const user = await getCurrentUser();

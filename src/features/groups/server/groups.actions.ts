@@ -1,7 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import {
   editGroup,
-  getGroup,
   insertGroup,
   insertUserGroup,
   removeUserGroup,
@@ -14,18 +13,6 @@ import { redirect } from "next/navigation";
 import { encode } from "@/util/shorten-uuid";
 import { CreateGroupFormFields, createGroupFormSchema } from "../types";
 import { checkUserGroup } from "@/server/queries";
-
-export async function getGroupName(groupId: string) {
-  const user = auth();
-  if (!user.userId) {
-    auth().protect();
-    throw new Error("Unauthorized");
-  }
-
-  const group = await getGroup(groupId);
-
-  return group?.groupName;
-}
 
 export async function createGroup(formData: CreateGroupFormFields) {
   const user = auth();

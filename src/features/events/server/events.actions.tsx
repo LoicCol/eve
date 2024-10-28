@@ -2,7 +2,6 @@ import { auth } from "@clerk/nextjs/server";
 import {
   createSection,
   deleteUsersEvent,
-  getEvent,
   getEventsForGroup,
   getSection,
   insertEvent,
@@ -20,18 +19,6 @@ import { getCurrentLocale } from "@/locales/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { encode } from "@/util/shorten-uuid";
-
-export async function getEventName(eventId: string) {
-  const user = auth();
-  if (!user.userId) {
-    auth().protect();
-    throw new Error("Unauthorized");
-  }
-
-  const event = await getEvent(eventId);
-
-  return event?.eventName;
-}
 
 export async function createEvent(formData: CreateEventFormFields) {
   const user = auth();
