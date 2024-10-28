@@ -63,10 +63,10 @@ This application is built using the following technologies:
 - [x] Facebook connection re-up
 - [x] Well manage the events times (start / end)
 - [x] Shoz events times on event card
+- [x] Change project structure https://github.com/WebDevSimplified/parity-deals-clone/tree/feature-folder-structure
 
 ### Upcoming Features
 
-- [ ] Change project structure https://github.com/WebDevSimplified/parity-deals-clone/tree/feature-folder-structure
 - [ ] Privacy policy / Deletion policy (link to fb)
 - [ ] Change mobile version of group details
 - [ ] Limit editing permissions to admin (currently only the creator).
