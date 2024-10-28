@@ -62,10 +62,11 @@ This application is built using the following technologies:
 - [x] Group list displayed in group details
 - [x] Facebook connection re-up
 - [x] Well manage the events times (start / end)
+- [x] Shoz events times on event card
 
 ### Upcoming Features
 
-- [ ] Shoz events times on event card
+- [ ] Change project structure https://github.com/WebDevSimplified/parity-deals-clone/tree/feature-folder-structure
 - [ ] Privacy policy / Deletion policy (link to fb)
 - [ ] Change mobile version of group details
 - [ ] Limit editing permissions to admin (currently only the creator).
@@ -82,6 +83,7 @@ This application is built using the following technologies:
 - [ ] Implement rate limiting for API requests.
 - [ ] Use ATP.
 - [ ] Use https://gist.github.com/gpichot/df6b586c0ac09ebde794c7f5bef5800f
+- [ ] 100% accessibility
 
 ### Bugs
 
