@@ -1,7 +1,7 @@
+import CreateEventForm from "@/features/events/components/create-event-form";
+import { getEventsForGroup } from "@/features/events/server/queries/events";
 import { serializeSections } from "@/util/serialize-sections";
-import CreateEventForm from "../../create/create-event-form";
 import { decode } from "@/util/shorten-uuid";
-import { getEventsForGroup } from "server/queries";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const events = await getEventsForGroup(decode(params.id));

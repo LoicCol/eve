@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { editEvent } from "server/actions/actions";
 import { toast } from "sonner";
 import { EditEventFormFields } from "types";
-import EventForm from "../../../../../../../src/features/events/components/event-form";
+import EventForm from "@/features/events/components/event-form";
 import { useParams } from "next/navigation";
 import FormSubmitButton from "@/components/form/form-submit-button";
 import { decode } from "@/util/shorten-uuid";
