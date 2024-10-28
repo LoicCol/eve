@@ -18,7 +18,8 @@
           "src/server/**/*",
           "src/locales/**/*",
           "src/util/**/*",
-          "src/styles/**/*"
+          "src/styles/**/*",
+          "src/server/**/*"
         ]
       },
       {

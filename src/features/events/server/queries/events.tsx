@@ -1,12 +1,12 @@
 "use server";
 import { and, eq, gte, inArray, lt } from "drizzle-orm";
-import { db } from "server/db";
+import { db } from "@/server/db";
 import {
   events,
   eventSections,
   userEvents,
   userGroups,
-} from "server/db/schema";
+} from "@/server/db/schema";
 
 export async function getEvents(userId: string) {
   const groups = await db.query.userGroups.findMany({
