@@ -2,7 +2,7 @@ import {
   getEvent,
   getParticipants,
 } from "@/features/events/server/events.queries";
-import { getCurrentUser, getUser } from "@/features/users/server/queries/users";
+import { getCurrentUser, getUser } from "@/server/queries";
 import EventDetails from "@/features/events/components/event-details";
 import { decode } from "@/util/shorten-uuid";
 

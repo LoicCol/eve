@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BreadcrumbSeparator } from "../ui/breadcrumb";
+import { BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { getEventName } from "@/server/queries";
+import { getEventNameAction } from "../server/header.actions";
 import { decode } from "@/util/shorten-uuid";
 import { Loader } from "lucide-react";
 import { Fragment, useRef } from "react";
@@ -21,7 +21,7 @@ export default function EventLink() {
   const eventId = params?.eventId ?? "";
 
   const { data: eventName = "", isPending: isPendingEvent } = useQuery({
-    queryFn: () => getEventName(decode(eventId)),
+    queryFn: () => getEventNameAction(decode(eventId)),
     queryKey: ["event", eventId],
     enabled: Boolean(eventId),
   });

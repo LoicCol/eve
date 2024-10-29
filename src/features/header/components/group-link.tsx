@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BreadcrumbSeparator } from "../ui/breadcrumb";
+import { BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { getGroupName } from "@/server/queries";
+import { getGroupNameAction } from "../server/header.actions";
 import { decode } from "@/util/shorten-uuid";
 import { Loader, Users } from "lucide-react";
 import { Fragment, useRef } from "react";
@@ -19,7 +19,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Separator } from "../ui/separator";
+import { Separator } from "@/components/ui/separator";
 
 export default function GroupLink() {
   const groupContainer = useRef(null);
@@ -31,7 +31,7 @@ export default function GroupLink() {
   const isEventDetailsPage = Boolean(params?.eventId);
 
   const { data: groupName = "", isPending: isPendingGroup } = useQuery({
-    queryFn: () => getGroupName(decode(groupId)),
+    queryFn: () => getGroupNameAction(decode(groupId)),
     queryKey: ["group", groupId],
     enabled: Boolean(groupId),
   });

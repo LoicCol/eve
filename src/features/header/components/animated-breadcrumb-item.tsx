@@ -1,5 +1,5 @@
 import { animated } from "@react-spring/web";
-import { BreadcrumbItem } from "../ui/breadcrumb";
+import { BreadcrumbItem } from "@/components/ui/breadcrumb";
 
 const AnimatedBreadcrumbItem = animated(BreadcrumbItem);
 

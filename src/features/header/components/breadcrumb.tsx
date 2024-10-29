@@ -3,14 +3,18 @@
 import { useI18n } from "@/locales/client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbList } from "../ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+} from "@/components/ui/breadcrumb";
 import { Loader } from "lucide-react";
-import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import GroupLink from "./group-link";
 import EventLink from "./event-link";
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Separator } from "../ui/separator";
+import { Separator } from "@/components/ui/separator";
 
 interface EventBreadcrumbProps {
   user?: {
