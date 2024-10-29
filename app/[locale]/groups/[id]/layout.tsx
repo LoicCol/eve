@@ -51,7 +51,7 @@ export default async function Layout({
         </div>
 
         <GroupDetailsSidebarContainer>
-          <Card className="mt-2 h-auto bg-card">
+          <Card className="mt-2 h-auto w-full bg-card py-2">
             <CardContent>{details}</CardContent>
           </Card>
         </GroupDetailsSidebarContainer>
