@@ -12,7 +12,7 @@ interface EventDescriptionProps {
     eventName: string;
     location: string;
     startDate: Date;
-    endDate: Date;
+    endDate: Date | null;
     description: string | null;
     groupId: string | null;
     sectionId: string | null;
