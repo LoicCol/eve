@@ -11,7 +11,7 @@ export default function GroupDetailsSidebarTrigger() {
     <Button
       variant="ghost"
       size="icon"
-      className="rounded-full"
+      className="rounded-full md:hidden"
       onClick={() => setIsOpen(true)}
     >
       <Info className="size-5" />
