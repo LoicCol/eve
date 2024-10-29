@@ -4,6 +4,8 @@ import { SignedIn } from "@clerk/nextjs";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import EventBreadcrumb from "./breadcrumb";
 import { getCurrentUser } from "@/server/queries";
+import { useGroupDetailsSidebar } from "@/util/group-details-sidebar";
+import { Button } from "@/components/ui/button";
 
 export default async function Header() {
   const user = await getCurrentUser();
@@ -18,8 +20,15 @@ export default async function Header() {
               <EventBreadcrumb user={user} />
             </div>
           </div>
+          <GroupDetailsSidebarTrigger />
         </div>
       </header>
     </SignedIn>
   );
+}
+
+function GroupDetailsSidebarTrigger() {
+  const { setIsOpen } = useGroupDetailsSidebar();
+
+  return <Button onClick={() => setIsOpen(true)}>Open</Button>;
 }

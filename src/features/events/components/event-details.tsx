@@ -55,8 +55,8 @@ export default function EventDetails({
   );
 
   return (
-    <Card className="flex-1 overflow-hidden border-none shadow-none md:m-2">
-      <CardContent className="flex h-full flex-col gap-4 p-4 md:flex-row">
+    <Card className="flex-1 overflow-hidden border-none pb-4 shadow-none md:m-2">
+      <CardContent className="flex h-full flex-col gap-4 overflow-auto p-4 md:flex-row">
         <div className="flex flex-1 flex-col gap-5">
           <h1 className="text-xl font-bold">{event.eventName}</h1>
 

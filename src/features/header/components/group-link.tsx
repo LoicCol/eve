@@ -83,29 +83,29 @@ const GroupContent: React.FC<GroupContentProps> = ({
   isEventDetailsPage,
   isMobile,
 }) => {
-  if (!isPendingGroup && isEventDetailsPage && isMobile) {
-    return (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full p-0 text-foreground hover:text-primary"
-              asChild
-            >
-              <Link href={`/groups/${groupId}`}>
-                <Users className="h-4 w-4" />
-              </Link>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{groupName}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    );
-  }
+  // if (!isPendingGroup && isEventDetailsPage && isMobile) {
+  //   return (
+  //     <TooltipProvider>
+  //       <Tooltip>
+  //         <TooltipTrigger asChild>
+  //           <Button
+  //             variant="ghost"
+  //             size="icon"
+  //             className="rounded-full p-0 text-foreground hover:text-primary"
+  //             asChild
+  //           >
+  //             <Link href={`/groups/${groupId}/events`}>
+  //               <Users className="h-4 w-4" />
+  //             </Link>
+  //           </Button>
+  //         </TooltipTrigger>
+  //         <TooltipContent>
+  //           <p>{groupName}</p>
+  //         </TooltipContent>
+  //       </Tooltip>
+  //     </TooltipProvider>
+  //   );
+  // }
 
   return (
     <Button
@@ -113,7 +113,7 @@ const GroupContent: React.FC<GroupContentProps> = ({
       className={`overflow-hidden p-0 text-foreground after:bg-primary hover:text-primary ${isPendingGroup ? "opacity-0" : "opacity-100"}`}
       asChild
     >
-      <Link href={`/groups/${groupId}`}>{groupName}</Link>
+      <Link href={`/groups/${groupId}/events`}>{groupName}</Link>
     </Button>
   );
 };

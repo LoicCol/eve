@@ -1,7 +1,7 @@
 "use client";
 
 import { useI18n } from "@/locales/client";
-import { Calendar, CalendarRange, Group } from "lucide-react";
+import { ArrowLeft, Calendar, CalendarRange, Group } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -19,7 +19,7 @@ export default function EventsHeader({
   const isEventDetails = !!eventId;
 
   return (
-    <div className="mb-2 items-center justify-between pt-1 md:flex md:px-2 md:pt-2">
+    <div className="mb-2 flex items-center justify-between pt-1 md:px-2 md:pt-2">
       {/* Desktop */}
       <Button variant="link" className={`hidden p-0 md:flex`} asChild>
         <Link href={`/groups/${groupId}/events`}>
@@ -30,13 +30,13 @@ export default function EventsHeader({
 
       {/* Mobile */}
       <Button
-        variant="link"
-        className={`ml-4 p-0 md:hidden ${!isEventDetails && "hidden"}`}
+        variant="ghost"
+        size="icon"
+        className={`rounded-full p-0 text-primary md:hidden ${!isEventDetails && "hidden"}`}
         asChild
       >
         <Link href={`/groups/${groupId}/events`}>
-          <CalendarRange className="mr-2 size-4" />
-          <h2 className="">{t("eventsHeader.groupEvents")}</h2>
+          <ArrowLeft className="size-4" />
         </Link>
       </Button>
 
@@ -63,7 +63,7 @@ function ActionButtons({
   if (!isEventDetails) {
     return (
       <div
-        className={`flex justify-between gap-2 md:py-0 ${
+        className={`flex w-full justify-between gap-2 md:py-0 ${
           isEventDetails ? "hidden md:flex" : ""
         }`}
       >

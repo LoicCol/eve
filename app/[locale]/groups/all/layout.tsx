@@ -14,7 +14,7 @@ export default async function Layout({
   const t = await getI18n();
 
   return (
-    <div className="mx-auto w-full px-2 py-8 md:px-14">
+    <div className="mx-auto w-full px-2 py-2 md:px-14 md:py-8">
       <div className="flex justify-between gap-2 px-2 md:px-0">
         <h1 className="px-4 font-sans text-3xl font-bold">
           {t("groups.yourGroups", {

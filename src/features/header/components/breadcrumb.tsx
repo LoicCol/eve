@@ -55,7 +55,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
 
         <GroupLink />
 
-        <EventLink />
+        {!isMobile ? <EventLink /> : null}
       </BreadcrumbList>
     </Breadcrumb>
   );

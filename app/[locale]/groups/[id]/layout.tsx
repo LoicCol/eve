@@ -43,7 +43,7 @@ export default async function Layout({
       </Desktop>
 
       <Mobile>
-        <div className="flex w-full flex-col px-4 pb-6 md:hidden">
+        <div className="flex w-full flex-col overflow-auto px-4 pb-6 md:hidden">
           {children}
         </div>
 
