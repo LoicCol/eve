@@ -7,6 +7,9 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Desktop, Mobile } from "@/components/responsive-helpers";
+import { Drawer, DrawerContent } from "@/components/ui/drawer";
+import { useGroupDetailsSidebar } from "@/util/group-details-sidebar";
+import GroupDetailsSidebarContainer from "@/features/groups/components/group-details-sidebar-container";
 
 export default async function Layout({
   details,
@@ -47,12 +50,11 @@ export default async function Layout({
           {children}
         </div>
 
-        {/* Put in vault: 
-          <TabsContent value="details" className="flex-1">
-            <Card className="mt-2 h-full py-4">
-              <CardContent>{details}</CardContent>
-            </Card>
-          </TabsContent> */}
+        <GroupDetailsSidebarContainer>
+          <Card className="mt-2 h-auto bg-card">
+            <CardContent>{details}</CardContent>
+          </Card>
+        </GroupDetailsSidebarContainer>
       </Mobile>
     </>
   );
