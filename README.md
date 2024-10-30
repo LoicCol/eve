@@ -64,12 +64,13 @@ This application is built using the following technologies:
 - [x] Well manage the events times (start / end)
 - [x] Shoz events times on event card
 - [x] Change project structure https://github.com/WebDevSimplified/parity-deals-clone/tree/feature-folder-structure
-- [ ] Change mobile version of group details
+- [x] Change mobile version of group details
 
 ### Upcoming Features
 
 - [ ] Privacy policy / Deletion policy (link to fb)
-- [ ] Limit editing permissions to admin (currently only the creator).
+- [ ] Group events sorting
+- [ ] Limit editing permissions on events to either only creator or everybody
 - [x] List events for all groups a user is in.
   - [ ] Add search functionality.
   - [ ] Implement filters for events.
@@ -89,6 +90,7 @@ This application is built using the following technologies:
 
 - [ ] Clerk manage account modal not working on mobile
 - [ ] All groups page shows 2 loading content
+- [ ] Events page on mobile -> Sidebar trigger
 
 ---
 
