@@ -35,9 +35,21 @@ export async function getEvent(eventId: string) {
 
 export async function getEventsForGroup(
   groupId: string,
-  dateFilter: "upcoming" | "past" = "upcoming",
+  dateFilter: "upcoming" | "past" | "all" = "upcoming",
 ) {
   const now = new Date();
+
+  let filter;
+
+  switch (dateFilter) {
+    case "upcoming":
+      filter = gte(events.startDate, now);
+    case "past":
+      filter = lt(events.startDate, now);
+    default:
+      filter = undefined;
+  }
+
   const eventsRes = await db
     .select({
       eventId: events.eventId,
@@ -56,14 +68,7 @@ export async function getEventsForGroup(
     })
     .from(events)
     .leftJoin(eventSections, eq(events.sectionId, eventSections.sectionId))
-    .where(
-      and(
-        eq(events.groupId, groupId),
-        dateFilter === "upcoming"
-          ? gte(events.startDate, now)
-          : lt(events.startDate, now),
-      ),
-    )
+    .where(and(eq(events.groupId, groupId), filter))
     .orderBy(events.startDate);
 
   return eventsRes;

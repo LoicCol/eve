@@ -11,7 +11,9 @@ export default async function EditPage({
 }) {
   const { id, eventId } = params;
   const groupId = decode(id);
-  const events = await getEventsForGroup(groupId);
+
+  /** TODO: refactor queries to get sections & get event by id with queries*/
+  const events = await getEventsForGroup(groupId, "all");
   const sections = serializeSections(events);
   const event = events.find((event) => event.eventId === decode(eventId));
 
