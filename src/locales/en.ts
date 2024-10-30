@@ -85,6 +85,11 @@ export default {
   joinButton: {
     joined: "Joined",
     join: "Join",
+    joinGroupTitle: "Would you like to join the group?",
+    joinGroupDescription:
+      "By joining the group, you can take part in events and add it to your list of groups.",
+    yes: "Yes",
+    no: "No",
   },
   linkEvents: {
     title: "Link Events",

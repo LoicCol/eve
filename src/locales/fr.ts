@@ -89,6 +89,11 @@ export default {
   joinButton: {
     joined: "Membre",
     join: "Rejoindre",
+    joinGroupTitle: "Voulez vous rejoindre le groupe ?",
+    joinGroupDescription:
+      "En rejoignant le groupe, vous pourrez participer aux événements et le faire figurer dans votre liste de groupes.",
+    yes: "Oui",
+    no: "Non",
   },
   linkEvents: {
     title: "Lier des événements",

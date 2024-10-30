@@ -63,16 +63,17 @@ export default function JoinButton({ groupId, hasJoined }: JoinButtonProps) {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Would you like to join the group?
+              {t("joinButton.joinGroupTitle")}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              If you don't join the group you wouldn't be able to see it in your
-              groups list.
+              {t("joinButton.joinGroupDescription")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>No</AlertDialogCancel>
-            <AlertDialogAction onClick={handleJoin}>Yes</AlertDialogAction>
+            <AlertDialogCancel>{t("joinButton.no")}</AlertDialogCancel>
+            <AlertDialogAction onClick={handleJoin}>
+              {t("joinButton.yes")}
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
