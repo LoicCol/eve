@@ -29,10 +29,13 @@ export default async function GroupDetails({ groupId }: { groupId: string }) {
     <Fragment>
       <div className="flex items-center justify-between gap-4">
         <GroupDetailsName {...group} />
+      </div>
+
+      <div className="mt-4">
         <JoinButton groupId={groupId} hasJoined={hasJoined} />
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4">
         <p className="pr-2 text-muted-foreground">
           {t("groupDetails.createdBy")}
         </p>

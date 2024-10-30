@@ -7,6 +7,16 @@ import { Loader, UserRoundCheck, Users } from "lucide-react";
 import { useResize, animated } from "@react-spring/web";
 import { useRef } from "react";
 import { useI18n } from "@/locales/client";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 interface JoinButtonProps {
   groupId: string;
@@ -34,19 +44,38 @@ export default function JoinButton({ groupId, hasJoined }: JoinButtonProps) {
   const t = useI18n();
 
   return (
-    <animated.div
-      style={{ width, overflow: "hidden" }}
-      className="flex-shrink-0"
-    >
-      <Button
-        className="flex items-center p-0"
-        onClick={handleJoin}
-        variant="link"
-        ref={container}
+    <>
+      <animated.div
+        style={{ width, overflow: "hidden" }}
+        className="flex-shrink-0"
       >
-        {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : icon}
-        {hasJoined ? t("joinButton.joined") : t("joinButton.join")}
-      </Button>
-    </animated.div>
+        <Button
+          className="flex items-center p-0"
+          onClick={handleJoin}
+          variant="link"
+          ref={container}
+        >
+          {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : icon}
+          {hasJoined ? t("joinButton.joined") : t("joinButton.join")}
+        </Button>
+      </animated.div>
+      <AlertDialog defaultOpen={!hasJoined}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              Would you like to join the group?
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              If you don't join the group you wouldn't be able to see it in your
+              groups list.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>No</AlertDialogCancel>
+            <AlertDialogAction onClick={handleJoin}>Yes</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 }
