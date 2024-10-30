@@ -4,7 +4,7 @@ import GroupDetailsSidebarProvider from "@/util/group-details-sidebar";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <GroupDetailsSidebarProvider>
-      <div className="flex h-full flex-col bg-background md:rounded-sm">
+      <div className="flex h-full flex-col overflow-hidden bg-background md:rounded-sm">
         <Header />
 
         <main
