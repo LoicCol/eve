@@ -65,7 +65,7 @@ export default {
     editEvent: "Edit Event",
   },
   eventsHeader: {
-    linkEvents: "Link Events",
+    linkEvents: "Group Events",
     createEvent: "Create Event",
     editEvent: "Edit Event",
     events: "Events",
@@ -81,6 +81,9 @@ export default {
     past: "Past",
     noEventsFound: "No events found",
     notFound: "Group not found",
+    errorLoadingEvents: "Failed to load events",
+    grouped: "Grouped",
+    sorted: "Sorted",
   },
   joinButton: {
     joined: "Joined",
