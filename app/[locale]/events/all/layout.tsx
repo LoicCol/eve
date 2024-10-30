@@ -9,8 +9,8 @@ export default async function Layout({
   const t = await getI18n();
 
   return (
-    <div className="mx-auto mt-4 w-full px-2 pb-2 md:px-14">
-      <h1 className="px-4 font-sans text-3xl font-bold">
+    <div className="mx-auto size-full rounded-sm bg-background px-2 pb-2 md:px-14">
+      <h1 className="mt-4 px-4 font-sans text-3xl font-bold">
         {t("events.allEvents", {
           evnts: (
             <TextEffect

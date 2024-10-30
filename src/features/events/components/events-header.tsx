@@ -63,7 +63,7 @@ function ActionButtons({
   if (!isEventDetails) {
     return (
       <div
-        className={`flex w-full justify-between gap-2 md:py-0 ${
+        className={`flex w-full justify-between gap-2 md:justify-end md:py-0 ${
           isEventDetails ? "hidden md:flex" : ""
         }`}
       >

@@ -28,7 +28,7 @@ export default function EventDescription({ event }: EventDescriptionProps) {
         ...event,
         name: event.eventName,
         startDate: event.startDate.toISOString(),
-        endDate: event.endDate.toISOString(),
+        endDate: event.endDate?.toISOString() || "",
         description: data.description || "",
       }),
     onSettled: async () => {
