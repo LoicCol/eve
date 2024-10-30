@@ -22,7 +22,6 @@ export default function GroupLink() {
 
   const params = useParams<{ id: string; eventId: string }>();
   const groupId = params?.id ?? "";
-  const isEventDetailsPage = Boolean(params?.eventId);
 
   const { data: groupName = "", isPending: isPendingGroup } = useQuery({
     queryFn: () => getGroupNameAction(decode(groupId)),
