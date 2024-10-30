@@ -42,9 +42,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
 
   return (
     <Drawer open={open} onOpenChange={close}>
-      <DrawerContent className="max-h-svh overflow-hidden">
-        {children}
-      </DrawerContent>
+      <DrawerContent className="max-h-svh">{children}</DrawerContent>
     </Drawer>
   );
 }

@@ -33,7 +33,9 @@ export async function getMembers(groupId: string) {
     },
   });
 
-  return members.map((member) => member.user);
+  return members.map(
+    (member) => member.user as NonNullable<typeof member.user>,
+  );
 }
 
 export async function insertGroup(groupName: string, createdBy: string) {

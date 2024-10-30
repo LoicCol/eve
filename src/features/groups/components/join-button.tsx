@@ -1,22 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { joinGroup, leaveGroup } from "../server/groups.actions";
-import { useMutation } from "@tanstack/react-query";
 import { Loader, UserRoundCheck, Users } from "lucide-react";
 import { useResize, animated } from "@react-spring/web";
 import { useRef } from "react";
 import { useI18n } from "@/locales/client";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+import { useJoinGroup } from "../hooks/use-join-group";
 
 interface JoinButtonProps {
   groupId: string;
@@ -26,57 +15,29 @@ interface JoinButtonProps {
 export default function JoinButton({ groupId, hasJoined }: JoinButtonProps) {
   const container = useRef(null);
   const { width } = useResize({ container });
+  const t = useI18n();
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: hasJoined ? leaveGroup : joinGroup,
-  });
-
-  const handleJoin = async () => {
-    mutate(groupId);
-  };
+  const { handleJoin, isPending } = useJoinGroup({ hasJoined, groupId });
 
   const icon = hasJoined ? (
-    <UserRoundCheck className="mr-2 h-4 w-4" />
+    <UserRoundCheck className="mr-2 size-4" />
   ) : (
-    <Users className="mr-2 h-4 w-4" />
+    <Users className="mr-2 size-4" />
   );
-
-  const t = useI18n();
 
   return (
     <>
-      <animated.div
-        style={{ width, overflow: "hidden" }}
-        className="flex-shrink-0"
-      >
+      <animated.div style={{ width, overflow: "hidden" }} className="shrink-0">
         <Button
           className="flex items-center p-0"
           onClick={handleJoin}
           variant="link"
           ref={container}
         >
-          {isPending ? <Loader className="mr-2 h-4 w-4 animate-spin" /> : icon}
+          {isPending ? <Loader className="mr-2 size-4 animate-spin" /> : icon}
           {hasJoined ? t("joinButton.joined") : t("joinButton.join")}
         </Button>
       </animated.div>
-      <AlertDialog defaultOpen={!hasJoined}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              {t("joinButton.joinGroupTitle")}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {t("joinButton.joinGroupDescription")}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>{t("joinButton.no")}</AlertDialogCancel>
-            <AlertDialogAction onClick={handleJoin}>
-              {t("joinButton.yes")}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </>
   );
 }
