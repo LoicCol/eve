@@ -1,6 +1,6 @@
-import CreateEventForm from "./create-event-form";
+import CreateEventForm from "@/features/events/components/create-event-form";
 import { decode } from "@/util/shorten-uuid";
-import { getEventsForGroup } from "server/queries";
+import { getEventsForGroup } from "@/features/events/server/events.queries";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getI18n } from "@/locales/server";
 import { serializeSections } from "@/util/serialize-sections";

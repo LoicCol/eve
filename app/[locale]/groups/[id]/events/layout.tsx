@@ -1,5 +1,5 @@
-import EventsHeader from "./events-header";
-import { getGroup } from "server/queries";
+import EventsHeader from "@/features/events/components/events-header";
+import { getGroup } from "@/features/groups/server/groups.queries";
 import { decode } from "@/util/shorten-uuid";
 import { Separator } from "@/components/ui/separator";
 

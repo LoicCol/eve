@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 import { Inter, Sofia } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import Providers from "@/util/providers";
-import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
@@ -28,7 +27,7 @@ export default function RootLayout({
   params: { locale: string };
 }) {
   return (
-    <html lang="en" className="h-svh">
+    <html lang="en" className="h-screen">
       <head>
         <link
           rel="icon"
@@ -46,8 +45,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Eve-nts" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className={`${inter.className} ${sofia.variable} h-svh`}>
-        <div className="h-svh">
+      <body className={`${inter.className} ${sofia.variable} h-screen`}>
+        <div className="h-screen">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Providers locale={locale}>
               <SidebarProvider
@@ -61,16 +60,9 @@ export default function RootLayout({
                   <AppSidebar />
                 </SignedIn>
 
-                <SidebarInset className="h-[calc(100vh-80px)] bg-gradient-to-br from-border to-green-300 p-px dark:to-green-700">
-                  <div className="flex h-full flex-col overflow-hidden bg-background md:rounded-sm">
-                    <Header />
+                <SidebarInset className="h-[calc(100vh-80px)] overflow-hidden bg-gradient-to-br from-border to-green-300 dark:to-green-700 md:p-px">
+                  {children}
 
-                    <main
-                      className={`mx-auto flex size-full flex-1 justify-center overflow-auto`}
-                    >
-                      {children}
-                    </main>
-                  </div>
                   <Toaster richColors position="top-right" closeButton />
                 </SidebarInset>
               </SidebarProvider>

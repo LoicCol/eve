@@ -1,4 +1,4 @@
-import EditPage from "../../../[eventId]/edit/edit-page";
+import EditPage from "../../../../../../../../src/features/events/components/edit-page";
 
 export default async function Page({
   params,

@@ -1,5 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import { EVENT_FORM_HEIGHT } from "../../../event-form";
+import { EVENT_FORM_HEIGHT } from "../../../../../../../../src/features/events/components/event-form";
 
 export default function Loading() {
   return (

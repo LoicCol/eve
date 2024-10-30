@@ -1,5 +1,5 @@
-import LinkEvents from "../../link/link-events";
-import { getEventsForGroup } from "server/queries";
+import LinkEvents from "@/features/events/components/link-events";
+import { getEventsForGroup } from "@/features/events/server/events.queries";
 import { decode } from "@/util/shorten-uuid";
 
 export default async function Page({

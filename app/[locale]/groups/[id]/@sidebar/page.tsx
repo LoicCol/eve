@@ -1,5 +1,5 @@
-import { getCurrentUserGroups } from "server/actions/actions";
-import { GroupSidebar } from "./group-sidebar";
+import { getCurrentUserGroups } from "@/features/groups/server/groups.actions";
+import { GroupSidebar } from "@/features/groups/components/group-sidebar";
 
 export default async function Page() {
   const groups = await getCurrentUserGroups();

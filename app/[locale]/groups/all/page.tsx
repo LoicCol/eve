@@ -1,4 +1,4 @@
-import GroupList from "./group-list";
+import GroupList from "@/features/groups/components/group-list";
 
 export default function Groups({
   params: { locale },
