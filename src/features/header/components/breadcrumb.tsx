@@ -31,7 +31,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
     <Breadcrumb className="h-full flex-1 overflow-hidden">
       <BreadcrumbList className="h-full flex-nowrap overflow-hidden">
         {!isMobile && user ? (
-          <>
+          <div className="hidden md:flex">
             <Separator orientation="vertical" className="mx-2 h-4" />
             <BreadcrumbItem className="flex items-center gap-2">
               <Avatar className="size-6">
@@ -50,7 +50,7 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
                 </Link>
               </Button>
             </BreadcrumbItem>
-          </>
+          </div>
         ) : null}
 
         <GroupLink />
