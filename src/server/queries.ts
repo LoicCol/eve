@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { db } from "./db";
-import { events, groups, userGroups } from "./db/schema";
+import { userGroups } from "./db/schema";
 import { users } from "./db/schema";
 
 export async function checkUserGroup(userId: string) {

@@ -1,6 +1,5 @@
 import { db } from "@/server/db";
-import { events, groups, users } from "@/server/db/schema";
-import { auth } from "@clerk/nextjs/server";
+import { events, groups } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function getEventName(eventId: string) {

@@ -4,11 +4,8 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Desktop, Mobile } from "@/components/responsive-helpers";
-import { Drawer, DrawerContent } from "@/components/ui/drawer";
-import { useGroupDetailsSidebar } from "@/util/group-details-sidebar";
 import GroupDetailsSidebarContainer from "@/features/groups/components/group-details-sidebar-container";
 
 export default async function Layout({
