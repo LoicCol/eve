@@ -1,5 +1,5 @@
 "use server";
-import { and, eq, gte, inArray, lt } from "drizzle-orm";
+import { and, eq, inArray, lt, or, isNotNull, isNull, gt } from "drizzle-orm";
 import { db } from "@/server/db";
 import {
   events,
@@ -7,6 +7,7 @@ import {
   userEvents,
   userGroups,
 } from "@/server/db/schema";
+import { getStartOfDay } from "@/util/date-time-format";
 
 export async function getEvents(userId: string) {
   const groups = await db.query.userGroups.findMany({
@@ -37,17 +38,27 @@ export async function getEventsForGroup(
   groupId: string,
   dateFilter: "upcoming" | "past" | "all" = "upcoming",
 ) {
-  const now = new Date();
+  const startOfToday = getStartOfDay(new Date());
 
   let filter;
 
   switch (dateFilter) {
     case "upcoming":
-      filter = gte(events.startDate, now);
+      filter = or(
+        and(gt(events.endDate, startOfToday), isNotNull(events.endDate)),
+        and(isNull(events.endDate), gt(events.startDate, startOfToday)),
+      );
+      break;
     case "past":
-      filter = lt(events.startDate, now);
+      // The filter takes the endDate if it exists, otherwise it takes the startDate
+      filter = or(
+        and(lt(events.endDate, startOfToday), isNotNull(events.endDate)),
+        and(isNull(events.endDate), lt(events.startDate, startOfToday)),
+      );
+      break;
     default:
       filter = undefined;
+      break;
   }
 
   const eventsRes = await db
