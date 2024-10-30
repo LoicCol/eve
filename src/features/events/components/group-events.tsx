@@ -44,7 +44,7 @@ export default function GroupEvents({ groupId }: { groupId: string }) {
       <div key={sectionId}>
         <h2 className="mb-4 font-sans text-xl font-bold delay-100 animate-in">
           {sectionId === "other"
-            ? "Other"
+            ? "-"
             : groupedEvents[sectionId]?.[0]?.sectionName}
         </h2>
         <AnimatedGroup className="grid gap-4 md:grid-cols-2" preset="blur">
