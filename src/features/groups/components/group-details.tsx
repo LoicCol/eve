@@ -6,31 +6,28 @@ import JoinButton from "./join-button";
 import { Fragment } from "react";
 import GroupDetailsName from "./group-details-name";
 import { getI18n } from "@/locales/server";
-
-type Group = {
-  createdBy: string;
-  groupName: string;
-  groupId: string;
-};
-
-type Member = {
-  userId: string;
-  name: string;
-  image: string | null;
-};
+import { getGroup } from "../server/groups.queries";
+import { getMembers } from "../server/groups.queries";
+import { currentUser } from "@clerk/nextjs/server";
 
 interface GroupDetailsProps {
-  group: Group;
-  members: Array<Member>;
-  hasJoined: boolean;
+  groupId: string;
 }
 
-export default async function GroupDetails({
-  group,
-  members,
-  hasJoined,
-}: GroupDetailsProps) {
+export default async function GroupDetails({ groupId }: GroupDetailsProps) {
   const t = await getI18n();
+
+  const [group, members, currUser] = await Promise.all([
+    getGroup(groupId),
+    getMembers(groupId),
+    currentUser(),
+  ]);
+
+  if (!group) {
+    return <div>Not found</div>;
+  }
+
+  const hasJoined = members.some((member) => member?.userId === currUser?.id);
 
   const user = await getUser(group.createdBy);
 

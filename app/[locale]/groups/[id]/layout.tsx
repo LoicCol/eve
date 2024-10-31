@@ -4,9 +4,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import { Card, CardContent } from "@/components/ui/card";
 import { Desktop, Mobile } from "@/components/responsive-helpers";
-import GroupDetailsSidebarContainer from "@/features/groups/components/group-details-sidebar-container";
 
 export default async function Layout({
   details,
@@ -43,15 +41,9 @@ export default async function Layout({
       </Desktop>
 
       <Mobile>
-        <div className="flex w-full flex-col overflow-auto px-4 pb-6 md:hidden">
+        <div className="relative flex w-full flex-col overflow-auto px-4 pb-6 md:hidden">
           {children}
         </div>
-
-        <GroupDetailsSidebarContainer>
-          <Card className="mt-2 h-auto w-full bg-card py-2">
-            <CardContent>{details}</CardContent>
-          </Card>
-        </GroupDetailsSidebarContainer>
       </Mobile>
     </>
   );

@@ -4,7 +4,6 @@ import { SignedIn } from "@clerk/nextjs";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import EventBreadcrumb from "./breadcrumb";
 import { getCurrentUser } from "@/server/queries";
-import GroupDetailsSidebarTrigger from "./group-details-sidebar-trigger";
 
 export default async function Header() {
   const user = await getCurrentUser();
@@ -19,7 +18,6 @@ export default async function Header() {
               <EventBreadcrumb user={user} />
             </div>
           </div>
-          <GroupDetailsSidebarTrigger />
         </div>
       </header>
     </SignedIn>
