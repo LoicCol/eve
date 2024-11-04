@@ -14,7 +14,7 @@ export default async function Layout({
       <CardHeader>
         <CardTitle>{t("editEventForm.title")}</CardTitle>
       </CardHeader>
-      <CardContent>{children}</CardContent>
+      <CardContent className="overflow-auto">{children}</CardContent>
     </Modal>
   );
 }

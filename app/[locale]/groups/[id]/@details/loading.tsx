@@ -1,5 +1,9 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
-  return <Skeleton className="size-full" />;
+  return (
+    <div className="size-full pt-2">
+      <Skeleton className="size-full" />
+    </div>
+  );
 }
