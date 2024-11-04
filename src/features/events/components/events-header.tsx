@@ -4,7 +4,7 @@ import { useI18n } from "@/locales/client";
 import { ArrowLeft, Calendar, CalendarRange, Group } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import { TrailedButton } from "@/components/motioned/trailed-button";
 
@@ -16,6 +16,7 @@ export default function EventsHeader({
 }) {
   const t = useI18n();
   const { eventId } = useParams();
+  const router = useRouter();
   const isEventDetails = !!eventId;
 
   return (
@@ -33,11 +34,9 @@ export default function EventsHeader({
         variant="outline"
         size="icon"
         className={`absolute left-2 top-4 rounded-full p-0 md:hidden ${!isEventDetails && "hidden"}`}
-        asChild
+        onClick={() => router.back()}
       >
-        <Link href={`/groups/${groupId}/events`}>
-          <ArrowLeft className="size-4" />
-        </Link>
+        <ArrowLeft className="size-4" />
       </Button>
 
       <ActionButtons

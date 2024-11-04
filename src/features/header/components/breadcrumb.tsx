@@ -31,8 +31,11 @@ export default function EventBreadcrumb({ user }: EventBreadcrumbProps) {
     <Breadcrumb className="h-full flex-1 overflow-hidden">
       <BreadcrumbList className="h-full w-[calc(100%-36px)] flex-nowrap overflow-hidden md:w-full">
         {!isMobile && user ? (
-          <div className="hidden md:flex">
-            <Separator orientation="vertical" className="mx-2 h-4" />
+          <div className="hidden items-center md:flex">
+            <Separator
+              orientation="vertical"
+              className="mx-2 h-4 md:ml-2 md:mr-4"
+            />
             <BreadcrumbItem className="flex items-center gap-2">
               <Avatar className="size-6">
                 <AvatarImage src={user?.image || ""} alt="user-image" />
