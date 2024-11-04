@@ -17,7 +17,7 @@ export default async function Layout({
   return (
     <>
       <EventsHeader groupId={params.id} groupName={group?.groupName} />
-      <Separator className="mb-4 mt-3 w-auto md:mx-2 md:mt-2" />
+      <Separator className="mt-2 w-auto md:mx-2 md:mb-4 md:mt-2" />
       {children}
       {modal}
     </>

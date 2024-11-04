@@ -19,7 +19,7 @@ export default function EventsHeader({
   const isEventDetails = !!eventId;
 
   return (
-    <div className="mb-2 flex items-center justify-between pt-1 md:px-2 md:pt-2">
+    <div className="mb-1 flex items-center justify-end md:justify-between md:px-2 md:pt-2">
       {/* Desktop */}
       <Button variant="link" className={`hidden p-0 md:flex`} asChild>
         <Link href={`/groups/${groupId}/events`}>
@@ -30,9 +30,9 @@ export default function EventsHeader({
 
       {/* Mobile */}
       <Button
-        variant="ghost"
+        variant="outline"
         size="icon"
-        className={`rounded-full p-0 text-primary md:hidden ${!isEventDetails && "hidden"}`}
+        className={`absolute left-2 top-4 rounded-full p-0 md:hidden ${!isEventDetails && "hidden"}`}
         asChild
       >
         <Link href={`/groups/${groupId}/events`}>
@@ -83,7 +83,7 @@ function ActionButtons({
   }
 
   return (
-    <div className="flex">
+    <div className="flex self-end">
       <TrailedButton asChild>
         <Link href={`/groups/${groupId}/events/${eventId}/edit`}>
           <Calendar className="mr-2 size-4" />

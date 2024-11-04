@@ -5,16 +5,22 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { Desktop, Mobile } from "@/components/responsive-helpers";
+import GroupDetailsMobile from "@/features/groups/components/group-details-mobile";
+import { decode } from "@/util/shorten-uuid";
 
 export default async function Layout({
   details,
   sidebar,
   children,
+  params,
 }: {
   details: React.ReactNode;
   sidebar: React.ReactNode;
   children: React.ReactNode;
+  params: { id: string };
 }) {
+  const groupId = decode(params.id);
+
   return (
     <>
       <Desktop>
@@ -41,9 +47,10 @@ export default async function Layout({
       </Desktop>
 
       <Mobile>
-        <div className="relative flex w-full flex-col overflow-auto px-4 pb-6 md:hidden">
+        <div className="flex w-full flex-col overflow-auto px-4 pb-6 md:hidden">
           {children}
         </div>
+        <GroupDetailsMobile groupId={groupId}>{details}</GroupDetailsMobile>
       </Mobile>
     </>
   );

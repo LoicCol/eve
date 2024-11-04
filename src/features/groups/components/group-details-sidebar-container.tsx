@@ -21,6 +21,7 @@ export default function GroupDetailsSidebarContainer({
             { "--initial-transform": "calc(100% + 8px)" } as React.CSSProperties
           }
         >
+          <Drawer.Title />
           {children}
         </Drawer.Content>
       </Drawer.Portal>
