@@ -69,7 +69,7 @@ export default {
     editEvent: "Modifier l'événement",
   },
   eventsHeader: {
-    linkEvents: "Lier",
+    linkEvents: "Grouper",
     createEvent: "Créer un événement",
     editEvent: "Modifier l'événement",
     events: "Événements",
@@ -85,6 +85,11 @@ export default {
     past: "Passés",
     noEventsFound: "Aucun événement trouvé",
     notFound: "Groupe non trouvé",
+    errorLoadingEvents: "Échec du chargement des événements",
+    grouped: "Regroupés",
+    sorted: "Triés",
+    groupedTooltip: "Regrouper les événements par section",
+    sortedTooltip: "Trier les événements par date de début",
   },
   joinButton: {
     joined: "Membre",

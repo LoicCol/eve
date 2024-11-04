@@ -27,7 +27,7 @@ export default function RootLayout({
   params: { locale: string };
 }) {
   return (
-    <html lang="en" className="h-screen">
+    <html lang="en" className="h-screen" suppressHydrationWarning>
       <head>
         <link
           rel="icon"

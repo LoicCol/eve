@@ -1,5 +1,5 @@
 import { decode } from "@/util/shorten-uuid";
-import GroupEvents from "@/features/events/components/group-events";
+import GroupEvents from "@/features/events/components/group-events/group-events";
 import { getGroupEvents } from "@/features/events/server/events.actions";
 import { QueryClient } from "@tanstack/react-query";
 

@@ -3,7 +3,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 import { ThemeProvider } from "@/components/next-provider";
 import { dark } from "@clerk/themes";
@@ -27,7 +27,7 @@ export default function Providers({
           appearance={{ baseTheme: theme === "dark" ? dark : undefined }}
         >
           <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
+            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
             <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
           </QueryClientProvider>
         </ClerkProvider>
