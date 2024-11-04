@@ -7,6 +7,9 @@ import {
 import { Desktop, Mobile } from "@/components/responsive-helpers";
 import GroupDetailsMobile from "@/features/groups/components/group-details-mobile";
 import { decode } from "@/util/shorten-uuid";
+import JoinModal from "@/features/groups/components/join-modal";
+import { getMembers } from "@/features/groups/server/groups.queries";
+import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Layout({
   details,
@@ -20,6 +23,11 @@ export default async function Layout({
   params: { id: string };
 }) {
   const groupId = decode(params.id);
+  const [members, currUser] = await Promise.all([
+    getMembers(groupId),
+    currentUser(),
+  ]);
+  const hasJoined = members.some((member) => member?.userId === currUser?.id);
 
   return (
     <>
@@ -50,8 +58,10 @@ export default async function Layout({
         <div className="flex w-full flex-col overflow-auto px-4 pb-6 md:hidden">
           {children}
         </div>
-        <GroupDetailsMobile groupId={groupId}>{details}</GroupDetailsMobile>
+        <GroupDetailsMobile>{details}</GroupDetailsMobile>
       </Mobile>
+
+      <JoinModal groupId={groupId} hasJoined={hasJoined} />
     </>
   );
 }
